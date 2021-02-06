@@ -40,6 +40,7 @@ body{
 .text-nav-head{
     color: #C33608!important;
     font-weight:bold;
+    font-size: 130%;
 }
 
 
@@ -54,25 +55,35 @@ a{
 
 /* *********************************************************** */
 /* TITRE POLICE */
-.box-titre{
-    border-radius:2vh;
-    background-color:#ffcc50!important;
+
+h1 {
+    color:  rgb(255, 81, 0)!important;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-/* *********************************************************** */
-/* TITRE POLICE */
 h4{
    color:rgba(202, 30, 30, 0.863)!important;
    font-weight:bold;
 }
 
+.text-body-1{
+    color :white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 170%;
+}
 /* *********************************************************** */
 /* cadre formulaire  */
 .box-formulaire{
     border-radius:4vh;
+    border: solid 2px rgb(255, 81, 0)!important;
     background-color:#ecebe6!important;
 }
 
+.text-lien-form{
+    color:#cc0000!important;
+    font-weight:bold;
+
+}
 
 /* *********************************************************** */
 /* cadre offre  */
@@ -84,7 +95,7 @@ h4{
 /* *********************************************************** */
 /* text navbar FOOTER  */
 .text-nav-foot{
-    color:rgba(202, 30, 30, 0.863)!important;
+    color:#ffffff!important;
     font-weight:bold;
 }
 
@@ -92,7 +103,9 @@ h4{
 /*box FOOTER  */
 
 .box-footer{
-    height: 10vh;
+    height: 9vh;
+    background-color: rgb(228, 79, 21)!important;
+    
 }
 
 
