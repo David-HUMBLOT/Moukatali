@@ -230,7 +230,7 @@ nav img {
 @media (max-width: 575.98px) { 
 
     .avatar-profil img{
-        width: 30%;
+        width: 60%;
         height: 60%;
         border-radius: 50%;
     }
