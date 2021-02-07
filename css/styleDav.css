@@ -100,14 +100,16 @@ h4{
     font-weight:bold;
 }
 
-/* *********************************************************** */
-/*box FOOTER  */
+
+
 
 .box-footer{
     height: 9vh;
     background-color: rgb(228, 79, 21)!important;
     
 }
+
+/* *********************************************************** */
 
 /* STYLE  */
 .header-liste #navbarNav {

@@ -30,31 +30,65 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body>
+  <!-- _______________________________________________________________________________________________________________ -->
+
   <!-- HEADER -->
-  <header id="admin">
-    <div class="container">
-      <nav class="navbar navbar-dark">
-      <a class="navbar-brand text-uppercase fw-light px-1 py-0" href="../index.html">moukat a li</a>
-        <ul class="nav justify-content-end text-uppercase align-items-center">
-          <li class="nav-item">
-            <a class="nav-link text-light fw-light border" href="form-subject.html">créer</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light fw-light" href="topics.html">topics</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light fw-light" href="moukateurs.html">moukateurs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-light disabled" href="#">signaler</a>
-          </li>
-          <li class="nav-item">
-              <a id="logout-link" class="nav-link btn text-white text-uppercase fw-bold rounded-0 border-0 <?= $btn_logout ?>" href="../index.php?logout='1'" role="button">logout</a>
-          </li>
-        </ul>
-      </nav>
+  <header class="header-liste" id="id-navbar">
+    <div class="container ">
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand " href="index.html">
+                <img src="../images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;"
+                    alt="logo_moukatali_noir.png"></img>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav ">
+                    <li class="nav-item ">
+                        <a class="nav-link text-center  font-weight-bold text-nav-head"
+                            href="form-subject.html">CREER</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link text-center  font-weight-bold text-nav-head"
+                            href="topics.html">TOPICS</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link text-center  font-weight-bold text-nav-head"
+                            href="moukateurs.html">MOUKATEURS</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link text-center  font-weight-bold text-nav-head disabled"
+                            href="profile.html">SIGNALER</a>
+                    </li>
+                    <li class="nav-item ">
+                      <a id="logout-link" class="nav-link text-center  font-weight-bold text-nav-head  <?= $btn_logout ?> "
+                        href="../index.php?logout='1'" role="button">LOGOUT</a>
+                  </li>
+
+                </ul>
+            </div>
+        </nav>
     </div>
-  </header>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- _________________________________________________________________________________________________________ -->
+
   <!-- SECTION -->
   <section id="form-admin">
     <div class="container">
@@ -179,6 +213,16 @@ if (isset($_GET['logout'])) {
     </div>
   </section>
 
+    <!-- FOOTER -->
+
+    <footer class=" box-footer  text-center pt-4 mt-5  justify-content-center">
+      <a href="#" class="m-2   text-nav-foot">Contact</a>
+      <a href="#" class="m-2  text-nav-foot">C.G.V</a>
+      <a href="#" class="m-2  text-nav-foot">C.G.U</a>
+      <a href="#" class="m-2  text-nav-foot">Mentions légales</a>
+  
+  
+  </footer>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -2,15 +2,75 @@
 
 @import 'font-face.css';
 
+
+
 body{
   font-family: 'Futura PT', sans-serif;
   font-size: 1,25em!important;
   letter-spacing: 1px!important;
 }
 
+
+
+/* ******************************************************************************************* */
+
+******** LISTE SUJET ********/
+
+#id-navbar{
+    background-color: #ffcc50;
+    width: 100%!important;
+  }
+
+  #id-nav-footer{
+    background-color: #ffcc50;
+    width: 100%!important;
+  }
+
+  .navbar-toggler {
+    border-color:  rgba(202, 30, 30, 0.863)!important;
+ 
+}
+
+.navbar-toggler-icon {
+   background-color:  rgba(202, 30, 30, 0.863)!important;
+ 
+}
+
+
+.text-nav-head{
+  color: #ffffff!important;
+  font-weight:bold;
+  font-size: 130%;
+}
+
+ .header-liste {
+    background-color:     rgb(228, 79, 21)!important;}
+
+/* ********************************************************************************************* */
+/* *********************************************************** */
+/* text navbar FOOTER  */
+.text-nav-foot{
+  color:#ffffff!important;
+  font-weight:bold;
+}
+
+
+
+
+.box-footer{
+  height: 9vh;
+  background-color: rgb(228, 79, 21)!important;
+  
+}
+
+/* *********************************************************** */
+
+
+
+
 /*index*/
 /*header*/
-header#home {
+/* header#home {
   background-color: #ffcc50;
   height: 100vh;
 }
@@ -18,7 +78,7 @@ header#home {
   height: 56px;
   background-color: #ffcc50;
   font-family: 'Poppins', sans-serif;
-}
+} */
 
 #title {
   height: 190px;
@@ -143,7 +203,7 @@ header#admin{
 
 /********** MEDIA QUERIES **********/
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
 
   .navbar-expand-lg .navbar-toggler {
     display: none;
@@ -176,7 +236,7 @@ header#admin{
     padding-top: 3em!important;
   }
 
-}
+} */
 
 @media (min-width: 1200px) {
   .owl-stage-outer {
