@@ -8,70 +8,62 @@
 
 
 
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+   <!-- CSS only -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+   integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+   integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+   integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+   crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+   integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+   crossorigin="anonymous"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
-        crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="css/styleGreg.css">
+<link rel="stylesheet" href="css/style-profil-succes.css">
 
 </head>
 
-<body class="d-flex flex-column h-100 bg-dark">
+<body >
 
-    <!-- NAVBAR -->
-    <section class="container-fluid">
-        <div class="row col">
-
-            <nav class="navbar navbar-dark ">
-                <img src="images/logo_moukatali_noir.png" class="img-fluid" style="height:8vh;"
-                    alt="logo_moukatali_noir.png"></img>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+      <!-- HEADER -->
+      <header class="header-liste" id="id-navbar">
+        <div class="container ">
+            <!-- NAVBAR -->
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <a class="navbar-brand " href="index.html">
+                    <img src="images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;"
+                        alt="logo_moukatali_noir.png"></img>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item ">
+                            <a class="nav-link text-center  font-weight-bold text-nav-head"
+                                href="inscription.html">INSCRIPTION</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-center  font-weight-bold text-nav-head"
+                                href="liste-sujet.html">VISITER</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-center  font-weight-bold text-nav-head"
+                                href="abonnement.html">Abonnement</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-center  font-weight-bold text-nav-head" href="index.html">
+                                RETOUR</a>
+                        </li>
 
-            </nav>
-            <div>
-                <div class="collapse" id="navbarToggleExternalContent">
-                    <div class="navbar-toggler p-4">
-
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active text-light" aria-current="page" href="index.html">Acceuil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="succes.html">Mes succès</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="#">Modifer compte</a>
-                            </li>
-                            <li class="nav-item pt-2">
-                                <button type="submit " class="btn-btn-dark rounded-pill btn-sm bg-dark text-light"
-                                    href="#" tabindex="-1" aria-disabled="true">Deconnexion</button>
-                            </li>
-                        </ul>
-
-
-
-
-                    </div>
+                    </ul>
                 </div>
-
-            </div>
-
-    </section>
+            </nav>
+        </div>
+    </header>
 
 
 
@@ -122,11 +114,14 @@
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="footer mt-auto py-3">
-        <div class="footer container">
+      <!-- FOOTER -->
 
-        </div>
+      <footer class="box-footer  text-center pt-4 mt-5  justify-content-center">
+        <a href="#" class="m-2   text-nav-foot">Contact</a>
+        <a href="#" class="m-2  text-nav-foot">C.G.V</a>
+        <a href="#" class="m-2  text-nav-foot">C.G.U</a>
+        <a href="#" class="m-2  text-nav-foot">Mentions légales</a>
+
     </footer>
 </body>
 
