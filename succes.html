@@ -71,51 +71,63 @@
     <!------------------------------------------------------------------------------------------------->
 
     <!-- CONTAINER  -->
-    <main id="user_info" class="container bg-dark pt-5 mt-5 ">
-
-
         <!-- <h3 class="pt-3 mb-5 text-white text-center">DASHBOARD</h3> -->
-
         <!-- user_info -->
-        <section id="user_info" class="container d-flex flex-column justify-content-around">
-
+        <div class="row d-flex justify-content-center">
+            <!-- TITRE -->
+            <div class="mt-5 pt-4 col-12  d-flex column justify-content-center">
+                <h1>Ton profil (user)</h1>
+            </div>
+            <!-- text -->
+            <div class="col-12 mb-5 d-flex  justify-content-center">
+                <p class="text-body-1">Vérifier ou modifier ses infos! &#x1F609; </p>
+            </div>
+        </div>
+    
+        <div class="row d-flex justify-content-center">
+        <!-- user_info -->
+        <div id="box-formulaire" id="avatar" class= "mb-5 mx-3  col-lg-6 col-md-6 ">
+    
             <!-- photo_de_profile -->
-            <div class="row">
-                <div class="col-12 text-center">
-                    <img id="img_avatar" src="images/Capture d’écran 2021-01-25 222915.png" alt="" class="img-fluid">
+            <div class="row mt-5 ">
+                <div class="col text-center avatar-profil ">
+                    <img src="images/Capture d’écran 2021-01-25 222915.png" alt="" class="img-fluid">
                 </div>
             </div>
-
+    <!-- OK OK OK OK -->
+    
             <!-- Score Rang Statut -->
-            <div class="d-flex justify-content-around fw-bolder mb-1">
-                <p>SCORE</p>
+            <div class="text-dark d-flex justify-content-around fw-bolder mb-3" >
+                <p >SCORE</p>
                 <p>RANG</p>
                 <p>STATUT</p>
             </div>
-
-            <!---Nombre de succe...)-->
-            <div class="row d-flex justify-content-center ">
-                <div class="col-8 d-flex flex-column text-center bg-warning" style="height:100px">
-                </div>
-            </div>
-
+    
+       
+      <!---SUCCESS...)-->
+      <div class="row d-flex justify-content-center mb-5">
+        <div class="col-8 d-flex flex-column text-center bg-warning" style="height:100px">
+        </div>
+    </div>
             <!-- mes  succès et modifier profile -->
             <div class="container-fluid d-flex justify-content-around mb-3  " style="height: 40px;">
-                <a href="profile.html"><button id="btn_succes"
-                        class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder"
-                        type="submit">DASHBOARD</button></a>
-                <button id="btn_editer" class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder"
-                    type="submit">Editer</button>
-                <button id="btn_modif" class="btn btn-dark text-light rounded-pill btn-sm fw-bolder"
-                    type="submit">Modifer profile</button>
+                <a href="succes.html"><button id="btn_succes" class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder"
+                        type="submit">Mes succès</button></a>
+    
+                        
+                <!-- <button id="btn_editer" class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder"
+                    type="submit">Editer</button> -->
+    
+    
+                    <a href="modifier.html"><button id="btn_succes" class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder"
+                        type="submit">Modifier profil</button></a>
             </div>
+    
+        </div>
+    </div>
 
-        </section>
-
-    </main>
 
       <!-- FOOTER -->
-
       <footer class="box-footer  text-center pt-4 mt-5  justify-content-center">
         <a href="#" class="m-2   text-nav-foot">Contact</a>
         <a href="#" class="m-2  text-nav-foot">C.G.V</a>
@@ -123,6 +135,8 @@
         <a href="#" class="m-2  text-nav-foot">Mentions légales</a>
 
     </footer>
+
+      
 </body>
 
 </html>
