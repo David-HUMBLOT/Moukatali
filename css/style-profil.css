@@ -127,6 +127,14 @@ h1 {
     font-size: 130%;
 }
 
+
+/* *********************************************************** */
+/* cadre formulaire  */
+.box-formulaire{
+    border-radius:4vh;
+    border: solid 2px rgb(255, 81, 0)!important;
+    background-color:#ecebe6!important;
+}
 /* .header-liste {
     background-color: #FFCC50;
 }
@@ -189,9 +197,10 @@ nav img {
     font-size: 1.1em;
 }
 
-.avatar img {
-    width: 60px;
-    height: 60px;
+.avatar-profil img{
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
 }
 
 .info-profil p:first-child {
