@@ -215,17 +215,25 @@ nav img {
 
 /* cadre formulaire  */
 #box-formulaire{
-    border-radius:4vh;
+    border-radius:3vh;
     border: solid 2px rgb(255, 81, 0)!important;
     background-color:#ecebe6!important;
 }
 
+#box-succes{
+    height:100px;
+    border-radius:3vh;
+    border: solid 2px rgb(255, 81, 0)!important;
+    background-color:#ecebe6!important;
+}
 
 .avatar-profil img{
     width: 15%;
     height: 70%;
     border-radius: 50%;
 }
+
+
 
 @media (max-width: 575.98px) { 
 
