@@ -198,10 +198,18 @@ nav img {
 }
 
 .avatar-profil img{
-    width: 40%;
-    height: 40%;
+    width: 15%;
+    height: 70%;
     border-radius: 50%;
 }
+
+@media (max-width: 575.98px) { 
+
+    .avatar-profil img{
+        width: 30%;
+        height: 60%;
+        border-radius: 50%;
+    }
 
 .info-profil p:first-child {
     font-size: 1.25em;
@@ -242,4 +250,15 @@ nav img {
         text-align: center;
         line-height: 70px;
     }
+
+
+    
+
 }
+
+/* // Extra small devices (portrait phones, less than 576px) */
+
+
+
+ }
+/* 
