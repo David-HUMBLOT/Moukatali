@@ -108,9 +108,82 @@ h4{
     
 }
 
+/* STYLE  */
+.header-liste #navbarNav {
+    background-color: #FFCC50;
+}
 
+.sujet {
+    border-radius: 25px;
+}
+
+.sujet img {
+    border-radius: 20px;
+}
+
+.sujet p {
+    font-size: 1.125em;
+    font-weight: 500;
+}
+
+.info, .moukatage, .autre {
+    border-radius: 15px;
+}
+
+.nombre {
+    border-radius: 10px;
+    font-size: 1.25em;
+    width: 70px;
+    height: 40px;
+}
+.restant p {
+    font-size: 0.5em;
+}
+
+#form-publier {
+    border-radius: 25px;
+}
+#form-publier textarea {
+    border-radius: 10px;
+    background-color: #e4eef8;
+}
+
+.trier button {
+    font-size: 0.7em;
+}
+
+.nb-vote {
+    width: 60px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 1.1em;
+}
+
+.avatar img {
+    width: 60px;
+    height: 60px;
+}
+
+.info-profil p:first-child {
+    font-size: 1.25em;
+}
+
+.info-profil p:last-child {
+    font-size: 0.875em;
+}
+
+.autre img {
+    width: 113px;
+    height: 110px;
+    border-radius: 15px;
+}
+
+.autre p {
+    font-size: 0.8em;
+}
 
 /* MEDIA QUERIES limite descendante*/
+
 
 
 /* // Extra small devices (portrait phones, less than 576px)
