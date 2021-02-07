@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil</title>
+    <title>Succes</title>
+
+
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -24,7 +26,6 @@
 </head>
 
 <body>
-
 
     <!-- HEADER -->
     <header class="header-liste" id="id-navbar">
@@ -65,12 +66,15 @@
     </header>
 
 
+
+
     <!------------------------------------------------------------------------------------------------->
 
+    <!-- user_info -->
     <div class="row d-flex justify-content-center">
         <!-- TITRE -->
         <div class="mt-5 pt-4 col-12  d-flex column justify-content-center">
-            <h1>Ton profil <br>(user)</h1>
+            <h1>Ton profil (user)</h1>
         </div>
         <!-- text -->
         <div class="col-12 mb-5 d-flex  justify-content-center">
@@ -78,63 +82,73 @@
         </div>
     </div>
 
-    <div class="row d-flex justify-content-center mb-5 mx-3  col-lg-6 col-md-6" id="box-formulaire" >
-        <!-- user_info -->
-        <div id="avatar">
 
-        <!-- photo_de_profile -->
-        <div class="row mt-5 ">
-            <div class="col text-center avatar-profil ">
-                <img src="images/Capture d’écran 2021-01-25 222915.png" alt="" class="img-fluid">
-            </div>
+    <section class="container ">
+        <div class="row d-flex justify-content-center mx-3">
+            <!-- CONTAINER  -->
+            <!-- <h3 class="pt-3 mb-5 text-white text-center">DASHBOARD</h3> -->
+        
+
+            <div class="row d-flex justify-content-center mb-5   col-lg-6 col-md-6" id="box-formulaire">
+                <!-- user_info -->
+                <div id="avatar">
+
+                    <!-- photo_de_profile -->
+                    <div class="row mt-5 ">
+                        <div class="col text-center avatar-profil ">
+                            <img src="images/Capture d’écran 2021-01-25 222915.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <!-- OK OK OK OK -->
+
+                    <!-- Score Rang Statut -->
+                    <div class="text-dark d-flex justify-content-around fw-bolder mb-3">
+                        <p>SCORE</p>
+                        <p>RANG</p>
+                        <p>STATUT</p>
+                    </div>
+
+
+                    <!---Information user (NOM, Prénom, Addresse, Tel Sexe...)-->
+       <div class="row ">
+        <div class="text-dark d-flex flex-column text-center">
+
+            <p>Nom / Prénom</p>
+            <p>Date_naissance / Genre</p>
+            <p>Age / Tel</p>
+            <p>Addresse</p>
+
         </div>
-<!-- OK OK OK OK -->
-
-        <!-- Score Rang Statut -->
-        <div class="text-dark d-flex justify-content-around fw-bolder mb-3" >
-            <p >SCORE</p>
-            <p>RANG</p>
-            <p>STATUT</p>
-        </div>
-
-        <!---Information user (NOM, Prénom, Addresse, Tel Sexe...)-->
-        <div class="row ">
-            <div class="text-dark d-flex flex-column text-center">
-
-                <p>Nom / Prénom</p>
-                <p>Date_naissance / Genre</p>
-                <p>Age / Tel</p>
-                <p>Addresse</p>
-
-            </div>
-        </div>
-
-        <!-- mes  succès et modifier profile -->
-        <div class="container-fluid d-flex justify-content-around mb-3  " style="height: 40px;">
-            <a href="succes.html"><button id="btn_succes" class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder"
-                    type="submit">Mes succès</button></a>
-
-                    
-            <!-- <button id="btn_editer" class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder"
-                type="submit">Editer</button> -->
-
-
-                <a href="modifier.html"><button id="btn_succes" class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder"
-                    type="submit">Modifier profil</button></a>
-        </div>
-
     </div>
-</div>
-    <!-- FOOTER -->
+                    <!-- mes  succès et modifier profile -->
+                    <div class="container-fluid d-flex justify-content-around mb-3  " style="height: 40px;">
+                        <a href="succes.html"><button id="btn_succes"
+                                class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder" type="submit">
+                                Success</button></a>
 
+
+                        <!-- <button id="btn_editer" class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder"
+                    type="submit">Editer</button> -->
+
+
+                        <a href="modifier.html"><button id="btn_succes"
+                                class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder" type="submit">Modifier
+                                profil</button></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="box-footer  text-center pt-4 mt-5  justify-content-center">
         <a href="#" class="m-2   text-nav-foot">Contact</a>
         <a href="#" class="m-2  text-nav-foot">C.G.V</a>
         <a href="#" class="m-2  text-nav-foot">C.G.U</a>
         <a href="#" class="m-2  text-nav-foot">Mentions légales</a>
+
     </footer>
-
-
 
     <!-- jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -148,5 +162,5 @@
     <!-- MON SCRIPT -->
     <script src="/script/script.js"></script>
 </body>
-
+ 
 </html>
