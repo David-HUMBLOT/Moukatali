@@ -1,4 +1,17 @@
 <?php
+
+
+// test du boutton register
+if(isset($_POST["register"])){
+    echo 'le boutton register est cliqué';
+}
+
+
+
+
+
+
+
 // déclaration de variable
 $username = "";
 $email = "";
