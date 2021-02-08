@@ -113,6 +113,7 @@ h4{
 /* STYLE  */
 .header-liste #navbarNav {
     background-color: #FFCC50;
+    height: 18vh!important;
 }
 
 .sujet {

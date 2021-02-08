@@ -28,9 +28,9 @@
         <div class="container">
 
             <!-- NAVBAR -->
-            <nav class="navigation d-flex align-items-center">
-                <a class="navbar-brand" href="index.html">
-                <img src="images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;" alt="logo_moukatali_noir.png"></img>
+            <nav class="navigation d-flex align-items-center ">
+                <a class="navbar-brand" href="index.html" >
+                <img src="images/logo_moukatali_noir.png" class="img-fluid mt-2"   style="height:6vh; width:22vh;" alt="logo_moukatali_noir.png"></img>
                 </a>
                 <div class="menu-toggle">
                     
