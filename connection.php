@@ -29,7 +29,7 @@
         <div class="container ">
             <!-- NAVBAR -->
             <nav class="navbar navbar-expand-lg navbar-light ">
-                <a class="navbar-brand " href="index.html">
+                <a class="navbar-brand " href="index.php">
                     <img src="images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;"
                         alt="logo_moukatali_noir.png"></img>
                 </a>
@@ -41,22 +41,22 @@
                     <ul class="navbar-nav ">
                         <li class="nav-item ">
                             <a class="nav-link text-center  font-weight-bold text-nav-head"
-                                href="inscription.html">INSCRIPTION</a>
+                                href="inscription.php">INSCRIPTION</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link text-center  font-weight-bold text-nav-head"
-                                href="liste-sujet.html">VISITER</a>
+                                href="liste-sujet.php">VISITER</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link text-center  font-weight-bold text-nav-head"
-                                href="abonnement.html">Abonnement</a>
+                                href="abonnement.php">Abonnement</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link text-center  font-weight-bold text-nav-head"
-                                href="profile.html">Profile</a>
+                                href="profile.php">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-center  font-weight-bold text-nav-head" href="index.html">
+                            <a class="nav-link text-center  font-weight-bold text-nav-head" href="index.php">
                                 RETOUR</a>
                         </li>
 
@@ -134,7 +134,7 @@
                     </div>
                     <div class="mt-1 d-flex justify-content-center"> <i>(* Champs obligatoires)</i></div>
 
-                    <div class="mt-3 d-flex justify-content-center"><a href="inscription.html"
+                    <div class="mt-3 d-flex justify-content-center"><a href="inscription.php"
                             class="text-lien-form pb-2">Pas
                             encore de compte !? Inscrit toi ici !! </a><br>
                     </div>

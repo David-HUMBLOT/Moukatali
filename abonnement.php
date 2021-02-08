@@ -27,7 +27,7 @@
     <div class="container ">
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light ">
-            <a class="navbar-brand " href="index.html">
+            <a class="navbar-brand " href="index.php">
                 <img src="images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;"
                     alt="logo_moukatali_noir.png"></img>
             </a>
@@ -39,22 +39,22 @@
                 <ul class="navbar-nav ">
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
-                            href="inscription.html">INSCRIPTION</a>
+                            href="inscription.php">INSCRIPTION</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
-                            href="liste-sujet.html">VISITER</a>
+                            href="liste-sujet.php">VISITER</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
-                            href="abonnement.html">Abonnement</a>
+                            href="abonnement.php">Abonnement</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
-                            href="profile.html">Profile</a>
+                            href="profile.php">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-center  font-weight-bold text-nav-head" href="index.html">
+                        <a class="nav-link text-center  font-weight-bold text-nav-head" href="index.php">
                             RETOUR</a>
                     </li>
 
@@ -201,7 +201,6 @@
                     </input>
                 </div>
 
-
                 <!--    date Validité de la carte-->
                 <div class="md-3 mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Date de fin de validité.</label>
@@ -209,7 +208,6 @@
                         max="100" title="" required value="">
                     </input>
                 </div>
-
 
                 <!--   Clé de la carte (trois chiffre)-->
                 <div class="md-3 mb-3">
@@ -220,31 +218,20 @@
                     </input>
                 </div>
 
-
                 <!-- MOT DE PASSE -->
                 <div class="mb-3 ">
                     <label class="mb-3" for="mot de passe1">Mot de passe* </label>
-
                     <input type="password" class="form-control" id="password-1" name="password-1" required
                         pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
                         title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="">
                     </input>
-
                 </div>
-
-
                 <!--  BOUTON CONNEXION -->
                 <div class="mt-5 d-flex justify-content-center ">
                     <button type="button " class="btn btn-dark ">SOUSCRIRE</button>
-
                 </div>
-
-
             </form>
-
         </div>
-
-
     </div>
 
 

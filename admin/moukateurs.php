@@ -35,7 +35,7 @@ if (isset($_GET['logout'])) {
     <div class="container ">
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light ">
-            <a class="navbar-brand " href="index.html">
+            <a class="navbar-brand " href="index.php">
                 <img src="../images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;"
                     alt="logo_moukatali_noir.png"></img>
             </a>
@@ -47,23 +47,23 @@ if (isset($_GET['logout'])) {
                 <ul class="navbar-nav ">
                   <li class="nav-item ">
                     <a class="nav-link text-center  font-weight-bold text-nav-head"
-                        href="admin.html">CREER</a>
+                        href="admin.php">CREER</a>
                 </li>
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
-                            href="form-subject.html">EDITER</a>
+                            href="form-subject.php">EDITER</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
-                            href="topics.html">TOPICS</a>
+                            href="topics.php">TOPICS</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
-                            href="moukateurs.html">MOUKATEURS</a>
+                            href="moukateurs.php">MOUKATEURS</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head disabled"
-                            href="profile.html">SIGNALER</a>
+                            href="profile.php">SIGNALER</a>
                     </li>
                     <li class="nav-item ">
                       <a id="logout-link" class="nav-link text-center  font-weight-bold text-nav-head  <?= $btn_logout ?> "

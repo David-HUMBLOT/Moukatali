@@ -44,18 +44,18 @@
                     <ul class="navbar-nav ">
                         <li class="nav-item ">
                             <a class="nav-link text-center  font-weight-bold text-nav-head"
-                                href="inscription.html">INSCRIPTION</a>
+                                href="inscription.php">INSCRIPTION</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link text-center  font-weight-bold text-nav-head"
-                                href="liste-sujet.html">VISITER</a>
+                                href="liste-sujet.php">VISITER</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link text-center  font-weight-bold text-nav-head"
-                                href="abonnement.html">Abonnement</a>
+                                href="abonnement.php">Abonnement</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-center  font-weight-bold text-nav-head" href="index.html">
+                            <a class="nav-link text-center  font-weight-bold text-nav-head" href="index.php">
                                 RETOUR</a>
                         </li>
 

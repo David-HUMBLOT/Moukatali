@@ -3,6 +3,7 @@ include('config.php');
 // pour gérer l'enregistrement et la connexion
 include('functions/registration-login.php');
 ?>
+
 <!doctype html>
 <html lang="fr">
 

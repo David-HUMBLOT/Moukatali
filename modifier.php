@@ -47,22 +47,22 @@
                 <ul class="navbar-nav ">
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
-                            href="connection.html">CONNECTION</a>
+                            href="connection.php">CONNECTION</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
-                            href="liste-sujet.html">VISITER</a>
+                            href="liste-sujet.php">VISITER</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
-                            href="abonnement.html">Abonnement</a>
+                            href="abonnement.php">Abonnement</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
-                            href="profile.html">Profile</a>
+                            href="profile.php">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-center  font-weight-bold text-nav-head" href="index.html">
+                        <a class="nav-link text-center  font-weight-bold text-nav-head" href="index.php">
                             RETOUR</a>
                     </li>
 
@@ -226,7 +226,7 @@
                     </div>
                     <div class="mt-3 d-flex justify-content-center"> <i>(* Champs obligatoires)</i></div>
 
-                    <div class="mt-3 d-flex justify-content-center"><a href="connection.html"
+                    <div class="mt-3 d-flex justify-content-center"><a href="connection.php"
                         class="text-lien-form  pb-2">Déjà un compte pour moukater ? </a><br>
                 </div>
                 </form>

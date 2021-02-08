@@ -76,13 +76,13 @@
             </div>
             <!-- BOUTONS -->
             <div class="bouton d-flex flex-column align-items-center flex-md-row justify-content-md-center">
-                <a class="btn-connexion btn mb-3 mb-md-0 mr-md-3 text-uppercase font-weight-bold" href="connection.html"
+                <a class="btn-connexion btn mb-3 mb-md-0 mr-md-3 text-uppercase font-weight-bold" href="connection.php"
                     role="button">se connecter</a>
-                <a class="btn-visiter btn text-uppercase font-weight-bold text-light" href="liste-sujet.html"
+                <a class="btn-visiter btn text-uppercase font-weight-bold text-light" href="liste-sujet.php"
                     role="button">visiter</a>
             </div>
 
-            <div class="col d-flex justify-content-center mt-5 pt-5"> <a class="btn text-uppercase font-weight-bold text-light" href="admin/admin.html"
+            <div class="col d-flex justify-content-center mt-5 pt-5"> <a class="btn text-uppercase font-weight-bold text-light" href="admin/admin.php"
                     role="button">Admin</a></div>
         </div>
 

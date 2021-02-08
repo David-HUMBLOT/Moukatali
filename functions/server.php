@@ -8,15 +8,15 @@ $host = "localhost";
 $login = "root";
 $pwd = "";
 $db = "moukatali";
-/*
+
 $sql_connect = new mysqli($host, $login, $pwd, $db);
 
 // vérification de la connexion
 if($sql_connect->connect_error){
     die('Erreur : ' .$sql_connect->connect_error);
 }
-echo 'Connexion réussie<br>';
-*/
+echo 'Connexion réussie à bdd moukatali avec server.php<br>';
+
 // connexion à la BDD
 $db = mysqli_connect($host, $login, $pwd, $db);
 
