@@ -1,33 +1,37 @@
 <?php
 
 
-// test du boutton register
+// test du boutton register si fonctionel
 if(isset($_POST["register"])){
     echo 'le boutton register est cliqué localisation registration-login.php';
 }
 
-
-
-
-
-
-
-// déclaration de variable
-$username = "";
-$email = "";
+// déclaration de variable à traiter et a inserer en bdd
+$pseudo = ""; //initialisation
+$profil = ""; //initialisation
+$email = ""; //initialisation
 $errors = array(); // tableau qui recevra les erreurs du formulaire
-$success_reg = false;
-
+$success_reg = false; //définir la reussite de l'inscription
+$role = "1"; //role 0 pour un adminisatrateur et role 1 pour un utilisateur
 // INSCRIPTION UTILISATEUR
-if (isset($_POST['register'])) {
-    // récupére les valeurs d'entrées du formulaire
-    $username = trim($_POST['username']);
-    $first_name = htmlentities(trim(ucwords(strtolower($_POST['first-name']))));
-    $last_name = htmlentities(trim(ucwords(strtolower($_POST['last-name']))));
+if (isset($_POST["register"])) {
+    // récupére les valeurs d'entrées du formulaire d'inscription par leurs name
+
+    $pseudo = trim($_POST['pseudo']);
+    $nom = htmlentities(trim(ucwords(strtolower($_POST['nom']))));
+    $prenom = htmlentities(trim(ucwords(strtolower($_POST['prenom']))));
+
+    $genre= htmlentities(trim(ucwords(strtolower($_POST['genre']))));
+    $age = trim($_POST['age']);
+    $profil = $_POST['profil']; //POUR LA PHOTO DE PROFIL
+
     $email = trim($_POST['email']);
-    $phone = trim($_POST['phone']);
+
+    // $phone = trim($_POST['phone']);
+
     $password_1 = trim($_POST['password-1']);
     $password_2 = trim($_POST['password-2']);
+
     // validation du formulaire
     if (empty($username)) {
         array_push($errors, "Entrer un nom d'utilisateur");
@@ -164,5 +168,3 @@ if (isset($_GET['logout'])) {
     header('location: index.php');
 
 }
-
-?>

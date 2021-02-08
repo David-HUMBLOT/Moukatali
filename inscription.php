@@ -16,10 +16,6 @@
     <!-- style.css -->
     <link rel="stylesheet" href="css/styleDav.css">
 
-
-
-
-
     <title>Inscription</title>
 </head>
 
@@ -104,35 +100,29 @@ include('functions/registration-login.php');
             <!-- FORMULAIRE D'INSCRIPTION -->
             <div class="mb-5 mx-3 box-formulaire col-lg-6 col-md-6 ">
                 <!-- action envoie les donnée a la page register.php pour traitement -->
-                <form method="post" action="inscription.php" class="col p-4 mt-5 mb-5">
+                <form method="post" action="functions/registration-login.php" class="col p-4 mt-5 mb-5">
 
                     <!-- PSEUDONYME -->
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Pseudonyme*</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Tibili 974" title="Choisir un pseudo ou un nom d'utilisateur" required pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" minlength="4" maxlength="30" size="30" value="">
+                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Tibili 974" title="Choisir un pseudo ou un nom d'utilisateur" required pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" minlength="4" maxlength="30" size="30" value="">
                         </input>
 
                     </div>
-
-
-
-
-
                     <!-- ATTENTION nom et prénom sur la meme ligne ! -->
-
                     <div class="row  mb-3 d-flex justify-content-between">
                         <!-- NOM -->
                         <div class=" col-6 ">
 
                             <label for="exampleFormControlInput1" class="form-label">Nom*</label>
-                            <input type="text" class="form-control" id="Nom" name="Nom" placeholder="DUPONT" title="Veuillez inscrire votre Nom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4" maxlength="50" size="50" value="">
+                            <input type="text" class="form-control" id="Nom" name="nom" placeholder="DUPONT" title="Veuillez inscrire votre Nom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4" maxlength="50" size="50" value="">
                             </input>
                         </div>
 
                         <!-- PRENOM -->
                         <div class="col-6 ">
                             <label for="exampleFormControlInput1" class="form-label">Prénom*</label>
-                            <input type="text" class="form-control" id="Prenom" name="Prenom" placeholder="Vinshan" title="Veuillez inscrire votre prénom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4" maxlength="50" size="50" value="">
+                            <input type="text" class="form-control" id="Prenom" name="prenom" placeholder="Vinshan" title="Veuillez inscrire votre prénom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4" maxlength="50" size="50" value="">
                             </input>
                         </div>
                     </div>
@@ -146,7 +136,7 @@ include('functions/registration-login.php');
 
                             <label for="exampleFormControlInput1" class="form-label">Genre</label>
 
-                            <select class="custom-select" id="inputGroupSelect01">
+                            <select class="custom-select" id="inputGroupSelect01" name="genre">
                                 <option selected>Choisir son genre</option>
                                 <option value="1">Homme</option>
                                 <option value="2">Femme</option>
@@ -156,7 +146,7 @@ include('functions/registration-login.php');
 
 
                         <!-- AGE -->
-                        <div class="col md- ">
+                        <div class="col md-3 ">
                             <label for="exampleFormControlInput1" class="form-label">Age*</label>
                             <input type="number" class="form-control" id="age" name="age" placeholder="18" min="0" max="100" title="" required value="">
                             </input>
@@ -169,7 +159,7 @@ include('functions/registration-login.php');
                     <!-- PHOTO DE PROFIL -->
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Photo de profil</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <input class="form-control" type="file" id="formFile" id="profil" name="profil">
                     </div>
 
 
