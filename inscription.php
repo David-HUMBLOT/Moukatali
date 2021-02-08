@@ -29,33 +29,33 @@
 
             <!-- NAVBAR -->
             <nav class="navigation d-flex align-items-center ">
-                <a class="navbar-brand" href="index.html" >
+                <a class="navbar-brand" href="index.php" >
                 <img src="images/logo_moukatali_noir.png" class="img-fluid mt-2 ml-4"   style="height:6vh; width:22vh;" alt="logo_moukatali_noir.png"></img>
                 </a>
                 <div class="menu-toggle ">
                     
-                        <input class="position" type="checkbox" />
+                        <input class="position " type="checkbox" />
                         <span class="position"></span>
                         <span class="position"></span>
                         <span class="position"></span>
                     
                     <ul class="menu ">
-                        <a href="index.html">
+                        <a href="index.php">
                             <li class="text-nav-head">Accueil</li>
                         </a>
-                        <a href="liste-sujet.html">
+                        <a href="liste-sujet.php">
                             <li class="text-nav-head">Moukatages</li>
                         </a>
-                        <a href="connection.html">
+                        <a href="connection.php">
                             <li class="text-nav-head">Se connecter</li>
                         </a>
-                        <a href="profile.html">
+                        <a href="profile.php">
                             <li class="text-nav-head">Espace Moukatér</li>
                         </a>
-                        <a href="abonnement.html">
+                        <a href="abonnement.php">
                             <li class="text-nav-head">S'abonner</li>
                         </a>
-                        <a href="succes.html">
+                        <a href="succes.php">
                             <li class="text-nav-head">Mes succès</li>
                         </a>
                         <a href="#">
