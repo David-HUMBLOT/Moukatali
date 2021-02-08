@@ -3,7 +3,7 @@
 
 // test du boutton register
 if(isset($_POST["register"])){
-    echo 'le boutton register est cliqué';
+    echo 'le boutton register est cliqué localisation registration-login.php';
 }
 
 

@@ -1,19 +1,5 @@
-<?php
-//connection a la bdd
-include('functions/server.php');
-// include('functions/config.php');
-// pour gérer l'enregistrement et la connexion
-include('functions/registration-login.php');
-?>
 
 
-<?php   
-// test du boutton register
-if(isset($_POST["register"])){
-    echo 'le boutton register est cliqué';
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +14,7 @@ if(isset($_POST["register"])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
     <!-- style.css -->
-    <!-- <link rel="stylesheet" href="css/styleDav.css"> -->
+    <link rel="stylesheet" href="css/styleDav.css">
 
 
 
@@ -77,6 +63,22 @@ if(isset($_POST["register"])){
             </nav>
         </div>
     </header>
+
+<div class="box-formulaire">  
+<?php
+//connection a la bdd
+include('functions/server.php');
+// include('functions/config.php');
+// pour gérer l'enregistrement et la connexion
+include('functions/registration-login.php');
+?>
+
+</div>
+
+
+
+
+
 
     <!--88888888888888888888888888888888888888888 -->
     <!-- BODDY -->
