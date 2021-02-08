@@ -177,7 +177,7 @@ include('functions/registration-login.php');
                     <div class="mb-3 ">
                         <label class="mb-3" for="mot de passe1">Mot de passe* </label>
 
-                        <input type="password" class="form-control" id="password-1" name="password-1" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="">
+                        <input type="password" class="form-control" id="password_1" name="password_1" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="">
                         </input>
 
                     </div>
@@ -186,7 +186,7 @@ include('functions/registration-login.php');
                     <div class="mb-3 ">
                         <label class="mb-3" for="mot de passe2">Confirmation* </label>
 
-                        <input type="password" class="form-control" id="password-2" name="password-2" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Confirmation mot de passe" minlength="1" maxlength="20" size="20" value="">
+                        <input type="password" class="form-control" id="password_2" name="password_2" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Confirmation mot de passe" minlength="1" maxlength="20" size="20" value="">
                         </input>
 
                     </div>

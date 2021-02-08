@@ -29,8 +29,10 @@ if (isset($_POST["register"])) {
 
     // $phone = trim($_POST['phone']);
 
-    $password_1 = trim($_POST['password-1']);
-    $password_2 = trim($_POST['password-2']);
+    $password_1 = trim($_POST['password_1']);
+    $password_2 = trim($_POST['password_2']);
+
+    $ville = htmlentities(trim(ucwords(strtolower($_POST['ville']))));
 
     // validation du formulaire
     if (empty($username)) {
@@ -45,9 +47,9 @@ if (isset($_POST["register"])) {
     if (empty($email)) {
         array_push($errors, "Entrer une adresse mail");
     }
-    if (empty($phone)) {
-        array_push($errors, "Entrer votre numéro de téléphone");
-    }
+    // if (empty($phone)) {
+    //     array_push($errors, "Entrer votre numéro de téléphone");
+    // }
     if (empty($password_1)) {
         array_push($errors, "Vous avez oublié le mot de passe");
     }
