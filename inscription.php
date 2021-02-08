@@ -30,9 +30,9 @@
             <!-- NAVBAR -->
             <nav class="navigation d-flex align-items-center ">
                 <a class="navbar-brand" href="index.html" >
-                <img src="images/logo_moukatali_noir.png" class="img-fluid mt-2"   style="height:6vh; width:22vh;" alt="logo_moukatali_noir.png"></img>
+                <img src="images/logo_moukatali_noir.png" class="img-fluid mt-2 ml-4"   style="height:6vh; width:22vh;" alt="logo_moukatali_noir.png"></img>
                 </a>
-                <div class="menu-toggle">
+                <div class="menu-toggle ">
                     
                         <input class="position" type="checkbox" />
                         <span class="position"></span>
