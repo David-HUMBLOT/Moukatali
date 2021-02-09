@@ -13,9 +13,9 @@ $avatar = "";
 $email = ""; 
 $ville = ""; 
 // $telephone ="";
-$errors = array(); // tableau qui recevra les erreurs du formulaire
-$success_reg = false; //définir la reussite de l'inscription
-$role = "1"; //role 0 pour un adminisatrateur et role 1 pour un utilisateur
+$errors = array(); // VAR TABLEAUX QUI RECOIT LES MESSAGES D ERREUR POUR LE FORMULAIRE INSCRIPTION
+$success_reg = false; //POUR DEFINIR LA REUSSITE DE L INSCRIPTION
+$role = "1"; //ROLE 0 POUR UN ADMINISTRATEUR ET 1 POUR UN UTILISATEUR NE PAS OUBLIER CELA LORS DE LA REQUETE D INSERTION
 
 //SI LE BOUTON REGISTER EST CLIQUE ALORS :
 if (isset($_POST["register"])) {
@@ -101,12 +101,15 @@ if (isset($_POST["register"])) {
        
         //ON CRYPTE LE MOT DE PASSE AVANT L ENREGISTREMENT DANS LA BASE DE DONNEES
 
-        $password = password_hash($password_1, PASSWORD_DEFAULT);
+        $password = password_hash($password_1, PASSWORD_DEFAULT); //NOUVELLE VARIABLE QUI ACCUILLE LE HASH DU MOT DE PASSE SAISIE ET TRAITER EN AMONT
         
         $query = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
         mysqli_query($db, $query);
         
+        // REQUETE D INSERTION (CREATION) UTILISATEUR EN BASSE DE DONEE.
         $sql = "INSERT INTO user_info (user_id, username, first_name, last_name, email, phone, password, my_points, vote_for, vote_against, my_vote_for, my_vote_against, registration_date, update_date) VALUES ((SELECT id from users WHERE username = '$username'), '$username','$first_name','$last_name', '$email', '$phone', '$password', 0, 0, 0, 0, 0, now(), now())";
+
+
         //mysqli_query($db, $query);
         if (mysqli_query($db, $sql)) {
             $success_reg = true;
