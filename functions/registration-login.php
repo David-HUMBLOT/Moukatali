@@ -123,40 +123,6 @@ if (isset($_POST["register"])) {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if (count($errors) == 0) {
-       
-        //ON CRYPTE LE MOT DE PASSE AVANT L ENREGISTREMENT DANS LA BASE DE DONNEES
-
-        $password = password_hash($password_1, PASSWORD_DEFAULT); //NOUVELLE VARIABLE QUI ACCUILLE LE HASH DU MOT DE PASSE SAISIE ET TRAITER EN AMONT
-        
-        $query = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
-        mysqli_query($db, $query);
-        
-        // REQUETE D INSERTION (CREATION) UTILISATEUR EN BASSE DE DONEE.
-        $sql = "INSERT INTO user_info (user_id, username, first_name, last_name, email, phone, password, my_points, vote_for, vote_against, my_vote_for, my_vote_against, registration_date, update_date) VALUES ((SELECT id from users WHERE username = '$username'), '$username','$first_name','$last_name', '$email', '$phone', '$password', 0, 0, 0, 0, 0, now(), now())";
-
-
-        //mysqli_query($db, $query);
-        if (mysqli_query($db, $sql)) {
-            $success_reg = true;
-            header('location: login.php');
-        } else {
-            echo 'ERREUR BDD';
-        }
-    }
 }
 
 

@@ -124,7 +124,7 @@ include('functions/registration-login.php');
                      <!-- PHOTO DE PROFIL -->
                      <div class="mb-3">
                         <label for="formFile" class="form-label">Photo de profil</label>
-                        <input class="form-control" type="file" id="formFile" id="profil" name="profil">
+                        <input class="form-control" type="file" id="formFile" id="avatar" name="avatar">
                     </div>
 
                     <!-- ATTENTION nom et prénom sur la meme ligne ! -->
