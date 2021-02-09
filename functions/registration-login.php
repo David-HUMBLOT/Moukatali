@@ -116,7 +116,8 @@ if (isset($_POST["register"])) {
         // OK OK OK OK OK OK
 
         // TEST REQUETE FONCTIONNELLE EN BDD
-        // INSERT INTO `users` (id ,pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role) VALUES ( 1,"pseudo","prenom,nom", "34", avatar, "ville", 0000000000, email, "azeqqe", genre, 1, now())
+        // ATTENTION AU DUPLICATA DES ID ET DES CLE PRIMAIRE COMME PSEUDO
+        //INSERT INTO `users` (id ,pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( 2,"pseudoO","prenom","nom", "34", avatar, "ville", 0000000000, "email", "azeqqe", "genre", 1, now())
 
         // //mysqli_query($db, $query);
         // if (mysqli_query($db, $sql)) {
