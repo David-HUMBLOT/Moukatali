@@ -1,6 +1,6 @@
 <?php
 // démarrer une session
-session_start();
+// session_start();
 date_default_timezone_set('Indian/Reunion');
 
 // connexion au serveur
@@ -8,7 +8,7 @@ $host = "localhost";
 $login = "root";
 $pwd = "";
 $db = "moukatali";
-/*
+
 $sql_connect = new mysqli($host, $login, $pwd, $db);
 
 // vérification de la connexion
@@ -16,7 +16,7 @@ if($sql_connect->connect_error){
     die('Erreur : ' .$sql_connect->connect_error);
 }
 echo 'Connexion réussie<br>';
-*/
+
 // connexion à la BDD
 $db = mysqli_connect($host, $login, $pwd, $db);
 

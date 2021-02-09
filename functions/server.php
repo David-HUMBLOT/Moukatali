@@ -1,24 +1,27 @@
 <?php
 // démarrer une session
-session_start();
+// session_start();
 date_default_timezone_set('Indian/Reunion');
 
 // connexion au serveur
 $host = "localhost";
 $login = "root";
 $pwd = "";
-$db = "moukatali";
+$database = "moukatali";
 
-$sql_connect = new mysqli($host, $login, $pwd, $db);
+$sql_connect = new mysqli($host, $login, $pwd, $database);
 
 // vérification de la connexion
 if($sql_connect->connect_error){
     die('Erreur : ' .$sql_connect->connect_error);
 }
-echo 'Connexion réussie à bdd moukatali avec server.php<br>';
+else{
+    echo 'Connexion réussie à bdd moukatali avec server.php<br>';
+}
+
 
 // connexion à la BDD
-$db = mysqli_connect($host, $login, $pwd, $db);
+$db = mysqli_connect($host, $login, $pwd, $database);
 
 /*
 $db_host = 'localhost';

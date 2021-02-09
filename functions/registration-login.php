@@ -1,5 +1,6 @@
 <?php
-
+include 'server.php';
+// include 'config.php';
 // TRAITEMENT DES DONNE POST FORMULAIRE D INSCRIPTION
 
 //TEST SIMPLE DU BOUTON SI FONCTIONNEL
@@ -78,7 +79,8 @@ if (isset($_POST["register"])) {
     
     // ON S ASSURE QU'UN UTILISATEUR N EST PAS DEJA ENREGISTRER
     //L EMAIL ET LE NOM UTILISATEUR DOIVENT ETRE UNIQUE
-    $user_check_query = "SELECT * FROM user WHERE pseudo = '$pseudo' OR email = '$email' LIMIT 1";
+    
+    $user_check_query = "SELECT * FROM users WHERE pseudo = '$pseudo' OR email = '$email' LIMIT 1";
     $result = mysqli_query($db, $user_check_query);
     $user = mysqli_fetch_assoc($result);
     if ($user) {//SI L UTILISATEUR EXISTE
@@ -113,14 +115,16 @@ if (isset($_POST["register"])) {
 
         // OK OK OK OK OK OK
 
+        // TEST REQUETE FONCTIONNELLE EN BDD
+        // INSERT INTO `users` (id ,pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role) VALUES ( 1,"pseudo","prenom,nom", "34", avatar, "ville", 0000000000, email, "azeqqe", genre, 1, now())
 
-        //mysqli_query($db, $query);
-        if (mysqli_query($db, $sql)) {
-            $success_reg = true;
-            header('location: login.php');
-        } else {
-            echo 'ERREUR BDD';
-        }
+        // //mysqli_query($db, $query);
+        // if (mysqli_query($db, $sql)) {
+        //     $success_reg = true;
+        //     header('location: connection.php');
+        // } else {
+        //     echo 'ERREUR BDD';
+        // }
     }
 
 }

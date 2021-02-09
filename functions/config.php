@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+// session_start();
 // se connecter à la base de données
 $host = "localhost";
 $login = "root";
@@ -13,8 +13,8 @@ if (!$db) {
     echo 'connect to bdd ok';
 }
 // définir des constantes globales
-define('ROOT_PATH', realpath(dirname(__FILE__)));
-define('BASE_URL', 'http://127.0.0.1/edsa-moukatali2/');
+// define('ROOT_PATH', realpath(dirname(__FILE__)));
+// define('BASE_URL', 'http://127.0.0.1/edsa-moukatali2/');
 
 // define('BASE_URL', 'http://localhost:8888/moukat-a-li/src');
 ?>
