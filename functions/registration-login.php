@@ -77,20 +77,25 @@ if (isset($_POST["register"])) {
 
     // ON S ASSURE QU'UN UTILISATEUR N EST PAS DEJA ENREGISTRER
     //L EMAIL ET LE NOM UTILISATEUR DOIVENT ETRE UNIQUE
-    $user_check_query = "SELECT * FROM user_info WHERE username = '$username' OR email = '$email' LIMIT 1";
+    $user_check_query = "SELECT * FROM user WHERE pseudo = '$pseudo' OR email = '$email' LIMIT 1";
     $result = mysqli_query($db, $user_check_query);
     $user = mysqli_fetch_assoc($result);
-    if ($user) {// si l'utilisateur existe
-        if ($user['username'] === $username) {
-            array_push($errors, "Ce nom d'utilisateur existe déjà");
+    if ($user) {//SI L UTILISATEUR EXISTE
+        if ($user['pseudo'] === $pseudo) {
+            array_push($errors, "Ce nom d'utilisateur existe déjà"); //MESSAGE D ERREUR ASSOCIEE A LA CONDITION
         }
-        if ($user['email'] === $email) {
+        if ($user['email'] === $email) {//MESSAGE D ERREUR ASSOCIEE A LA CONDITION
             array_push($errors, "l'email existe déjà");
         }
     }
     
+    // OK OK OK OK OK OK OK
  
     // ON ENREGISTRE L UTILISATEUR SI IL N Y A AUCUNE ERREUR DANS LE FORMULAIRE
+    // ON OUBLIE SURTOUT PAS DE ASSIGNER LE ROLE PAR DEFAUT EN TANT QUE UTILISATEUR
+    // SI AUCUNE ERREUR EST TROUVE C EST A DIRE SI LE VARIABLE ERRORS RESTE VIDE. ALORS ON EFFECTUE LA REQUETE D INSERTION SQL EN BASE DE DONNEE.
+
+    // OK OK OK OK OK OK OK 
 
     if (count($errors) == 0) {
        
@@ -111,6 +116,10 @@ if (isset($_POST["register"])) {
         }
     }
 }
+
+
+
+
 
 // CONNEXION DE L'UTILISATEUR
 if (isset($_POST['login'])) {
