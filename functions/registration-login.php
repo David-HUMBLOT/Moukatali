@@ -9,7 +9,7 @@ if(isset($_POST["register"])){
 
 // INITIALISATION DES VARIBLES DONT CEUX PAR DEFAUT AFIN DE LES TRAITER AVANT REQUETE D INSERTION EN BASE DE DONNEE 
 $pseudo = ""; //initialisation
-$profil = ""; 
+$avatar = ""; 
 $email = ""; 
 $ville = ""; 
 // $telephone ="";
@@ -22,7 +22,7 @@ if (isset($_POST["register"])) {
 
     // ON RECUPERE LES VALEURS SAISIES DES POSTS ET ON LES TRAITE
     $pseudo = trim($_POST['pseudo']);
-    $profil = $_POST['profil']; //POUR LA PHOTO DE PROFIL
+    $avatar = $_POST['avatar']; //POUR LA PHOTO DE PROFIL
     $nom = htmlentities(trim(ucwords(strtolower($_POST['nom']))));
     $prenom = htmlentities(trim(ucwords(strtolower($_POST['prenom']))));
     $genre= htmlentities(trim(ucwords(strtolower($_POST['genre']))));
@@ -41,7 +41,7 @@ if (isset($_POST["register"])) {
     if (empty($pseudo)) {
         array_push($errors, "Entrer un pseudonyme");
     }
-    if (empty($profil)) {
+    if (empty($avatar)) {
         array_push($errors, "Entrer une photo de profil");
     }
     if (empty($nom)) {
