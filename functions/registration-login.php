@@ -37,28 +37,43 @@ if (isset($_POST["register"])) {
 // VALIDATION DU FORMULAIRE
 
     // ON VERIFIE QUE LES CHAMPS SONT TOUS REMPLIES
-    if (empty($username)) {
-        array_push($errors, "Entrer un nom d'utilisateur");
+    // ON PREPARE LES MESSAGE D ERREUR DANS NOTRE VARIBLE TABLEAUX $ERRORS []
+    if (empty($pseudo)) {
+        array_push($errors, "Entrer un pseudonyme");
     }
-    if (empty($first_name)) {
-        array_push($errors, "Entrer votre prénom");
+    if (empty($profil)) {
+        array_push($errors, "Entrer une photo de profil");
     }
-    if (empty($last_name)) {
+    if (empty($nom)) {
         array_push($errors, "Entrer votre nom");
+    }
+    if (empty($prenom)) {
+        array_push($errors, "Entrer votre prenom");
+    }
+    if (empty($genre)) {
+        array_push($errors, "Entrer votre genre");
+    }
+    if (empty($age)) {
+        array_push($errors, "Entrer votre age");
     }
     if (empty($email)) {
         array_push($errors, "Entrer une adresse mail");
     }
-    if (empty($phone)) {
+    if (empty($telephone)) {
         array_push($errors, "Entrer votre numéro de téléphone");
+    }
+    if (empty($ville)) {
+        array_push($errors, "Entrer votre ville");
     }
     if (empty($password_1)) {
         array_push($errors, "Vous avez oublié le mot de passe");
     }
+    // ON VERIFIE SI LES DEUX MOTS DE PASSE SAISIE SONT IDENTIQUES
     if ($password_1 != $password_2) {
         array_push($errors, "les deux mots de passe ne correspondent pas");
     }
 
+    // OK OK OK OK OK OK
 
     // ON S ASSURE QU'UN UTILISATEUR N EST PAS DEJA ENREGISTRER
     //L EMAIL ET LE NOM UTILISATEUR DOIVENT ETRE UNIQUE
@@ -80,7 +95,7 @@ if (isset($_POST["register"])) {
     if (count($errors) == 0) {
        
         //ON CRYPTE LE MOT DE PASSE AVANT L ENREGISTREMENT DANS LA BASE DE DONNEES
-        
+
         $password = password_hash($password_1, PASSWORD_DEFAULT);
         
         $query = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
