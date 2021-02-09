@@ -16,7 +16,7 @@ $ville = "";
 // $telephone ="";
 $errors = array(); // VAR TABLEAUX QUI RECOIT LES MESSAGES D ERREUR POUR LE FORMULAIRE INSCRIPTION
 $success_reg = false; //POUR DEFINIR LA REUSSITE DE L INSCRIPTION
-$role = "1"; //ROLE 0 POUR UN ADMINISTRATEUR ET 1 POUR UN UTILISATEUR NE PAS OUBLIER CELA LORS DE LA REQUETE D INSERTION
+$role = 1; //ROLE 0 POUR UN ADMINISTRATEUR ET 1 POUR UN UTILISATEUR NE PAS OUBLIER CELA LORS DE LA REQUETE D INSERTION
 
 //SI LE BOUTON REGISTER EST CLIQUE ALORS :
 if (isset($_POST["register"])) {
@@ -107,7 +107,7 @@ if (isset($_POST["register"])) {
 
         $password = password_hash($password_1, PASSWORD_DEFAULT); //NOUVELLE VARIABLE QUI ACCUILLE LE HASH DU MOT DE PASSE SAISIE ET TRAITER EN AMONT
         
-        $query = "INSERT INTO users (pseudo, password) VALUES ('$pseudo', '$password')";
+        $query = "INSERT INTO `users` (pseudo, password) VALUES ('$pseudo', '$password')";
         mysqli_query($db, $query);
         
         // REQUETE D INSERTION (CREATION) UTILISATEUR EN BASSE DE DONEE. 13 INFORMATIONS AU TOTAL INSERTION DANS L ODRE DE LA TABLE EN BASSE DE DONNEE
@@ -118,6 +118,10 @@ if (isset($_POST["register"])) {
         // TEST REQUETE FONCTIONNELLE EN BDD
         // ATTENTION AU DUPLICATA DES ID ET DES CLE PRIMAIRE COMME PSEUDO
         //INSERT INTO `users` (id ,pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( 2,"pseudoO","prenom","nom", "34", avatar, "ville", 0000000000, "email", "azeqqe", "genre", 1, now())
+
+
+        // $id = uniqid((double)microtime()*1000000, true);
+        // echo $id;
 
         // //mysqli_query($db, $query);
         // if (mysqli_query($db, $sql)) {

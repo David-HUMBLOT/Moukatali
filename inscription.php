@@ -78,6 +78,9 @@ include('functions/server.php');
 // include('functions/config.php');
 // pour gérer l'enregistrement et la connexion
 include('functions/registration-login.php');
+
+$id = uniqid((double)microtime()*1000000, true); //genere un id unique pour chaque insertion en bdd
+echo $id;
 ?>
 
 </div>
