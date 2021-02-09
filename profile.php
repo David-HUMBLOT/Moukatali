@@ -21,49 +21,61 @@
         integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
         crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/style-profil-succes.css">
+
+        <link rel="stylesheet" href="css/style-profil-succes.css">
+    <link rel="stylesheet" href="css/styleDav.css">
 
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header class="header-liste" id="id-navbar">
-        <div class="container ">
-            <!-- NAVBAR -->
-            <nav class="navbar navbar-expand-lg navbar-light ">
-                <a class="navbar-brand " href="index.html">
-                    <img src="images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;"
-                        alt="logo_moukatali_noir.png"></img>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav ">
-                        <li class="nav-item ">
-                            <a class="nav-link text-center  font-weight-bold text-nav-head"
-                                href="inscription.php">INSCRIPTION</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-center  font-weight-bold text-nav-head"
-                                href="liste-sujet.php">VISITER</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-center  font-weight-bold text-nav-head"
-                                href="abonnement.php">Abonnement</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-center  font-weight-bold text-nav-head" href="index.php">
-                                RETOUR</a>
-                        </li>
+   <!-- HEADER -->
+   <header class="header-liste">
+    <div class="container">
 
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
+        <!-- NAVBAR -->
+        <nav class="navigation d-flex align-items-center ">
+            <a class="navbar-brand" href="index.php" >
+            <img src="images/logo_moukatali_noir.png" class="img-fluid mt-2 ml-4"   style="height:6vh; width:22vh;" alt="logo_moukatali_noir.png"></img>
+            </a>
+            <div class="menu-toggle ">
+                
+                    <input class="position " type="checkbox" />
+                    <span class="position"></span>
+                    <span class="position"></span>
+                    <span class="position"></span>
+                
+                <ul class="menu ">
+                    <a href="index.php">
+                        <li class="text-nav-head">Accueil</li>
+                    </a>
+                    <a href="liste-sujet.php">
+                        <li class="text-nav-head">Moukatages</li>
+                    </a>
+                    <a href="connection.php">
+                        <li class="text-nav-head">Se connecter</li>
+                    </a>
+                    <a href="profile.php">
+                        <li class="text-nav-head">Espace Moukatér</li>
+                    </a>
+                    <a href="abonnement.php">
+                        <li class="text-nav-head">S'abonner</li>
+                    </a>
+                    <a href="succes.php">
+                        <li class="text-nav-head">Mes succès</li>
+                    </a>
+                    <a href="#">
+                        <li class="text-nav-head">Contact</li>
+                    </a>
+                    <a href="#">
+                        <li class="text-nav-head">Se déconnecter</li>
+                    </a>
+                </ul>
+            </div>
+        </nav>
+
+    </div>
+</header>
 
 
 
