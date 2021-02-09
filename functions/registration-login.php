@@ -117,7 +117,7 @@ if (isset($_POST["register"])) {
 
         // TEST REQUETE FONCTIONNELLE EN BDD
         // ATTENTION AU DUPLICATA DES ID ET DES CLE PRIMAIRE COMME PSEUDO
-        //INSERT INTO `users` (id ,pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( 2,"pseudoO","prenom","nom", "34", avatar, "ville", 0000000000, "email", "azeqqe", "genre", 1, now())
+        //INSERT INTO `users` (id ,pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( 778992602289b8be30c2.56463226 ,"pseudoO","prenom","nom", "34", avatar, "ville", 0000000000, "email", "azeqqe", "genre", 1, now())
 
 
         // $id = uniqid((double)microtime()*1000000, true);
