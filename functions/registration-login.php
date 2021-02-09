@@ -75,6 +75,7 @@ if (isset($_POST["register"])) {
 
     // OK OK OK OK OK OK
 
+    
     // ON S ASSURE QU'UN UTILISATEUR N EST PAS DEJA ENREGISTRER
     //L EMAIL ET LE NOM UTILISATEUR DOIVENT ETRE UNIQUE
     $user_check_query = "SELECT * FROM user WHERE pseudo = '$pseudo' OR email = '$email' LIMIT 1";
@@ -96,6 +97,44 @@ if (isset($_POST["register"])) {
     // SI AUCUNE ERREUR EST TROUVE C EST A DIRE SI LE VARIABLE ERRORS RESTE VIDE. ALORS ON EFFECTUE LA REQUETE D INSERTION SQL EN BASE DE DONNEE.
 
     // OK OK OK OK OK OK OK 
+
+
+    if (count($errors) == 0) {
+       
+        //ON CRYPTE LE MOT DE PASSE AVANT L ENREGISTREMENT DANS LA BASE DE DONNEES
+
+        $password = password_hash($password_1, PASSWORD_DEFAULT); //NOUVELLE VARIABLE QUI ACCUILLE LE HASH DU MOT DE PASSE SAISIE ET TRAITER EN AMONT
+        
+        $query = "INSERT INTO users (pseudo, password) VALUES ('$pseudo', '$password')";
+        mysqli_query($db, $query);
+        
+        // REQUETE D INSERTION (CREATION) UTILISATEUR EN BASSE DE DONEE. 13 INFORMATIONS AU TOTAL INSERTION DANS L ODRE DE LA TABLE EN BASSE DE DONNEE
+        $sql = "INSERT INTO users (id, pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ((SELECT id from users WHERE pseudo = '$pseudo'), '$pseudo','$prenom','$nom', '$age', '$avatar', '$ville', '$telephone', '$email', '$password', 'genre', 'role', now())";
+
+        // OK OK OK OK OK OK
+
+
+        //mysqli_query($db, $query);
+        if (mysqli_query($db, $sql)) {
+            $success_reg = true;
+            header('location: login.php');
+        } else {
+            echo 'ERREUR BDD';
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     if (count($errors) == 0) {
        
