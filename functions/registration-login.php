@@ -1,40 +1,42 @@
 <?php
 
+// TRAITEMENT DES DONNE POST FORMULAIRE D INSCRIPTION
 
-// test du boutton register si fonctionel
+//TEST SIMPLE DU BOUTON SI FONCTIONNEL
 if(isset($_POST["register"])){
     echo 'le boutton register est cliqué localisation registration-login.php';
 }
 
-// déclaration de variable à traiter et a inserer en bdd
+// INITIALISATION DES VARIBLES DONT CEUX PAR DEFAUT AFIN DE LES TRAITER AVANT REQUETE D INSERTION EN BASE DE DONNEE 
 $pseudo = ""; //initialisation
-$profil = ""; //initialisation
-$email = ""; //initialisation
+$profil = ""; 
+$email = ""; 
+$ville = ""; 
+// $telephone ="";
 $errors = array(); // tableau qui recevra les erreurs du formulaire
 $success_reg = false; //définir la reussite de l'inscription
 $role = "1"; //role 0 pour un adminisatrateur et role 1 pour un utilisateur
-// INSCRIPTION UTILISATEUR
-if (isset($_POST["register"])) {
-    // récupére les valeurs d'entrées du formulaire d'inscription par leurs name
 
+//SI LE BOUTON REGISTER EST CLIQUE ALORS :
+if (isset($_POST["register"])) {
+
+    // ON RECUPERE LES VALEURS SAISIES DES POSTS ET ON LES TRAITE
     $pseudo = trim($_POST['pseudo']);
+    $profil = $_POST['profil']; //POUR LA PHOTO DE PROFIL
     $nom = htmlentities(trim(ucwords(strtolower($_POST['nom']))));
     $prenom = htmlentities(trim(ucwords(strtolower($_POST['prenom']))));
-
     $genre= htmlentities(trim(ucwords(strtolower($_POST['genre']))));
     $age = trim($_POST['age']);
-    $profil = $_POST['profil']; //POUR LA PHOTO DE PROFIL
-
     $email = trim($_POST['email']);
-
-    // $phone = trim($_POST['phone']);
-
+    $telephone = trim($_POST['telephone']);
     $password_1 = trim($_POST['password_1']);
     $password_2 = trim($_POST['password_2']);
-
     $ville = htmlentities(trim(ucwords(strtolower($_POST['ville']))));
 
-    // validation du formulaire
+   
+// VALIDATION DU FORMULAIRE
+
+    // ON VERIFIE QUE LES CHAMPS SONT TOUS REMPLIES
     if (empty($username)) {
         array_push($errors, "Entrer un nom d'utilisateur");
     }
@@ -47,17 +49,19 @@ if (isset($_POST["register"])) {
     if (empty($email)) {
         array_push($errors, "Entrer une adresse mail");
     }
-    // if (empty($phone)) {
-    //     array_push($errors, "Entrer votre numéro de téléphone");
-    // }
+    if (empty($phone)) {
+        array_push($errors, "Entrer votre numéro de téléphone");
+    }
     if (empty($password_1)) {
         array_push($errors, "Vous avez oublié le mot de passe");
     }
     if ($password_1 != $password_2) {
         array_push($errors, "les deux mots de passe ne correspondent pas");
     }
-    // on s'assure qu'aucun utilisateur n'est enregistré deux fois.
-    // l'email et les noms d'utilisateur doivent être uniques.
+
+
+    // ON S ASSURE QU'UN UTILISATEUR N EST PAS DEJA ENREGISTRER
+    //L EMAIL ET LE NOM UTILISATEUR DOIVENT ETRE UNIQUE
     $user_check_query = "SELECT * FROM user_info WHERE username = '$username' OR email = '$email' LIMIT 1";
     $result = mysqli_query($db, $user_check_query);
     $user = mysqli_fetch_assoc($result);
@@ -69,9 +73,14 @@ if (isset($_POST["register"])) {
             array_push($errors, "l'email existe déjà");
         }
     }
-    // enregistrer l'utilisateur s'il n'y a pas d'erreurs dans le formulaire
+    
+ 
+    // ON ENREGISTRE L UTILISATEUR SI IL N Y A AUCUNE ERREUR DANS LE FORMULAIRE
+
     if (count($errors) == 0) {
-        // crypter le mot de passe avant de l'enregistrer dans la base de données
+       
+        //ON CRYPTE LE MOT DE PASSE AVANT L ENREGISTREMENT DANS LA BASE DE DONNEES
+        
         $password = password_hash($password_1, PASSWORD_DEFAULT);
         
         $query = "INSERT INTO users (username, password) VALUES ('$username', '$password')";

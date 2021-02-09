@@ -120,6 +120,13 @@ include('functions/registration-login.php');
                         </input>
 
                     </div>
+
+                     <!-- PHOTO DE PROFIL -->
+                     <div class="mb-3">
+                        <label for="formFile" class="form-label">Photo de profil</label>
+                        <input class="form-control" type="file" id="formFile" id="profil" name="profil">
+                    </div>
+
                     <!-- ATTENTION nom et prénom sur la meme ligne ! -->
                     <div class="row  mb-3 d-flex justify-content-between">
                         <!-- NOM -->
@@ -166,13 +173,17 @@ include('functions/registration-login.php');
 
                     </div>
 
-
-                    <!-- PHOTO DE PROFIL -->
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label">Photo de profil</label>
-                        <input class="form-control" type="file" id="formFile" id="profil" name="profil">
+                          <!-- TELEPHONE -->
+                          <div class="mb-3 mt-3 text-start">
+                        <label for="phone" class="form-label">Téléphone</label>
+                        <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="0692010203"
+                            title="Inscrire votre numéro de téléphone (format 00 00 00 00 00)" required
+                            pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" value="">
                     </div>
 
+
+
+                   
 
                     <!-- EMAIL -->
                     <div class="mb-3">
@@ -207,7 +218,7 @@ include('functions/registration-login.php');
 
                         <label for="exampleFormControlInput1" class="form-label">Ville</label>
 
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select class="custom-select" id="inputGroupSelect01" name="ville">
                             <option selected>Saint-Denis</option>
                             <option value="1">Saint-Marie</option>
                             <option value="2">Saint-Suzanne</option>
