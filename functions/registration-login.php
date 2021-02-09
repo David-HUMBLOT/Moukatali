@@ -111,7 +111,7 @@ if (isset($_POST["register"])) {
         mysqli_query($db, $query);
         
         // REQUETE D INSERTION (CREATION) UTILISATEUR EN BASSE DE DONEE. 13 INFORMATIONS AU TOTAL INSERTION DANS L ODRE DE LA TABLE EN BASSE DE DONNEE
-        $sql = "INSERT INTO users (id, pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ((SELECT id from users WHERE pseudo = '$pseudo'), '$pseudo','$prenom','$nom', '$age', '$avatar', '$ville', '$telephone', '$email', '$password', 'genre', 'role', now())";
+        $sql = "INSERT INTO `users` (id, pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ((SELECT id from users WHERE pseudo = '$pseudo'), '$pseudo','$prenom','$nom', '$age', '$avatar', '$ville', '$telephone', '$email', '$password', '$genre', '$role', now())";
 
         // OK OK OK OK OK OK
 
