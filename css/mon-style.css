@@ -9,7 +9,7 @@ font-family: 'Roboto', sans-serif;
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #26252A;
-    color: white;
+    color: #26252A;
     letter-spacing: 2px!important;
 }
 
@@ -98,6 +98,13 @@ h1 {
 
 .header-liste {
     background-color: #FFCC50;
+    height: 60px;
+}
+
+
+.header-liste-p{
+    color:#C33608!important;
+    font-size:140%!important;
 }
 
 nav {
@@ -168,7 +175,7 @@ nav img {
 }
 
 .info-profil p:last-child {
-    font-size: 0.875em;
+    font-size: 0.8em;
 }
 
 .autre img {
@@ -193,5 +200,139 @@ footer a {
     #form-publier textarea::placeholder {
         text-align: center;
         line-height: 70px;
+    }
+    .moukatage p {
+        font-size: 1.125em;
+    }
+    .autre p {
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .image img {
+        width: 556px;
+        height: 394px;
+    }
+    .sujet p {
+        font-size: 1.875em;
+        font-weight: 700;
+    }
+    .info p {
+        font-size: 1.5em;
+    }
+    #form-publier textarea {
+        height: 60px;
+    }
+    #form-publier textarea::placeholder {
+        text-align: left;
+        line-height: 50px;
+        color: #b6b6b6;
+        letter-spacing: 2px;
+    }
+    .moukatage p {
+        font-size: 1.25em;
+    }
+}
+
+
+
+/*********************
+*   MENU HAMBURGER   *
+*********************/
+.menu-toggle {
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 1;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.position {
+    left: 260px;
+    top: 10px;
+}
+
+.menu-toggle input:checked ~ ul {
+    left: -4px;
+}
+
+.menu-toggle input {
+    width: 40px;
+    height: 34px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+    position: absolute;
+    
+}
+
+.menu-toggle span {
+    display: block;
+    position: relative;
+    width: 33px;
+    height: 5px;
+    background-color: #000;
+    margin-bottom: 0.4em;
+    z-index: 1;
+    border-radius: 5px;
+    transform-origin: 0 0;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), background-color 0.5s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.55s ease;
+}
+
+.menu-toggle input:checked ~ span {
+    background-color: #C33608;
+    transform: rotate(45deg) translate(5px, -4px);
+    opacity: 1;
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(3) {
+    transform: rotate(0deg);
+    opacity: 0;
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(1px, 3px);
+    }
+
+.menu {
+    position: absolute;
+    width: 320px;
+    background-color: #ffcc50;
+    margin: 22px 0 0 0;
+    padding-top: 0.625em;
+    padding-bottom: 0.625em;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    left: -340px;
+    transition: left 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+.menu-toggle a {
+    text-decoration: none;
+    color: #26252A;
+}
+
+.menu-toggle a:hover {
+    color: white;
+}
+
+.menu li {
+    padding: 0.625em 0;
+    font-size: 1.375em;
+    text-transform: uppercase;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+    .position {
+        left: 685px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .position {
+        left: 1110px;
     }
 }

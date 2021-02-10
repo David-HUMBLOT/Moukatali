@@ -1,192 +1,91 @@
-/* couleur de la charte graphique */
+/* Charte graphique*/
 /* navbar #FFCC50*/
 /* button #26252A */
 /* body #26252A*/
 
 
-
-
+#id-navbar{
+    background-color: #ffcc50;
+    width: 100%!important;
+  }
 
   #id-nav-footer{
     background-color: #ffcc50;
     width: 100%!important;
   }
 
-body{
-
-    position: 0;
-    background-color:#26252A!important;
-    /* background-color:#ffffff!important; */
-    height : 100vh!important;
-   
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #26252A;
+    color: #26252A;
+    letter-spacing: 2px!important;
 }
 
 
 /* ************************************************************ */
 
 
-.navbar-toggler {
-    border-color:  rgba(202, 30, 30, 0.863)!important;
- 
-}
-
-.navbar-toggler-icon {
-   background-color:  rgba(202, 30, 30, 0.863)!important;
- 
-}
-/* *********************************************************** */
-/* text navbar HEADER  */
-.text-nav-head{
-    color: #C33608!important;
-    font-weight:bold;
-    font-size: 130%;
-}
-
-
-/* *********************************************************** */
-/* <a> HEADER  */
-a{
-    color: #ffffff!important;
-    font-weight:bold;
-}
-
-
 
 /* *********************************************************** */
 /* TITRE POLICE */
+.box-titre{
+    border-radius:8px;
+    padding: 0.5em;
+    background-color:#ff5050!important;
+}
 
-h1 {
-    color:  rgb(255, 81, 0)!important;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+.box-titre h2{
+    font-size: 1.2em;
+    color: #ffffff;
+    margin-bottom: 0px;
 
 }
 
+/* *********************************************************** */
+/* TITRE POLICE */
 h4{
    color:rgba(202, 30, 30, 0.863)!important;
    font-weight:bold;
 }
 
-.text-body-1{
-    color :white;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 170%;
-}
 /* *********************************************************** */
 /* cadre formulaire  */
 .box-formulaire{
-    border-radius:3vh;
-    border: solid 2px rgb(255, 81, 0)!important;
-    background-color:#ecebe6!important;
+    border-radius:25px;
+    background-color: #FFFFFF!important;
 }
 
-.text-lien-form{
-    color:#cc0000!important;
-    font-weight:bold;
-
-}
 
 /* *********************************************************** */
 /* cadre offre  */
 .box-offre{
-    border-radius:3vh;
+    border-radius:4vh;
     background-color:#ecebe6!important;
+}
+
+.custom-file-input:lang(fr)~.custom-file-label::after {
+    content: "Upload";
 }
 
 /* *********************************************************** */
 /* text navbar FOOTER  */
 .text-nav-foot{
-    color:#ffffff!important;
+    color:rgba(202, 30, 30, 0.863)!important;
     font-weight:bold;
-}
-
-
-
-
-.box-footer{
-    height: 9vh;
-    background-color: rgb(228, 79, 21)!important;
-    
+    font-size: 0.9em;
 }
 
 /* *********************************************************** */
+/*box FOOTER  */
 
-/* STYLE  */
-.header-liste #navbarNav {
-    background-color: #FFCC50;
-    height: 18vh!important;
-}
+.box-footer{
+    height: 10vh;
 
-.sujet {
-    border-radius: 25px;
 }
 
-.sujet img {
-    border-radius: 20px;
-}
 
-.sujet p {
-    font-size: 1.125em;
-    font-weight: 500;
-}
-
-.info, .moukatage, .autre {
-    border-radius: 15px;
-}
-
-.nombre {
-    border-radius: 10px;
-    font-size: 1.25em;
-    width: 70px;
-    height: 40px;
-}
-.restant p {
-    font-size: 0.5em;
-}
-
-#form-publier {
-    border-radius: 25px;
-}
-#form-publier textarea {
-    border-radius: 10px;
-    background-color: #e4eef8;
-}
-
-.trier button {
-    font-size: 0.7em;
-}
-
-.nb-vote {
-    width: 60px;
-    height: 30px;
-    border-radius: 10px;
-    font-size: 1.1em;
-}
-
-.avatar img {
-    width: 60px;
-    height: 60px;
-}
-
-.info-profil p:first-child {
-    font-size: 1.25em;
-}
-
-.info-profil p:last-child {
-    font-size: 0.875em;
-}
-
-.autre img {
-    width: 113px;
-    height: 110px;
-    border-radius: 15px;
-}
-
-.autre p {
-    font-size: 0.8em;
-}
 
 /* MEDIA QUERIES limite descendante*/
-
 
 
 /* // Extra small devices (portrait phones, less than 576px)
@@ -202,7 +101,11 @@ h4{
 @media (min-width: 992px) {  }
 
 /* // Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  }
+@media (min-width: 1200px) {
+    #form-connexion .container, #form-inscription .container {
+        padding: 0 10em;
+    }
+}
 
 
 /* media queries limites montantes */
@@ -218,139 +121,3 @@ h4{
 
 /* // Large devices (desktops, less than 1200px) */
 @media (max-width: 1199.98px) {  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.header-liste {
-    background-color: #FFCC50;
-    height: 60px;
-}
-
-nav {
-    height: 50px;
-}
-nav img {
-    width: 110px;
-    /*height: ;*/
-}
-
-.header-liste #navbarNav {
-    background-color: #FFCC50;
-}
-
-
-
-
-/*********************
-*   MENU HAMBURGER   *
-*********************/
-.menu-toggle {
-    display: block;
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    z-index: 1;
-    user-select: none;
-    -webkit-user-select: none;
-}
-.position {
-    
-    left: 310px;
-    top: 10px;
-}
-
-.menu-toggle input:checked ~ ul {
-    left: -4px;
-}
-
-.menu-toggle input {
-    width: 40px;
-    height: 34px;
-    cursor: pointer;
-    opacity: 0;
-    z-index: 2;
-    position: absolute;
-    
-}
-
-.menu-toggle span {
-    display: block;
-    position: relative;
-    width: 33px;
-    height: 5px;
-    background-color: #000;
-    margin-bottom: 0.4em;
-    z-index: 1;
-    border-radius: 5px;
-    transform-origin: 0 0;
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), background-color 0.5s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.55s ease;
-}
-
-.menu-toggle input:checked ~ span {
-    background-color: #C33608;
-    transform: rotate(45deg) translate(5px, -4px);
-    opacity: 1;
-}
-
-.menu-toggle input:checked ~ span:nth-last-child(3) {
-    transform: rotate(0deg);
-    opacity: 0;
-}
-
-.menu-toggle input:checked ~ span:nth-last-child(2) {
-    transform: rotate(-45deg) translate(1px, 3px);
-    }
-
-.menu {
-    position: absolute;
-    width: 320px;
-    background-color: #ffcc50;
-    margin: 22px 0 0 0;
-    padding-top: 0.625em;
-    padding-bottom: 0.625em;
-    list-style-type: none;
-    -webkit-font-smoothing: antialiased;
-    left: -340px;
-    transition: left 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-}
-
-.menu-toggle a {
-    text-decoration: none;
-    color: #26252A;
-}
-
-.menu-toggle a:hover {
-    color: white;
-}
-
-.menu li {
-    padding: 0.625em 0;
-    font-size: 1.375em;
-    text-transform: uppercase;
-}
-
-/* MEDIA QUERIES */
-@media (min-width: 768px) {
-    .position {
-        left: 685px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .position {
-        left: 1110px;
-    }
-}
