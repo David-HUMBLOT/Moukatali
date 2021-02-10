@@ -125,10 +125,11 @@ echo $id;
                     </div>
 
                      <!-- PHOTO DE PROFIL -->
-                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Photo de profil</label>
-                        <input class="form-control" type="file" id="formFile" id="avatar" name="avatar">
+                     <div class=" custom-file mb-3">
+                        <label class="custom-file-label text-dark" for="customFile">Photo de profil</label>
+                        <input class="custom-file-input" type="file" id="customFile" id="avatar" name="avatar">
                     </div>
+
 
                     <!-- ATTENTION nom et prénom sur la meme ligne ! -->
                     <div class="row  mb-3 d-flex justify-content-between">
@@ -168,10 +169,14 @@ echo $id;
 
                         <!-- AGE -->
                         <div class="col md-3 ">
-                            <label for="exampleFormControlInput1" class="form-label">Age*</label>
-                            <input type="number" class="form-control" id="age" name="age" placeholder="18" min="0" max="100" title="" required value="">
+                        <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Date de
+                                naissance*</label>
+                            <input type="date" class="form-control" id="age" name="date-naissance" placeholder="18"
+                                required>
                             </input>
                         </div>
+
+ 
 
 
                     </div>

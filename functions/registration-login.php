@@ -27,7 +27,7 @@ if (isset($_POST["register"])) {
     $nom = htmlentities(trim(ucwords(strtolower($_POST['nom']))));
     $prenom = htmlentities(trim(ucwords(strtolower($_POST['prenom']))));
     $genre= htmlentities(trim(ucwords(strtolower($_POST['genre']))));
-    $age = trim($_POST['age']);
+    $age = trim($_POST['date-naissance']);
     $email = trim($_POST['email']);
     $telephone = trim($_POST['telephone']);
     $password_1 = trim($_POST['password_1']);
