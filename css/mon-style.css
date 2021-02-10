@@ -98,7 +98,7 @@ h1 {
 
 .header-liste {
     background-color: #FFCC50;
-    height: 60px;
+    height: 80px;
 }
 
 
@@ -108,7 +108,7 @@ h1 {
 }
 
 nav {
-    height: 50px;
+    height: 90px!important;
 }
 nav img {
     width: 110px;
@@ -251,7 +251,7 @@ footer a {
 }
 .position {
     left: 260px;
-    top: 10px;
+    top: 15px;
 }
 
 .menu-toggle input:checked ~ ul {

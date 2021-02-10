@@ -31,15 +31,15 @@
 <body>
     <!-- HEADER -->
 
-    <header class="header-liste">
+    <header class="header-liste ">
         <div class="container">
 
             <!-- NAVBAR -->
-            <nav class="navigation d-flex align-items-center">
-                <a class="navbar-brand" href="index.html">
-                    <img src="/images/logo.png" alt="Logo Moukat A Li">
+            <nav class="navigation d-flex align-items-center ">
+                <a class="navbar-brand ml-4 mb-1" href="index.html">
+                    <img src="/images/logo.png" alt="Logo Moukat A Li" style="width: 24vh;">
                 </a>
-                <div class="menu-toggle">
+                <div class="menu-toggle mt-1">
 
                     <input class="position" type="checkbox" />
                     <span class="position"></span>
@@ -113,12 +113,18 @@
 
                     </div>
 
-                    <!-- PHOTO DE PROFIL -->
-                    <div class="custom-file mb-3">
-                        <label class="custom-file-label text-dark" for="customFile">Avatar</label>
-                        <input type="file" class="custom-file-input" id="customFile">
+                          <!-- PHOTO DE PROFIL -->
 
-                    </div>
+                          <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Avatar*</label>
+                            <input type="file" class="form-control" id="username" name="avatr" 
+                               required>
+                            </input>
+    
+                        </div>
+    
+
+
 
 
 
@@ -146,6 +152,7 @@
                     </div>
 
 
+              
                     <!-- ATTENTION GENRE ET AGE SUR LA MEME LIGNE-->
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <!-- GENRE -->
@@ -173,30 +180,6 @@
                         </div>
 
 
-                    </div>
-
-
-                    <!-- TELEPHONE -->
-                    <div class="mb-3 mt-3 text-start">
-                        <label for="phone" class="form-label">Téléphone</label>
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="0692010203"
-                            title="Inscrire votre numéro de téléphone (format 00 00 00 00 00)" required
-                            pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" value="">
-                    </div>
-
-
-
-                    <!-- VILLE  -->
-                    <div class="mb-3">
-
-                        <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Ville</label>
-
-                        <select class="custom-select" id="inputGroupSelect01">
-                            <option selected>Saint-Denis</option>
-                            <option value="1">Saint-Marie</option>
-                            <option value="2">Saint-Suzanne</option>
-                            <option value="2">Tampon</option>
-                        </select>
                     </div>
 
 
@@ -236,6 +219,32 @@
                         </input>
 
                     </div>
+
+                    
+                    <!-- TELEPHONE -->
+                    <div class="mb-3 mt-3 text-start">
+                        <label for="phone" class="form-label">Téléphone</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="0692010203"
+                            title="Inscrire votre numéro de téléphone (format 00 00 00 00 00)" required
+                            pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" value="">
+                    </div>
+
+
+
+                    <!-- VILLE  -->
+                    <div class="mb-3">
+
+                        <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Ville</label>
+
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected>Saint-Denis</option>
+                            <option>Saint-Marie</option>
+                            <option>Saint-Suzanne</option>
+                            <option>Tampon</option>
+                        </select>
+                    </div>
+
+
 
                     <!-- BOUTON INSCRIPTION -->
                     <div class="d-flex justify-content-center">
