@@ -14,11 +14,6 @@
     width: 90px;
 }
 
-
-
-
-
-
 #edit_info{
     width: 80%;
     height: 450px !important;
@@ -30,10 +25,9 @@
     background-color:white;
     padding-top: 40px;
     padding-bottom: 40px;
-    border-radius: 25px;
+    border-radius: 5vh;
     
 }
-
 
 /* Box-shadow */
 /* #user_info1{
@@ -43,9 +37,10 @@
 } */
 
 #img_avatar{
-    width: 100px!important;
-    height: 100px!important;
-    border-radius: 3rem!important;
+    width: 130px!important;
+    height: 130px!important;
+    border-radius: 5rem!important;
+    border:solid black 2px;
 }
 
 #btn_editer{
@@ -53,8 +48,6 @@
 }
 /*******CONTAINER  USER_INFO***********************/
 
-
-    
     /****Bounton (Succes/Modifier compte) ***/
     /*#btn_succes{
         font-size: 10px;
@@ -77,7 +70,9 @@
         padding-top: 47px;
     }*/
     
-
 /************************************************/
 
 
+.icon-size{
+    width: 25px!important;
+}
