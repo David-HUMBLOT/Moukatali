@@ -157,21 +157,20 @@ echo $id;
                         <div class="col md-3  ">
 
                             <label for="exampleFormControlInput1" class="form-label">Genre</label>
-
+<!-- datatype boolen donc 0 ou 1 pour les values -->
                             <select class="custom-select" id="inputGroupSelect01" name="genre">
                                 <option selected>Choisir son genre</option>
-                                <option value="1">Homme</option>
-                                <option value="2">Femme</option>
-                                <option value="2">3ième type</option>
+                                <option value="0">Homme</option> 
+                                <option value="1">Femme</option>
+                          
                             </select>
                         </div>
 
 
                         <!-- AGE -->
                         <div class="col md-3 ">
-                        <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Date de
-                                naissance*</label>
-                            <input type="date" class="form-control" id="age" name="date-naissance" placeholder="18"
+                        <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Age</label>
+                            <input type="number" class="form-control mt-2" id="age" name="age" placeholder="18" min=18 max=100
                                 required>
                             </input>
                         </div>

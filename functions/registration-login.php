@@ -16,7 +16,7 @@ $ville = "";
 // $telephone ="";
 $errors = array(); // VAR TABLEAUX QUI RECOIT LES MESSAGES D ERREUR POUR LE FORMULAIRE INSCRIPTION
 $success_reg = false; //POUR DEFINIR LA REUSSITE DE L INSCRIPTION
-$role = 1; //ROLE 0 POUR UN ADMINISTRATEUR ET 1 POUR UN UTILISATEUR NE PAS OUBLIER CELA LORS DE LA REQUETE D INSERTION
+$role = "user"; 
 
 //SI LE BOUTON REGISTER EST CLIQUE ALORS :
 if (isset($_POST["register"])) {
@@ -26,8 +26,8 @@ if (isset($_POST["register"])) {
     $avatar = $_POST['avatar']; //POUR LA PHOTO DE PROFIL
     $nom = htmlentities(trim(ucwords(strtolower($_POST['nom']))));
     $prenom = htmlentities(trim(ucwords(strtolower($_POST['prenom']))));
-    $genre= htmlentities(trim(ucwords(strtolower($_POST['genre']))));
-    $age = trim($_POST['date-naissance']);
+    $genre= trim($_POST['genre']); //BOLLEEN EN BDD
+    $age = trim($_POST['age']);// TYPE DATE EN BDD
     $email = trim($_POST['email']);
     $telephone = trim($_POST['telephone']);
     $password_1 = trim($_POST['password_1']);
@@ -117,7 +117,7 @@ if (isset($_POST["register"])) {
 
         // TEST REQUETE FONCTIONNELLE EN BDD
         // ATTENTION AU DUPLICATA DES ID ET DES CLE PRIMAIRE COMME PSEUDO
-        //INSERT INTO `users` (id ,pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( 778992602289b8be30c2.56463226 ,"pseudoO","prenom","nom", "34", avatar, "ville", 0000000000, "email", "azeqqe", "genre", 1, now())
+        //INSERT INTO `users` (pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( "pseudoO","prenom","nom", "34", "avatar", "ville", 0000000000, "email", "hashpasswor", 1, "user", now())
 
 
         // $id = uniqid((double)microtime()*1000000, true);
