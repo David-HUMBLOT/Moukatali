@@ -174,23 +174,33 @@ function create_user()
 
         echo 'start recherche doublons <br/>';
         $pdo =  connectPdoBdd();
-        $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE pseudo = '$pseudo' OR email = '$email' LIMIT 1";
+        $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE pseudo =  email = '$email' LIMIT 1";
         $reqEmail = $pdo->prepare("SELECT * FROM `users` WHERE email='$email'");
         $reqEmail->execute([$email]);
-        $user = $reqEmail->fetch();
-        if ($user) { // email existant
-            if ($user['email'] === $email) {
-                array_push($errors, "Ce nom d'utilisateur existe déjà");
+        $doublonEmail = $reqEmail->fetch();
+        if ($doublonEmail) { // email existant
+            if ($doublonEmail['email'] === $email) {
+                array_push($errors, "Attention ! Cette addresse email existe déjà !");
             }
         } else { // email n'existe pas
-            echo 'AUCUN DOUBLON TROUVER <br/>';
+            echo 'AUCUN DOUBLON EMAIL TROUVER <br/>';
         }
 
         /*********************
          * VERIFICATION BOUBLON PSEUDONYME METHODE PDO *
          *********************/
 
-
+        $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE pseudo = '$pseudo' LIMIT 1";
+        $reqPseudo = $pdo->prepare("SELECT * FROM `users` WHERE pseudo='$pseudo'");
+        $reqPseudo->execute([$pseudo]);
+        $doublonPseudo = $reqPseudo->fetch();
+        if ($doublonPseudo) { // email existant
+            if ($doublonPseudo['pseudo'] === $pseudo) {
+                array_push($errors, "Attention ! Ce Pseudonyme existe déjà !");
+            }
+        } else { // email n'existe pas
+            echo 'AUCUN DOUBLON PSEUDO TROUVER <br/>';
+        }
 
 
       
