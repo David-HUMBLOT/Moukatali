@@ -78,7 +78,7 @@
                             //APPEL DE LA FONCTION CREATE USER
                             //require once evite les boucles de includes
                             // require_once ('functions/registration-login.php');
-                            require_once('../../functions/connection-user.php');
+                            require_once('../../functions/connect-user.php');
                             // ON LANCE NOTRE FONCTION CREATE USER SI BTN CLIQUER
                             if (isset($_POST['connection'])) {
                                 connect_user();

@@ -13,8 +13,20 @@ function connect_user(){
      ******************************************/
 
 
+    require_once('bdd-connect.php');
+    connectPdoBdd();
+    echo 'Connection à la base de donnée OK <br/>';
 
 
+    /******************************************
+     * INITIALISATION des variables *
+     ******************************************/
+
+    echo ' Entrer de fonction connect-user <br/>';
+    echo ' Inititialisation varibles GLOBAL  <br/>Initialisation  du tableaux des erreurs (IN FONCTIONS)  <br/>';
+
+     // NOUS SERT PAR EXEMPLE A SORTIR LES INFORMATIOSN DU TABLEAUX DES ERREURS DE LA FONCTION
+     global $errors, $role, $pseudo, $email, $nom, $prenom, $pdo,  $password_hash;
 
 
 
