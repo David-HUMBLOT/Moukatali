@@ -32,7 +32,7 @@
             <!-- NAVBAR -->
             <nav class="navigation d-flex align-items-center ">
                 <a class="navbar-brand ml-4 mb-1" href="index.html">
-                    <img src="images/logo.png" alt="Logo Moukat A Li" style="width: 24vh;">
+                    <img src="../../images/logo.png" alt="Logo Moukat A Li" style="width: 24vh;">
                 </a>
                 <div class="menu-toggle mt-1">
 
@@ -42,29 +42,29 @@
                     <span class="position"></span>
 
                     <ul class="menu">
-                        <a href="index.html">
-                            <li  class="header-liste-p"> <img src="icons/chevron-right-solid-24.png"  class="icon-size " />  Accueil</li>
+                        <a href="../../index.php">
+                            <li  class="header-liste-p"> <img src="../../icons/chevron-right-solid-24.png"  class="icon-size "  class="icon-size " />  Accueil</li>
                         </a>
-                        <a href="liste-sujet.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Moukatages</li>
+                        <!-- <a href="liste-sujet.html">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size "  class="icon-size " /> Moukatages</li>
+                        </a> -->
+                        <a href="../formUser/connection.php">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size "  class="icon-size " /> Se connecter</li>
                         </a>
-                        <a href="connection.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Se connecter</li>
+                        <a href="../user/profile.php">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size "  class="icon-size " /> Mon espace</li>
                         </a>
-                        <a href="profile.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Mon espace</li>
+                        <a href="../formUser/abonnement.php">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size "  class="icon-size " /> S'abonner</li>
                         </a>
-                        <a href="abonnement.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> S'abonner</li>
-                        </a>
-                        <a href="succes.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Mes succès</li>
+                        <!-- <a href="succes.html">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size "  class="icon-size " /> Mes succès</li>
+                        </a> -->
+                        <a href="#">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size "  class="icon-size " /> Contact</li>
                         </a>
                         <a href="#">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Contact</li>
-                        </a>
-                        <a href="#">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Se déconnecter</li>
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size "  class="icon-size " /> Se déconnecter</li>
                         </a>
                     </ul>
                 </div>

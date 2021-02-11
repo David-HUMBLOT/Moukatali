@@ -99,40 +99,45 @@
         <div class="container d-flex flex-column align-items-center justify-content-center">
 
             <!-- TITRE -->
-            <div class="m-5 box-titre col-lg-6 col-md-6 col-sm-4 d-flex justify-content-center">
+            <div class="mt-5 ml-5 mr-5 box-titre col-lg-6 col-md-6 col-sm-4 d-flex justify-content-center">
                 <h2>MI VEU MOUKATER !! &#x1F60B;</h2>
             </div>
         </div>
     </section>
 
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+
+    </div>
+
+
     <section id="form-inscription">
+
         <div class="container d-flex flex-column align-items-center justify-content-center">
 
-              <!-- MESSAGE D'ERREUR-->
-              <?php if (count($errors) > 0) : ?>
-                        <div class="alert alert-danger" role="alert">
-                            <?php foreach ($errors as $error) : ?>
-                                <p><?php echo $error ?></p>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif?>
-
+            <!-- MESSAGE D'ERREUR-->
+            <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
+            <?php global $errors; ?>
 
             <!-- FORMULAIRE -->
             <!-- FORMULAIRE D'INSCRIPTION -->
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 col-12">
 
                 <form class="col px-3 py-4" method="post" action="">
-      
+
+                    <?php if (count($errors) > 0) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php foreach ($errors as $error) : ?>
+                                <p><?php echo $error ?></p>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif ?>
 
 
 
                     <!-- PSEUDONYME DATA TYPE VARCHAR-->
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Pseudonyme*</label>
-                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Moukateur 974" title="Choisir un pseudo ou un nom d'utilisateur" 
-               
-                         >
+                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Moukateur 974" title="Choisir un pseudo ou un nom d'utilisateur">
                         </input>
                         <!-- NE PAS AFFACER SERVIRA POUR EXPLIQUER LA SECURIT2 FORMULAIRE DU COT2 DE PHP (double securisation) -->
                         <!-- required
@@ -255,28 +260,29 @@
 
                     <!-- BOUTON INSCRIPTION -->
                     <div class="d-flex justify-content-center">
-                        <button type="submit" action="../../pages/inscriptionReussi.html" name="inscription"  class="btn btn-dark">INSCRIPTION</button>
+                        <button type="submit" action="" name="inscription" class="btn btn-dark">INSCRIPTION</button>
 
                     </div>
                     <div class="mt-3 d-flex justify-content-center"> <i>(* Champs obligatoires)</i></div>
 
                     <div class="mt-3 d-flex justify-content-center"><a href="connection.php" class="text-nav-foot pb-2">Déjà un compte pour moukater ? </a><br>
                     </div>
-                </form>
-
-            </div>
-
-         
-
-                <!-- MESSAGE D'ERREUR-->
-                <?php if (count($errors) > 0) : ?>
+                    <!-- MESSAGE D'ERREUR-->
+                    <?php if (count($errors) > 0) : ?>
                         <div class="alert alert-danger" role="alert">
                             <?php foreach ($errors as $error) : ?>
                                 <p><?php echo $error ?></p>
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
+            </div>
+            </form>
+
         </div>
+
+
+
+
 
     </section>
 

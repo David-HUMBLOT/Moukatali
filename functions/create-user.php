@@ -189,7 +189,7 @@ function create_user()
             echo 'Fin de la requete d insertion <br/>  Fin de la fonction create-user <br/>';
 
             //REDIRECTION SUR LA PAGE STATICS DE CONFIRMATION DE L INSCRIPTION
-           ?> <meta http-equiv="refresh" content="1; url=../pages/inscriptionReussie.php" /> <?php
+           ?> <meta http-equiv="refresh" content="1; url=../pages/reussite-inscription.php" /> <?php
       
         }
         // 888888888888888888888888888888888888888888888888888888888888888888888888888
@@ -201,10 +201,6 @@ function create_user()
 // 888888888888888888888888888888888888888888888888888888888888888888888888888
 // FIN FONCTION CREATE-USER
 echo 'sorti de la fonction <br/>'
-
-
-
-
 
 ?>
 
