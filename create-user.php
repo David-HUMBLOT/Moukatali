@@ -165,34 +165,37 @@ function create_user()
             //ON CRYPTE LE MOT DE PASSE AVANT L ENREGISTREMENT DANS LA BASE DE DONNEES
             echo 'Cryptage du mot de passe (hash) <br/>';
             $password_hash = password_hash($password_2, PASSWORD_DEFAULT); //NOUVELLE VARIABLE QUI ACCUILLE LE HASH DU MOT DE PASSE SAISIE QUI A ETE TRAITER EN AMONT
+            
             // Verification du hash
-            var_dump($password_hash); ?> <br /> <?php
-                                                // resultat = string(60) "$2y$10$/guNGisFaPtfCJysQb9VketX1Vho3MlKDXSvNOZvhYNUtybhaD4vW" 
 
-                                                echo 'Début de la requete d\' insertion <br/>';
+            var_dump($password_hash);
 
-                                                // TEST REQUETE FONCTIONNELLE EN BDD
-                                                // ATTENTION AU DUPLICATA DES ID ET DES CLE PRIMAIRE COMME PSEUDO
-                                                //INSERT INTO `users` (pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( "pseudoO","prenom","nom", "34", "avatar", "ville", 0000000000, "email@gmail.com", "hashpasswor", 1, "user", now());
+            // resultat = string(60) "$2y$10$/guNGisFaPtfCJysQb9VketX1Vho3MlKDXSvNOZvhYNUtybhaD4vW" 
 
-                                                // REQUETE D INSERTION (CREATION) UTILISATEUR EN BASSE DE DONEE. 13 INFORMATIONS AU TOTAL INSERTION DANS L ODRE DE LA TABLE EN BASSE DE DONNEE
-                                                //  ID EST AUTO INCREMENTER EN BDD
+            echo 'Début de la requete d\' insertion <br/>';
 
-                                                $reqt = "INSERT INTO `users` ( pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( '$pseudo','$prenom','$nom', '$age', '$avatar', '$ville', '$telephone', '$email', '$password_hash', '$genre', '$role', now())";
+            // TEST REQUETE FONCTIONNELLE EN BDD
+            // ATTENTION AU DUPLICATA DES ID ET DES CLE PRIMAIRE COMME PSEUDO
+            //INSERT INTO `users` (pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( "pseudoO","prenom","nom", "34", "avatar", "ville", 0000000000, "email@gmail.com", "hashpasswor", 1, "user", now());
 
-                                                $reqInsert = $pdo->prepare($reqt); //preparation de la requete
-                                                $reqInsert->execute(); //execution de la requete
+            // REQUETE D INSERTION (CREATION) UTILISATEUR EN BASSE DE DONEE. 13 INFORMATIONS AU TOTAL INSERTION DANS L ODRE DE LA TABLE EN BASSE DE DONNEE
+            //  ID EST AUTO INCREMENTER EN BDD
 
-                                                echo 'Fin de la requete d insertion <br/>  Fin de la fonction create-user <br/>';
-                                            }
-                                            // 888888888888888888888888888888888888888888888888888888888888888888888888888
-                                            // FIN CONDITION IF COUNT ERRORS == 0{}
-                                        }
-                                        // 888888888888888888888888888888888888888888888888888888888888888888888888888
-                                        // FIN DU ISSET CLIQUE INSCRIPTION
-                                    }
-                                    // 888888888888888888888888888888888888888888888888888888888888888888888888888
-                                    // FIN FONCTION CREATE-USER
-                                    echo 'sorti de la fonction <br/>'
+            $reqt = "INSERT INTO `users` ( pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( '$pseudo','$prenom','$nom', '$age', '$avatar', '$ville', '$telephone', '$email', '$password_hash', '$genre', '$role', now())";
 
-                                                ?>
+            $reqInsert = $pdo->prepare($reqt); //preparation de la requete
+            $reqInsert->execute(); //execution de la requete
+
+            echo 'Fin de la requete d insertion <br/>  Fin de la fonction create-user <br/>';
+        }
+        // 888888888888888888888888888888888888888888888888888888888888888888888888888
+        // FIN CONDITION IF COUNT ERRORS == 0{}
+    }
+    // 888888888888888888888888888888888888888888888888888888888888888888888888888
+    // FIN DU ISSET CLIQUE INSCRIPTION
+}
+// 888888888888888888888888888888888888888888888888888888888888888888888888888
+// FIN FONCTION CREATE-USER
+echo 'sorti de la fonction <br/>'
+
+?>
