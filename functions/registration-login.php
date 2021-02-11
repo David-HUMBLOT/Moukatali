@@ -80,8 +80,12 @@ if (isset($_POST["register"])) {
     // ON S ASSURE QU'UN UTILISATEUR N EST PAS DEJA ENREGISTRER
     //L EMAIL ET LE NOM UTILISATEUR DOIVENT ETRE UNIQUE
     
+
+
+
+
     $user_check_query = "SELECT * FROM users WHERE pseudo = '$pseudo' OR email = '$email' LIMIT 1";
-    $result = mysqli_query($db, $user_check_query);
+    $result = mysqli_query($conn, $user_check_query);
     $user = mysqli_fetch_assoc($result);
     if ($user) {//SI L UTILISATEUR EXISTE
         if ($user['pseudo'] === $pseudo) {
@@ -117,7 +121,7 @@ if (isset($_POST["register"])) {
 
         // TEST REQUETE FONCTIONNELLE EN BDD
         // ATTENTION AU DUPLICATA DES ID ET DES CLE PRIMAIRE COMME PSEUDO
-        //INSERT INTO `users` (pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( "pseudoO","prenom","nom", "34", "avatar", "ville", 0000000000, "email", "hashpasswor", 1, "user", now())
+        //INSERT INTO `users` (pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( "pseudoO","prenom","nom", "34", "avatar", "ville", 0000000000, "email@gmail.com", "hashpasswor", 1, "user", now())
 
 
         // $id = uniqid((double)microtime()*1000000, true);

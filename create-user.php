@@ -7,6 +7,8 @@
 <?php
 function connectPdoBdd()
 {
+
+
     try {
         $user = "root";
         $pass = "";
@@ -79,8 +81,8 @@ function create_user()
 
     echo ' Inititialisation varibles GLOBAL  <br/>Initialisation  du tableaux des erreurs (IN FONCTIONS)  <br/>';
     // NOUS SERT PAR EXEMPLE A SORTIR LES INFORMATIOSN DU TABLEAUX DES ERREURS DE LA FONCTION
-    global $errors, $role, $pseudo, $email, $nom, $prenom;
-   
+    global $errors, $role, $pseudo, $email, $nom, $prenom, $pdo;
+
     // INITIALISATION DES VARIBLES DONT CEUX PAR DEFAUT AFIN DE LES TRAITER AVANT REQUETE D INSERTION EN BASE DE DONNEE 
     $pseudo = ""; //initialisation
     $avatar = "";
@@ -110,12 +112,9 @@ function create_user()
         $password_2 = trim($_POST['password_2']);
         $ville = htmlentities(trim(ucwords(strtolower($_POST['ville']))));
 
-
         // TEST SI UNE DES VARIABLE QUI RECCUPERE UN POST FONCTIONNE ICI AVEC LE POST PASSWORD
-        var_dump($password_1);
-        echo ' suite... fin traitement des variables post pass pas encore haché ...suite <br/>';
-
-
+        // var_dump($password_1);
+        echo ' suite... fin traitement des variables POST. <br/> Password pas encore haché ...suite <br/>';
 
         /*********************
          * VALIDATION CHAMPS VIDE *
@@ -124,12 +123,13 @@ function create_user()
         // ON PREPARE LES MESSAGE D ERREUR DANS NOTRE VARIBLE TABLEAUX $ERRORS []
         // Pour tester le echo test d un champs vide il faut au prealable enlever la securité sur le champs a tester. Son required , son pattern et son min ou max
         if (empty($pseudo)) {
-            array_push($errors, "Entrer un pseudonyme");}
+            array_push($errors, "Entrer un pseudonyme");
+        }
 
         // TEST SI UN CHAMP EST VIDE
         // echo 'CHAMP VIDE POUR PSEUDO! </br>';
         //     var_dump($errors);
-        // }
+        // 
         if (empty($avatar)) {
             array_push($errors, "Entrer une photo de profil");
         }
@@ -161,20 +161,39 @@ function create_user()
         }
         // ON VERIFIE SI LES DEUX MOTS DE PASSE SAISIE SONT IDENTIQUES
         if ($password_1 != $password_2) {
-            array_push($errors, "les deux mots de passe ne correspondent pas");}
+            array_push($errors, "les deux mots de passe ne correspondent pas");
+        }
+
+        echo ' suite .. Fin des vérifications des champs vide .. suite <br/>';
+        // 888888888888888888888888888888888888888888888888888888888
+        // Assurez-vous qu'aucun utilisateur n'est enregistré deux fois
+        // l'e-mail et les noms d'utilisateur doivent être uniques
+        /*********************
+         * VERIFICATION BOUBLON EMAIL METHODE PDO *
+         *********************/
+
+        echo 'start recherche doublons <br/>';
+        $pdo =  connectPdoBdd();
+        $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE pseudo = '$pseudo' OR email = '$email' LIMIT 1";
+        $reqEmail = $pdo->prepare("SELECT * FROM `users` WHERE email='$email'");
+        $reqEmail->execute([$email]);
+        $user = $reqEmail->fetch();
+        if ($user) { // email existant
+            if ($user['email'] === $email) {
+                array_push($errors, "Ce nom d'utilisateur existe déjà");
+            }
+        } else { // email n'existe pas
+            echo 'AUCUN DOUBLON TROUVER <br/>';
+        }
+
+        /*********************
+         * VERIFICATION BOUBLON PSEUDONYME METHODE PDO *
+         *********************/
 
 
 
 
-
-
-
-
-
-
-
-
-            
+      
     }
     // 888888888888888888888888888888888888888888888888888888888888888888888888888
     // FIN DU ISSET CLIQUE INSCRIPTIO?
