@@ -34,7 +34,7 @@ function create_user()
     $password_hash = "";
     // $telephone ="";
     $errors = array(); // VAR TABLEAUX QUI RECOIT LES MESSAGES D ERREUR POUR LE FORMULAIRE INSCRIPTION
-    $success_reg = false; //POUR DEFINIR LA REUSSITE DE L INSCRIPTION
+
     $role = "user";
     echo ' suite... fin initilisation ... suite <br/>';
 

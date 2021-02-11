@@ -5,7 +5,8 @@
 <?php
 
 echo 'hors de la finction connecion <br/>';
-function connect_user(){
+function connect_user()
+{
     echo 'début de la function de connection <br/>';
 
     /******************************************
@@ -25,13 +26,56 @@ function connect_user(){
     echo ' Entrer de fonction connect-user <br/>';
     echo ' Inititialisation varibles GLOBAL  <br/>Initialisation  du tableaux des erreurs (IN FONCTIONS)  <br/>';
 
-     // NOUS SERT PAR EXEMPLE A SORTIR LES INFORMATIOSN DU TABLEAUX DES ERREURS DE LA FONCTION
-     global $errors, $role, $pseudo, $email, $nom, $prenom, $pdo,  $password_hash;
+    // NOUS SERT PAR EXEMPLE A SORTIR LES INFORMATIOSN DU TABLEAUX DES ERREURS DE LA FONCTION
+    global $errors, $email, $password_connect, $pdo;
+
+    // INITIALISATION DES VARIABLES DONT CEUX PAR DEFAUT AFIN DE LES TRAITER AVANT REQUETE DE RECUPERATION EN BASE DE DONNEE 
+
+    $email = "";
+    $password_connect = "";
 
 
 
 
-// fin function user
+    echo ' suite... fin initilisation ... suite <br/>';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // fin function user
 }
 
 ?>
