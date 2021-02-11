@@ -87,9 +87,18 @@
 <!-- VERIFICATION DES MESSAGE ERREUR ET ETAT DE CONNECTION TEXT EN BLC SUR FOND NOIR -->
 <div class="text-light"><?php 
 //APPEL DE LA FUNCTION DE CONNECTION A LA BDD AVEC INCLUDE
-include ('bdd-connect.php');
-connectPdoBdd(); //OK FONCTIONNE
+// include ('bdd-connect.php');
+// connectPdoBdd(); //OK FONCTIONNE
 // connectSqliBdd(); //OK FONCTIONNE 
+
+//APPEL DE LA FONCTION CREATE USER
+//require once evite les boucles de includes
+// require_once ('functions/registration-login.php');
+require_once ('create-user.php');
+// ON LANCE NOTRE FONCTION CREATE USER SI BTN CLIQUER
+if(isset($_POST['inscription'])){
+    create_user();
+}
 ?></div>
 <!--88888888888888888888888888888888888888888 -->
 
@@ -117,50 +126,45 @@ connectPdoBdd(); //OK FONCTIONNE
             <!-- FORMULAIRE D'INSCRIPTION -->
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 col-12">
 
-                <form class="col px-3 py-4" method="post">
+                <form class="col px-3 py-4" method="post" action="">
 
-                    <!-- PSEUDONYME -->
+                    <!-- PSEUDONYME DATA TYPE VARCHAR-->
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Pseudonyme*</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Tibili 974"
+                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Moukateur 974"
                             title="Choisir un pseudo ou un nom d'utilisateur" required
                             pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" minlength="4" maxlength="30" size="30" value="">
                         </input>
 
                     </div>
 
-                          <!-- PHOTO DE PROFIL -->
+                          <!-- PHOTO DE PROFIL DATA TYPE VARCHAR CAR ON ENREGISTRE UN LIEN D IMAGE -->
 
                           <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Avatar*</label>
-                            <input type="file" class="form-control" id="username" name="avatr" 
+                            <input type="file" class="form-control" id="avatar" name="avatar" 
                                required>
                             </input>
     
                         </div>
     
-
-
-
-
-
                     <!-- ATTENTION nom et prénom sur la meme ligne ! -->
 
                     <div class="mb-3 d-flex flex-column flex-md-row justify-content-between">
-                        <!-- NOM -->
+                        <!-- NOM DATA TYPE VARCHAR-->
                         <div class=" col-md-6 col-12 px-0 mb-3 mb-md-0 pr-md-1">
 
                             <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Nom*</label>
-                            <input type="text" class="form-control" id="Nom" name="Nom" placeholder="DUPONT"
+                            <input type="text" class="form-control" id="nom" name="nom" placeholder="DUPONT"
                                 title="Veuillez inscrire votre Nom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4"
                                 maxlength="50" size="50" value="" >
                             </input>
                         </div>
 
-                        <!-- PRENOM -->
+                        <!-- PRENOM DATA TYPE VARCHAR-->
                         <div class="col-md-6 col-12 px-0 pl-md-1">
                             <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Prénom*</label>
-                            <input type="text" class="form-control" id="Prenom" name="Prenom" placeholder="Vinshan"
+                            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Vinshan"
                                 title="Veuillez inscrire votre prénom" required pattern="([A-z0-9À-ž\s]){2,}"
                                 minlength="4" maxlength="50" size="50" value="">
                             </input>
@@ -171,13 +175,13 @@ connectPdoBdd(); //OK FONCTIONNE
               
                     <!-- ATTENTION GENRE ET AGE SUR LA MEME LIGNE-->
                     <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <!-- GENRE -->
+                        <!-- GENRE DATA TYPE SQL BOLEEN-->
 
                         <div class="col-md-6 px-0 mb-3 mb-md-0 pr-md-1">
 
                             <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Genre</label>
 
-                            <select class="custom-select" id="inputGroupSelect01">
+                            <select class="custom-select" id="inputGroupSelect01"  name="genre">
                                 <option selected>Choisir son genre</option>
                                 <option value="1">Homme</option>
                                 <option value="2">Femme</option>
@@ -186,12 +190,11 @@ connectPdoBdd(); //OK FONCTIONNE
                         </div>
 
 
-                        <!-- AGE -->
+                        <!-- AGE DATATPE SQL INT(10)-->
                         <div class="col-md-6 px-0 mb-3 mb-md-0 pl-md-1">
-                            <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Date de
-                                naissance*</label>
-                            <input type="date" class="form-control" id="age" name="date-naissance" placeholder="18"
-                                required>
+                            <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Age*</label>
+                            <input type="number" class="form-control" id="age" name="age" placeholder="18"
+                               min=18 max=100 required>
                             </input>
                         </div>
 
@@ -199,10 +202,7 @@ connectPdoBdd(); //OK FONCTIONNE
                     </div>
 
 
-
-
-
-                    <!-- EMAIL -->
+                    <!-- EMAIL DATA TYPE SQL VARCHAR -->
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Email* </label>
 
@@ -214,22 +214,22 @@ connectPdoBdd(); //OK FONCTIONNE
                     </div>
 
 
-                    <!-- MOT DE PASSE -->
+                    <!-- MOT DE PASSE DATA TYPE VARCHAR 100 CAR LE MOTE DE PASSE SERA HASHER-->
                     <div class="mb-3 ">
                         <label class="text-dark mb-0" for="mot de passe1">Mot de passe* </label>
 
-                        <input type="password" class="form-control" id="password-1" name="password-1" required
+                        <input type="password" class="form-control" id="password_1" name="password_1" required
                             pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
                             title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="">
                         </input>
 
                     </div>
 
-                    <!-- CONFIRMATION MOT DE PASSE-->
+                    <!-- CONFIRMATION MOT DE PASSE PAS NECESSAIRE A L INSERTION EN BDD MAIS UTILSE POUR CONFIRMER LE PASSWORD-->
                     <div class="mb-3 ">
                         <label class="text-dark mb-0" for="mot de passe2">Confirmation* </label>
 
-                        <input type="password" class="form-control" id="password-2" name="password-2" required
+                        <input type="password" class="form-control" id="password_2" name="password_2" required
                             pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
                             title="Confirmation mot de passe" minlength="1" maxlength="20" size="20" value="">
                         </input>
@@ -237,22 +237,22 @@ connectPdoBdd(); //OK FONCTIONNE
                     </div>
 
                     
-                    <!-- TELEPHONE -->
+                    <!-- TELEPHONE DATA TYPE VARCHAR-->
                     <div class="mb-3 mt-3 text-start">
                         <label for="phone" class="form-label">Téléphone</label>
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="0692010203"
+                        <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="0692010203"
                             title="Inscrire votre numéro de téléphone (format 00 00 00 00 00)" required
                             pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" value="">
                     </div>
 
 
 
-                    <!-- VILLE  -->
+                    <!-- VILLE DATA TYPE VARCHAR -->
                     <div class="mb-3">
 
                         <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Ville</label>
 
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select class="custom-select" id="inputGroupSelect01" name="ville">
                             <option selected>Saint-Denis</option>
                             <option>Saint-Marie</option>
                             <option>Saint-Suzanne</option>
@@ -264,12 +264,17 @@ connectPdoBdd(); //OK FONCTIONNE
 
                     <!-- BOUTON INSCRIPTION -->
                     <div class="d-flex justify-content-center">
-                        <button type="button" action="" class="btn btn-dark">INSCRIPTION</button>
+                        <button type="submit" action="" name="inscription" class="btn btn-dark">INSCRIPTION</button>
+
+                   
+                    
+                
+                    
 
                     </div>
                     <div class="mt-3 d-flex justify-content-center"> <i>(* Champs obligatoires)</i></div>
 
-                    <div class="mt-3 d-flex justify-content-center"><a href="connection.html"
+                    <div class="mt-3 d-flex justify-content-center"><a href="connection.php"
                             class="text-nav-foot pb-2">Déjà un compte pour moukater ? </a><br>
                     </div>
                 </form>
