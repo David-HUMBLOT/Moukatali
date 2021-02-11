@@ -219,10 +219,7 @@ function create_user()
         // ON OUBLIE SURTOUT PAS DE ASSIGNER LE ROLE PAR DEFAUT EN TANT QUE UTILISATEUR
         // SI AUCUNE ERREUR N'EST TROUVE C EST A DIRE SI LA VARIABLE ERRORS RESTE VIDE. ALORS ON EFFECTUE LA REQUETE D INSERTION SQL EN BASE DE DONNEE.
 
-
-
         //CONDITION SI AUCUNE ERREUR EST PRESENTE VAR ERRORS = ["VIDE"];
-
 
         if (count($errors) == 0) {
             echo 'debut condition si aucune erreur <br/>';
@@ -236,27 +233,19 @@ function create_user()
 
             echo'Début de la requete d\' insertion <br/>';
 
+            // TEST REQUETE FONCTIONNELLE EN BDD
+        // ATTENTION AU DUPLICATA DES ID ET DES CLE PRIMAIRE COMME PSEUDO
+        //INSERT INTO `users` (pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( "pseudoO","prenom","nom", "34", "avatar", "ville", 0000000000, "email@gmail.com", "hashpasswor", 1, "user", now());
 
+         // REQUETE D INSERTION (CREATION) UTILISATEUR EN BASSE DE DONEE. 13 INFORMATIONS AU TOTAL INSERTION DANS L ODRE DE LA TABLE EN BASSE DE DONNEE
+        //  ID EST AUTO INCREMENTER EN BDD
 
+         $reqt = "INSERT INTO `users` ( pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( '$pseudo','$prenom','$nom', '$age', '$avatar', '$ville', '$telephone', '$email', '$password_hash', '$genre', '$role', now())";
 
+         $reqInsert = $pdo->prepare($reqt); //preparation de la requete
+         $reqInsert->execute(); //execution de la requete
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+         echo'Fin de la requete d insertion <br/>  Fin de la fonction create-user <br/>';
         }
         // 888888888888888888888888888888888888888888888888888888888888888888888888888
         // FIN CONDITION IF COUNT ERRORS == 0{}
@@ -266,6 +255,6 @@ function create_user()
 }
 // 888888888888888888888888888888888888888888888888888888888888888888888888888
 // FIN FONCTION CREATE-USER
-
+echo 'sorti de la fonction <br/>'
 
 ?>
