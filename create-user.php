@@ -26,7 +26,7 @@ catch (PDOException $e) {print "Erreur !: " . $e->getMessage() . "<br/>";die();}
 <?php  
 //8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 
 // on execute fonction de connection ici avec methode pdo A EFFACER PLSU TARD
-connectPdoBdd();
+// connectPdoBdd();
 
 //8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 
 ?>
@@ -38,8 +38,8 @@ connectPdoBdd();
 *********************/
 
 //TEST SIMPLE DU BOUTON SI FONCTIONNEL
-if(isset($_POST["inscription"])){
-    echo 'le boutton register est cliqué localisation create-user.php <br/>';
+// if(isset($_POST["inscription"])){
+//     echo 'le boutton register est cliqué localisation create-user.php <br/>';
 
 
 //     $pseudo = ""; //initialisation
@@ -53,7 +53,7 @@ if(isset($_POST["inscription"])){
 
 // echo 'initialisation des varible ok';
 // var_dump($role);
-}
+
 
 /*********************
 * INITIALISATION HORS DE LA FONCTION *
@@ -79,6 +79,7 @@ echo 'EN DEHORS DU ISSET INSCRIPTION INITIALISATION DES VARIABLE  OK <br/>';
 function create_user(){
     // 888888888888888888888888888888888888888888888888888888888888888888888888888
     if (isset($_POST["inscription"])) {
+        echo'Debut de la fonction create user ok <br/>';
 /*********************
 * TRAITEMENT DES VARIABLES POST RECUPERER DEPUIS PAGE INSCRIPTION APRES LE CLIQUE *
 *********************/
@@ -96,11 +97,12 @@ function create_user(){
         $ville = htmlentities(trim(ucwords(strtolower($_POST['ville']))));
     
     // TEST SI UNE DES VARIABLE QUI RECCUPERE UN POST FONCTIONNE ICI AVEC LE POST PASSWORD
-        // var_dump($password_1);
+    echo 'suite... fin traitement des variables post pass pas encore haché ...suite <br/>';
+        var_dump($password_1);
 
 
 
-        
+
 
 
 
