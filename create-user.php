@@ -63,9 +63,7 @@ function connectPdoBdd()
 // var_dump($role);
 
 
-/*********************
- * INITIALISATION HORS DE LA FONCTION *
- *********************/
+
 
 
 
@@ -77,6 +75,10 @@ echo 'EN DEHORS DE LA FONCTION <br/>';
 
 function create_user()
 {
+
+    /******************************************
+     * INITIALISATION des variables *
+     ******************************************/
     echo ' Entrer de fonction creat-user <br/>';
 
     echo ' Inititialisation varibles GLOBAL  <br/>Initialisation  du tableaux des erreurs (IN FONCTIONS)  <br/>';
@@ -96,9 +98,9 @@ function create_user()
     // 888888888888888888888888888888888888888888888888888888888888888888888888888
     if (isset($_POST["inscription"])) {
         echo ' Debut de la fonction create user ok <br/>';
-        /*********************
+        /************************************************************************************
          * TRAITEMENT DES VARIABLES POST RECUPERER DEPUIS PAGE INSCRIPTION APRES LE CLIQUE *
-         *********************/
+         *********************************************************************************/
         // ON RECUPERE LES VALEURS SAISIES DES POSTS ET ON LES TRAITE
         $pseudo = trim($_POST['pseudo']);
         $avatar = $_POST['avatar']; //POUR LA PHOTO DE PROFIL
@@ -116,9 +118,9 @@ function create_user()
         // var_dump($password_1);
         echo ' suite... fin traitement des variables POST. <br/> Password pas encore haché ...suite <br/>';
 
-        /*********************
+        /************************************
          * VALIDATION CHAMPS VIDE *
-         *********************/
+         ****************************************/
         // ON VERIFIE QUE LES CHAMPS SONT TOUS REMPLIES
         // ON PREPARE LES MESSAGE D ERREUR DANS NOTRE VARIBLE TABLEAUX $ERRORS []
         // Pour tester le echo test d un champs vide il faut au prealable enlever la securité sur le champs a tester. Son required , son pattern et son min ou max
@@ -160,6 +162,7 @@ function create_user()
             array_push($errors, "Vous avez oublié le mot de passe");
         }
         // ON VERIFIE SI LES DEUX MOTS DE PASSE SAISIE SONT IDENTIQUES
+        echo 'Vérification mots de passe si identique pendant la saisie des POSTS <br/>';
         if ($password_1 != $password_2) {
             array_push($errors, "les deux mots de passe ne correspondent pas");
         }
@@ -168,9 +171,9 @@ function create_user()
         // 888888888888888888888888888888888888888888888888888888888
         // Assurez-vous qu'aucun utilisateur n'est enregistré deux fois
         // l'e-mail et les noms d'utilisateur doivent être uniques
-        /*********************
+        /******************************************************
          * VERIFICATION BOUBLON EMAIL METHODE PDO *
-         *********************/
+         *************************************************/
 
         echo 'start recherche doublons <br/>';
         $pdo =  connectPdoBdd();
@@ -186,9 +189,9 @@ function create_user()
             echo 'AUCUN DOUBLON EMAIL TROUVER <br/>';
         }
 
-        /*********************
+        /**********************************************
          * VERIFICATION BOUBLON PSEUDONYME METHODE PDO *
-         *********************/
+         **********************************************/
 
         $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE pseudo = '$pseudo' LIMIT 1";
         $reqPseudo = $pdo->prepare("SELECT * FROM `users` WHERE pseudo='$pseudo'");
@@ -202,8 +205,32 @@ function create_user()
             echo 'AUCUN DOUBLON PSEUDO TROUVER <br/>';
         }
 
+        echo 'Fin de recherche de doublons <br/>';
+        // 888888888888888888888888888888888888888888888888888888888
 
-      
+
+        /***********************************************
+         * INSERTION (CREATE) UTILISATEUR EN BDD *
+         ************************************************/
+
+
+        // ON ENREGISTRE L UTILISATEUR SI IL N Y A AUCUNE ERREUR DANS LE FORMULAIRE
+        // ON OUBLIE SURTOUT PAS DE ASSIGNER LE ROLE PAR DEFAUT EN TANT QUE UTILISATEUR
+        // SI AUCUNE ERREUR N'EST TROUVE C EST A DIRE SI LA VARIABLE ERRORS RESTE VIDE. ALORS ON EFFECTUE LA REQUETE D INSERTION SQL EN BASE DE DONNEE.
+        
+
+        
+
+
+
+
+
+
+
+
+
+
+
     }
     // 888888888888888888888888888888888888888888888888888888888888888888888888888
     // FIN DU ISSET CLIQUE INSCRIPTIO?
