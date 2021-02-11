@@ -6,19 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- BOOSTRAP 4 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="css/styleGreg.css">
-        <link rel="stylesheet" href="css/mon-style.css">
-        <link rel="stylesheet" href="css/styleDav.css">
-    
+    <link rel="stylesheet" href="css/styleGreg.css">
+    <link rel="stylesheet" href="css/mon-style.css">
+    <link rel="stylesheet" href="css/styleDav.css">
+
 
 
 
@@ -35,7 +30,7 @@
 
     <!-- HEADER -->
 
-  
+
     <header class="header-liste ">
         <div class="container">
 
@@ -53,28 +48,28 @@
 
                     <ul class="menu">
                         <a href="index.html">
-                            <li  class="header-liste-p"> <img src="icons/chevron-right-solid-24.png"  class="icon-size " />  Accueil</li>
+                            <li class="header-liste-p"> <img src="icons/chevron-right-solid-24.png" class="icon-size " /> Accueil</li>
                         </a>
                         <a href="liste-sujet.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Moukatages</li>
+                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> Moukatages</li>
                         </a>
                         <a href="connection.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Se connecter</li>
+                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> Se connecter</li>
                         </a>
                         <a href="profile.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Mon espace</li>
+                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> Mon espace</li>
                         </a>
                         <a href="abonnement.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> S'abonner</li>
+                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> S'abonner</li>
                         </a>
                         <a href="succes.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Mes succès</li>
+                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> Mes succès</li>
                         </a>
                         <a href="#">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Contact</li>
+                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> Contact</li>
                         </a>
                         <a href="#">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Se déconnecter</li>
+                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> Se déconnecter</li>
                         </a>
                     </ul>
                 </div>
@@ -84,23 +79,23 @@
     </header>
 
     <!--88888888888888888888888888888888888888888 -->
-<!-- VERIFICATION DES MESSAGE ERREUR ET ETAT DE CONNECTION TEXT EN BLC SUR FOND NOIR -->
-<div class="text-light"><?php 
-//APPEL DE LA FUNCTION DE CONNECTION A LA BDD AVEC INCLUDE
-// include ('bdd-connect.php');
-// connectPdoBdd(); //OK FONCTIONNE
-// connectSqliBdd(); //OK FONCTIONNE 
+    <!-- VERIFICATION DES MESSAGE ERREUR ET ETAT DE CONNECTION TEXT EN BLC SUR FOND NOIR -->
+    <div class="text-light"><?php
+                            //APPEL DE LA FUNCTION DE CONNECTION A LA BDD AVEC INCLUDE
+                            // include ('bdd-connect.php');
+                            // connectPdoBdd(); //OK FONCTIONNE
+                            // connectSqliBdd(); //OK FONCTIONNE 
 
-//APPEL DE LA FONCTION CREATE USER
-//require once evite les boucles de includes
-// require_once ('functions/registration-login.php');
-require_once ('create-user.php');
-// ON LANCE NOTRE FONCTION CREATE USER SI BTN CLIQUER
-if(isset($_POST['inscription'])){
-    create_user();
-}
-?></div>
-<!--88888888888888888888888888888888888888888 -->
+                            //APPEL DE LA FONCTION CREATE USER
+                            //require once evite les boucles de includes
+                            // require_once ('functions/registration-login.php');
+                            require_once('create-user.php');
+                            // ON LANCE NOTRE FONCTION CREATE USER SI BTN CLIQUER
+                            if (isset($_POST['inscription'])) {
+                                create_user();
+                            }
+                            ?></div>
+    <!--88888888888888888888888888888888888888888 -->
 
 
 
@@ -120,34 +115,41 @@ if(isset($_POST['inscription'])){
     <section id="form-inscription">
         <div class="container d-flex flex-column align-items-center justify-content-center">
 
-
+              <!-- MESSAGE D'ERREUR-->
+              <?php if (count($errors) > 0) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php foreach ($errors as $error) : ?>
+                                <p><?php echo $error ?></p>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
 
             <!-- FORMULAIRE -->
             <!-- FORMULAIRE D'INSCRIPTION -->
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 col-12">
 
                 <form class="col px-3 py-4" method="post" action="">
+      
+
+
 
                     <!-- PSEUDONYME DATA TYPE VARCHAR-->
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Pseudonyme*</label>
-                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Moukateur 974"
-                            title="Choisir un pseudo ou un nom d'utilisateur" required
-                            pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" minlength="4" maxlength="30" size="30" value="">
+                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Moukateur 974" title="Choisir un pseudo ou un nom d'utilisateur">
                         </input>
 
                     </div>
 
-                          <!-- PHOTO DE PROFIL DATA TYPE VARCHAR CAR ON ENREGISTRE UN LIEN D IMAGE -->
+                    <!-- PHOTO DE PROFIL DATA TYPE VARCHAR CAR ON ENREGISTRE UN LIEN D IMAGE -->
 
-                          <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Avatar*</label>
-                            <input type="file" class="form-control" id="avatar" name="avatar" 
-                               required>
-                            </input>
-    
-                        </div>
-    
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Avatar*</label>
+                        <input type="file" class="form-control" id="avatar" name="avatar" required>
+                        </input>
+
+                    </div>
+
                     <!-- ATTENTION nom et prénom sur la meme ligne ! -->
 
                     <div class="mb-3 d-flex flex-column flex-md-row justify-content-between">
@@ -155,24 +157,20 @@ if(isset($_POST['inscription'])){
                         <div class=" col-md-6 col-12 px-0 mb-3 mb-md-0 pr-md-1">
 
                             <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Nom*</label>
-                            <input type="text" class="form-control" id="nom" name="nom" placeholder="DUPONT"
-                                title="Veuillez inscrire votre Nom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4"
-                                maxlength="50" size="50" value="" >
+                            <input type="text" class="form-control" id="nom" name="nom" placeholder="DUPONT" title="Veuillez inscrire votre Nom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4" maxlength="50" size="50" value="">
                             </input>
                         </div>
 
                         <!-- PRENOM DATA TYPE VARCHAR-->
                         <div class="col-md-6 col-12 px-0 pl-md-1">
                             <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Prénom*</label>
-                            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Vinshan"
-                                title="Veuillez inscrire votre prénom" required pattern="([A-z0-9À-ž\s]){2,}"
-                                minlength="4" maxlength="50" size="50" value="">
+                            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Vinshan" title="Veuillez inscrire votre prénom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4" maxlength="50" size="50" value="">
                             </input>
                         </div>
                     </div>
 
 
-              
+
                     <!-- ATTENTION GENRE ET AGE SUR LA MEME LIGNE-->
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <!-- GENRE DATA TYPE SQL BOLEEN-->
@@ -181,7 +179,7 @@ if(isset($_POST['inscription'])){
 
                             <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Genre</label>
 
-                            <select class="custom-select" id="inputGroupSelect01"  name="genre">
+                            <select class="custom-select" id="inputGroupSelect01" name="genre">
                                 <option selected>Choisir son genre</option>
                                 <option value="1">Homme</option>
                                 <option value="2">Femme</option>
@@ -193,8 +191,7 @@ if(isset($_POST['inscription'])){
                         <!-- AGE DATATPE SQL INT(10)-->
                         <div class="col-md-6 px-0 mb-3 mb-md-0 pl-md-1">
                             <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Age*</label>
-                            <input type="number" class="form-control" id="age" name="age" placeholder="18"
-                               min=18 max=100 required>
+                            <input type="number" class="form-control" id="age" name="age" placeholder="18" min=18 max=100 required>
                             </input>
                         </div>
 
@@ -206,9 +203,7 @@ if(isset($_POST['inscription'])){
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Email* </label>
 
-                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
-                            title="Veuillez inscrire votre email" size="60" minlength="3" maxlength="60" required
-                            value="">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" title="Veuillez inscrire votre email" size="60" minlength="3" maxlength="60" required value="">
                         </input>
 
                     </div>
@@ -218,9 +213,7 @@ if(isset($_POST['inscription'])){
                     <div class="mb-3 ">
                         <label class="text-dark mb-0" for="mot de passe1">Mot de passe* </label>
 
-                        <input type="password" class="form-control" id="password_1" name="password_1" required
-                            pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
-                            title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="">
+                        <input type="password" class="form-control" id="password_1" name="password_1" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="">
                         </input>
 
                     </div>
@@ -229,20 +222,16 @@ if(isset($_POST['inscription'])){
                     <div class="mb-3 ">
                         <label class="text-dark mb-0" for="mot de passe2">Confirmation* </label>
 
-                        <input type="password" class="form-control" id="password_2" name="password_2" required
-                            pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
-                            title="Confirmation mot de passe" minlength="1" maxlength="20" size="20" value="">
+                        <input type="password" class="form-control" id="password_2" name="password_2" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Confirmation mot de passe" minlength="1" maxlength="20" size="20" value="">
                         </input>
 
                     </div>
 
-                    
+
                     <!-- TELEPHONE DATA TYPE VARCHAR-->
                     <div class="mb-3 mt-3 text-start">
                         <label for="phone" class="form-label">Téléphone</label>
-                        <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="0692010203"
-                            title="Inscrire votre numéro de téléphone (format 00 00 00 00 00)" required
-                            pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" value="">
+                        <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="0692010203" title="Inscrire votre numéro de téléphone (format 00 00 00 00 00)" required pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" value="">
                     </div>
 
 
@@ -266,24 +255,34 @@ if(isset($_POST['inscription'])){
                     <div class="d-flex justify-content-center">
                         <button type="submit" action="" name="inscription" class="btn btn-dark">INSCRIPTION</button>
 
-                   
-                    
-                
-                    
+
+
+
+
 
                     </div>
                     <div class="mt-3 d-flex justify-content-center"> <i>(* Champs obligatoires)</i></div>
 
-                    <div class="mt-3 d-flex justify-content-center"><a href="connection.php"
-                            class="text-nav-foot pb-2">Déjà un compte pour moukater ? </a><br>
+                    <div class="mt-3 d-flex justify-content-center"><a href="connection.php" class="text-nav-foot pb-2">Déjà un compte pour moukater ? </a><br>
                     </div>
                 </form>
 
             </div>
+
+                <!-- MESSAGE D'ERREUR-->
+                <?php if (count($errors) > 0) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php foreach ($errors as $error) : ?>
+                                <p><?php echo $error ?></p>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
         </div>
 
     </section>
 
+
+    
 
 </body>
 
