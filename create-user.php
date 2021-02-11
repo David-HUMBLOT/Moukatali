@@ -83,13 +83,14 @@ function create_user()
 
     echo ' Inititialisation varibles GLOBAL  <br/>Initialisation  du tableaux des erreurs (IN FONCTIONS)  <br/>';
     // NOUS SERT PAR EXEMPLE A SORTIR LES INFORMATIOSN DU TABLEAUX DES ERREURS DE LA FONCTION
-    global $errors, $role, $pseudo, $email, $nom, $prenom, $pdo;
+    global $errors, $role, $pseudo, $email, $nom, $prenom, $pdo,  $password_hash;
 
     // INITIALISATION DES VARIBLES DONT CEUX PAR DEFAUT AFIN DE LES TRAITER AVANT REQUETE D INSERTION EN BASE DE DONNEE 
     $pseudo = ""; //initialisation
     $avatar = "";
     $email = "";
     $ville = "";
+    $password_hash = "";
     // $telephone ="";
     $errors = array(); // VAR TABLEAUX QUI RECOIT LES MESSAGES D ERREUR POUR LE FORMULAIRE INSCRIPTION
     $success_reg = false; //POUR DEFINIR LA REUSSITE DE L INSCRIPTION
@@ -217,12 +218,23 @@ function create_user()
         // ON ENREGISTRE L UTILISATEUR SI IL N Y A AUCUNE ERREUR DANS LE FORMULAIRE
         // ON OUBLIE SURTOUT PAS DE ASSIGNER LE ROLE PAR DEFAUT EN TANT QUE UTILISATEUR
         // SI AUCUNE ERREUR N'EST TROUVE C EST A DIRE SI LA VARIABLE ERRORS RESTE VIDE. ALORS ON EFFECTUE LA REQUETE D INSERTION SQL EN BASE DE DONNEE.
-        
-
-        
 
 
 
+        //CONDITION SI AUCUNE ERREUR EST PRESENTE VAR ERRORS = ["VIDE"];
+
+
+        if (count($errors) == 0) {
+            echo 'debut condition si aucune erreur <br/>';
+
+            //ON CRYPTE LE MOT DE PASSE AVANT L ENREGISTREMENT DANS LA BASE DE DONNEES
+            echo 'Cryptage du mot de passe (hash) <br/>';
+            $password_hash = password_hash($password_2, PASSWORD_DEFAULT); //NOUVELLE VARIABLE QUI ACCUILLE LE HASH DU MOT DE PASSE SAISIE QUI A ETE TRAITER EN AMONT
+            // Verification du hash
+            var_dump($password_hash); ?> <br/> <?php
+            // resultat = string(60) "$2y$10$/guNGisFaPtfCJysQb9VketX1Vho3MlKDXSvNOZvhYNUtybhaD4vW" 
+
+            echo'Début de la requete d\' insertion <br/>';
 
 
 
@@ -231,16 +243,29 @@ function create_user()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+        // 888888888888888888888888888888888888888888888888888888888888888888888888888
+        // FIN CONDITION IF COUNT ERRORS == 0{}
     }
     // 888888888888888888888888888888888888888888888888888888888888888888888888888
-    // FIN DU ISSET CLIQUE INSCRIPTIO?
+    // FIN DU ISSET CLIQUE INSCRIPTION
 }
 // 888888888888888888888888888888888888888888888888888888888888888888888888888
 // FIN FONCTION CREATE-USER
-
-
-
-
 
 
 ?>
