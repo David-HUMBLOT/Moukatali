@@ -16,9 +16,9 @@
         crossorigin="anonymous"></script>
 
     <!-- style.css -->
-    <link rel="stylesheet" href="css/styleGreg.css">
-    <link rel="stylesheet" href="css/mon-style.css">
-    <link rel="stylesheet" href="css/styleDav.css">
+    <link rel="stylesheet" href="../../css/styleGreg.css">
+    <link rel="stylesheet" href="../../css/mon-style.css">
+    <link rel="stylesheet" href="../../css/styleDav.css">
 
     <title>Connexion</title>
 </head>
@@ -32,8 +32,8 @@
 
             <!-- NAVBAR -->
             <nav class="navigation d-flex align-items-center ">
-                <a class="navbar-brand ml-4 mb-1" href="index.html">
-                    <img src="images/logo.png" alt="Logo Moukat A Li" style="width: 24vh;">
+                <a class="navbar-brand ml-4 mb-1" href="../../index.php">
+                    <img src="../../images/logo.png" alt="Logo Moukat A Li" style="width: 24vh;">
                 </a>
                 <div class="menu-toggle mt-1">
 
@@ -43,29 +43,29 @@
                     <span class="position"></span>
 
                     <ul class="menu">
-                        <a href="index.html">
-                            <li  class="header-liste-p"> <img src="icons/chevron-right-solid-24.png"  class="icon-size " />  Accueil</li>
+                        <a href="../../index.php">
+                            <li  class="header-liste-p"> <img src="../../icons/chevron-right-solid-24.png"  class="icon-size " />  Accueil</li>
                         </a>
-                        <a href="liste-sujet.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Moukatages</li>
+                        <a href="../../liste-sujet.html">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size " /> Moukatages</li>
                         </a>
-                        <a href="connection.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Se connecter</li>
+                        <!-- <a href="connection.php">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size " /> Se connecter</li>
+                        </a> -->
+                        <!-- <a href="profile.php">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size " /> Mon espace</li>
+                        </a> -->
+                        <a href="abonnement.php">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size " /> S'abonner</li>
                         </a>
-                        <a href="profile.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Mon espace</li>
-                        </a>
-                        <a href="abonnement.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> S'abonner</li>
-                        </a>
-                        <a href="succes.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Mes succès</li>
-                        </a>
+                        <!-- <a href="succes.php">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size " /> Mes succès</li>
+                        </a> -->
                         <a href="#">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Contact</li>
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size " /> Contact</li>
                         </a>
-                        <a href="#">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Se déconnecter</li>
+                        <!-- <a href="#">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size " /> Se déconnecter</li> -->
                         </a>
                     </ul>
                 </div>
@@ -122,7 +122,7 @@
 
                     <div class="mt-1 d-flex justify-content-center text-dark"> <i>(* Champs obligatoires)</i></div>
 
-                    <div class="mt-3 d-flex justify-content-center"><a href="inscription.html"
+                    <div class="mt-3 d-flex justify-content-center"><a href="inscription.php"
                             class="text-nav-foot pb-2">Pas
                             encore de compte !? Inscrit toi ici !! </a><br>
                     </div>

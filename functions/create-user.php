@@ -187,6 +187,10 @@ function create_user()
             $reqInsert->execute(); //execution de la requete
 
             echo 'Fin de la requete d insertion <br/>  Fin de la fonction create-user <br/>';
+
+            //REDIRECTION SUR LA PAGE STATICS DE CONFIRMATION DE L INSCRIPTION
+           ?> <meta http-equiv="refresh" content="1; url=../pages/inscriptionReussie.php" /> <?php
+      
         }
         // 888888888888888888888888888888888888888888888888888888888888888888888888888
         // FIN CONDITION IF COUNT ERRORS == 0{}
@@ -198,4 +202,9 @@ function create_user()
 // FIN FONCTION CREATE-USER
 echo 'sorti de la fonction <br/>'
 
+
+
+
+
 ?>
+

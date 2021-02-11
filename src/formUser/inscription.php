@@ -10,13 +10,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/styleGreg.css">
-    <link rel="stylesheet" href="css/mon-style.css">
-    <link rel="stylesheet" href="css/styleDav.css">
-
-
-
-
+    <link rel="stylesheet" href="../../css/styleGreg.css">
+    <link rel="stylesheet" href="../../css/mon-style.css">
+    <link rel="stylesheet" href="../../css/styleDav.css">
 
 
     <title>Inscription - Moukat A Li</title>
@@ -37,7 +33,7 @@
             <!-- NAVBAR -->
             <nav class="navigation d-flex align-items-center ">
                 <a class="navbar-brand ml-4 mb-1" href="index.html">
-                    <img src="images/logo.png" alt="Logo Moukat A Li" style="width: 24vh;">
+                    <img src="../../images/logo.png" alt="Logo Moukat A Li" style="width: 24vh;">
                 </a>
                 <div class="menu-toggle mt-1">
 
@@ -47,29 +43,29 @@
                     <span class="position"></span>
 
                     <ul class="menu">
-                        <a href="index.html">
-                            <li class="header-liste-p"> <img src="icons/chevron-right-solid-24.png" class="icon-size " /> Accueil</li>
+                        <a href="../../index.php">
+                            <li class="header-liste-p"> <img src="../../icons/chevron-right-solid-24.png" class="icon-size " /> Accueil</li>
                         </a>
-                        <a href="liste-sujet.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> Moukatages</li>
+                        <a href="../../liste-sujet.php">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " /> Moukatages</li>
                         </a>
-                        <a href="connection.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> Se connecter</li>
+                        <a href="connection.php">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " /> Se connecter</li>
                         </a>
-                        <a href="profile.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> Mon espace</li>
+                        <a href="profile.php">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " /> Mon espace</li>
                         </a>
-                        <a href="abonnement.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> S'abonner</li>
+                        <a href="abonnement.php">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " /> S'abonner</li>
                         </a>
-                        <a href="succes.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> Mes succès</li>
-                        </a>
-                        <a href="#">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> Contact</li>
+                        <a href="succes.php">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " /> Mes succès</li>
                         </a>
                         <a href="#">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png" class="icon-size " /> Se déconnecter</li>
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " /> Contact</li>
+                        </a>
+                        <a href="#">
+                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " /> Se déconnecter</li>
                         </a>
                     </ul>
                 </div>
@@ -89,16 +85,13 @@
                             //APPEL DE LA FONCTION CREATE USER
                             //require once evite les boucles de includes
                             // require_once ('functions/registration-login.php');
-                            require_once('create-user.php');
+                            require_once('../../functions/create-user.php');
                             // ON LANCE NOTRE FONCTION CREATE USER SI BTN CLIQUER
                             if (isset($_POST['inscription'])) {
                                 create_user();
                             }
                             ?></div>
     <!--88888888888888888888888888888888888888888 -->
-
-
-
 
     <!-- BODDY -->
 
@@ -122,7 +115,8 @@
                                 <p><?php echo $error ?></p>
                             <?php endforeach; ?>
                         </div>
-                    <?php endif; ?>
+                    <?php endif?>
+
 
             <!-- FORMULAIRE -->
             <!-- FORMULAIRE D'INSCRIPTION -->
@@ -261,7 +255,7 @@
 
                     <!-- BOUTON INSCRIPTION -->
                     <div class="d-flex justify-content-center">
-                        <button type="submit" action="" name="inscription" class="btn btn-dark">INSCRIPTION</button>
+                        <button type="submit" action="../../pages/inscriptionReussi.html" name="inscription"  class="btn btn-dark">INSCRIPTION</button>
 
                     </div>
                     <div class="mt-3 d-flex justify-content-center"> <i>(* Champs obligatoires)</i></div>
@@ -271,6 +265,8 @@
                 </form>
 
             </div>
+
+         
 
                 <!-- MESSAGE D'ERREUR-->
                 <?php if (count($errors) > 0) : ?>
@@ -284,8 +280,6 @@
 
     </section>
 
-
-    
 
 </body>
 
