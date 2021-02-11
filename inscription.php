@@ -29,6 +29,8 @@
 
 
 
+
+
 <body>
 
     <!-- HEADER -->
@@ -82,6 +84,18 @@
     </header>
 
     <!--88888888888888888888888888888888888888888 -->
+<!-- VERIFICATION DES MESSAGE ERREUR ET ETAT DE CONNECTION TEXT EN BLC SUR FOND NOIR -->
+<div class="text-light"><?php 
+//APPEL DE LA FUNCTION DE CONNECTION A LA BDD AVEC INCLUDE
+include ('bdd-connect.php');
+connectPdoBdd(); //OK FONCTIONNE
+// connectSqliBdd(); //OK FONCTIONNE 
+?></div>
+<!--88888888888888888888888888888888888888888 -->
+
+
+
+
     <!-- BODDY -->
 
     <section>

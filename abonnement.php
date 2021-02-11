@@ -86,7 +86,7 @@
             <!-- CONNNECTER EN TANT QUE -->
 
 
-            <!-- TITRE -->
+            <!-- TITRE MANQUE RESPONSIVE TITLE-->
             <div class="mt-5 mx-3 box-titre col-lg-6 col-md-6 col-sm-4 d-flex justify-content-center">
                 <h2>MI VEU EN PLIS !!&#x1F609;</h2>
             </div>
@@ -95,7 +95,7 @@
 
 
 
-    <!-- ABONNEMENT FORMULAIRE -->
+    <!-- ABONNEMENT FORMULAIRE ET QUERIES FORMS -->
 
     <div class="d-flex justify-content-center mt-3 mb-3">
         <div class="mb-5 mx-3 box-formulaire col-lg-4 col-md-4 col-sm-9">

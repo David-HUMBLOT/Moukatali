@@ -26,12 +26,11 @@
 <body>
     <!-- HEADER -->
 
-    <!-- HEADER -->
 
     <header class="header-liste ">
         <div class="container">
 
-            <!-- NAVBAR -->
+        
             <nav class="navigation d-flex align-items-center ">
                 <a class="navbar-brand ml-4 mb-1" href="index.html">
                     <img src="images/logo.png" alt="Logo Moukat A Li" style="width: 24vh;">
@@ -76,6 +75,8 @@
     </header>
 
     <!-- BODDY -->
+
+
 
 
 
