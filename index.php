@@ -25,67 +25,23 @@
         integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
         crossorigin="anonymous" />
 
-    <!-- MON CSS -->
-    <link rel="stylesheet" href="css/mon-style.css">
+  
+
 
     <title>Accueil - Moukat A Li</title>
+
+
+      <!-- MON CSS -->
+  
+      <link rel="stylesheet" href="css/mon-style.css">
 </head>
 
 <body>
-     <!-- HEADER -->
-
-     <header class="header-liste ">
-        <div class="container">
-
-            <!-- NAVBAR -->
-            <nav class="navigation d-flex align-items-center ">
-                <a class="navbar-brand ml-4 mb-1" href="index.html">
-                    <img src="/images/logo.png" alt="Logo Moukat A Li" style="width: 24vh;">
-                </a>
-                <div class="menu-toggle mt-1">
-
-                    <input class="position" type="checkbox" />
-                    <span class="position"></span>
-                    <span class="position"></span>
-                    <span class="position"></span>
-
-                    <ul class="menu">
-                        <a href="index.html">
-                            <li class="header-liste-p">Accueil</li>
-                        </a>
-                        <a href="liste-sujet.html">
-                            <li class="header-liste-p">Moukatages</li>
-                        </a>
-                        <a href="connection.html">
-                            <li class="header-liste-p">Se connecter</li>
-                        </a>
-                        <a href="profile.html">
-                            <li class="header-liste-p">Espace Moukatér</li>
-                        </a>
-                        <a href="abonnement.html">
-                            <li class="header-liste-p">S'abonner</li>
-                        </a>
-                        <a href="succes.html">
-                            <li class="header-liste-p">Mes succès</li>
-                        </a>
-                        <a href="#">
-                            <li class="header-liste-p">Contact</li>
-                        </a>
-                        <a href="#">
-                            <li class="header-liste-p">Se déconnecter</li>
-                        </a>
-                    </ul>
-                </div>
-            </nav>
-
-        </div>
-    </header>
-
 
     <section>
-        <div class="container">
+        <div class="container " >
             <!-- TITRE H1 -->
-            <h1 class="text-uppercase text-center mb-5">&ldquo;moukatage&rdquo;</h1>
+            <h1 class="text-center text-light mb-4">&ldquo;moukatage&rdquo;</h1>
             <!-- CAROUSEL -->
             <div class="owl-carousel text-light" id="slider">
 
@@ -139,10 +95,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous"></script>
-    <!-- VUE JS -->
-    <script src="https://unpkg.com/vue@next"></script>
+    <!-- VUE JS
+    <script src="https://unpkg.com/vue@next"></script> -->
     <!-- MON SCRIPT -->
-    <script src="/script/script.js"></script>
+    <script src="script/script.js"></script>
 
 
 </body>

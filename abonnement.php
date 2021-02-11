@@ -98,7 +98,7 @@
     <!-- ABONNEMENT FORMULAIRE -->
 
     <div class="d-flex justify-content-center mt-3 mb-3">
-        <div class="mb-5 mx-3 box-formulaire col-lg-5 col-md-5 ">
+        <div class="mb-5 mx-3 box-formulaire col-lg-4 col-md-4 col-sm-9">
             <form class="col p-4 mt-5 mb-5" method="" action="">
 
 
