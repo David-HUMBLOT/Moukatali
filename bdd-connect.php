@@ -1,17 +1,4 @@
 
-<!-- METHODE SQLI CONNECTION BDD-->
-
-<?php
-      function connectSqliBdd(){
-        $servername = 'localhost'; $username = 'root'; $password = ''; $dbname = 'moukatali';
-        //On établit la connexion
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        //On vérifie la connexion
-        if($conn->connect_error){ die('Erreur : ' .$conn->connect_error);}
-        echo 'METHOD SQLI CONNECTION REUSSI AVEC FONCTION connectSqliBdd ';}
-//   ATTENTION NE PAS EFFACER 
-//   connectSqliBdd();
-?>
 
 <!-- METHODE PDO CONNECTION BDD -->
 
@@ -29,3 +16,23 @@ catch (PDOException $e) {print "Erreur !: " . $e->getMessage() . "<br/>";die();}
 // connectPdoBdd();
 
 ?>
+
+
+
+
+
+
+<!-- METHODE SQLI CONNECTION BDD-->
+
+<?php
+      function connectSqliBdd(){
+        $servername = 'localhost'; $username = 'root'; $password = ''; $dbname = 'moukatali';
+        //On établit la connexion
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        //On vérifie la connexion
+        if($conn->connect_error){ die('Erreur : ' .$conn->connect_error);}
+        echo 'METHOD SQLI CONNECTION REUSSI AVEC FONCTION connectSqliBdd ';}
+//   ATTENTION NE PAS EFFACER 
+//   connectSqliBdd();
+?>
+

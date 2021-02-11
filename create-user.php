@@ -1,80 +1,20 @@
-<!-- 
-/*********************
-* CONNECTION BDD *
-*********************/ -->
-<!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
-<!-- CONNECTION PDO A LA BDD A EFFECER PLUS TARD PUISQUE DEJA CREER SUR BDD6CONNECT ON PLACE ICI DANS LE CADRE DES TEST DE LA REQUETE CREATE UTILISATEUR -->
 <?php
-function connectPdoBdd()
-{
-
-
-    try {
-        $user = "root";
-        $pass = "";
-        $pdo = new PDO('mysql:host=localhost;dbname=moukatali', $user, $pass);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo 'METHOD PDO CONNECTION REUSSI AVEC FONCTION connectPdoBdd depuis CREATE USER A EFFACER PLUS TARD <br/>';
-        return $pdo;
-    } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-        die();
-    }
-}
-//   ATTENTION NE PAS EFFACER 
-//FUNCTION CONNECTION METHODE PDO OK FONCTIONELLE
-// connectPdoBdd();
-//  CONNECTION PDO A LA BDD A EFFECER PLUS TARD PUISQUE DEJA CREER SUR BDD6CONNECT ON PLACE ICI DANS LE CADRE DES TEST DE LA REQUETE CREATE UTILISATEUR 
-// 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-?>
 
 
 
-
-<?php
-//8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 
-// on execute fonction de connection ici avec methode pdo A EFFACER PLSU TARD
-// connectPdoBdd();
-
-//8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 
-?>
-
-
-<?php
-/*********************
- * TEST *
- *********************/
-
-//TEST SIMPLE DU BOUTON SI FONCTIONNEL
-// if(isset($_POST["inscription"])){
-//     echo 'le boutton register est cliqué localisation create-user.php <br/>';
-
-
-//     $pseudo = ""; //initialisation
-// $avatar = ""; 
-// $email = ""; 
-// $ville = ""; 
-// // $telephone ="";
-// $errors = array(); // VAR TABLEAUX QUI RECOIT LES MESSAGES D ERREUR POUR LE FORMULAIRE INSCRIPTION
-// $success_reg = false; //POUR DEFINIR LA REUSSITE DE L INSCRIPTION
-// $role = "user"; 
-
-// echo 'initialisation des varible ok';
-// var_dump($role);
-
-
-
-
-
-
-echo 'EN DEHORS DE LA FONCTION <br/>';
-
-
-
-//SI LE BOUTON REGISTER EST CLIQUE ALORS :
 
 function create_user()
 {
+
+
+    /******************************************
+     * CONNECTION A LA BDD (attention : on a l include qui apel la fonction de connection depuis connect-bdd.php) *
+     ******************************************/
+
+    require_once('bdd-connect.php');
+    connectPdoBdd();
+    echo 'Connection à la base de donnée OK <br/>';
+
 
     /******************************************
      * INITIALISATION des variables *
@@ -96,7 +36,7 @@ function create_user()
     $success_reg = false; //POUR DEFINIR LA REUSSITE DE L INSCRIPTION
     $role = "user";
     echo ' suite... fin initilisation ... suite <br/>';
-    // 888888888888888888888888888888888888888888888888888888888888888888888888888
+
     if (isset($_POST["inscription"])) {
         echo ' Debut de la fonction create user ok <br/>';
         /************************************************************************************
@@ -169,7 +109,7 @@ function create_user()
         }
 
         echo ' suite .. Fin des vérifications des champs vide .. suite <br/>';
-        // 888888888888888888888888888888888888888888888888888888888
+
         // Assurez-vous qu'aucun utilisateur n'est enregistré deux fois
         // l'e-mail et les noms d'utilisateur doivent être uniques
         /******************************************************
@@ -207,13 +147,10 @@ function create_user()
         }
 
         echo 'Fin de recherche de doublons <br/>';
-        // 888888888888888888888888888888888888888888888888888888888
-
 
         /***********************************************
          * INSERTION (CREATE) UTILISATEUR EN BDD *
          ************************************************/
-
 
         // ON ENREGISTRE L UTILISATEUR SI IL N Y A AUCUNE ERREUR DANS LE FORMULAIRE
         // ON OUBLIE SURTOUT PAS DE ASSIGNER LE ROLE PAR DEFAUT EN TANT QUE UTILISATEUR
@@ -228,33 +165,33 @@ function create_user()
             echo 'Cryptage du mot de passe (hash) <br/>';
             $password_hash = password_hash($password_2, PASSWORD_DEFAULT); //NOUVELLE VARIABLE QUI ACCUILLE LE HASH DU MOT DE PASSE SAISIE QUI A ETE TRAITER EN AMONT
             // Verification du hash
-            var_dump($password_hash); ?> <br/> <?php
-            // resultat = string(60) "$2y$10$/guNGisFaPtfCJysQb9VketX1Vho3MlKDXSvNOZvhYNUtybhaD4vW" 
+            var_dump($password_hash); ?> <br /> <?php
+                                                // resultat = string(60) "$2y$10$/guNGisFaPtfCJysQb9VketX1Vho3MlKDXSvNOZvhYNUtybhaD4vW" 
 
-            echo'Début de la requete d\' insertion <br/>';
+                                                echo 'Début de la requete d\' insertion <br/>';
 
-            // TEST REQUETE FONCTIONNELLE EN BDD
-        // ATTENTION AU DUPLICATA DES ID ET DES CLE PRIMAIRE COMME PSEUDO
-        //INSERT INTO `users` (pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( "pseudoO","prenom","nom", "34", "avatar", "ville", 0000000000, "email@gmail.com", "hashpasswor", 1, "user", now());
+                                                // TEST REQUETE FONCTIONNELLE EN BDD
+                                                // ATTENTION AU DUPLICATA DES ID ET DES CLE PRIMAIRE COMME PSEUDO
+                                                //INSERT INTO `users` (pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( "pseudoO","prenom","nom", "34", "avatar", "ville", 0000000000, "email@gmail.com", "hashpasswor", 1, "user", now());
 
-         // REQUETE D INSERTION (CREATION) UTILISATEUR EN BASSE DE DONEE. 13 INFORMATIONS AU TOTAL INSERTION DANS L ODRE DE LA TABLE EN BASSE DE DONNEE
-        //  ID EST AUTO INCREMENTER EN BDD
+                                                // REQUETE D INSERTION (CREATION) UTILISATEUR EN BASSE DE DONEE. 13 INFORMATIONS AU TOTAL INSERTION DANS L ODRE DE LA TABLE EN BASSE DE DONNEE
+                                                //  ID EST AUTO INCREMENTER EN BDD
 
-         $reqt = "INSERT INTO `users` ( pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( '$pseudo','$prenom','$nom', '$age', '$avatar', '$ville', '$telephone', '$email', '$password_hash', '$genre', '$role', now())";
+                                                $reqt = "INSERT INTO `users` ( pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( '$pseudo','$prenom','$nom', '$age', '$avatar', '$ville', '$telephone', '$email', '$password_hash', '$genre', '$role', now())";
 
-         $reqInsert = $pdo->prepare($reqt); //preparation de la requete
-         $reqInsert->execute(); //execution de la requete
+                                                $reqInsert = $pdo->prepare($reqt); //preparation de la requete
+                                                $reqInsert->execute(); //execution de la requete
 
-         echo'Fin de la requete d insertion <br/>  Fin de la fonction create-user <br/>';
-        }
-        // 888888888888888888888888888888888888888888888888888888888888888888888888888
-        // FIN CONDITION IF COUNT ERRORS == 0{}
-    }
-    // 888888888888888888888888888888888888888888888888888888888888888888888888888
-    // FIN DU ISSET CLIQUE INSCRIPTION
-}
-// 888888888888888888888888888888888888888888888888888888888888888888888888888
-// FIN FONCTION CREATE-USER
-echo 'sorti de la fonction <br/>'
+                                                echo 'Fin de la requete d insertion <br/>  Fin de la fonction create-user <br/>';
+                                            }
+                                            // 888888888888888888888888888888888888888888888888888888888888888888888888888
+                                            // FIN CONDITION IF COUNT ERRORS == 0{}
+                                        }
+                                        // 888888888888888888888888888888888888888888888888888888888888888888888888888
+                                        // FIN DU ISSET CLIQUE INSCRIPTION
+                                    }
+                                    // 888888888888888888888888888888888888888888888888888888888888888888888888888
+                                    // FIN FONCTION CREATE-USER
+                                    echo 'sorti de la fonction <br/>'
 
-?>
+                                                ?>
