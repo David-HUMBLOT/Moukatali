@@ -70,39 +70,30 @@ function connectPdoBdd()
 echo 'EN DEHORS DE LA FONCTION <br/>';
 
 
-$errors = array();
-if (empty($pseudo)) {
-    array_push($errors, "Entrer un pseudonyme");
-}
-
-if (empty($avatar)) {
-    array_push($errors, "Entrer une photo de profil");
-}
-
-if (empty($nom)) {
-    array_push($errors, "Entrer votre nom");
-}
-
 
 //SI LE BOUTON REGISTER EST CLIQUE ALORS :
 
 function create_user()
 {
-    echo 'Entrer de fonction creat-user <br/>';
-    echo 'Déclaration et initialistion variables. Initialisation des varibles et du tableaux des erreurs  <br/>';
+    echo ' Entrer de fonction creat-user <br/>';
+
+    echo ' Inititialisation varibles GLOBAL  <br/>Initialisation  du tableaux des erreurs (IN FONCTIONS)  <br/>';
+    // NOUS SERT PAR EXEMPLE A SORTIR LES INFORMATIOSN DU TABLEAUX DES ERREURS DE LA FONCTION
+    global $errors, $role, $pseudo, $email, $nom, $prenom;
+   
     // INITIALISATION DES VARIBLES DONT CEUX PAR DEFAUT AFIN DE LES TRAITER AVANT REQUETE D INSERTION EN BASE DE DONNEE 
     $pseudo = ""; //initialisation
     $avatar = "";
     $email = "";
     $ville = "";
     // $telephone ="";
-    // $errors = array(); // VAR TABLEAUX QUI RECOIT LES MESSAGES D ERREUR POUR LE FORMULAIRE INSCRIPTION
+    $errors = array(); // VAR TABLEAUX QUI RECOIT LES MESSAGES D ERREUR POUR LE FORMULAIRE INSCRIPTION
     $success_reg = false; //POUR DEFINIR LA REUSSITE DE L INSCRIPTION
     $role = "user";
-    echo 'suite... fin initilisation ... suite <br/>';
+    echo ' suite... fin initilisation ... suite <br/>';
     // 888888888888888888888888888888888888888888888888888888888888888888888888888
     if (isset($_POST["inscription"])) {
-        echo 'Debut de la fonction create user ok <br/>';
+        echo ' Debut de la fonction create user ok <br/>';
         /*********************
          * TRAITEMENT DES VARIABLES POST RECUPERER DEPUIS PAGE INSCRIPTION APRES LE CLIQUE *
          *********************/
@@ -122,7 +113,7 @@ function create_user()
 
         // TEST SI UNE DES VARIABLE QUI RECCUPERE UN POST FONCTIONNE ICI AVEC LE POST PASSWORD
         var_dump($password_1);
-        echo 'suite... fin traitement des variables post pass pas encore haché ...suite <br/>';
+        echo ' suite... fin traitement des variables post pass pas encore haché ...suite <br/>';
 
 
 
@@ -132,46 +123,45 @@ function create_user()
         // ON VERIFIE QUE LES CHAMPS SONT TOUS REMPLIES
         // ON PREPARE LES MESSAGE D ERREUR DANS NOTRE VARIBLE TABLEAUX $ERRORS []
         // Pour tester le echo test d un champs vide il faut au prealable enlever la securité sur le champs a tester. Son required , son pattern et son min ou max
-
-        echo 'début vérification des champs vide ou avec un espace </br>';
-
-        // if (empty($pseudo)) {
-        //     array_push($errors, "Entrer un pseudonyme");
+        if (empty($pseudo)) {
+            array_push($errors, "Entrer un pseudonyme");}
 
         // TEST SI UN CHAMP EST VIDE
         // echo 'CHAMP VIDE POUR PSEUDO! </br>';
         //     var_dump($errors);
         // }
-        // if (empty($avatar)) {
-        //     array_push($errors, "Entrer une photo de profil");
-        // }
-        // if (empty($nom)) {
-        //     array_push($errors, "Entrer votre nom");
-        // }
-        // if (empty($prenom)) {
-        //     array_push($errors, "Entrer votre prenom");
-        // }
-        // if (empty($genre)) {
-        //     array_push($errors, "Entrer votre genre");
-        // }
-        // if (empty($age)) {
-        //     array_push($errors, "Entrer votre age");
-        // }
-        // if (empty($email)) {
-        //     array_push($errors, "Entrer une adresse mail");
-        // }
-        // if (empty($telephone)) {
-        //     array_push($errors, "Entrer votre numéro de téléphone");
-        // }
-        // if (empty($ville)) {
-        //     array_push($errors, "Entrer votre ville");
-        // }
-        // if (empty($password_1)) {
-        //     array_push($errors, "Vous avez oublié le mot de passe");
-        // }
-        // // ON VERIFIE SI LES DEUX MOTS DE PASSE SAISIE SONT IDENTIQUES
-        // if ($password_1 != $password_2) {
-        //     array_push($errors, "les deux mots de passe ne correspondent pas");
+        if (empty($avatar)) {
+            array_push($errors, "Entrer une photo de profil");
+        }
+        if (empty($nom)) {
+            array_push($errors, "Entrer votre nom");
+        }
+        if (empty($prenom)) {
+            array_push($errors, "Entrer votre prenom");
+        }
+        if (empty($genre)) {
+            array_push($errors, "Entrer votre genre");
+        }
+        if (empty($age)) {
+            array_push($errors, "Entrer votre age");
+        }
+
+        if (empty($email)) {
+            array_push($errors, "Entrer une adresse mail");
+        }
+
+        if (empty($telephone)) {
+            array_push($errors, "Entrer votre numéro de téléphone");
+        }
+        if (empty($ville)) {
+            array_push($errors, "Entrer votre ville");
+        }
+        if (empty($password_1)) {
+            array_push($errors, "Vous avez oublié le mot de passe");
+        }
+        // ON VERIFIE SI LES DEUX MOTS DE PASSE SAISIE SONT IDENTIQUES
+        if ($password_1 != $password_2) {
+            array_push($errors, "les deux mots de passe ne correspondent pas");}
 
 
 
@@ -183,8 +173,9 @@ function create_user()
 
 
 
+
+            
     }
-
     // 888888888888888888888888888888888888888888888888888888888888888888888888888
     // FIN DU ISSET CLIQUE INSCRIPTIO?
 }

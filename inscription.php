@@ -136,9 +136,17 @@
                     <!-- PSEUDONYME DATA TYPE VARCHAR-->
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Pseudonyme*</label>
-                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Moukateur 974" title="Choisir un pseudo ou un nom d'utilisateur">
+                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Moukateur 974" title="Choisir un pseudo ou un nom d'utilisateur" 
+               
+                         >
                         </input>
-
+                        <!-- NE PAS AFFACER SERVIRA POUR EXPLIQUER LA SECURIT2 FORMULAIRE DU COT2 DE PHP (double securisation) -->
+                        <!-- required
+                        pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" 
+                        minlength="4"
+                        maxlength="30" 
+                        size="30" 
+                         value="" -->
                     </div>
 
                     <!-- PHOTO DE PROFIL DATA TYPE VARCHAR CAR ON ENREGISTRE UN LIEN D IMAGE -->
@@ -254,11 +262,6 @@
                     <!-- BOUTON INSCRIPTION -->
                     <div class="d-flex justify-content-center">
                         <button type="submit" action="" name="inscription" class="btn btn-dark">INSCRIPTION</button>
-
-
-
-
-
 
                     </div>
                     <div class="mt-3 d-flex justify-content-center"> <i>(* Champs obligatoires)</i></div>
