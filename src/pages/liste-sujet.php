@@ -16,9 +16,10 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Slackey&display=swap"
         rel="stylesheet">
 
-        <link rel="stylesheet" href="css/styleGreg.css">
-        <link rel="stylesheet" href="css/mon-style.css">
-        <link rel="stylesheet" href="css/styleDav.css">
+      
+        <link rel="stylesheet" href="../../css/styleGreg.css">
+        <link rel="stylesheet" href="../../css/mon-style.css">
+        <link rel="stylesheet" href="../../css/styleDav.css">
     <title>Liste des sujets - Moukat A Li</title>
 </head>
 

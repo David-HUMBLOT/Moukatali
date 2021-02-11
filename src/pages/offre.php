@@ -16,10 +16,9 @@
         crossorigin="anonymous"></script>
 
     
-        <link rel="stylesheet" href="css/styleGreg.css">
-        <link rel="stylesheet" href="css/mon-style.css">
-        <link rel="stylesheet" href="css/styleDav.css">
-    
+        <link rel="stylesheet" href="../../css/styleGreg.css">
+        <link rel="stylesheet" href="../../css/mon-style.css">
+        <link rel="stylesheet" href="../../css/styleDav.css">
     <title>offre</title>
 </head>
 
