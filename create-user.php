@@ -1,11 +1,12 @@
+<!-- CREATE USER WITH VALIDATION FORM AND SECURITY David -->
+
+
+
+
 <?php
-
-
-
 
 function create_user()
 {
-
 
     /******************************************
      * CONNECTION A LA BDD (attention : on a l include qui apel la fonction de connection depuis connect-bdd.php) *
