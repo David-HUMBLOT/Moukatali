@@ -66,9 +66,10 @@ function connect_user()
                 // VERIFICATION DES CHAMPS SAISIE AVEC LES MATCH EN BDD
                 // VERIFICATION DES CORRESPONDANCE DES MOTS DE PASSE (saisie à l'input et présente en bdd)
                 // utilisation de la fonction password_verify qui compart le hasf password en bdd avec le mot de passe saisie à l'input lors de la connection
+                // password_verify entre $password_connect et $doublonEmail['PASSWORD et non pas PASSWORD-CONNECT]. PASSWORD car cela correspond a commebnt il est nommé en bdd sur les ligne.
 
         
-                if ($doublonEmail['email'] === $email && password_verify($password, $user['password']))  {
+                if ($doublonEmail['email'] === $email && password_verify($password_connect, $doublonEmail['password']))  {
                   echo 'compte trouvé en bdd ok <br/>';
                 }
             } else { // email n'existe pas
