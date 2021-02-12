@@ -19,11 +19,12 @@ function connect_user()
     echo ' Entrer de fonction connect-user <br/>';
     echo ' Inititialisation varibles GLOBAL  <br/>Initialisation  du tableaux des erreurs (IN FONCTIONS)  <br/>';
     // NOUS SERT PAR EXEMPLE A SORTIR LES INFORMATIOSN DU TABLEAUX DES ERREURS DE LA FONCTION
-    global $errors, $email, $password_connect, $pdo;
+    global $errors, $success_connect , $email, $password_connect, $pdo;
     // INITIALISATION DES VARIABLES DONT CEUX PAR DEFAUT AFIN DE LES TRAITER AVANT REQUETE DE RECUPERATION EN BASE DE DONNEE 
     $email = "";
     $password_connect = "";
     $errors = array();
+    $success_connect = array();
     //TRAITEMENT DES POST
     echo 'Traitement des champs saisie <br/>';
     if (isset($_POST['connection'])) {
@@ -89,6 +90,7 @@ function connect_user()
 
                     // test des données recu de la bdd
                     var_dump($user['telephone']);
+                    array_push($success_connect, "Bienvenue à toi ! <br/>");
 
 
                     // ATTENTION !! POUR PAGE PROFIL SOIT ON REFAIT UNE REQUETE POUR AFFICHER LES INFOS SOIT ON UTILISE CEUX STOCKER EN SESSION

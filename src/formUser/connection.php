@@ -102,7 +102,7 @@
 
             <!-- MESSAGE D'ERREUR-->
             <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
-            <?php global $errors; ?>
+            <?php global $errors, $success_connect; ?>
 
 
 
@@ -143,6 +143,15 @@
                             </input>
 
                         </div>
+
+                        <!-- MESSAGE CONFIRMATION CONNECTION AVANT REDIRECTION -->
+                        <?php if (count($success_connect) > 0) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?php foreach ($success_connect as $success_connects) : ?>
+                                    <p><?php echo $success_connects ?></p>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif ?>
 
                         <!--  BOUTON CONNEXION -->
                         <div class="mt-3 d-flex justify-content-center">
