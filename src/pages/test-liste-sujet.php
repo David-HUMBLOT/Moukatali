@@ -84,11 +84,13 @@
 
         include('../../functions/read-user.php');
         readUserById($_SESSION['user']['id']);
-
-
         // var_dump($_SESSION['user']['id']);
         // var_dump($_SESSION['pseudo']);
-        var_dump($user);
+        // var_dump($user);
+        // var_dump($user['prenom']);
+
+
+        var_dump($user['avatar']);
 
 
 
