@@ -92,7 +92,11 @@
 
         var_dump($user['avatar']);
 
+    
 
+        // echo ('<img src="../../uploads/' . $user['avatar'] . '" style="height:50px"/>');
+
+        ?> <img src="<?='../../images/'.$user['avatar']?>"  /> <?php
 
         //a muté plus tar
 
@@ -102,7 +106,7 @@
         if (isset($_SESSION)) {
             echo ($_SESSION['user']['avatar']);
 
-            echo '<img src="' . $_SESSION['user']['avatar'] . '" width="100" height="100" alt=""> ';
+            echo '<img src="' . $user['avatar'] . '" width="100" height="100" alt=""> ';
 
 
             echo ('<img src="../../uploads/' . $_SESSION['user']['avatar'] . '" style="height:50px"/>');

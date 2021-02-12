@@ -82,17 +82,20 @@ function create_user()
         // 
         if (empty($avatar)) {
             array_push($errors, "Entrer une photo de profil");
+            $uploadOk = 0;
         }
 
         // valider la taille de l'image, la taille est calculée en octet
         if ($_FILES['avatar']['size'] > 200000) {
             array_push($errors, "La taille de l'image ne doit pas dépasser 200 ko");
+            $uploadOk = 0;
         }
 
         // On vérifie l'extension et la taille de l'image
         $avatar_ext = pathinfo($avatar, PATHINFO_EXTENSION); // ou $picture_ext = pathinfo($picture)['extension'];
         if (!in_array($avatar_ext, ['jpg', 'jpeg', 'png'])) {
             array_push($errors, "Votre image doit être en .jpg, .jpeg ou .png");
+            $uploadOk = 0;
         }
 
         // verification si probleme de telechargement
@@ -104,6 +107,10 @@ function create_user()
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir)) {
             array_push($errors, "Échec du téléchargement de l'image.");
+        }
+        else{
+            $uploadOk = 1;
+            move_uploaded_file($_FILES['avatar']['tmp_name'],)
         }
 
 
