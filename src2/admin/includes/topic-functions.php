@@ -102,9 +102,9 @@ function createTopic($request_values) {
         array_push($errors, "Votre image doit être .jpg, .jpeg ou .png");
     }
     // image file directory
-    $target_dir = ROOT_PATH . '/public/images/upload/' . basename($picture);
+    // $target_dir = ROOT_PATH . '/public/images/upload/' . basename($picture);
 
-    if (!move_uploaded_file($_FILES['picture']['tmp_name'], $target_dir)) {
+    // if (!move_uploaded_file($_FILES['picture']['tmp_name'], $target_dir)) {
         array_push($errors, "Échec du téléchargement de l'image.");
     }
 
@@ -121,7 +121,7 @@ function createTopic($request_values) {
             exit(0);
         }
     }
-}
+// }
 
 /* * * * * * * * * * * * * * * * * * * * *
 * - Prend l'identifiant de publication comme paramètre
@@ -158,7 +158,7 @@ function updateTopic($request_values) {
     if (isset($_POST['picture'])) {
         $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
         // pour le téléchargement de l'images
-        $target_dir = ROOT_PATH . '/public/images/upload/' . basename($picture);
+        // $target_dir = ROOT_PATH . '/public/images/upload/' . basename($picture);
         // VALIDATION
         // valider la taille de l'image, la taille est calculée en octet
         if($_FILES['picture']['size'] > 200000) {
@@ -170,7 +170,7 @@ function updateTopic($request_values) {
             array_push($errors, "Votre image doit être .jpg, .jpeg ou .png");
         }
         if (empty($errors)) {
-          if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_dir)) {
+        //   if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_dir)) {
             $results = mysqli_query($db, "SELECT * FROM topics WHERE id = $topic_id");
             $topics = mysqli_fetch_all($results, MYSQLI_ASSOC);
             /*
@@ -202,7 +202,7 @@ function updateTopic($request_values) {
             echo 'ERREUR BDD';
         }
     }
-}
+// }
 
 // supprimer topic
 function deleteTopic($topic_id) {
