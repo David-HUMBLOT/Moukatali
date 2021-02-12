@@ -7,7 +7,7 @@ echo 'hors de la fonction connecion <br/>';
 function connect_user()
 {
 
- 
+    // session_start();
     echo 'début de la function de connection <br/>';
     /******************************************
      * CONNECTION A LA BDD (attention : on a l include qui apel la fonction de connection depuis connect-bdd.php) *
@@ -93,7 +93,7 @@ function connect_user()
                      * STOCKAGE DES INFORMATIONS BDD EN SESSION OU EN UTILISANT CEUX DU RESULTAT DE REQUETE *
                      *****************************************************************************************/
                
-                    $_SESSION = array();
+                    // $_SESSION = array();
                     // mettre les info utiles de l'utilisateur connecté dans le tableau de session
                     $_SESSION['user'] = ($user);
                     echo 'stockage en session par ID user';

@@ -5,11 +5,12 @@
 <?
 
 
- 
-    // $_SESSION = array("");
-    unset($_SESSION['user']);
-    session_destroy(); //On détruit le cookie de l'identifiant.
 
+session_unset();
+
+session_destroy();
+
+// header('location:../index.php')
 
 
 ?> 

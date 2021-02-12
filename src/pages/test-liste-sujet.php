@@ -1,6 +1,7 @@
 <!-- DERARAGE D UNE SESSION suite a une connexion on a besoin des infos de sessions pour afficher au bon endroit -->
 
-<?php session_start() ?>
+
+<?php    session_start();    ?>
 
 <!doctype html>
 <html lang="fr">
@@ -64,7 +65,7 @@
                         <a href="#">
                             <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Contact</li>
                         </a>
-                        <a href="#">
+                        <a href="../../functions/deconnect-user.php">
                             <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Se déconnecter</li>
                         </a>
                     </ul>
@@ -81,17 +82,29 @@
     <div class="text-light">
         <?php
 
+        // include('../../functions/bdd-connect.php');
 
-       
-     
-        
-        echo 'La session est lancée <br/>'; //a muté plus tar
+
+
+
+        //a muté plus tar
 
         // Test si nos informations sont présente en variables de session suite à la fonction de connection qui les ont stockées
         // var_dump($_SESSION); //a muté plus tard
 
         if (isset($_SESSION)) {
-            echo ($_SESSION['user']['telephone']);
+            echo ($_SESSION['user']['avatar']);
+
+            echo'<img src="'.$_SESSION['user']['avatar'] .'" width="100" height="100" alt=""> '; 
+
+
+   echo ('<img src="../../uploads/'.$_SESSION['user']['avatar'].'" style="height:50px"/>');  
+            
+
+
+
+
+            // var_dump($_SESSION['user']['pseudo']);
         } else {
             echo 'tu est que un visiteur <br/>';
         }
@@ -136,21 +149,10 @@
         deconnection
     </button>
 
-  
 
 
-<?php 
 
-if (isset($_POST['deconnection'])) {
-         
-  
-    session_destroy();
-    unset($_SESSION['user']);
-  
-    header('location: ../../index.php');
-}
 
-?>
 
 
 

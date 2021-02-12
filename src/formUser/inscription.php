@@ -124,7 +124,7 @@
             <!-- FORMULAIRE D'INSCRIPTION -->
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 col-12">
 
-                <form class="col px-3 py-4" method="post" action="">
+                <form class="col px-3 py-4" method="post" action="../../functions/upload.php" enctype="multipart/form-data">
 
                     <!-- MESSAGE D ERREUR -->
                     <?php if (count($errors) > 0) : ?>
