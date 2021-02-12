@@ -119,7 +119,7 @@ function create_user()
 
         echo 'start recherche doublons <br/>';
         $pdo =  connectPdoBdd();
-        $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE pseudo =  email = '$email' LIMIT 1";
+        $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE  email = '$email' LIMIT 1";
         $reqEmail = $pdo->prepare("SELECT * FROM `users` WHERE email='$email'");
         $reqEmail->execute([$email]);
         $doublonEmail = $reqEmail->fetch();

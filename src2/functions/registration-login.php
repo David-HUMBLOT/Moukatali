@@ -69,6 +69,12 @@ if (isset($_POST['register'])) {
     }
 }
 
+
+
+
+
+
+
 // CONNEXION DE L'UTILISATEUR
 if (isset($_POST['login'])) {
     $username = trim($_POST['username']);

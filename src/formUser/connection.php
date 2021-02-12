@@ -139,7 +139,7 @@
                         <div class="mb-3 ">
                             <label class="mb-0 text-dark" for="mot de passe1">Mot de passe* </label>
 
-                            <input type="password" class="form-control" id="password-1" name="password-1" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="">
+                            <input type="password" class="form-control" id="password-connect" name="password-connect" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="">
                             </input>
 
                         </div>
