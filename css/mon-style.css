@@ -21,6 +21,8 @@ body {
     letter-spacing: 1px!important;
 }
 
+
+
 /******** ACCUEIL ********/
 
 .logo {
@@ -42,6 +44,9 @@ h1 {
     padding-top: 1.875em!important;
     padding-bottom: 1.875em!important;
 }
+
+
+
 
 #slider h3, #slider p {
     font-size: 0.9em;
@@ -71,7 +76,7 @@ h1 {
         height: 90px;
     }
     h1 {
-        font-size: 5.1875em;
+        font-size: 5.1875em!important;
         color: blanchedalmond !important;
       
     }
@@ -95,6 +100,9 @@ h1 {
     #slider h3, #slider p {
         font-size: 1.45em;
     }
+
+
+
 }
 
 
@@ -110,6 +118,8 @@ h1 {
     color:#C33608!important;
     font-size:90%!important;
 }
+
+
 
 nav {
     height: 90px!important;

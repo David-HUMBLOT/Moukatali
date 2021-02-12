@@ -269,6 +269,12 @@
 
 
 
+
+                    
+
+
+
+
                     <!-- BOUTON INSCRIPTION -->
                     <div class="d-flex justify-content-center">
                         <button type="submit" action="" name="inscription" class="btn btn-dark">INSCRIPTION</button>

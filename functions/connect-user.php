@@ -19,7 +19,7 @@ function connect_user()
     echo ' Entrer de fonction connect-user <br/>';
     echo ' Inititialisation varibles GLOBAL  <br/>Initialisation  du tableaux des erreurs (IN FONCTIONS)  <br/>';
     // NOUS SERT PAR EXEMPLE A SORTIR LES INFORMATIOSN DU TABLEAUX DES ERREURS DE LA FONCTION
-    global $errors, $success_connect , $email, $password_connect, $pdo;
+    global $errors, $success_connect, $email, $password_connect, $pdo;
     // INITIALISATION DES VARIABLES DONT CEUX PAR DEFAUT AFIN DE LES TRAITER AVANT REQUETE DE RECUPERATION EN BASE DE DONNEE 
     $email = "";
     $password_connect = "";
@@ -66,6 +66,21 @@ function connect_user()
                 // VERIFICATION DES CORRESPONDANCE DES MOTS DE PASSE (saisie à l'input et présente en bdd)
                 // utilisation de la fonction password_verify qui compart le hasf password en bdd avec le mot de passe saisie à l'input lors de la connection
                 // password_verify entre $password_connect et $doublonEmail['PASSWORD et non pas PASSWORD-CONNECT]. PASSWORD car cela correspond a commebnt il est nommé en bdd sur les ligne.
+
+
+
+
+                $passmatch = password_verify($password_connect, $user['password']);
+                var_dump($passmatch);
+
+                if ($passmatch = false) {
+                    array_push($errors, "Mot de passe incorrect <br/>!");
+                }
+
+
+
+
+
                 if ($user['email'] === $email && password_verify($password_connect, $user['password'])) {
                     echo 'compte trouvé en bdd ok <br/>';
                     // A CE STADE SI LE COMPTE EST TROUVER ALORS ON RECUPERE LES INFORMATIONS POUR LES STOCER EN SESSION. SERVIRA NOTAMENT POUR LE FORMULAIRE DE MODIFICATION DU COMPTE ET AUSSI POUR DEMARRER UNE SESSION UNE FOIS L UTILISATEUR CONNECTER
@@ -87,16 +102,19 @@ function connect_user()
 
                     // test des données recu de la bdd
                     var_dump($user['telephone']);
-                    array_push($success_connect, "Connexion réussie !<br/> Veuillez patienter...");
+                    array_push($success_connect, "Connexion réussie !<br/> Cliquez sur SUIVANT ");
 
 
                     // ATTENTION !! POUR PAGE PROFIL SOIT ON REFAIT UNE REQUETE POUR AFFICHER LES INFOS SOIT ON UTILISE CEUX STOCKER EN SESSION
 
+                } else {
+                    array_push($errors, " Mot de passe erroné ! <br/> Vérifier vos informations ");
                 }
-            } else { // email n'existe pas
-                array_push($errors, "Votre compte n\' existe pas ! <br/>!");
+            } else {
+                array_push($errors, " Compte inexistant... <br/> Veuillez creer un compte.");
             }
         }
+
         // fin verification en bdd
 
 
