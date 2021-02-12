@@ -48,7 +48,7 @@ function create_user()
         // $avatar = $_POST['avatar']; 
 
         //POUR LA PHOTO DE PROFIL
-        $avatar = strtolower(time() . '-' . $_FILES['avatar']['name']); //test viencent code
+        $avatar = strtolower(time() . '-' . $_FILES['avatar']['name']); //input de type file et securisation strtolower time (a etudier)
         // $avatar = strtolower(time() . '-' . $_FILES[$_POST['avatar']]);
 
 
@@ -90,15 +90,21 @@ function create_user()
         }
 
         // On vérifie l'extension et la taille de l'image
-        $picture_ext = pathinfo($avatar, PATHINFO_EXTENSION); // ou $picture_ext = pathinfo($picture)['extension'];
-        if (!in_array($picture_ext, ['jpg', 'jpeg', 'png'])) {
+        $avatar_ext = pathinfo($avatar, PATHINFO_EXTENSION); // ou $picture_ext = pathinfo($picture)['extension'];
+        if (!in_array($avatar_ext, ['jpg', 'jpeg', 'png'])) {
             array_push($errors, "Votre image doit être en .jpg, .jpeg ou .png");
         }
 
+        // verification si probleme de telechargement
+        // source du code et adapter en fonction:
+        // <!-- source   https://www.w3schools.com/php/php_file_upload.asp -->
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir)) {
             array_push($errors, "Échec du téléchargement de l'image.");
         }
-
 
 
         if (empty($nom)) {
