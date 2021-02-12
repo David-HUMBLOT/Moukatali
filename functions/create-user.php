@@ -45,10 +45,10 @@ function create_user()
          *********************************************************************************/
         // ON RECUPERE LES VALEURS SAISIES DES POSTS ET ON LES TRAITE
         $pseudo = trim($_POST['pseudo']);
-        $avatar = $_POST['avatar']; 
-        
-        //POUR LA PHOTO DE PROFIL
+        // $avatar = $_POST['avatar']; 
 
+        //POUR LA PHOTO DE PROFIL
+        $avatar = strtolower(time() . '-' . $_FILES['avatar']['name']); //test viencent code
         // $avatar = strtolower(time() . '-' . $_FILES[$_POST['avatar']]);
 
 
@@ -84,22 +84,21 @@ function create_user()
             array_push($errors, "Entrer une photo de profil");
         }
 
-        // echo 'Vérification taille image avatar';
-        // // VERIFICATION TAILLE IMAGE
-        // if ($_FILES[$_POST['avatar']] > 200000) {
-        //     array_push($errors, "La taille de l'image ne doit pas dépasser 200 ko");
-        // }
+        // valider la taille de l'image, la taille est calculée en octet
+        if ($_FILES['avatar']['size'] > 200000) {
+            array_push($errors, "La taille de l'image ne doit pas dépasser 200 ko");
+        }
 
-        // if (!in_array($picture_ext, ['jpg', 'jpeg', 'png'])) {
-        //     array_push($errors, "Votre image doit être .jpg, .jpeg ou .png");
-        // }
+        // On vérifie l'extension et la taille de l'image
+        $picture_ext = pathinfo($avatar, PATHINFO_EXTENSION); // ou $picture_ext = pathinfo($picture)['extension'];
+        if (!in_array($picture_ext, ['jpg', 'jpeg', 'png'])) {
+            array_push($errors, "Votre image doit être en .jpg, .jpeg ou .png");
+        }
 
-        // image file directory
-        // $target_dir = ROOT_PATH . '/public/images/upload/' . basename($picture);
+        if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir)) {
+            array_push($errors, "Échec du téléchargement de l'image.");
+        }
 
-        // if (!move_uploaded_file($_FILES['picture']['tmp_name'], $target_dir)) {
-        //     array_push($errors, "Échec du téléchargement de l'image.");
-        // }
 
 
         if (empty($nom)) {
