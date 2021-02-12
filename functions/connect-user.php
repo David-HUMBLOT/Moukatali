@@ -75,9 +75,6 @@ function connect_user()
                      * STOCKAGE DES INFORMATIONS BDD EN SESSION OU EN UTILISANT CEUX DU RESULTAT DE REQUETE *
                      *****************************************************************************************/
 
-
-
-
                     $_SESSION = array();
                     // mettre les info utiles de l'utilisateur connecté dans le tableau de session
                     $_SESSION['user'] = ($user);
@@ -90,7 +87,7 @@ function connect_user()
 
                     // test des données recu de la bdd
                     var_dump($user['telephone']);
-                    array_push($success_connect, "Bienvenue à toi ! <br/>");
+                    array_push($success_connect, "Connexion réussie !<br/> Veuillez patienter...");
 
 
                     // ATTENTION !! POUR PAGE PROFIL SOIT ON REFAIT UNE REQUETE POUR AFFICHER LES INFOS SOIT ON UTILISE CEUX STOCKER EN SESSION
@@ -101,7 +98,6 @@ function connect_user()
             }
         }
         // fin verification en bdd
-
 
 
     }

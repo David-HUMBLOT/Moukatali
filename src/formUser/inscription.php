@@ -74,6 +74,8 @@
         </div>
     </header>
 
+
+  
     <!--88888888888888888888888888888888888888888 -->
     <!-- VERIFICATION DES MESSAGE ERREUR ET ETAT DE CONNECTION TEXT EN BLC SUR FOND NOIR -->
     <div class="text-light"><?php
@@ -116,7 +118,7 @@
 
             <!-- MESSAGE D'ERREUR-->
             <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
-            <?php global $errors; ?>
+            <?php global $errors, $success_inscription; ?>
 
             <!-- FORMULAIRE -->
             <!-- FORMULAIRE D'INSCRIPTION -->
@@ -124,6 +126,7 @@
 
                 <form class="col px-3 py-4" method="post" action="">
 
+                    <!-- MESSAGE D ERREUR -->
                     <?php if (count($errors) > 0) : ?>
                         <div class="alert alert-danger" role="alert">
                             <?php foreach ($errors as $error) : ?>
@@ -132,6 +135,14 @@
                         </div>
                     <?php endif ?>
 
+                    <!-- MESSAGE CONFIRMATION CONNECTION AVANT REDIRECTION -->
+                    <?php if (count($success_inscription) > 0) : ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php foreach ($success_inscription as $success_inscriptions) : ?>
+                                <p><?php echo $success_inscriptions ?></p>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif ?>
 
 
                     <!-- PSEUDONYME DATA TYPE VARCHAR-->
