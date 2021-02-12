@@ -40,6 +40,9 @@ function connect_user()
         }
         // SI LES CHAMPS SONT REMPLIE ON VERIFIE LES INFOS SAISIE AVEC LA BDD
         var_dump($errors);
+        /******************************************
+         * REQUETE RECUPERATION POUR COMPARAISON *
+         ******************************************/
         echo ' vérification des conditions <br/>';
         if (empty($errors)) {
             echo 'Requete de recherche en bdd. <br/>';
@@ -47,14 +50,14 @@ function connect_user()
             $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE  email = '$email' LIMIT 1";
             $reqEmail = $pdo->prepare("SELECT * FROM `users` WHERE email='$email'");
             $reqEmail->execute([$email]);
-            $user= $reqEmail->fetch();
+            $user = $reqEmail->fetch();
 
 
             // test
             // $user =  $reqEmail->fetch();
 
- 
-      
+
+
 
             echo 'Vérification du mot de passe et de l\' email. <br/>';
             if ($user) { // email existant
@@ -67,11 +70,28 @@ function connect_user()
                     // A CE STADE SI LE COMPTE EST TROUVER ALORS ON RECUPERE LES INFORMATIONS POUR LES STOCER EN SESSION. SERVIRA NOTAMENT POUR LE FORMULAIRE DE MODIFICATION DU COMPTE ET AUSSI POUR DEMARRER UNE SESSION UNE FOIS L UTILISATEUR CONNECTER
 
 
-                    // mettre les info utiles de l'utilisateur connecté dans le tableau de session
-                    $_SESSION['user'] = ($user['id']);
-                    echo 'stockage en session par ID user';
-                    var_dump($_SESSION['user']);
+                    /***************************************************************************************
+                     * STOCKAGE DES INFORMATIONS BDD EN SESSION OU EN UTILISANT CEUX DU RESULTAT DE REQUETE *
+                     *****************************************************************************************/
 
+
+
+
+                    $_SESSION = array();
+                    // mettre les info utiles de l'utilisateur connecté dans le tableau de session
+                    $_SESSION['user'] = ($user);
+                    echo 'stockage en session par ID user';
+                    echo 'Résultat de la requete qui possede aussi les infos stocké dans $user donc exploitable <br/>Mais necessite de redéclarer les requetes sur d autre pages';
+
+                    // test des donnée stocker ici exemple mot de passe
+                    var_dump($_SESSION['user']['password']);
+
+
+                    // test des données recu de la bdd
+                    var_dump($user['telephone']);
+
+
+                    // ATTENTION !! POUR PAGE PROFIL SOIT ON REFAIT UNE REQUETE POUR AFFICHER LES INFOS SOIT ON UTILISE CEUX STOCKER EN SESSION
 
                 }
             } else { // email n'existe pas
@@ -81,7 +101,7 @@ function connect_user()
         // fin verification en bdd
 
 
-  
+
     }
 
 
@@ -94,19 +114,19 @@ function connect_user()
 
 
 
-     // Obtenir des informations sur l'utilisateur à partir de l'identifiant de l'utilisateur
-     function getUserById($id)
-     {
-         global $db;
-         $sql = "SELECT * FROM user_info WHERE user_id = $id LIMIT 1";
+    // Obtenir des informations sur l'utilisateur à partir de l'identifiant de l'utilisateur
+    function getUserById($id)
+    {
+        global $db;
+        $sql = "SELECT * FROM user_info WHERE user_id = $id LIMIT 1";
 
-         $result = mysqli_query($db, $sql);
-         $user_info = mysqli_fetch_assoc($result);
+        $result = mysqli_query($db, $sql);
+        $user_info = mysqli_fetch_assoc($result);
 
-         //renvoie les info utilisateur dans un format de tableau:
-         // ['id' => 1, 'username' => 'Pseudo', 'email'=>'a@a.com', 'password'=> 'mot de passe']
-         return $user_info;
-     }
+        //renvoie les info utilisateur dans un format de tableau:
+        // ['id' => 1, 'username' => 'Pseudo', 'email'=>'a@a.com', 'password'=> 'mot de passe']
+        return $user_info;
+    }
 
 
 
