@@ -160,7 +160,7 @@
                         <!--  BOUTON SUIVANT-->
                         <?php if (isset($_SESSION)) { ?>
                             <div class="mt-3 d-flex justify-content-center">
-                                <a href="../pages/liste-sujet.php"><button type="button" name="suivant" class="btn btn-dark">SUIVANT</button></a>
+                                <a href="../pages/test-liste-sujet.php"><button type="button" name="suivant" class="btn btn-dark">SUIVANT</button></a>
                             </div>
                         <?php  } else { ?> <div class="mt-3 d-flex justify-content-center">
                                 <button type="submit" name="connection" class="btn btn-dark">CONNEXION</button>
