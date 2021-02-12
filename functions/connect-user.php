@@ -120,7 +120,7 @@ function connect_user()
 
         // fin verification en bdd
 
-        // return $_SESSION;
+        
     }
 
 

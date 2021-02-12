@@ -1,7 +1,6 @@
 <!-- DERARAGE D UNE SESSION suite a une connexion on a besoin des infos de sessions pour afficher au bon endroit -->
 
-
-
+<?php session_start() ?>
 
 <!doctype html>
 <html lang="fr">
@@ -82,20 +81,18 @@
     <div class="text-light">
         <?php
 
-        session_start();
 
+       
+     
+        
         echo 'La session est lancée <br/>'; //a muté plus tar
 
         // Test si nos informations sont présente en variables de session suite à la fonction de connection qui les ont stockées
-        var_dump($_SESSION); //a muté plus tard
+        // var_dump($_SESSION); //a muté plus tard
 
-
-
-
-        if (isset($_SESSION)){
+        if (isset($_SESSION)) {
             echo ($_SESSION['user']['telephone']);
-        }
-        else{
+        } else {
             echo 'tu est que un visiteur <br/>';
         }
 
@@ -117,16 +114,15 @@
     </section>
 
 
-<?php   
+    <?php
 
-if (isset($_SESSION)){
-    echo ($_SESSION['user']['password']);
-}
-else{
-    echo 'tu est que un visiteur <br/>';
-}
+    if (isset($_SESSION)) {
+        echo ($_SESSION['user']['password']);
+    } else {
+        echo 'tu est que un visiteur <br/>';
+    }
 
-?>
+    ?>
 
 
 
@@ -136,15 +132,25 @@ else{
 
 
 
+    <button type="submit" name="deconnection">
+        deconnection
+    </button>
+
+  
 
 
+<?php 
 
+if (isset($_POST['deconnection'])) {
+         
+  
+    session_destroy();
+    unset($_SESSION['user']);
+  
+    header('location: ../../index.php');
+}
 
-
-
-
-
-
+?>
 
 
 
