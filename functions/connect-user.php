@@ -7,7 +7,7 @@ echo 'hors de la fonction connecion <br/>';
 function connect_user()
 {
 
-    // session_start();
+    session_start();
     echo 'début de la function de connection <br/>';
     /******************************************
      * CONNECTION A LA BDD (attention : on a l include qui apel la fonction de connection depuis connect-bdd.php) *
@@ -27,7 +27,7 @@ function connect_user()
     $password_connect = "";
     $errors = array();
     $success_connect = array();
-    
+
     //TRAITEMENT DES POST
     echo 'Traitement des champs saisie <br/>';
     if (isset($_POST['connection'])) {
@@ -43,7 +43,7 @@ function connect_user()
             array_push($errors, "Mot de passe requis");
         }
         // SI LES CHAMPS SONT REMPLIE ON VERIFIE LES INFOS SAISIE AVEC LA BDD
-        var_dump($errors);
+        // var_dump($errors);
         /******************************************
          * REQUETE RECUPERATION POUR COMPARAISON *
          ******************************************/
@@ -92,22 +92,24 @@ function connect_user()
                     /***************************************************************************************
                      * STOCKAGE DES INFORMATIONS BDD EN SESSION OU EN UTILISANT CEUX DU RESULTAT DE REQUETE *
                      *****************************************************************************************/
-               
+
                     // $_SESSION = array();
                     // mettre les info utiles de l'utilisateur connecté dans le tableau de session
                     $_SESSION['user'] = ($user);
                     echo 'stockage en session par ID user';
                     echo 'Résultat de la requete qui possede aussi les infos stocké dans $user donc exploitable <br/>Mais necessite de redéclarer les requetes sur d autre pages';
 
-                    // test des donnée stocker ici exemple mot de passe
-                    var_dump($_SESSION['user']['password']);
+                    // test des donnée stocker ici exemple un id
+                    var_dump($_SESSION['user']['id']);
 
 
                     // test des données recu de la bdd
-                    var_dump($user['telephone']);
+                    var_dump($user['pseudo']);
                     array_push($success_connect, "Connexion réussie !<br/> Cliquez sur SUIVANT ");
 
 
+                    // on sort la valeur de l id de session (recuperer en bdd) pour l exploiter par la fonction read-user
+                    return $_SESSION['user']['id'];
                     // ATTENTION !! POUR PAGE PROFIL SOIT ON REFAIT UNE REQUETE POUR AFFICHER LES INFOS SOIT ON UTILISE CEUX STOCKER EN SESSION
 
                 } else {
@@ -120,7 +122,7 @@ function connect_user()
 
         // fin verification en bdd
 
-        
+
     }
 
 

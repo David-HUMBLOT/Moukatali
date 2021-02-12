@@ -1,7 +1,7 @@
 <!-- DERARAGE D UNE SESSION suite a une connexion on a besoin des infos de sessions pour afficher au bon endroit -->
 
 
-<?php    session_start();    ?>
+<?php session_start();    ?>
 
 <!doctype html>
 <html lang="fr">
@@ -82,8 +82,13 @@
     <div class="text-light">
         <?php
 
-        // include('../../functions/bdd-connect.php');
+        include('../../functions/read-user.php');
+        readUserById($_SESSION['user']['id']);
 
+
+        // var_dump($_SESSION['user']['id']);
+        // var_dump($_SESSION['pseudo']);
+        var_dump($user);
 
 
 
@@ -95,11 +100,11 @@
         if (isset($_SESSION)) {
             echo ($_SESSION['user']['avatar']);
 
-            echo'<img src="'.$_SESSION['user']['avatar'] .'" width="100" height="100" alt=""> '; 
+            echo '<img src="' . $_SESSION['user']['avatar'] . '" width="100" height="100" alt=""> ';
 
 
-   echo ('<img src="../../uploads/'.$_SESSION['user']['avatar'].'" style="height:50px"/>');  
-            
+            echo ('<img src="../../uploads/' . $_SESSION['user']['avatar'] . '" style="height:50px"/>');
+
 
 
 

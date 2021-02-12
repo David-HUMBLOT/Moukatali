@@ -23,33 +23,29 @@ function readUserById($id) {
      ******************************************/
 
     require_once('bdd-connect.php');
-    // connectPdoBdd();
+    connectPdoBdd();
     echo 'Connection à la base de donnée OK <br/>';
 
+    //faire sortir les resultat de la requete de lecture pour l exploiter sur les autres page en fonction de l id de session
+    global $user;
 
     $con = connectPdoBdd(); //RECUPERATION DE LA FONCTION DE CONNECTION A LA BDD ET STOCKE DANS LA VAR $con
     $requete = "SELECT * from `users` where id = '$id' ";
     $stmt = $con->query($requete);
-    $row = $stmt->fetchAll();
     $user = $stmt->fetch();
-    if (!empty($row)) {
-
-
+  
+    if (!empty($user)) {
         //test du resultat de la requete si trouver par id avec id en brut
-        var_dump($row);
-
-
-
-        return $row[0];
+        // var_dump($user['telephone']);
+        return $user;
     }
     else{
         echo 'La fonction readUserById n\' as pas fonctionnée ... <br/>';
     }
-    
+    return $user;
 }
-
 // test de notre read user  fonction une fois qu elle est est creer
-readUserById(26);
+// readUserById(26);
 
 ?>
 
