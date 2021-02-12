@@ -1,7 +1,11 @@
 <!-- DERARAGE D UNE SESSION suite a une connexion on a besoin des infos de sessions pour afficher au bon endroit -->
 
 
-<?php session_start();    ?>
+<?php session_start();   
+
+// header ("content-type: image/jpeg");
+?>
+
 
 <!doctype html>
 <html lang="fr">
@@ -10,6 +14,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -96,7 +102,7 @@
 
         // echo ('<img src="../../uploads/' . $user['avatar'] . '" style="height:50px"/>');
 
-        ?> <img src="<?='../../images/'.$user['avatar']?>"  /> <?php
+        ?> <img src="<?='../../images/'.$_FILES[$user['avatar']]?>"  /> <?php
 
         //a muté plus tar
 
@@ -295,7 +301,7 @@
     <!-- VUE JS -->
     <script src="https://unpkg.com/vue@next"></script>
     <!-- MON SCRIPT -->
-    <script src="/script/script.js"></script>
+    <script src="../../script/script.js"></script>
 
 
 </body>

@@ -101,17 +101,55 @@ function create_user()
         // verification si probleme de telechargement
         // source du code et adapter en fonction:
         // <!-- source   https://www.w3schools.com/php/php_file_upload.asp -->
-        $target_dir = "uploads/";
+
+
+
+
+
+        $target_dir = "../images/upload/";
         $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
-        $uploadOk = 1;
+
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir)) {
-            array_push($errors, "Échec du téléchargement de l'image.");
-        }
-        else{
-            $uploadOk = 1;
-            move_uploaded_file($_FILES['avatar']['tmp_name'],)
-        }
+
+        // if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir)) {
+        //     array_push($errors, "Échec du téléchargement de l'image.");
+        // } else {
+        //     $uploadOk = 1;
+        //     move_uploaded_file($_FILES['avatar']['tmp_name'], 'uploads/' . basename($_FILES['avatar']['name']));
+        //     echo "L'envoi a bien été effectué !";
+        // }
+
+
+        // move_uploaded_file($_FILES['avatar']['tmp_name'], 'uploads/' . htmlspecialchars(basename($_FILES['avatar']['name'])));
+        // echo "L'envoi a bien été effectué !";
+        // var_dump($_FILES);
+
+        move_uploaded_file($_FILES['avatar']['tmp_name'], 'upload/');
+        echo "L'envoi a bien été effectué !";
+        var_dump($_FILES);
+
+
+
+
+        // Check if $uploadOk is set to 0 by an error
+        // if ($uploadOk == 0) {
+        //     echo "Sorry, your file was not uploaded.";
+        //     // if everything is ok, try to upload file
+        // } else {
+        //     // $uploadOk = 1;
+        //     if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file)) {
+        //         echo "The file " . htmlspecialchars(basename($_FILES["avatar"]["name"])) . " has been uploaded.";
+        //     } else {
+        //         echo "Sorry, there was an error uploading your file.";
+        //     }
+        // }
+
+
+
+
+
+
+
 
 
         if (empty($nom)) {
@@ -229,7 +267,7 @@ function create_user()
 
             //REDIRECTION SUR LA PAGE STATICS DE CONFIRMATION DE L INSCRIPTION
 ?>
-            <meta http-equiv="refresh" content="1; url=../pages/reussite-inscription.php" /> <?php
+            <!-- <meta http-equiv="refresh" content="1; url=../pages/reussite-inscription.php" /> --><?php 
 
                                                                                             }
                                                                                             // 888888888888888888888888888888888888888888888888888888888888888888888888888

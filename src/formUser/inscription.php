@@ -124,7 +124,7 @@
             <!-- FORMULAIRE D'INSCRIPTION -->
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 col-12">
 
-                <form class="col px-3 py-4" method="post" action="" enctype="multipart/form-data">
+                <form class="col px-3 py-4" method="post" enctype="multipart/form-data">
 
                     <!-- MESSAGE D ERREUR -->
                     <?php if (count($errors) > 0) : ?>
@@ -277,7 +277,7 @@
 
                     <!-- BOUTON INSCRIPTION -->
                     <div class="d-flex justify-content-center">
-                        <button type="submit" action="" name="inscription" class="btn btn-dark">INSCRIPTION</button>
+                        <button type="submit" name="inscription"  enctype="multipart/form-data" class="btn btn-dark">INSCRIPTION</button>
 
                     </div>
                     <div class="mt-3 d-flex justify-content-center"> <i>(* Champs obligatoires)</i></div>
