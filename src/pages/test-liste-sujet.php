@@ -94,43 +94,32 @@
         // var_dump($_SESSION['pseudo']);
         // var_dump($user);
         // var_dump($user['prenom']);
+        // var_dump($user['avatar']);
 
-
-        var_dump($user['avatar']);
-
-        // <img src="../../images/uploads' . $user['avatar'] . '" style="height:50vh"/>
         global $user;
 
-        echo ('<img src="../../images/uploads/' . $user['avatar'] . '" style="height:50px"/>');
+        // Test si nos informations sont présente en variables de session suite à la fonction de connection qui les ont stockées
+        // var_dump($_SESSION); //a muté plus tard
 
-        // $image = file_get_contents($_FILES[$user['avatar']]);
+        if (isset($_SESSION)) {
+            echo 'Donnée de session en cours : <br/>';
+            echo ('<img src="../../images/uploads/' . $user['avatar'] . '" style="height:50px"/>' . "<br/>");
+            echo ($user['avatar'] . "<br/>");
+            echo ($user['pseudo'] . "<br/>");
+            echo ($user['nom'] . "<br/>");
+            echo ($user['age'] . "<br/>");
+            echo ($user['genre'] . "<br/>");
+            echo ($user['telephone'] . "<br/>");
+            echo ($user['email'] . "<br/>");
+            echo ($user['password'] . "<br/>");
+            echo ($user['ville'] . "<br/>");
 
-        // 
-        ?> <img src="<?= '../../images/uploads' . $user['avatar'] ?>" /> <?php
+      
+        } else {
+            echo 'Aucune saission en cours ! Veuillez vous connectez !<br/>';
+        }
 
-                                                                                    //a muté plus tar
-
-                                                                                    // Test si nos informations sont présente en variables de session suite à la fonction de connection qui les ont stockées
-                                                                                    // var_dump($_SESSION); //a muté plus tard
-
-                                                                                    if (isset($_SESSION)) {
-                                                                                        echo ($_SESSION['user']['avatar']);
-                                                                                        echo ('<img src="' . $_FILES[$user['avatar']] . '" style="height:50px"/>');
-                                                                                        echo '<img src="' . $user['avatar'] . '" width="100" height="100" alt=""> ';
-
-
-                                                                                        echo ('<img src="../../uploads/' . $_SESSION['user']['avatar'] . '" style="height:50px"/>');
-
-
-
-
-
-                                                                                        // var_dump($_SESSION['user']['pseudo']);
-                                                                                    } else {
-                                                                                        echo 'tu est que un visiteur <br/>';
-                                                                                    }
-
-                                                                                    ?>
+        ?>
     </div>
 
     <!-- 888888888888888888888888888888888888888888888888888888 -->
@@ -145,6 +134,16 @@
                 <h2>MI VEU MOUKATER !! &#x1F60B;</h2>
             </div>
         </div>
+
+
+
+        <?php echo ('<img src="../../images/uploads/' . $user['avatar'] . '" style="height:50px"/>');
+
+
+
+        ?>
+
+
     </section>
 
 
