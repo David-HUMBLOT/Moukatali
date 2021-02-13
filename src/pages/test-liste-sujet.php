@@ -98,14 +98,15 @@
 
         var_dump($user['avatar']);
 
+        // <img src="../../images/uploads' . $user['avatar'] . '" style="height:50vh"/>
         global $user;
 
-        echo ('<img src="' . $_FILES[$user['avatar']] . '" style="height:50px"/>');
+        echo ('<img src="../../images/uploads/' . $user['avatar'] . '" style="height:50px"/>');
 
         // $image = file_get_contents($_FILES[$user['avatar']]);
 
         // 
-        ?> <img src="<?= '../../images/uploads' . $_FILES[$user['avatar']] ?>" /> <?php
+        ?> <img src="<?= '../../images/uploads' . $user['avatar'] ?>" /> <?php
 
                                                                                     //a muté plus tar
 
