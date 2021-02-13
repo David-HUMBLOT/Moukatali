@@ -7,6 +7,7 @@ echo 'hors de la fonction connecion <br/>';
 function connect_user()
 {
 
+    // la session user se lancera uniquement si on se connecte a votre compte
     session_start();
     echo 'début de la function de connection <br/>';
     /******************************************
@@ -56,12 +57,8 @@ function connect_user()
             $reqEmail->execute([$email]);
             $user = $reqEmail->fetch();
 
-
             // test
             // $user =  $reqEmail->fetch();
-
-
-
 
             echo 'Vérification du mot de passe et de l\' email. <br/>';
             if ($user) { // email existant
@@ -71,17 +68,12 @@ function connect_user()
                 // password_verify entre $password_connect et $doublonEmail['PASSWORD et non pas PASSWORD-CONNECT]. PASSWORD car cela correspond a commebnt il est nommé en bdd sur les ligne.
 
 
-
-
                 $passmatch = password_verify($password_connect, $user['password']);
                 var_dump($passmatch);
 
                 if ($passmatch = false) {
                     array_push($errors, "Mot de passe incorrect <br/>!");
                 }
-
-
-
 
 
                 if ($user['email'] === $email && password_verify($password_connect, $user['password'])) {
@@ -123,10 +115,9 @@ function connect_user()
 
         // fin verification en bdd
 
-
     }
 
-
+    // NE PAS EFFACER SERVIRA PEU ETRE PLUS TARD
     // Obtenir des informations sur l'utilisateur à partir de l'identifiant de l'utilisateur
     // function getUserById($id)
     // {

@@ -19,9 +19,6 @@
 </head>
 
 
-
-
-
 <body>
 
     <!-- HEADER -->
@@ -105,15 +102,6 @@
                 <h2>MI VEU MOUKATER !! &#x1F60B;</h2>
             </div>
         </div>
-
-        <img src="<?php echo 'upload/' . basename($_FILES['avatar']); ?>" alt="mahmoud" />
-
-
-        <?php      echo '<img src="' . $_FILES['avatar'] . '" width="100" height="100" alt=""> '; ?>
-        
-     
-
-
 
 
     </section>
@@ -199,7 +187,6 @@
                     </div>
 
 
-
                     <!-- ATTENTION GENRE ET AGE SUR LA MEME LIGNE-->
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <!-- GENRE DATA TYPE SQL BOLEEN-->
@@ -223,7 +210,6 @@
                             <input type="number" class="form-control" id="age" name="age" placeholder="18" min=18 max=100 required>
                             </input>
                         </div>
-
 
                     </div>
 
@@ -264,7 +250,6 @@
                     </div>
 
 
-
                     <!-- VILLE DATA TYPE VARCHAR -->
                     <div class="mb-3">
 
@@ -300,9 +285,6 @@
             </form>
 
         </div>
-
-
-
 
 
     </section>
