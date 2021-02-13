@@ -105,6 +105,17 @@
                 <h2>MI VEU MOUKATER !! &#x1F60B;</h2>
             </div>
         </div>
+
+        <img src="<?php echo 'upload/' . basename($_FILES['avatar']); ?>" alt="mahmoud" />
+
+
+        <?php      echo '<img src="' . $_FILES['avatar'] . '" width="100" height="100" alt=""> '; ?>
+        
+     
+
+
+
+
     </section>
 
     <div class="container d-flex flex-column align-items-center justify-content-center">
@@ -124,7 +135,7 @@
             <!-- FORMULAIRE D'INSCRIPTION -->
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 col-12">
 
-                <form class="col px-3 py-4" method="post" enctype="multipart/form-data">
+                <form class="col px-3 py-4" method="post"     enctype="multipart/form-data">
 
                     <!-- MESSAGE D ERREUR -->
                     <?php if (count($errors) > 0) : ?>

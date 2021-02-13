@@ -106,7 +106,7 @@ function create_user()
 
 
 
-        $target_dir = "../images/upload/";
+        $target_dir = "upload/";
         $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
 
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -115,7 +115,7 @@ function create_user()
         //     array_push($errors, "Échec du téléchargement de l'image.");
         // } else {
         //     $uploadOk = 1;
-        //     move_uploaded_file($_FILES['avatar']['tmp_name'], 'uploads/' . basename($_FILES['avatar']['name']));
+            // move_uploaded_file($_FILES['avatar']['tmp_name'], 'upload/' . basename($_FILES['avatar']['name']));
         //     echo "L'envoi a bien été effectué !";
         // }
 
@@ -125,6 +125,7 @@ function create_user()
         // var_dump($_FILES);
 
         move_uploaded_file($_FILES['avatar']['tmp_name'], 'upload/');
+
         echo "L'envoi a bien été effectué !";
         var_dump($_FILES);
 
