@@ -1,7 +1,7 @@
 <!-- DERARAGE D UNE SESSION suite a une connexion on a besoin des infos de sessions pour afficher au bon endroit -->
 
 
-<?php session_start();   
+<?php session_start();
 
 // header ("content-type: image/jpeg");
 ?>
@@ -98,35 +98,38 @@
 
         var_dump($user['avatar']);
 
-    
+        global $user;
 
-        // echo ('<img src="../../uploads/' . $user['avatar'] . '" style="height:50px"/>');
+        echo ('<img src="' . $_FILES[$user['avatar']] . '" style="height:50px"/>');
 
-        ?> <img src="<?='../../images/'.$_FILES[$user['avatar']]?>"  /> <?php
+        // $image = file_get_contents($_FILES[$user['avatar']]);
 
-        //a muté plus tar
+        // 
+        ?> <img src="<?= '../../images/uploads' . $_FILES[$user['avatar']] ?>" /> <?php
 
-        // Test si nos informations sont présente en variables de session suite à la fonction de connection qui les ont stockées
-        // var_dump($_SESSION); //a muté plus tard
+                                                                                    //a muté plus tar
 
-        if (isset($_SESSION)) {
-            echo ($_SESSION['user']['avatar']);
+                                                                                    // Test si nos informations sont présente en variables de session suite à la fonction de connection qui les ont stockées
+                                                                                    // var_dump($_SESSION); //a muté plus tard
 
-            echo '<img src="' . $user['avatar'] . '" width="100" height="100" alt=""> ';
-
-
-            echo ('<img src="../../uploads/' . $_SESSION['user']['avatar'] . '" style="height:50px"/>');
-
-
+                                                                                    if (isset($_SESSION)) {
+                                                                                        echo ($_SESSION['user']['avatar']);
+                                                                                        echo ('<img src="' . $_FILES[$user['avatar']] . '" style="height:50px"/>');
+                                                                                        echo '<img src="' . $user['avatar'] . '" width="100" height="100" alt=""> ';
 
 
+                                                                                        echo ('<img src="../../uploads/' . $_SESSION['user']['avatar'] . '" style="height:50px"/>');
 
-            // var_dump($_SESSION['user']['pseudo']);
-        } else {
-            echo 'tu est que un visiteur <br/>';
-        }
 
-        ?>
+
+
+
+                                                                                        // var_dump($_SESSION['user']['pseudo']);
+                                                                                    } else {
+                                                                                        echo 'tu est que un visiteur <br/>';
+                                                                                    }
+
+                                                                                    ?>
     </div>
 
     <!-- 888888888888888888888888888888888888888888888888888888 -->
