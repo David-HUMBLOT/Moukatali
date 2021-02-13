@@ -1,9 +1,9 @@
 <?php
 
-include('../config.php');
-include(ROOT_PATH . '/admin/includes/admin-functions.php');
+// include('../config.php');
+// include(ROOT_PATH . '/admin/includes/admin-functions.php');
 // récupére tous les administrateurs de la BDD ayant un rôle
-$admins = getAdminUsers();
+// $admins = getAdminUsers();
 $roles = ['admin', 'author', 'moderator'];
 
 if (isset($_GET['logout'])) {
@@ -24,7 +24,11 @@ if (isset($_GET['logout'])) {
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- CSS -->
-  <link rel="stylesheet" href="../css/styles-admin.css">
+  <!-- <link rel="stylesheet" href="../css/styles-admin.css"> -->
+ <!-- style.css -->
+ <link rel="stylesheet" href="../../css/styleGreg.css">
+    <link rel="stylesheet" href="../../css/mon-style.css">
+    <link rel="stylesheet" href="../../css/styleDav.css">
 
   <title>Espace Administrateur - Moukat A Li</title>
 </head>
@@ -38,7 +42,7 @@ if (isset($_GET['logout'])) {
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light ">
             <a class="navbar-brand " href="index.php">
-                <img src="../images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;"
+                <img src="../../images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;"
                     alt="logo_moukatali_noir.png"></img>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -53,7 +57,11 @@ if (isset($_GET['logout'])) {
                 </li>
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
-                            href="form-subject.php">EDITER</a>
+                            href="form-subject-editer.php">EDITER</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link text-center  font-weight-bold text-nav-head"
+                            href="form-subject-modifier.php">MODIFIER</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link text-center  font-weight-bold text-nav-head"
@@ -80,16 +88,9 @@ if (isset($_GET['logout'])) {
 
 
 
-
-
-
-
-
-
-
-
-
-
+<div class="text-light">
+        
+    
 
   <!-- _________________________________________________________________________________________________________ -->
 
@@ -97,15 +98,13 @@ if (isset($_GET['logout'])) {
   <section id="form-admin">
     <div class="container">
 
-      <h1 class="text-uppercase text-center py-3">DASHBOARD</h1>
+      <h1 class="text-uppercase text-center py-3 mt-5">DASHBOARD administrateur</h1>
       
       <form method="post" action="dashboard.php" class="m-auto">
+
+     
         <!-- MESSAGE D'ERREUR-->
-        <?php include(ROOT_PATH . '/includes/errors.php') ?>
-        <!-- on récupére l'ID utilisateur pour modifier -->
-        <?php if ($update === true): ?>
-        <input type="hidden" name="admin_id" value="<?php echo $admin_id; ?>">
-        <?php endif ?>
+       
         <!-- PSEUDO -->
         <div class="mb-3">
           <input type="text" class="form-control" id="username" name="username" placeholder="pseudo"
@@ -217,17 +216,17 @@ if (isset($_GET['logout'])) {
     </div>
   </section>
 
-    <!-- FOOTER -->
+   
 
-    <footer class=" box-footer  text-center pt-4 mt-5  justify-content-center">
-      <a href="#" class="m-2   text-nav-foot">Contact</a>
-      <a href="#" class="m-2  text-nav-foot">C.G.V</a>
-      <a href="#" class="m-2  text-nav-foot">C.G.U</a>
-      <a href="#" class="m-2  text-nav-foot">Mentions légales</a>
-  
-  
-  </footer>
 
+  <!-- FOOTER -->
+  <footer class="text-center py-5 d-flex flex-column">
+    <a href="#" class="mb-1">Contact</a>
+    <a href="#" class="mb-1">C.G.V.</a>
+    <a href="#" class="mb-1">C.G.U.</a>
+    <a href="#">Mentions légales</a>
+</footer>
+</div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

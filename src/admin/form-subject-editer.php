@@ -1,15 +1,4 @@
-<?php
-include('../config.php');
-include(ROOT_PATH . '/admin/includes/admin-functions.php');
-include(ROOT_PATH . '/admin/includes/topic-functions.php');
 
-if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['user']);
-    header('location: ../index.php');
-}
-
-?>
 <!doctype html>
 <html lang="fr">
 
@@ -22,8 +11,11 @@ if (isset($_GET['logout'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/styles-admin.css">
-
+    <!-- <link rel="stylesheet" href="../css/styles-admin.css"> -->
+    
+    <link rel="stylesheet" href="../../css/styleGreg.css">
+    <link rel="stylesheet" href="../../css/mon-style.css">
+    <link rel="stylesheet" href="../../css/styleDav.css">
     <title>Créer un sujet - Moukat A Li</title>
 </head>
 
@@ -75,19 +67,31 @@ if (isset($_GET['logout'])) {
     </div>
 </header>
 
+<div class="text-light">  
+
+
+
 
 
     <!-- SECTION -->
     <section id="form-subject">
         <div class="container text-center">
 
-           
-            <?php if ($update_topic == false): ?>
                 <h1 class="text-uppercase text-center py-3">créer un topic</h1>
-            <?php else: ?>
-                <h1 class="text-uppercase text-center py-3">modifier le topic</h1>
-            <?php endif ?>
-            
+    
+            <?php
+include('../config.php');
+include(ROOT_PATH . '/admin/includes/admin-functions.php');
+include(ROOT_PATH . '/admin/includes/topic-functions.php');
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['user']);
+    header('location: ../index.php');
+}
+
+?>
+
             <form method="post" action="form-subject.php" enctype="multipart/form-data">
                 
                 <!-- erreurs de validation du formulaire -->
@@ -130,17 +134,15 @@ if (isset($_GET['logout'])) {
         </div>
     </section>
 
-        <!-- FOOTER -->
+     <!-- FOOTER -->
+  <footer class="text-center py-5 d-flex flex-column">
+    <a href="#" class="mb-1">Contact</a>
+    <a href="#" class="mb-1">C.G.V.</a>
+    <a href="#" class="mb-1">C.G.U.</a>
+    <a href="#">Mentions légales</a>
+</footer>
 
-        <footer class=" box-footer  text-center pt-4 mt-5  justify-content-center">
-            <a href="#" class="m-2   text-nav-foot">Contact</a>
-            <a href="#" class="m-2  text-nav-foot">C.G.V</a>
-            <a href="#" class="m-2  text-nav-foot">C.G.U</a>
-            <a href="#" class="m-2  text-nav-foot">Mentions légales</a>
-        
-        
-        </footer>
-
+        </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"

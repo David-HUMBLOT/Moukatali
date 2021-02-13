@@ -163,16 +163,13 @@ $topics = mysqli_fetch_all($results, MYSQLI_ASSOC);
       </div>
     </section>
 
-        <!-- FOOTER -->
-
-        <footer class=" box-footer  text-center pt-4 mt-5  justify-content-center">
-          <a href="#" class="m-2   text-nav-foot">Contact</a>
-          <a href="#" class="m-2  text-nav-foot">C.G.V</a>
-          <a href="#" class="m-2  text-nav-foot">C.G.U</a>
-          <a href="#" class="m-2  text-nav-foot">Mentions légales</a>
-      
-      
-      </footer>
+   <!-- FOOTER -->
+   <footer class="text-center py-5 d-flex flex-column">
+    <a href="#" class="mb-1">Contact</a>
+    <a href="#" class="mb-1">C.G.V.</a>
+    <a href="#" class="mb-1">C.G.U.</a>
+    <a href="#">Mentions légales</a>
+</footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
