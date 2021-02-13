@@ -1,6 +1,6 @@
 <?php
 include('../config.php');
-include(ROOT_PATH . '/admin/includes/topic-functions.php');
+include('/admin/includes/topic-functions.php');
 // récupére tous les topics de la BDD
 $topics = getAllTopics();
 
@@ -86,7 +86,7 @@ $topics = mysqli_fetch_all($results, MYSQLI_ASSOC);
       <div class="container">
       <h1 class="text-uppercase text-center py-3">topics</h1>
         <!-- message -->
-			  <?php include(ROOT_PATH . '/includes/messages.php'); ?>
+			  <?php include( '/includes/messages.php'); ?>
 
         <?php if (empty($topics)): ?>
 				<h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>

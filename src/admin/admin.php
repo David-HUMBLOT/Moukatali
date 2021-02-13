@@ -165,7 +165,7 @@ if (isset($_GET['logout'])) {
     <div class="container">
       <!--<h1>liste utilisateurs</h1>-->
       <!-- Display notification message -->
-      <?php include(ROOT_PATH . '/includes/messages.php'); ?>
+      <?php include( '/includes/messages.php'); ?>
 
       <?php if (empty($admins)): ?>
       <h6>AUCUN ADMIN</h6>

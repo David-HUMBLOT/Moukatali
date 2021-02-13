@@ -1,7 +1,7 @@
 <?php
 
 include('../config.php');
-include(ROOT_PATH . '/admin/includes/admin-functions.php');
+include( '/admin/includes/admin-functions.php');
 // récupére tous les administrateurs de la BDD ayant un rôle
 $all_users = getAllUsers();
 

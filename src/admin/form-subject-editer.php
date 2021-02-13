@@ -81,8 +81,8 @@
     
             <?php
 include('../config.php');
-include(ROOT_PATH . '/admin/includes/admin-functions.php');
-include(ROOT_PATH . '/admin/includes/topic-functions.php');
+include('/admin/includes/admin-functions.php');
+include( '/admin/includes/topic-functions.php');
 
 if (isset($_GET['logout'])) {
     session_destroy();
@@ -95,7 +95,7 @@ if (isset($_GET['logout'])) {
             <form method="post" action="form-subject.php" enctype="multipart/form-data">
                 
                 <!-- erreurs de validation du formulaire -->
-				<?php include(ROOT_PATH . '/includes/errors.php') ?>
+				<?php  '/includes/errors.php' ?>
 
                 <!-- si vous modifiez un message, l'identifiant est requis pour identifier ce message -->
 				<?php if ($update_topic === true): ?>
