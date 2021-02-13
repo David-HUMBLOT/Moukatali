@@ -135,7 +135,7 @@
             <!-- FORMULAIRE D'INSCRIPTION -->
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 col-12">
 
-                <form class="col px-3 py-4" method="post"     enctype="multipart/form-data">
+                <form class="col px-3 py-4" method="POST" enctype="multipart/form-data">
 
                     <!-- MESSAGE D ERREUR -->
                     <?php if (count($errors) > 0) : ?>
@@ -279,16 +279,9 @@
                     </div>
 
 
-
-
-                    
-
-
-
-
                     <!-- BOUTON INSCRIPTION -->
                     <div class="d-flex justify-content-center">
-                        <button type="submit" name="inscription"  enctype="multipart/form-data" class="btn btn-dark">INSCRIPTION</button>
+                        <button type="submit" name="inscription" class="btn btn-dark">INSCRIPTION</button>
 
                     </div>
                     <div class="mt-3 d-flex justify-content-center"> <i>(* Champs obligatoires)</i></div>
@@ -308,6 +301,68 @@
 
         </div>
 
+
+<?php 
+
+if(isset($_POST['inscription']))
+
+{
+
+    // validation image
+$maxsize = 600000;
+$validExt = array('.jpg', '.jpeg', '.png');
+
+if ($_FILES['avatar']['error'] > 0) {
+    echo ' Une erreur est survenue lors du transfert ';
+    array_push($errors, "Une erreur est survenue lors du transfert");
+    die; //intermpre le script juste apres l erreur
+}
+
+$fileSize = $_FILES['avatar']['size'];
+echo ($fileSize);
+
+if ($fileSize  >  $maxsize) {
+    echo 'Le fichier de doit pas dépasser 600ko <br/>';
+    array_push($errors, "Le fichier de doit pas dépasser 600ko <br/>");
+    die;
+}
+
+// eviter les doublons en images
+$fileName = $_FILES['avatar']['name'];
+
+// Recupération de l'extension du fichier.
+$fileExt = '.' . strtolower(substr(strrchr($fileName, '.'), 1));
+
+if (!in_array($fileExt, $validExt)) {
+    echo 'ERREUR FORMAT. Formats autorisés : jpg, jpeg, png  <br/>';
+    array_push($errors, "ERREUR FORMAT. Formats autorisés : jpg, jpeg, png  <br/>");
+    die;
+}
+// eviter les doublons en images
+//    global $resultat_upload;
+$tmpName = $_FILES['avatar']['tmp_name'];
+$uniqueName = md5(uniqid(rand(), true));
+$fileName = "uploads/" .  $uniqueName . $fileExt;
+// verification: on recupere le resultat
+$resultat_upload = move_uploaded_file($tmpName, $fileName);
+
+//    move_uploaded_file($_FILES['avatar']['tmp_name'], 'upload/' . basename($_FILES['avatar']['name']));
+
+//    $dirpath = realpath(dirname(getcwd($resultat_upload)));
+
+if($resultat_upload)
+{
+    echo 'Transfert de l\' image terminé !';
+}
+
+}
+
+
+
+
+
+
+?>
 
 
 

@@ -85,18 +85,73 @@ function create_user()
             $uploadOk = 0;
         }
 
-        // valider la taille de l'image, la taille est calculée en octet
-        if ($_FILES['avatar']['size'] > 200000) {
-            array_push($errors, "La taille de l'image ne doit pas dépasser 200 ko");
-            $uploadOk = 0;
-        }
 
-        // On vérifie l'extension et la taille de l'image
-        $avatar_ext = pathinfo($avatar, PATHINFO_EXTENSION); // ou $picture_ext = pathinfo($picture)['extension'];
-        if (!in_array($avatar_ext, ['jpg', 'jpeg', 'png'])) {
-            array_push($errors, "Votre image doit être en .jpg, .jpeg ou .png");
-            $uploadOk = 0;
-        }
+        //    // validation image
+        //    $maxsize = 600000;
+        //    $validExt = array('.jpg', '.jpeg', '.png');
+   
+        //    if ($_FILES['avatar']['error'] > 0) {
+        //        echo ' Une erreur est survenue lors du transfert ';
+        //        array_push($errors, "Une erreur est survenue lors du transfert");
+        //        die; //intermpre le script juste apres l erreur
+        //    }
+   
+        //    $fileSize = $_FILES['avatar']['size'];
+        //    echo ($fileSize);
+   
+        //    if ($fileSize  >  $maxsize) {
+        //        echo 'Le fichier de doit pas dépasser 600ko <br/>';
+        //        array_push($errors, "Le fichier de doit pas dépasser 600ko <br/>");
+        //        die;
+        //    }
+   
+        //    // eviter les doublons en images
+        //    $fileName = $_FILES['avatar']['name'];
+   
+        //    // Recupération de l'extension du fichier.
+        //    $fileExt = '.' . strtolower(substr(strrchr($fileName, '.'), 1));
+   
+        //    if (!in_array($fileExt, $validExt)) {
+        //        echo 'ERREUR FORMAT. Formats autorisés : jpg, jpeg, png  <br/>';
+        //        array_push($errors, "ERREUR FORMAT. Formats autorisés : jpg, jpeg, png  <br/>");
+        //        die;
+        //    }
+        //    // eviter les doublons en images
+        // //    global $resultat_upload;
+        //    $tmpName = $_FILES['avatar']['tmp_name'];
+        //    $uniqueName = md5(uniqid(rand(), true));
+        //    $fileName = "uploads/" .  $uniqueName . $fileExt;
+        //    // verification: on recupere le resultat
+        //    $resultat_upload = move_uploaded_file($tmpName, $fileName);
+
+        // //    move_uploaded_file($_FILES['avatar']['tmp_name'], 'upload/' . basename($_FILES['avatar']['name']));
+   
+        // //    $dirpath = realpath(dirname(getcwd($resultat_upload)));
+
+        //    if($resultat_upload)
+        //    {
+        //        echo 'Transfert de l\' image terminé !';
+        //    }
+
+
+
+
+
+
+
+
+        // // valider la taille de l'image, la taille est calculée en octet
+        // if ($_FILES['avatar']['size'] > 200000) {
+        //     array_push($errors, "La taille de l'image ne doit pas dépasser 200 ko");
+        //     $uploadOk = 0;
+        // }
+
+        // // On vérifie l'extension et la taille de l'image
+        // $avatar_ext = pathinfo($avatar, PATHINFO_EXTENSION); // ou $picture_ext = pathinfo($picture)['extension'];
+        // if (!in_array($avatar_ext, ['jpg', 'jpeg', 'png'])) {
+        //     array_push($errors, "Votre image doit être en .jpg, .jpeg ou .png");
+        //     $uploadOk = 0;
+        // }
 
         // verification si probleme de telechargement
         // source du code et adapter en fonction:
@@ -106,46 +161,33 @@ function create_user()
 
 
 
-        $target_dir = "upload/";
-        $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
+        // $target_dir = "upload/";
+        // $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
 
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        // $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        // if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir)) {
-        //     array_push($errors, "Échec du téléchargement de l'image.");
-        // } else {
-        //     $uploadOk = 1;
-            // move_uploaded_file($_FILES['avatar']['tmp_name'], 'upload/' . basename($_FILES['avatar']['name']));
-        //     echo "L'envoi a bien été effectué !";
-        // }
+        // // if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir)) {
+        // //     array_push($errors, "Échec du téléchargement de l'image.");
+        // // } else {
+        // //     $uploadOk = 1;
+        //     // move_uploaded_file($_FILES['avatar']['tmp_name'], 'upload/' . basename($_FILES['avatar']['name']));
+        // //     echo "L'envoi a bien été effectué !";
+        // // }
 
 
-        // move_uploaded_file($_FILES['avatar']['tmp_name'], 'uploads/' . htmlspecialchars(basename($_FILES['avatar']['name'])));
+        // // move_uploaded_file($_FILES['avatar']['tmp_name'], 'uploads/' . htmlspecialchars(basename($_FILES['avatar']['name'])));
+        // // echo "L'envoi a bien été effectué !";
+        // // var_dump($_FILES);
+
+        // move_uploaded_file($_FILES['avatar']['tmp_name'], 'upload/');
+
         // echo "L'envoi a bien été effectué !";
         // var_dump($_FILES);
 
-        move_uploaded_file($_FILES['avatar']['tmp_name'], 'upload/');
-
-        echo "L'envoi a bien été effectué !";
-        var_dump($_FILES);
 
 
 
-
-        // Check if $uploadOk is set to 0 by an error
-        // if ($uploadOk == 0) {
-        //     echo "Sorry, your file was not uploaded.";
-        //     // if everything is ok, try to upload file
-        // } else {
-        //     // $uploadOk = 1;
-        //     if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file)) {
-        //         echo "The file " . htmlspecialchars(basename($_FILES["avatar"]["name"])) . " has been uploaded.";
-        //     } else {
-        //         echo "Sorry, there was an error uploading your file.";
-        //     }
-        // }
-
-
+ 
 
 
 
