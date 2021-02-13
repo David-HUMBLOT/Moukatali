@@ -1,8 +1,8 @@
 <?php
-include('../config.php');
-include('/admin/includes/topic-functions.php');
+//include('../config.php');
+//include('/admin/includes/topic-functions.php');
 // récupére tous les topics de la BDD
-$topics = getAllTopics();
+// $topics = getAllTopics();
 
 if (isset($_GET['logout'])) {
   session_destroy();
@@ -26,7 +26,10 @@ $topics = mysqli_fetch_all($results, MYSQLI_ASSOC);
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- CSS -->
-  <link rel="stylesheet" href="../css/styles-admin.css">
+  <!-- <link rel="stylesheet" href="../css/styles-admin.css"> -->
+  <link rel="stylesheet" href="../../css/styleGreg.css">
+    <link rel="stylesheet" href="../../css/mon-style.css">
+    <link rel="stylesheet" href="../../css/styleDav.css">
 
   <title>Espace Administrateur - Topics - Moukat A Li</title>
 </head>
@@ -41,7 +44,7 @@ $topics = mysqli_fetch_all($results, MYSQLI_ASSOC);
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light ">
             <a class="navbar-brand " href="index.html">
-                <img src="../images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;"
+                <img src="../../images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;"
                     alt="logo_moukatali_noir.png"></img>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -81,12 +84,14 @@ $topics = mysqli_fetch_all($results, MYSQLI_ASSOC);
     </div>
 </header>
 
+<div class = "text-light" >
+
 
     <section>
       <div class="container">
       <h1 class="text-uppercase text-center py-3">topics</h1>
         <!-- message -->
-			  <?php include( '/includes/messages.php'); ?>
+			  <?php// include( '/includes/messages.php'); ?>
 
         <?php if (empty($topics)): ?>
 				<h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>
@@ -170,6 +175,8 @@ $topics = mysqli_fetch_all($results, MYSQLI_ASSOC);
     <a href="#" class="mb-1">C.G.U.</a>
     <a href="#">Mentions légales</a>
 </footer>
+
+</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
