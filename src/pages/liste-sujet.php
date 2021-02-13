@@ -130,6 +130,11 @@ global $user;
     <!-- DEBUT DU BODY -->
 
 
+    <div class="container   ">
+            <!-- TITRE H1 --> 
+            <h1 class=" text-center text-alert mb-4 " >&ldquo;MoukatAli !!&rdquo;</h1>
+    </div>
+
 
 
 
@@ -154,11 +159,9 @@ global $user;
 
             </div>
 
-        
             <div> <button type="submit" name="deconnection">
                         deconnection test
                     </button></div>
-
 
         </section>
 
@@ -183,8 +186,6 @@ global $user;
 
 
     <!-- 88888888888888888888888888888888888888888888888888888888888 -->
-
-
 
 
     <!-- SECTION -->
