@@ -5,6 +5,8 @@
 <?
 
 
+// ATTENTION CE N EST PAS ENCORE FONCTIONELLE 
+
 
 session_unset();
 
@@ -16,6 +18,6 @@ session_destroy();
 ?> 
 
 
-<!-- retour sur index -->
+<!-- REDIRECTION SUR L INDEX APRES UNE DECONNECTION -->
 
 <meta http-equiv="refresh" content="1; url=../index.php" />

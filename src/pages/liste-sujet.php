@@ -106,6 +106,7 @@
             echo ('<img src="../../images/uploads/' . $user['avatar'] . '" style="height:50px"/>' . "<br/>");
             echo ($user['avatar'] . "<br/>");
             echo ($user['pseudo'] . "<br/>");
+            echo ($user['id'] . "<br/>"); // ID QU ON A BESOIN POUR LA FONCTION READ USER BY ID AFIN D AFFICHER LES INFOS DEPUIS LA BDD ET NON DEPUIS LES VARIABLE DE SESSION. AVEC SESSION C EST MOIN SECURISEE
             echo ($user['nom'] . "<br/>");
             echo ($user['age'] . "<br/>");
             echo ($user['genre'] . "<br/>");
