@@ -88,8 +88,8 @@ $topics = mysqli_fetch_all($results, MYSQLI_ASSOC);
 
 
     <section>
-      <div class="container">
-      <h1 class="text-uppercase text-center py-3">topics</h1>
+      <div class="container mt-5">
+      <h1 class="text-uppercase text-center py-3 mt-5 pt-5">topics</h1>
         <!-- message -->
 			  <?php// include( '/includes/messages.php'); ?>
 

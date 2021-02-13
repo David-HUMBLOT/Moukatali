@@ -130,28 +130,37 @@ global $user;
     <!-- DEBUT DU BODY -->
 
 
+
+
+
     <!-- AFFICHAGE EN FONCTION DE CONNECTION OU NON. SI PAS DESSION SA AFFICHE RIEN -->
     <?php
 
     if (isset($_SESSION['user']['id'])) { ?>
 
-        <section>
-            <div class="container d-flex flex-column align-items-center justify-content-center">
+        <section class="container">
 
-                <?php echo ('<img  id="img_avatar" src="../../images/uploads/' . $user['avatar'] . '" />'); ?>
-                <!-- TITRE -->
-                <div class="mt-5 ml-5 mr-5 box-offre col-lg-6 col-md-6 col-sm-4 d-flex justify-content-center">
+            <!-- AUTRE SUJET -->
+            <div class=" bg-light text-dark d-flex  aligns-items-center justify-content-start  mb-md-0 mr-md-3">
 
-                    <h4 class="mt-2">Connecté en tant que : <?php echo ($user['pseudo']) ?> </h5>
+                <div class="p-3">
+                    <?php echo ('<img   src="../../images/uploads/' . $user['avatar'] . '" style="height:8em; width:8em; border-radius:2em; "/>'); ?>
 
                 </div>
 
-                <button type="submit" name="deconnection">
-                    deconnection test
-                </button>
-            </div>
-        </section>
+                <div class="my-5 px-4">
+                    <h4>Compte de: <?php echo ($user['pseudo']) ?> </h4>
+                </div>
 
+            </div>
+
+        
+            <div> <button type="submit" name="deconnection">
+                        deconnection test
+                    </button></div>
+
+
+        </section>
 
     <?php  }
 
@@ -174,14 +183,6 @@ global $user;
 
 
     <!-- 88888888888888888888888888888888888888888888888888888888888 -->
-
-
-
-
-
-
-
-
 
 
 
@@ -327,30 +328,30 @@ global $user;
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in lobortis nisl. Vestibulum mauris
                     metus, luctus quis volutpat vitae, laoreet. Lorem ipsum dolor sit amet.</p>
 
-                    <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end">
 
                     <div class="d-flex justify-content-md-between">
-                    <!-- LIKE DISLIKE -->
-                    <div class="like-dislike d-flex justify-content-end justify-content-md-start align-items-md-end mb-4 mb-md-0 order-md-1">
-                        <div class="d-flex align-items-center mr-3">
-                            <div class="mr-1"><img src="../../icons/like.png" alt="Like"></div>
-                            <div class="nb-vote black text-light d-flex justify-content-center align-items-center font-weight-bold">
-                                1233</div>
+                        <!-- LIKE DISLIKE -->
+                        <div class="like-dislike d-flex justify-content-end justify-content-md-start align-items-md-end mb-4 mb-md-0 order-md-1">
+                            <div class="d-flex align-items-center mr-3">
+                                <div class="mr-1"><img src="../../icons/like.png" alt="Like"></div>
+                                <div class="nb-vote black text-light d-flex justify-content-center align-items-center font-weight-bold">
+                                    1233</div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="mr-1"><img src="../../icons/dislike.png" alt="Dislike"></div>
+                                <div class="nb-vote black text-light d-flex justify-content-center align-items-center font-weight-bold">
+                                    1233</div>
+                            </div>
                         </div>
-                        <div class="d-flex align-items-center">
-                            <div class="mr-1"><img src="../../icons/dislike.png" alt="Dislike"></div>
-                            <div class="nb-vote black text-light d-flex justify-content-center align-items-center font-weight-bold">
-                                1233</div>
-                        </div>
+
                     </div>
+
 
                 </div>
 
 
-                    </div>
 
-
-           
             </div>
 
 

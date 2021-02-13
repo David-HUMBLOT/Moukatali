@@ -23,6 +23,12 @@
 
 
 /* ************************************************************ */
+/* #img_avatar_dav{
+    width: 130px!important;
+    height: 130px!important;
+    border-radius: 5rem!important;
+    border:solid black 2px;
+} */
 
 
 /* *********************************************************** */
@@ -83,6 +89,7 @@ h4{
     height: 10vh;
 
 }
+
 
 
 
