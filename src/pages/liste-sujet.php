@@ -1,7 +1,10 @@
 <!-- DERARAGE D UNE SESSION suite a une connexion on a besoin des infos de sessions pour afficher au bon endroit -->
 
 
-<?php session_start();
+<?php
+session_start();
+global $user;
+//  echo  ($user);
 
 // header ("content-type: image/jpeg");
 ?>
@@ -89,19 +92,23 @@
         <?php
 
         include('../../functions/read-user.php');
-        readUserById($_SESSION['user']['id']);
-        // var_dump($_SESSION['user']['id']);
+
+        // readUserById($_SESSION['user']['id']);
+
+        var_dump($_SESSION['user']['id']);
         // var_dump($_SESSION['pseudo']);
         // var_dump($user);
         // var_dump($user['prenom']);
         // var_dump($user['avatar']);
 
-        global $user;
+
 
         // Test si nos informations sont présente en variables de session suite à la fonction de connection qui les ont stockées
         // var_dump($_SESSION); //a muté plus tard
 
         if (isset($_SESSION['user'])) {
+
+            readUserById($_SESSION['user']['id']);
             echo 'Donnée de session en cours : <br/>';
             echo ('<img src="../../images/uploads/' . $user['avatar'] . '" style="height:50px"/>' . "<br/>");
             echo ($user['avatar'] . "<br/>");
@@ -114,8 +121,6 @@
             echo ($user['email'] . "<br/>");
             echo ($user['password'] . "<br/>");
             echo ($user['ville'] . "<br/>");
-
-
         } else {
             echo 'Aucune saission en cours ! Veuillez vous connectez !<br/>';
         }
