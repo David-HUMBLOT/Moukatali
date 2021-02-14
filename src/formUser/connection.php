@@ -34,8 +34,8 @@ require_once('../../functions/connect-user.php');
 </head>
 
 <body>
-    <!-- HEADER -->
-
+  
+    <!-- 888888888888888888888888888888888888888888888888888888 -->
     <!-- HEADER -->
     <header class="header-liste ">
         <div class="container">
@@ -51,37 +51,40 @@ require_once('../../functions/connect-user.php');
                     <span class="position"></span>
                     <span class="position"></span>
                     <ul class="menu">
-
-
                         <a href="../../index.php">
                             <li class="header-liste-p"> <img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Accueil</li>
                         </a>
 
-
-
                         <?php
                         if (isset($_SESSION['user']['id'])) {  ?>
+                            
+                            
+                            
+                            <a href="liste-sujet.php">
+                                <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> MouKatAli !!</li>
+                            </a>
                             <a href="../user/profile.php">
                                 <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Mon profil</li>
                             </a>
                             <a href="succes.html">
                                 <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Mes succès</li>
                             </a>
-                            <a href="../formUser/abonnement.php">
+                            <a href="../pages/offre.php">
                                 <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " />Offre et abonnemnt</li>
                             </a>
                             <a href="#">
                                 <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Contact</li>
                             </a>
 
-
                             <li class="header-liste-p d-flex justify-content-around mr-5">
+
                                 <form method="POST">
                                     <button href="../../index.php" type="submit" class="btn btn-warning" name="deconnection">
                                         Se déconnecter
                                     </button>
                                 </form>
                             </li>
+
                         <?php  } else {  ?>
 
                             <a href="../formUser/connection.php">
@@ -93,13 +96,7 @@ require_once('../../functions/connect-user.php');
                             <a href="#">
                                 <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Contact</li>
                             </a>
-
-
                         <?php    }  ?>
-
-
-
-
                     </ul>
                 </div>
             </nav>

@@ -57,16 +57,18 @@ include('../../functions/deconnect-user.php');
                     <span class="position"></span>
                     <span class="position"></span>
                     <ul class="menu">
-
-
                         <a href="../../index.php">
                             <li class="header-liste-p"> <img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Accueil</li>
                         </a>
 
-
-
                         <?php
                         if (isset($_SESSION['user']['id'])) {  ?>
+                            
+                            
+                            
+                            <a href="liste-sujet.php">
+                                <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> MouKatAli !!</li>
+                            </a>
                             <a href="../user/profile.php">
                                 <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Mon profil</li>
                             </a>
@@ -80,14 +82,15 @@ include('../../functions/deconnect-user.php');
                                 <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Contact</li>
                             </a>
 
-
                             <li class="header-liste-p d-flex justify-content-around mr-5">
+
                                 <form method="POST">
                                     <button href="../../index.php" type="submit" class="btn btn-warning" name="deconnection">
                                         Se déconnecter
                                     </button>
                                 </form>
                             </li>
+
                         <?php  } else {  ?>
 
                             <a href="../formUser/connection.php">
@@ -99,13 +102,7 @@ include('../../functions/deconnect-user.php');
                             <a href="#">
                                 <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Contact</li>
                             </a>
-
-
                         <?php    }  ?>
-
-
-
-
                     </ul>
                 </div>
             </nav>
@@ -309,14 +306,8 @@ include('../../functions/deconnect-user.php');
                                     1233</div>
                             </div>
                         </div>
-
                     </div>
-
-
                 </div>
-
-
-
             </div>
 
 
