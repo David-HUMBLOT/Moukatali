@@ -4,6 +4,10 @@
 <?php
 session_start();
 global $user;
+include('../../functions/read-user.php');
+include('../../functions/delete-user.php');
+include('../../functions/deconnect-user.php');
+//  echo  ($user);
 //  echo  ($user);
 
 // header ("content-type: image/jpeg");
@@ -17,9 +21,6 @@ global $user;
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
@@ -34,9 +35,14 @@ global $user;
     <title>Liste des sujets - Moukat A Li</title>
 </head>
 
-<body>
-    <!-- HEADER -->
 
+
+
+
+<body>
+
+    <!-- 888888888888888888888888888888888888888888888888888888 -->
+    <!-- HEADER -->
     <header class="header-liste ">
         <div class="container">
 
@@ -46,187 +52,141 @@ global $user;
                     <img src="../../images/logo.png" alt="Logo Moukat A Li" style="width: 24vh;">
                 </a>
                 <div class="menu-toggle mt-1">
-
                     <input class="position" type="checkbox" />
                     <span class="position"></span>
                     <span class="position"></span>
                     <span class="position"></span>
-
                     <ul class="menu">
+
+
                         <a href="../../index.php">
                             <li class="header-liste-p"> <img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Accueil</li>
                         </a>
-                        <!-- <a href="liste-sujet.html">
-                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size "  class="icon-size " /> Moukatages</li>
-                        </a> -->
-                        <a href="../formUser/connection.php">
-                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Se connecter</li>
-                        </a>
-                        <a href="../user/profile.php">
-                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Mon espace</li>
-                        </a>
-                        <a href="../formUser/abonnement.php">
-                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> S'abonner</li>
-                        </a>
-                        <!-- <a href="succes.html">
-                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png"  class="icon-size "  class="icon-size " /> Mes succès</li>
-                        </a> -->
-                        <a href="#">
-                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Contact</li>
-                        </a>
-                        <a href="">
-                            <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Se déconnecter</li>
-                        </a>
+
+
+
+                        <?php
+                        if (isset($_SESSION['user']['id'])) {  ?>
+                            <a href="../user/profile.php">
+                                <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Mon profil</li>
+                            </a>
+                            <a href="succes.html">
+                                <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Mes succès</li>
+                            </a>
+                            <a href="../formUser/abonnement.php">
+                                <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " />Offre et abonnemnt</li>
+                            </a>
+                            <a href="#">
+                                <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Contact</li>
+                            </a>
+
+
+                            <li class="header-liste-p d-flex justify-content-around mr-5">
+                                <form method="POST">
+                                    <button href="../../index.php" type="submit" class="btn btn-warning" name="deconnection">
+                                        Se déconnecter
+                                    </button>
+                                </form>
+                            </li>
+                        <?php  } else {  ?>
+
+                            <a href="../formUser/connection.php">
+                                <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Se connecter</li>
+                            </a>
+                            <a href="../formUser/inscription.php">
+                                <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> S'inscrire</li>
+                            </a>
+                            <a href="#">
+                                <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Contact</li>
+                            </a>
+
+
+                        <?php    }  ?>
+
+
+
+
                     </ul>
                 </div>
             </nav>
 
         </div>
     </header>
-
     <!-- FIN DE LA NAV -->
 
-    <!--88888888888888888888888888888888888888888 -->
-    <!-- VERIFICATION DES MESSAGE ERREUR ET ETAT DE CONNECTION TEXT EN BLC SUR FOND NOIR -->
+
+    <!-- VERIFICATION DES MESSAGE ERREUR -->
     <div class="text-light">
-        <?php
-
-        include('../../functions/read-user.php');
-        include('../../functions/delete-user.php');
-        // include('../../functions/deconnect-user.php');
-        // readUserById($_SESSION['user']['id']);
-        var_dump($_SESSION['user']['id']);
-        // var_dump($_SESSION['pseudo']);
-        // var_dump($user);
-        // var_dump($user['prenom']);
-        // var_dump($user['avatar']);
-        // Test si nos informations sont présente en variables de session suite à la fonction de connection qui les ont stockées
-        // var_dump($_SESSION); //a muté plus tard
-        if (isset($_SESSION['user'])) {
-            // MODIFIER COMPTE
-            // DECONNECTION SESSION
-            if (isset($_GET['deconnection'])) {
-                session_destroy();
-                unset($_SESSION['user']);
-        ?>
-
-
 
         <?php
 
-            }
+
+        // 888888888888888888888888888888888888888888888
+        // SI ID EXISTANT
+        if (isset($_SESSION['user']['id'])) {
+            //READ USER Lancement de la fonction de lecture avec id de session en parametre
             readUserById($_SESSION['user']['id']);
-            echo 'Donnée de session en cours : <br/>';
-            echo ('<img src="../../images/uploads/' . $user['avatar'] . '" style="height:4em; width:4em; border-radius:em; "/>' . "<br/>");
-            echo ($user['avatar'] . "<br/>");
-            echo ($user['pseudo'] . "<br/>");
-            echo ($user['id'] . "<br/>"); // ID QU ON A BESOIN POUR LA FONCTION READ USER BY ID AFIN D AFFICHER LES INFOS DEPUIS LA BDD ET NON DEPUIS LES VARIABLE DE SESSION. AVEC SESSION C EST MOIN SECURISEE
-            echo ($user['nom'] . "<br/>");
-            echo ($user['age'] . "<br/>");
-            echo ($user['genre'] . "<br/>");
-            echo ($user['telephone'] . "<br/>");
-            echo ($user['email'] . "<br/>");
-            echo ($user['password'] . "<br/>");
-            echo ($user['ville'] . "<br/>");
+
+            // Lancement de la fonction de suppression avec id de session en parametre et SI le bouton est cliqué
+            if (isset($_POST['supprimer'])) {
+                delete_user($_SESSION['user']['id']);
+            }
+
+            // DECONNECTION SESSION
+            if (isset($_POST['deconnection'])) {
+                deconnect_user();
+            }
         } else {
             echo 'Aucune saission en cours ! Veuillez vous connectez !<br/>';
         }
-
         ?>
+
     </div>
 
-    <!-- 888888888888888888888888888888888888888888888888888888 -->
-
     <!-- DEBUT DU BODY -->
-
-
     <div class="container   ">
         <!-- TITRE H1 -->
         <h1 class=" text-center text-alert mb-4 ">&ldquo;MoukatAli !!&rdquo;</h1>
     </div>
 
-
-
-
     <!-- AFFICHAGE EN FONCTION DE CONNECTION OU NON. SI PAS DESSION SA AFFICHE RIEN -->
     <?php
 
     if (isset($_SESSION['user']['id'])) { ?>
-
         <section class="container">
-
             <!-- AUTRE SUJET -->
             <div class=" bg-light text-dark d-flex  aligns-items-center justify-content-start  mb-md-0 mr-md-3">
-
                 <div class="p-3">
                     <?php echo ('<img   src="../../images/uploads/' . $user['avatar'] . '" style="height:8em; width:8em; border-radius:2em; "/>'); ?>
-
                 </div>
-
                 <div class="my-5 px-4">
                     <h4>Compte de: <?php echo ($user['pseudo']) ?> </h4>
                 </div>
-
             </div>
 
             <div class="d-flex justify-content-center">
-
+    
+                    <!-- FONCTIONNELLE -->
+                    <a href="../formUser/modification.php"><button type="submit" name="mofidier">
+                            modifier (fonctionne)
+                        </button></a>
+                </div>
                 <div>
-                    <form method="GET" action="">
-                        <button href="../../index.php" type="submit" name="deconnection">
-                            deconnection test
+                    <!-- FONCTIONELLE -->
+                    <form action="" method="POST">
+                        <button type="submit" name="supprimer">
+                            supprimer compte (fonctionne)
                         </button>
                     </form>
                 </div>
-
-                <div>
-                    <a href="../formUser/modification.php"><button type="submit" name="mofidier">
-                            modifier compte
-                        </button></a>
-                </div>
-
-                <div>
-                    <button type="submit" name="supprimer">
-                        supprimer compte test
-                    </button>
-                </div>
-
-
             </div>
-
-
-
-
-        </section>
-
-    <?php  }
-
-    ?>
-
-
-
-
-
-
-
-    <?php
-// test si session existe et si id existe
-    if (isset($_SESSION)) {
-        echo ($_SESSION['user']['id']);
-    }
-
-    ?>
-
-
+        </section> <?php  }  ?>
 
     <!-- 88888888888888888888888888888888888888888888888888888888888 -->
-
-
     <!-- SECTION -->
 
     <section>
         <div class="container pt-4">
-
             <!-- SUJET -->
             <div class="sujet bg-light p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center">
                 <div class="image mb-2 mb-md-0 mr-md-2 d-lg-none"><img src="../../images/image-mobile.jpg" alt="Image du sujet"></div>
@@ -255,13 +215,11 @@ global $user;
                     </div>
                 </div>
             </form>
-
         </div>
     </section>
     <!-- SECTION -->
     <section>
         <div class="container py-4">
-
             <!-- TRIER-->
             <div class="trier d-flex justify-content-between mb-3">
                 <div class="btn-group">
@@ -279,22 +237,16 @@ global $user;
                         moukatages</button>
                 </div>
             </div>
-
-
             <!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
 
             <?php
-
             if (isset($_SESSION['user']['id'])) {  ?>
-
                 <!-- MOUKATAGE -->
                 <div class="moukatage p-3 bg-light text-dark mb-3">
                     <!-- PROFIL -->
                     <div class="profil d-flex order-md-0 mb-4">
                         <div class=" mr-2">
-
                             <?php echo ('<img  src="../../images/uploads/' . $user['avatar'] . '" style="height:4.3em; width:4.3em; border-radius:5em; "/>' . "<br/>"); ?>
-
                         </div>
                         <div class="info-profil">
                             <p class="mb-0 mt-3 ml-3 text-uppercase font-weight-bolder"> <?php echo ($user['pseudo']);  ?> </p>
@@ -304,10 +256,7 @@ global $user;
                     <!-- TEXTE -->
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in lobortis nisl. Vestibulum mauris
                         metus, luctus quis volutpat vitae, laoreet. Lorem ipsum dolor sit amet.</p>
-
                     <div class="d-flex justify-content-end">
-
-
                         <div class="d-flex justify-content-md-between">
                             <!-- LIKE DISLIKE -->
                             <div class="like-dislike d-flex justify-content-end justify-content-md-start align-items-md-end mb-4 mb-md-0 order-md-1">
@@ -322,28 +271,10 @@ global $user;
                                         1233</div>
                                 </div>
                             </div>
-
                         </div>
-
-
-
                     </div>
-
-                </div>
-
-
-            <?php  }
-            ?>
-
+                </div> <?php  }  ?>
             <!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
-
-
-
-
-
-
-
-
 
             <!-- MOUKATAGE -->
             <div class="moukatage p-3 bg-light text-dark mb-3 ">
@@ -357,7 +288,6 @@ global $user;
                         <p class="mb-0">1 janvier 2021 à 00h00</p>
                     </div>
                 </div>
-
 
                 <!-- TEXTE -->
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in lobortis nisl. Vestibulum mauris
@@ -411,6 +341,29 @@ global $user;
 
         </div>
     </section>
+
+    <div class="text-light">
+
+        <?php
+        // echo 'Donnée de session en cours : <br/>';
+        // echo ('<img src="../../images/uploads/' . $user['avatar'] . '" style="height:4em; width:4em; border-radius:em; "/>' . "<br/>");
+        // echo ($user['avatar'] . "<br/>");
+        // echo ($user['pseudo'] . "<br/>");
+        // echo ($user['id'] . "<br/>"); // ID QU ON A BESOIN POUR LA FONCTION READ USER BY ID AFIN D AFFICHER LES INFOS DEPUIS LA BDD ET NON DEPUIS LES VARIABLE DE SESSION. AVEC SESSION C EST MOIN SECURISEE
+        // echo ($user['nom'] . "<br/>");
+        // echo ($user['age'] . "<br/>");
+        // echo ($user['genre'] . "<br/>");
+        // echo ($user['telephone'] . "<br/>");
+        // echo ($user['email'] . "<br/>");
+        // echo ($user['password'] . "<br/>");
+        // echo ($user['ville'] . "<br/>");   
+        ?>
+
+    </div>
+
+
+
+
     <!-- FOOTER -->
     <footer class="text-center py-5 d-flex flex-column">
         <a href="#" class="mb-1">Contact</a>

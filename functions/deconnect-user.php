@@ -1,33 +1,15 @@
-<?
+<?php
 
 
+function deconnect_user()
+{
 
-function deconnectUser(){
-   
-
-       // DECONNECTION SESSION
-       if (isset($_GET['deconnection'])) {
-        session_destroy();
-        unset($_SESSION['user']);
-        header('location: ../../index.php');
-       
-    }
-
-
-   
-
-
-
-};
-
-
-
-
-
+    session_destroy();
+    unset($_SESSION['user']);
 
 ?>
+    <meta http-equiv="refresh" content="1; URL=http://127.0.0.1/edsa-moukatali2/index.php"> <?php
 
+                                                                                }
 
-<!-- REDIRECTION SUR L INDEX APRES UNE DECONNECTION -->
-
-<meta http-equiv="refresh" content="1; url=../index.php" />
+                                                                                    ?>
