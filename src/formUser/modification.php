@@ -178,7 +178,10 @@
                     <!-- PSEUDONYME DATA TYPE VARCHAR-->
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Pseudonyme*</label>
-                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Moukateur 974" title="Choisir un pseudo ou un nom d'utilisateur">
+                        <input type="text" class="form-control" id="pseudo" name="pseudo"  title="Choisir un pseudo ou un nom d'utilisateur"
+                        
+                        value = "<?php   echo ($user['pseudo']);    ?>" >
+
                         </input>
                         <!-- NE PAS AFFACER SERVIRA POUR EXPLIQUER LA SECURIT2 FORMULAIRE DU COT2 DE PHP (double securisation) -->
                         <!-- required
@@ -193,7 +196,7 @@
 
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Avatar*</label>
-                        <input type="file" class="form-control" id="avatar" name="avatar" required>
+                        <input type="file" class="form-control" id="avatar" name="avatar" required  >
                         </input>
 
                     </div>
@@ -205,14 +208,16 @@
                         <div class=" col-md-6 col-12 px-0 mb-3 mb-md-0 pr-md-1">
 
                             <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Nom*</label>
-                            <input type="text" class="form-control" id="nom" name="nom" placeholder="DUPONT" title="Veuillez inscrire votre Nom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4" maxlength="50" size="50" value="">
+                            <input type="text" class="form-control" id="nom" name="nom" placeholder="DUPONT" title="Veuillez inscrire votre Nom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4" maxlength="50" size="50" 
+                            value = "<?php   echo ($user['nom']);    ?>">
                             </input>
                         </div>
 
                         <!-- PRENOM DATA TYPE VARCHAR-->
                         <div class="col-md-6 col-12 px-0 pl-md-1">
                             <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Prénom*</label>
-                            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Vinshan" title="Veuillez inscrire votre prénom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4" maxlength="50" size="50" value="">
+                            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Vinshan" title="Veuillez inscrire votre prénom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4" maxlength="50" size="50"
+                             value = "<?php   echo ($user['prenom']);    ?>">
                             </input>
                         </div>
                     </div>
@@ -230,7 +235,6 @@
                                 <option selected>Choisir son genre</option>
                                 <option value="1">Homme</option>
                                 <option value="2">Femme</option>
-                                <option value="2">3ième type</option>
                             </select>
                         </div>
 
@@ -238,7 +242,8 @@
                         <!-- AGE DATATPE SQL INT(10)-->
                         <div class="col-md-6 px-0 mb-3 mb-md-0 pl-md-1">
                             <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Age*</label>
-                            <input type="number" class="form-control" id="age" name="age" placeholder="18" min=18 max=100 required>
+                            <input type="number" class="form-control" id="age" name="age" placeholder="18" min=18 max=100 required
+                            value = "<?php   echo ($user['age']);    ?>" >
                             </input>
                         </div>
 
@@ -249,7 +254,8 @@
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Email* </label>
 
-                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" title="Veuillez inscrire votre email" size="60" minlength="3" maxlength="60" required value="">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" title="Veuillez inscrire votre email" size="60" minlength="3" maxlength="60" required 
+                        value = "<?php   echo ($user['email']);    ?>">
                         </input>
 
                     </div>
@@ -259,7 +265,7 @@
                     <div class="mb-3 ">
                         <label class="text-dark mb-0" for="mot de passe1">Mot de passe* </label>
 
-                        <input type="password" class="form-control" id="password_1" name="password_1" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="">
+                        <input type="password" class="form-control" id="password_1" name="password_1" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="<?php   echo ($user['password']);    ?>">
                         </input>
 
                     </div>
@@ -277,7 +283,7 @@
                     <!-- TELEPHONE DATA TYPE VARCHAR-->
                     <div class="mb-3 mt-3 text-start">
                         <label for="phone" class="form-label">Téléphone</label>
-                        <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="0692010203" title="Inscrire votre numéro de téléphone (format 00 00 00 00 00)" required pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" value="">
+                        <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="0692010203" title="Inscrire votre numéro de téléphone (format 0692010203)" required pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" value = "<?php   echo ($user['telephone']);    ?>">
                     </div>
 
 
@@ -287,7 +293,7 @@
                         <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Ville</label>
 
                         <select class="custom-select" id="inputGroupSelect01" name="ville">
-                            <option selected>Saint-Denis</option>
+                            <option selected><?php   echo ($user['ville']);    ?></option>
                             <option>Saint-Marie</option>
                             <option>Saint-Suzanne</option>
                             <option>Tampon</option>
@@ -295,9 +301,9 @@
                     </div>
 
 
-                    <!-- BOUTON INSCRIPTION -->
+                    <!-- BOUTON DE MODIFICATION QUI LANCERA LA FONCTION UPDATE -->
                     <div class="d-flex justify-content-center">
-                        <button type="submit" name="modifier" class="btn btn-dark">INSCRIPTION</button>
+                        <button type="submit" name="modifier" class="btn btn-dark">METTRE A JOUR</button>
 
                     </div>
                     <div class="mt-3 d-flex justify-content-center"> <i>(* Champs obligatoires)</i></div>
