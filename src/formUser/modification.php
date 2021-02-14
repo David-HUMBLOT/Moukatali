@@ -1,8 +1,8 @@
-
-
 <!-- recuperation des informations deja saisi lors de la première inscription -->
 
-<?php session_start();  ?>
+<?php session_start();
+
+?>
 
 
 
@@ -80,7 +80,7 @@
     </header>
 
 
-  
+
     <!--88888888888888888888888888888888888888888 -->
     <!-- VERIFICATION DES MESSAGE ERREUR ET ETAT DE CONNECTION TEXT EN BLC SUR FOND NOIR -->
     <div class="text-light"><?php
@@ -91,12 +91,34 @@
 
                             //APPEL DE LA FONCTION CREATE USER
                             //require once evite les boucles de includes
-                            // require_once ('functions/registration-login.php');
+
+                            include('../../functions/read-user.php');
                             require_once('../../functions/update-user.php');
                             // ON LANCE NOTRE FONCTION CREATE USER SI BTN CLIQUER
                             if (isset($_POST['modifier'])) {
-                                create_user();
+                                update_user();
                             }
+
+                            if (isset($_SESSION['user'])) {
+
+                                readUserById($_SESSION['user']['id']);
+                                echo 'Donnée de session en cours : <br/>';
+                                echo ('<img src="../../images/uploads/' . $user['avatar'] . '" style="height:4em; width:4em; border-radius:em; "/>' . "<br/>");
+                                echo ($user['avatar'] . "<br/>");
+                                echo ($user['pseudo'] . "<br/>");
+                                echo ($user['id'] . "<br/>"); // ID QU ON A BESOIN POUR LA FONCTION READ USER BY ID AFIN D AFFICHER LES INFOS DEPUIS LA BDD ET NON DEPUIS LES VARIABLE DE SESSION. AVEC SESSION C EST MOIN SECURISEE
+                                echo ($user['nom'] . "<br/>");
+                                echo ($user['age'] . "<br/>");
+                                echo ($user['genre'] . "<br/>");
+                                echo ($user['telephone'] . "<br/>");
+                                echo ($user['email'] . "<br/>");
+                                echo ($user['password'] . "<br/>");
+                                echo ($user['ville'] . "<br/>");
+                            }
+
+
+
+
                             ?></div>
     <!--88888888888888888888888888888888888888888 -->
 
@@ -104,10 +126,11 @@
 
     <section>
         <div class="container d-flex flex-column align-items-center justify-content-center">
-
+            <!-- TITRE H1 -->
+            <!-- <h1 class=" text-center text-alert mb-4 " >&ldquo;Modifier son compte&rdquo;</h1> -->
             <!-- TITRE -->
             <div class="mt-5 ml-5 mr-5 box-titre col-lg-6 col-md-6 col-sm-4 d-flex justify-content-center">
-                <h2>MI VEU MOUKATER !! &#x1F60B;</h2>
+                <h2>MI CHANGE DE VIE!! (modifier son compte) &#x1F60B;</h2>
             </div>
         </div>
 
@@ -118,17 +141,17 @@
 
     </div>
 
-
+    <!-- ici l id form inscription ne change pas car c est juste du css et n impacte pas la page de modification mais garde le meme style visuelle que la page d inscription -->
     <section id="form-inscription">
 
         <div class="container d-flex flex-column align-items-center justify-content-center">
 
             <!-- MESSAGE D'ERREUR-->
             <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
-            <?php global $errors, $success_inscription; ?>
+            <?php global $errors, $success_modification; ?>
 
             <!-- FORMULAIRE -->
-            <!-- FORMULAIRE D'INSCRIPTION -->
+            <!-- FORMULAIRE De modification -->
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 col-12">
 
                 <form class="col px-3 py-4" method="POST" enctype="multipart/form-data">
@@ -143,10 +166,10 @@
                     <?php endif ?>
 
                     <!-- MESSAGE CONFIRMATION CONNECTION AVANT REDIRECTION -->
-                    <?php if (count($success_inscription) > 0) : ?>
+                    <?php if (count($success_modification) > 0) : ?>
                         <div class="alert alert-success" role="alert">
-                            <?php foreach ($success_inscription as $success_inscriptions) : ?>
-                                <p><?php echo $success_inscriptions ?></p>
+                            <?php foreach ($success_modification as $success_modificcations) : ?>
+                                <p><?php echo $success_modifications ?></p>
                             <?php endforeach; ?>
                         </div>
                     <?php endif ?>

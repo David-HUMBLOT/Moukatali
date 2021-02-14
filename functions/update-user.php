@@ -22,9 +22,10 @@ function update_user()
 
     echo ' Inititialisation varibles GLOBAL  <br/>Initialisation  du tableaux des erreurs (IN FONCTIONS)  <br/>';
     // NOUS SERT PAR EXEMPLE A SORTIR LES INFORMATIOSN DU TABLEAUX DES ERREURS DE LA FONCTION
-    global $errors, $success_modification, $role, $pseudo, $email, $nom, $prenom, $pdo,  $password_hash;
+    global $errors, $success_modification, $role, $pseudo, $email, $nom, $prenom, $pdo,  $password_hash, $modif_id_user;
 
     // INITIALISATION DES VARIBLES DONT CEUX PAR DEFAUT AFIN DE LES TRAITER AVANT REQUETE D INSERTION EN BASE DE DONNEE 
+    $modif_id_user = $_SESSION['user']['id'];
     $pseudo = ""; //initialisation
     $avatar = "";
     $email = "";
@@ -195,13 +196,6 @@ function update_user()
         echo ' suite .. Fin des vérifications des champs vide .. suite <br/>';
 
 
-
-
-
-
-
-
-
         // 88888888888888888888888888888888888888888888888888888888888888888888888888888888
 
 
@@ -212,14 +206,6 @@ function update_user()
         // RESTE A FAIRE 
 
         // 8888888888888888888888888888888888888888888888888888888888888888888888888888888
-
-
-
-
-
-
-
-
 
         /******************************************************
          * VERIFICATION BOUBLON EMAIL METHODE PDO *
@@ -269,9 +255,6 @@ function update_user()
         //LA PAGE CONTIENDRA UN BOUTON SUIVANT
 
 
-
-
-
         /***********************************************
          * MODIFICATION (UPDATE) UTILISATEUR EN BDD *
          ************************************************/
@@ -304,13 +287,7 @@ function update_user()
 
             // TEST REQUETE UPDATE FONCTIONNELLE EN BDD
 
-
-            // REQUETE D INSERTION (CREATION) UTILISATEUR EN BASSE DE DONEE. 13 INFORMATIONS AU TOTAL INSERTION DANS L ODRE DE LA TABLE EN BASSE DE DONNEE
-            //  ID EST AUTO INCREMENTER EN BDD
-
-
-
-
+          
             // role = '' , on ne modifie pas le role car deja attribué et non modifiable
             //  date_inscription = '' , on ne modifie pas la date de l inscriptio, car c est juste une mise a jour
 
@@ -336,9 +313,6 @@ function update_user()
 WHERE id = $modif_id_user
 
 ";
-
-
-
 
 
             $reqInsert = $pdo->prepare($reqt); //preparation de la requete

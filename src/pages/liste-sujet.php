@@ -93,12 +93,7 @@ global $user;
 
         include('../../functions/read-user.php');
         // include('../../functions/deconnect-user.php');
-
-
-
-
         // readUserById($_SESSION['user']['id']);
-
         var_dump($_SESSION['user']['id']);
         // var_dump($_SESSION['pseudo']);
         // var_dump($user);
@@ -106,26 +101,20 @@ global $user;
         // var_dump($user['avatar']);
         // Test si nos informations sont présente en variables de session suite à la fonction de connection qui les ont stockées
         // var_dump($_SESSION); //a muté plus tard
-
         if (isset($_SESSION['user'])) {
-
-
-
             // MODIFIER COMPTE
-
             // DECONNECTION SESSION
             if (isset($_GET['deconnection'])) {
                 session_destroy();
                 unset($_SESSION['user']);
                 header('location: ../../index.php');
-
-?>
-
+        ?>
 
 
-      <?php
-               
-          
+
+        <?php
+
+
             }
 
             readUserById($_SESSION['user']['id']);
@@ -185,7 +174,7 @@ global $user;
             <div class="d-flex justify-content-center">
 
                 <div>
-                    <form  method="GET" action="">
+                    <form method="GET" action="">
                         <button type="submit" name="deconnection">
                             deconnection test
                         </button>
@@ -193,9 +182,14 @@ global $user;
 
                 </div>
 
-                <div> <button type="submit" name="mofidier-compte">
+                <div>
+
+                    <a href = "../formUser/modification.php"  ><button type="submit" name="mofidier">
                         modifier compte
-                    </button></div>
+                    </button></a>
+
+                </div>
+
                 <div> <button type="submit" name="supprimer-compte">
                         supprimer compte
                     </button></div>
