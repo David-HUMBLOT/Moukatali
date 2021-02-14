@@ -324,7 +324,7 @@ function update_user()
 
             // apres la modification il faut reattribuer les nouvelle valeur aux variables de session ou par la recuperation en bdd
 ?>
-            <!-- <meta http-equiv="refresh" content="1; url=../pages/reussite-modification.php" /><?php
+            <meta http-equiv="refresh" content="1; url=../pages/reussite-modification.php" /><?php
 
                                                                                                 }
                                                                                                 // 888888888888888888888888888888888888888888888888888888888888888888888888888

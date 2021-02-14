@@ -45,7 +45,7 @@
             <a href= "../formUser/connection.php"> <button type="button"  class="btn btn-dark">SUIVANT</button></a>
         </div>
 
-<?php   ?
+
 
     </section>
 

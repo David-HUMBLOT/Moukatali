@@ -107,7 +107,6 @@ global $user;
             if (isset($_GET['deconnection'])) {
                 session_destroy();
                 unset($_SESSION['user']);
-                header('location: ../../index.php');
         ?>
 
 
@@ -175,18 +174,18 @@ global $user;
 
                 <div>
                     <form method="GET" action="">
-                        <button type="submit" name="deconnection">
+                        <button href="../../index.php" type="submit" name="deconnection">
                             deconnection test
-                        </button>
+                            </button>
                     </form>
 
                 </div>
 
                 <div>
 
-                    <a href = "../formUser/modification.php"  ><button type="submit" name="mofidier">
-                        modifier compte
-                    </button></a>
+                    <a href="../formUser/modification.php"><button type="submit" name="mofidier">
+                            modifier compte
+                        </button></a>
 
                 </div>
 
