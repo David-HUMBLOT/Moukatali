@@ -74,7 +74,7 @@ global $user;
                         <a href="#">
                             <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Contact</li>
                         </a>
-                        <a href="../../functions/deconnect-user.php">
+                        <a href="">
                             <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Se déconnecter</li>
                         </a>
                     </ul>
@@ -92,6 +92,10 @@ global $user;
         <?php
 
         include('../../functions/read-user.php');
+        // include('../../functions/deconnect-user.php');
+
+
+
 
         // readUserById($_SESSION['user']['id']);
 
@@ -104,6 +108,18 @@ global $user;
         // var_dump($_SESSION); //a muté plus tard
 
         if (isset($_SESSION['user'])) {
+
+
+
+            // MODIFIER COMPTE
+
+            // DECONNECTION SESSION
+            if (isset($_GET['deconnection'])) {
+                session_destroy();
+                unset($_SESSION['user']);
+                // header('location: ../../index.php');
+                ?>    <meta http-equiv="refresh" content="1; url=../../index.php" />  <?php
+            }
 
             readUserById($_SESSION['user']['id']);
             echo 'Donnée de session en cours : <br/>';
@@ -131,8 +147,8 @@ global $user;
 
 
     <div class="container   ">
-            <!-- TITRE H1 --> 
-            <h1 class=" text-center text-alert mb-4 " >&ldquo;MoukatAli !!&rdquo;</h1>
+        <!-- TITRE H1 -->
+        <h1 class=" text-center text-alert mb-4 ">&ldquo;MoukatAli !!&rdquo;</h1>
     </div>
 
 
@@ -159,9 +175,29 @@ global $user;
 
             </div>
 
-            <div> <button type="submit" name="deconnection">
-                        deconnection test
+            <div class="d-flex justify-content-center">
+
+                <div>
+                    <form  method="GET" action="">
+                        <button type="submit" name="deconnection">
+                            deconnection test
+                        </button>
+                    </form>
+
+                </div>
+
+                <div> <button type="submit" name="mofidier-compte">
+                        modifier compte
                     </button></div>
+                <div> <button type="submit" name="supprimer-compte">
+                        supprimer compte
+                    </button></div>
+
+
+            </div>
+
+
+
 
         </section>
 

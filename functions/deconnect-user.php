@@ -1,21 +1,22 @@
-
-
-
-
 <?
 
 
-// ATTENTION CE N EST PAS ENCORE FONCTIONELLE 
+
+function deconnect_user(){
+    session_unset();
+
+    // on ecrase toute les variable de session()
+    session_destroy();
+    
+    // header('location:../index.php')
+};
 
 
-session_unset();
-
-session_destroy();
-
-// header('location:../index.php')
 
 
-?> 
+
+
+?>
 
 
 <!-- REDIRECTION SUR L INDEX APRES UNE DECONNECTION -->
