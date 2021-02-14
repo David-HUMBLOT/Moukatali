@@ -2,13 +2,22 @@
 
 
 
-function deconnect_user(){
-    session_unset();
+function deconnectUser(){
+   
 
-    // on ecrase toute les variable de session()
-    session_destroy();
-    
-    // header('location:../index.php')
+       // DECONNECTION SESSION
+       if (isset($_GET['deconnection'])) {
+        session_destroy();
+        unset($_SESSION['user']);
+        header('location: ../../index.php');
+       
+    }
+
+
+   
+
+
+
 };
 
 

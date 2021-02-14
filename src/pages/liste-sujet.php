@@ -117,8 +117,15 @@ global $user;
             if (isset($_GET['deconnection'])) {
                 session_destroy();
                 unset($_SESSION['user']);
-                // header('location: ../../index.php');
-                ?>    <meta http-equiv="refresh" content="1; url=../../index.php" />  <?php
+                header('location: ../../index.php');
+
+?>
+
+
+
+      <?php
+               
+          
             }
 
             readUserById($_SESSION['user']['id']);
