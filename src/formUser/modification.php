@@ -168,7 +168,7 @@
                     <!-- MESSAGE CONFIRMATION CONNECTION AVANT REDIRECTION -->
                     <?php if (count($success_modification) > 0) : ?>
                         <div class="alert alert-success" role="alert">
-                            <?php foreach ($success_modification as $success_modificcations) : ?>
+                            <?php foreach ($success_modification as $success_modifications) : ?>
                                 <p><?php echo $success_modifications ?></p>
                             <?php endforeach; ?>
                         </div>
@@ -231,10 +231,10 @@
 
                             <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Genre</label>
 
-                            <select class="custom-select" id="inputGroupSelect01" name="genre">
-                                <option selected>Choisir son genre</option>
-                                <option value="1">Homme</option>
-                                <option value="2">Femme</option>
+                            <select class="custom-select" id="inputGroupSelect01" name="genre" >
+                                <option><?php   echo ($user['genre']);    ?></option>
+                                <option>Homme</option>
+                                <option>Femme</option>
                             </select>
                         </div>
 
@@ -265,7 +265,7 @@
                     <div class="mb-3 ">
                         <label class="text-dark mb-0" for="mot de passe1">Mot de passe* </label>
 
-                        <input type="password" class="form-control" id="password_1" name="password_1" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="<?php   echo ($user['password']);    ?>">
+                        <input type="password" class="form-control" id="password_1" name="password_1" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" >
                         </input>
 
                     </div>

@@ -197,9 +197,9 @@
 
                             <select class="custom-select" id="inputGroupSelect01" name="genre">
                                 <option selected>Choisir son genre</option>
-                                <option value="1">Homme</option>
-                                <option value="2">Femme</option>
-                                <option value="2">3ième type</option>
+                                <option>Homme</option>
+                                <option >Femme</option>
+                                <option >3ième type</option>
                             </select>
                         </div>
 

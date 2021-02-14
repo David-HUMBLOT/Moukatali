@@ -13,12 +13,13 @@ function update_user()
     require_once('bdd-connect.php');
     connectPdoBdd();
     echo 'Connection à la base de donnée OK <br/>';
+    // $pdo =  connectPdoBdd(); //connection a la bdd
 
 
     /******************************************
      * INITIALISATION des variables *
      ******************************************/
-    
+
 
     echo ' Inititialisation varibles GLOBAL  <br/>Initialisation  du tableaux des erreurs (IN FONCTIONS)  <br/>';
     // NOUS SERT PAR EXEMPLE A SORTIR LES INFORMATIOSN DU TABLEAUX DES ERREURS DE LA FONCTION
@@ -214,7 +215,7 @@ function update_user()
         // CELA N EST PLUS NECCESSAIRE A CE STADE CAR ON VAS UPDATE SON COMPTE
 
         // echo 'start recherche doublons <br/>';
-        // $pdo =  connectPdoBdd(); //connection a la bdd
+     //connection a la bdd
         // $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE  email = '$email' LIMIT 1"; //requete de selection dans table user en fonction de l email
         // $reqEmail = $pdo->prepare("SELECT * FROM `users` WHERE email='$email'"); //préparation de la requete
         // $reqEmail->execute([$email]);  //EXECUTION DE LA REQUETE
@@ -287,7 +288,7 @@ function update_user()
 
             // TEST REQUETE UPDATE FONCTIONNELLE EN BDD
 
-          
+
             // role = '' , on ne modifie pas le role car deja attribué et non modifiable
             //  date_inscription = '' , on ne modifie pas la date de l inscriptio, car c est juste une mise a jour
 
@@ -308,31 +309,32 @@ function update_user()
 
 
 
-            $reqt = "UPDATE  `users` SET pseudo =  '$pseudo' ,prenom =  '$prenom' , nom = '$nom' , age = '$age' , avatar = '$avatar' ,ville = '$ville' , telephone = '$telephone' , email = '$email' , password = '$password_hash' , genre = '$genre' 
+            $reqt = "UPDATE  `users` SET pseudo =  '$pseudo' ,prenom =  '$prenom' , nom = '$nom' , age = '$age' , avatar = '$avatar' ,ville = '$ville' , telephone = '$telephone' , email = '$email' , password = '$password_hash' , genre = '$genre' WHERE id = $modif_id_user";
 
-WHERE id = $modif_id_user
+            $pdo =  connectPdoBdd(); 
+            $reqUpdate = $pdo->prepare($reqt); //preparation de la requete
 
-";
-
-
-            $reqInsert = $pdo->prepare($reqt); //preparation de la requete
-            $reqInsert->execute(); //execution de la requete
+            $reqUpdate->execute(); //execution de la requete
 
             echo 'Fin de la requete update <br/>  Fin de la fonction update-user <br/>';
+       
+            // apres la modification il faut reattribuer les nouvelle valeur aux variables de session ou par la recuperation en bdd
 
             //REDIRECTION SUR LA PAGE STATICS DE CONFIRMATION DE LA MODIFICATION
-?>
-            <meta http-equiv="refresh" content="1; url=../pages/reussite-modification.php" /><?php
 
+            // apres la modification il faut reattribuer les nouvelle valeur aux variables de session ou par la recuperation en bdd
+?>
+            <!-- <meta http-equiv="refresh" content="1; url=../pages/reussite-modification.php" /><?php
+
+                                                                                                }
+                                                                                                // 888888888888888888888888888888888888888888888888888888888888888888888888888
+                                                                                                // FIN CONDITION IF COUNT ERRORS == 0{}
                                                                                             }
                                                                                             // 888888888888888888888888888888888888888888888888888888888888888888888888888
-                                                                                            // FIN CONDITION IF COUNT ERRORS == 0{}
+                                                                                            // FIN DU ISSET CLIQUE INSCRIPTION
                                                                                         }
                                                                                         // 888888888888888888888888888888888888888888888888888888888888888888888888888
-                                                                                        // FIN DU ISSET CLIQUE INSCRIPTION
-                                                                                    }
-                                                                                    // 888888888888888888888888888888888888888888888888888888888888888888888888888
-                                                                                    // FIN FONCTION CREATE-USER
-                                                                                    echo 'sorti de la fonction <br/>'
+                                                                                        // FIN FONCTION CREATE-USER
+                                                                                        echo 'sorti de la fonction <br/>'
 
-                                                                                                ?>
+                                                                                                    ?>
