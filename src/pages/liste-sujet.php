@@ -92,6 +92,7 @@ global $user;
         <?php
 
         include('../../functions/read-user.php');
+        include('../../functions/delete-user.php');
         // include('../../functions/deconnect-user.php');
         // readUserById($_SESSION['user']['id']);
         var_dump($_SESSION['user']['id']);
@@ -113,9 +114,7 @@ global $user;
 
         <?php
 
-
             }
-
             readUserById($_SESSION['user']['id']);
             echo 'Donnée de session en cours : <br/>';
             echo ('<img src="../../images/uploads/' . $user['avatar'] . '" style="height:4em; width:4em; border-radius:em; "/>' . "<br/>");
@@ -176,22 +175,21 @@ global $user;
                     <form method="GET" action="">
                         <button href="../../index.php" type="submit" name="deconnection">
                             deconnection test
-                            </button>
+                        </button>
                     </form>
-
                 </div>
 
                 <div>
-
                     <a href="../formUser/modification.php"><button type="submit" name="mofidier">
                             modifier compte
                         </button></a>
-
                 </div>
 
-                <div> <button type="submit" name="supprimer-compte">
-                        supprimer compte
-                    </button></div>
+                <div>
+                    <button type="submit" name="supprimer">
+                        supprimer compte test
+                    </button>
+                </div>
 
 
             </div>
@@ -212,7 +210,7 @@ global $user;
 
 
     <?php
-
+// test si session existe et si id existe
     if (isset($_SESSION)) {
         echo ($_SESSION['user']['id']);
     }
