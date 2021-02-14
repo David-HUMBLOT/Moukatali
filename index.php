@@ -1,8 +1,3 @@
-
-
-
-
-
 <!doctype html>
 <html lang="fr">
 
@@ -27,30 +22,26 @@
 
     <title>Accueil - Moukat A Li</title>
 
-
     <!-- MON CSS -->
-
     <link rel="stylesheet" href="css/mon-style.css">
     <link rel="stylesheet" href="css/styleDav.css">
 </head>
 
 <body>
-
-
     <section>
         <div class="container   ">
-            <!-- TITRE H1 --> 
-            <h1 class=" text-center text-alert mb-4 " >&ldquo;moukatage&rdquo;</h1>
+            <!-- TITRE H1 -->
+            <div class="index d-flex justify-content-center m-5 p-5  ">
+                <img class="m-5 img" src="images/logo-jaune.png">
+            </div>
             <!-- CAROUSEL -->
             <div class="owl-carousel text-light" id="slider">
-
                 <div>
                     <h3 class="text-uppercase mb-0 font-weight-bolder">définition:</h3>
                     <p class="font-weight-light">(Railler, se moquer de quelqu'un, voire critiquer). Celà peut se faire
                         sous forme de:<br />* Jeux de mots<br />* Punchline (phrase qui a pour but d'impacter le
                         lecteur)</p>
                 </div>
-
                 <div>
                     <h3 class="text-uppercase mb-0 font-weight-bolder">périmétre d'utilisation</h3>
                     <p class="font-weight-light">L'utlisateur peut exprimer ses idées, son mécontentement, ou ses
@@ -58,7 +49,6 @@
                         une action ou d'un profil.<br />* en caricaturant un trait physique ou un aspect de caractère
                         d'une personnalité ou d'un évènement donné.</p>
                 </div>
-
                 <div>
                     <h3 class="text-uppercase mb-0 font-weight-bolder">philosophie et objectifs</h3>
                     <p class="font-weight-light">* "Moukat A Li" a pour but de faire appel à votre créativité en
@@ -75,19 +65,17 @@
             <div class="bouton d-flex flex-column align-items-center flex-md-row justify-content-md-center">
                 <a class="btn-connexion btn mb-3 mb-md-0 mr-md-3 text-uppercase font-weight-bold" href="src/formUser/connection.php" role="button">CONNECTION</a>
                 <a class="btn-connexion btn mb-3 mb-md-0 mr-md-3 text-uppercase font-weight-bold" href="src/formUser/inscription.php" role="button">INSCRIPTION</a>
-             
+
             </div>
 
             <div class="d-flex justify-content-center mt-5">
-            <a class="btn-visiter btn text-uppercase font-weight-bold text-light" href="src/pages/liste-sujet.php" role="submit" name="visiter">visiter</a>
+                <a class="btn-visiter btn text-uppercase font-weight-bold text-light" href="src/pages/liste-sujet.php" role="submit" name="visiter">visiter</a>
             </div>
 
-
-       
             <div class="d-flex justify-content-center mt-5">
-            <a class=" btn text-uppercase font-weight-bold text-light" href="src/admin/admin.php" role="button">administrateur</a>
+                <a class=" btn text-uppercase font-weight-bold text-light" href="src/admin/form-admin-create.php" role="button">administrateur</a>
             </div>
-         
+
         </div>
     </section>
 

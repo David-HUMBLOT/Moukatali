@@ -109,34 +109,32 @@ if (isset($_GET['logout'])) {
         <div class="mb-3">
           <input type="text" class="form-control" id="username" name="username" placeholder="pseudo"
             title="Choisir un pseudo ou un nom d'utilisateur" required pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$"
-            minlength="4" maxlength="30" size="30" value="<?php echo $username; ?>">
+            minlength="4" maxlength="30" size="30" value="">
         </div>
         <!-- PRENOM -->
         <div class="mb-3">
           <input type="text" class="form-control" id="first-name" name="first-name" placeholder="Prénom"
             title="Veuillez inscrire votre Prénom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4" maxlength="50"
-            size="50" value="<?php echo $first_name; ?>">
+            size="50" value="">
         </div>
         <!-- NOM -->
         <div class="mb-3">
           <input type="text" class="form-control" id="last-name" name="last-name" placeholder="Nom"
             title="Veuillez inscrire votre Nom" required pattern="([A-z0-9À-ž\s]){2,}" minlength="4" maxlength="50"
-            size="50" value="<?php echo $last_name; ?>">
+            size="50" value="">
         </div>
         <!-- EMAIL -->
         <div class="mb-3">
           <input type="email" class="form-control" id="email" name="email" placeholder="email@example.com"
-            title="Veuillez inscrire votre email" size="60" minlength="3" maxlength="60" required value="<?php echo $email; ?>">
+            title="Veuillez inscrire votre email" size="60" minlength="3" maxlength="60" required value="">
         </div>
         <!-- ROLE -->
         <div class="mb-3">
           <select class="form-control" name="role">
             <option value="" selected disabled>Assigner un rôle</option>
-            <?php foreach ($roles as $key => $role): ?>
-            <option value="<?php echo $role; ?>">
-              <?php echo $role; ?>
+            <option value="">
             </option>
-            <?php endforeach; ?>
+           
           </select>
         </div>
         <!-- MOT DE PASSE -->
@@ -151,11 +149,11 @@ if (isset($_GET['logout'])) {
         </div>
         <!-- BOUTONS -->
         <!-- si vous modifiez l'utilisateur, affiche le bouton de mise à jour au lieu du bouton de création -->
-        <?php if ($update === true): ?>
+
         <button type="submit" id="btn-update" class="btn fw-bold text-uppercase" name="update-admin">mettre à jour</button>
-        <?php else: ?>
+   
         <button type="submit" id="btn-create" class="btn btn-dark fw-bold text-uppercase" name="create-admin">créer un administrateur</button>
-        <?php endif; ?>
+   
 
       </form>
 

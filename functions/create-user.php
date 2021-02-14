@@ -35,7 +35,7 @@ function create_user()
     // $telephone ="";
     $errors = array(); // VAR TABLEAUX QUI RECOIT LES MESSAGES D ERREUR POUR LE FORMULAIRE INSCRIPTION
     $success_inscription = array();
-    $role = "user";
+    $role = "User";
     echo ' suite... fin initilisation ... suite <br/>';
 
     if (isset($_POST["inscription"])) {
