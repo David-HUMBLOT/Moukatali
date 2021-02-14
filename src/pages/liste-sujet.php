@@ -73,7 +73,7 @@ include('../../functions/deconnect-user.php');
                             <a href="succes.html">
                                 <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Mes succès</li>
                             </a>
-                            <a href="../formUser/abonnement.php">
+                            <a href="../pages/offre.php">
                                 <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " />Offre et abonnemnt</li>
                             </a>
                             <a href="#">
