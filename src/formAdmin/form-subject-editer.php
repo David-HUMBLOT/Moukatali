@@ -116,14 +116,14 @@
                     <div class="form-group" id="preview">
                         <!--<span class="img-div">-->
                         <!--<div class="img-placeholder"  onClick="triggerClick()"></div>-->
-                        <img src="../public/images/upload/<?= $topic_picture ?>" onClick="triggerClick()" id="profileDisplay" alt="Preview" style="height: 310px; width: 360px;">
+                        <img src="../../images/upload-topics/<?= $topic_picture ?>" onClick="triggerClick()" id="profileDisplay" alt="Preview" style="height: 310px; width: 360px;">
                         <!--</span>-->
                         <label for="preview" class="form-label text-center"></label>
                         <input type="file" onChange="displayImage(this)" id="picture" class="form-control form-control-lg" name="picture" placeholder="Uploader une image">
                     </div>
                     <!-- Titre -->
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Title" name="title" value="<?= $title ?>">
+                        <input type="text" class="form-control" placeholder="Title" name="title" value="">
                         <label for="title">Titre</label>
                     </div>
                     <!-- Description -->

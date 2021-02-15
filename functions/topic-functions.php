@@ -85,54 +85,57 @@ global $db, $errors, $user_id;
 // $user_id est définit a ce stade
 var_dump($user_id);
 
-// global $db, $errors, $success;
+global $db, $errors, $success;
+
 function createTopic($request_values)
 {
-    global $db, $errors, $success;
-
-    // global $user_id;
-
-    $user_id = $_SESSION['user']['id'];
-    var_dump($user_id);
-
-
-
-    // 88888888888888888888888888888888888888888888888888888888888888
-    $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
-    $title = htmlentities(trim($_POST['title']));
-    $topic_description = htmlentities(trim($_POST['topic-description']));
-    // 88888888888888888888888888888888888888888888888888888888888888
-    // $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
-    // $title = htmlentities(trim($request_values['title']));
-    // $topic_description = htmlentities(trim($request_values['topic-description']));
-    //88888888888888888888888888888888888888888888888888888888888888
-    // validation formulaire
-    if (empty($title)) {
-        array_push($errors, "Entrer un titre");
-        return $errors;
-        die;
-    }
-    if (empty($topic_description)) {
-        array_push($errors, "Entrer une description");
-        return $errors;
-        die;
-    }
-    if (empty($picture)) {
-        array_push($errors, "Entrer une photo de profil");
-        return $errors;
-        $uploadOk = 0;
-        die;
-    }
-    //88888888888888888888888888888888888888888888888888888888888888888888888888888888888
-    // PARAMETRAGE DES VARIBLES D ACCES, EXTENSION, UPLOAD, ET DU DOSSIER DE DESTINATION DES IMAGES UPLOADER
-    $target_dir = "../../images/uploads-topics/";  //chemin du sossier ou les fichiers seront uploader
-    $target_file = $target_dir . basename($_FILES["picture"]["name"]); //parametrage du nom de l image
-    $uploadOk = 1; //condition si uplooad aboutie
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //définition de l extension de l image
-    // _______________________________________________________________________________________________
-
-    //VERIFICATION SI L IMAGE EST UNE VRAI OU UNE FAUSSE
     if (isset($_POST["create-topic"])) {
+        $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
+        $title = htmlentities(trim($_POST['title']));
+        $topic_description = htmlentities(trim($_POST['topic-description']));
+        global $db, $errors, $success;
+
+        // global $user_id;
+
+        $user_id = $_SESSION['user']['id'];
+        var_dump($user_id);
+
+
+
+        // 88888888888888888888888888888888888888888888888888888888888888
+
+        // 88888888888888888888888888888888888888888888888888888888888888
+        // $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
+        // $title = htmlentities(trim($request_values['title']));
+        // $topic_description = htmlentities(trim($request_values['topic-description']));
+        //88888888888888888888888888888888888888888888888888888888888888
+        // validation formulaire
+        if (empty($title)) {
+            array_push($errors, "Entrer un titre");
+            return $errors;
+            die;
+        }
+        if (empty($topic_description)) {
+            array_push($errors, "Entrer une description");
+            return $errors;
+            die;
+        }
+        if (empty($picture)) {
+            array_push($errors, "Entrer une photo de profil");
+            return $errors;
+            $uploadOk = 0;
+            die;
+        }
+        //88888888888888888888888888888888888888888888888888888888888888888888888888888888888
+        // PARAMETRAGE DES VARIBLES D ACCES, EXTENSION, UPLOAD, ET DU DOSSIER DE DESTINATION DES IMAGES UPLOADER
+        $target_dir = "../../images/uploads/";  //chemin du sossier ou les fichiers seront uploader
+        $target_file = $target_dir . basename($_FILES["picture"]["name"]); //parametrage du nom de l image
+        $uploadOk = 1; //condition si uplooad aboutie
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //définition de l extension de l image
+        // _______________________________________________________________________________________________
+
+        //VERIFICATION SI L IMAGE EST UNE VRAI OU UNE FAUSSE
+
         $check = getimagesize($_FILES["picture"]["tmp_name"]);
         if ($check !== false) {
             // echo "File is an image - " . $check["mime"] . ".";
@@ -146,76 +149,77 @@ function createTopic($request_values)
             $uploadOk = 0; //CONDITION = 0 CAR N EST PAS UNE IMAGE
             die;
         }
-    }
-    // _____________________________________________________________________________________________
-    // VERIFICATION DE LA TAILLE DE L IMAGE
-    if ($_FILES["picture"]["size"] > 600000) {
-        // echo "Sorry, your file is too large.";
-        array_push($errors, "Image volumineuse ! Elle ne doit pas  dépasser 600ko .");
-        return $errors;
-        $uploadOk = 0;  //CONDITION = 0 CAR N EST TROP VOLUMINEUSE
-        die;
-    }
-    // __________________________________________________________________________________________
-    // VERIFICATION DES EXTENSIONS
-    if (
-        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 
-    ) {
-        // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        array_push($errors, "Format d'image non accepté ! Requis : png, pjeg ou png");
-        return $errors;
-        $uploadOk = 0;
-        die;
-    }
-    // ____________________________________________________________________________________________
-    // VERIFICATION SI UNE ERREUR IMAGE EST SURVENUE
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-        array_push($errors, "Désoler, votre image n'as pas été transférées.");
-        // SI AUCUNE ERREUR ALORS ON PRECEDE AU TELECHARGEMENT DANS LE DOSSIER UPLOAD PREALABLEMENT CREER.
-        // LA FONCTION MOVE UPLOAD FILE PREND DEUX PARAMETRE (VARIABLE DE NOTRE IMAGE TRAITER  , SON CHEMIN DE DESTINATION)
-    } else {
-        // CONDITION QUAND TRANSFERT REUSSI
-        if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
-            $picture = $_FILES["picture"]["name"];
-            // echo "The file " . htmlspecialchars(basename($_FILES["picture"]["name"])) . " has been uploaded. ";
-        }
-        // CONDITION QUAND LE TRANSFERT ECHOUE
-        else {
-            echo "Sorry, there was an error uploading your file.";
-            array_push($errors, "Désolé, une erreur est survenue lors du transfert ... Veuillez recommençer.");
+        // _____________________________________________________________________________________________
+        // VERIFICATION DE LA TAILLE DE L IMAGE
+        if ($_FILES["picture"]["size"] > 600000) {
+            // echo "Sorry, your file is too large.";
+            array_push($errors, "Image volumineuse ! Elle ne doit pas  dépasser 600ko .");
             return $errors;
+            $uploadOk = 0;  //CONDITION = 0 CAR N EST TROP VOLUMINEUSE
+            die;
+        }
+        // __________________________________________________________________________________________
+        // VERIFICATION DES EXTENSIONS
+        if (
+            $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+
+        ) {
+            // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            array_push($errors, "Format d'image non accepté ! Requis : png, pjeg ou png");
+            return $errors;
+            $uploadOk = 0;
+            die;
+        }
+        // ____________________________________________________________________________________________
+        // VERIFICATION SI UNE ERREUR IMAGE EST SURVENUE
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+            array_push($errors, "Désoler, votre image n'as pas été transférées.");
+            // SI AUCUNE ERREUR ALORS ON PRECEDE AU TELECHARGEMENT DANS LE DOSSIER UPLOAD PREALABLEMENT CREER.
+            // LA FONCTION MOVE UPLOAD FILE PREND DEUX PARAMETRE (VARIABLE DE NOTRE IMAGE TRAITER  , SON CHEMIN DE DESTINATION)
+        } else {
+            // CONDITION QUAND TRANSFERT REUSSI
+            if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
+                $picture = $_FILES["picture"]["name"];
+                // echo "The file " . htmlspecialchars(basename($_FILES["picture"]["name"])) . " has been uploaded. ";
+            }
+            // CONDITION QUAND LE TRANSFERT ECHOUE
+            else {
+                echo "Sorry, there was an error uploading your file.";
+                array_push($errors, "Désolé, une erreur est survenue lors du transfert ... Veuillez recommençer.");
+                return $errors;
+            }
         }
     }
-    
+
+
+
+    // return $errors;
+    // créer si aucune erreur
+    if (count($errors) == 0) {
+        // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+        // GOOD
+
+        array_push($success, "Inscription réussie !<br/> Veuillez patienter.. ");
+        $sql = "INSERT INTO topics ( titre, image, topic_description, quota_vote, date_creation) VALUES( '$title', '$picture', '$topic_description', 0, now())";
+        $reqInsert = $db->prepare($sql); //preparation de la requete
+        $reqInsert->execute(); //execution de la requete
+        // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+        // $query = "INSERT INTO topics (id, titre, image, topic_description, nb_comment, vote_for, vote_against, published, creation_date, update_date) VALUES($user_id, '$picture', '$title', '$topic_description', 0, 0, 0, 0, now(), now())";
+        // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+        // if (mysqli_query($db, $query)) { // si le sujet a été insérer avec succès
+
+        //     $_SESSION['message'] = "Sujet créé avec succés";
+        //     echo "Sujet créé avec succés";
+        //     header('location: subject.php');
+        //     exit(0);
+        // }
+        return $errors;
+        return $success;
+    }
 }
 
-
-
-// return $errors;
-// créer si aucune erreur
-if (count($errors) == 0) {
-    // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-    // GOOD
-    array_push($success, "Inscription réussie !<br/> Veuillez patienter.. ");
-    $sql = "INSERT INTO topics ( titre, image, topic_description, quota_vote, date_creation) VALUES( '$title', '$picture', '$topic_description', 0, now())";
-    $reqInsert = $db->prepare($sql); //preparation de la requete
-    $reqInsert->execute(); //execution de la requete
-    // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-    // $query = "INSERT INTO topics (id, titre, image, topic_description, nb_comment, vote_for, vote_against, published, creation_date, update_date) VALUES($user_id, '$picture', '$title', '$topic_description', 0, 0, 0, 0, now(), now())";
-    // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-    // if (mysqli_query($db, $query)) { // si le sujet a été insérer avec succès
-
-    //     $_SESSION['message'] = "Sujet créé avec succés";
-    //     echo "Sujet créé avec succés";
-    //     header('location: subject.php');
-    //     exit(0);
-    // }
-    return $errors;
-    return $success;
-}
-// }
 
 /* * * * * * * * * * * * * * * * * * * * *
 * - Prend l'identifiant de publication comme paramètre
