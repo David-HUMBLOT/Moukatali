@@ -25,50 +25,56 @@
 
 
 <div class="text-light">
-<?php var_dump($_SESSION['user']['role']) ?>
+    <?php var_dump($_SESSION['user']['id']);
+    // On recupere la valeur de l id en fonction de qui est connecter , on peut également vérifier son role en fonction de ses données de session avec un var_dump de session id
+    $user_id = $_SESSION['user']['id'];
+    var_dump($user_id);
+    var_dump($_SESSION['user']['role']);
 
 
-<body>
+    ?>
 
-    <!-- HEADER -->
-    <header class="header-liste" id="id-navbar">
-        <div class="container ">
-            <!-- NAVBAR -->
-            <nav class="navbar navbar-expand-lg navbar-light ">
-                <a class="navbar-brand " href="index.php">
-                    <img src="../images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;" alt="logo_moukatali_noir.png"></img>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav ">
-                        <li class="nav-item ">
-                            <a class="nav-link text-center  font-weight-bold text-nav-head" href="admin.php">CREER</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-center  font-weight-bold text-nav-head" href="form-subject.php">EDITER</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-center  font-weight-bold text-nav-head" href="topics.php">TOPICS</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-center  font-weight-bold text-nav-head" href="moukateurs.php">MOUKATEURS</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-center  font-weight-bold text-nav-head disabled" href="profile.php">SIGNALER</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a id="logout-link" class="nav-link text-center  font-weight-bold text-nav-head  <?= $btn_logout ?> " href="../index.php?logout='1'" role="button">LOGOUT</a>
-                        </li>
 
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <body>
+        <!-- HEADER -->
+        <header class="header-liste" id="id-navbar">
+            <div class="container ">
+                <!-- NAVBAR -->
+                <nav class="navbar navbar-expand-lg navbar-light ">
+                    <a class="navbar-brand " href="index.php">
+                        <img src="../../images/logo_moukatali_noir.png" class="img-fluid" style="height:5vh;" alt="logo_moukatali_noir.png"></img>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item ">
+                                <a class="nav-link text-center  font-weight-bold text-nav-head" href="admin.php">CREER</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-center  font-weight-bold text-nav-head" href="form-subject.php">EDITER</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-center  font-weight-bold text-nav-head" href="topics.php">TOPICS</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-center  font-weight-bold text-nav-head" href="moukateurs.php">MOUKATEURS</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-center  font-weight-bold text-nav-head disabled" href="profile.php">SIGNALER</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a id="logout-link" class="nav-link text-center  font-weight-bold text-nav-head  <?= $btn_logout ?> " href="../index.php?logout='1'" role="button">LOGOUT</a>
+                            </li>
 
-   
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
 
 
 
@@ -143,11 +149,11 @@
             <a href="#">Mentions légales</a>
         </footer>
 
-    </div>
+</div>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="../public/js/script.js"></script>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script src="../public/js/script.js"></script>
 
 </body>
 
