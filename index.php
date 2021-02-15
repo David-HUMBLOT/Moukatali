@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="fr">
 
@@ -73,7 +74,7 @@
             </div>
 
             <div class="d-flex justify-content-center mt-5">
-                <a class=" btn text-uppercase font-weight-bold text-light" href="src/admin/form-admin-create.php" role="button">administrateur</a>
+                <a class=" btn text-uppercase font-weight-bold text-light" href="src/formAdmin/form-admin-create.php" role="button">administrateur</a>
             </div>
 
         </div>
