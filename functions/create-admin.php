@@ -105,48 +105,65 @@ function createAdmin($request_values)
     // 888888888888888888888888888888888888888888888888888888888888888888
     // Assurez-vous qu'aucun utilisateur n'est enregistré deux fois
     // l'e-mail et les noms d'utilisateur doivent être uniques
-    $user_check_query = "SELECT * FROM users WHERE username = '$username' OR email = '$email' LIMIT 1";
-    $result = mysqli_query($db, $user_check_query);
-    $user = mysqli_fetch_assoc($result);
-    if ($user) { // si l'utilisateur existe
-        if ($user['username'] === $username) {
-            array_push($errors, "Ce nom d'utilisateur existe déjà");
+    // $user_check_query = "SELECT * FROM users WHERE pseudo = '$username' OR email = '$email' LIMIT 1";
+    // $result = mysqli_query($db, $user_check_query);
+    // $user = mysqli_fetch_assoc($result);
+    // if ($user) { // si l'utilisateur existe
+    //     if ($user['username'] === $username) {
+    //         array_push($errors, "Ce nom d'utilisateur existe déjà");
+    //     }
+    //     if ($user['email'] === $email) {
+    //         array_push($errors, "Cet adresse mail existe déjà");
+    //     }
+    // }
+    // 888888888888888888888888888888888888888888888888888888888888888888
+    /******************************************************
+     * VERIFICATION BOUBLON EMAIL METHODE PDO *
+     *************************************************/
+
+    //UN UTILISATEUR NE DOIT PAS POUVOIR S INSCRIRE DEUX FOIS AVEC LES MEME IDENTIFIANT
+    // l'e-mail et les noms d'utilisateur doivent être uniques
+
+    echo 'start recherche doublons <br/>';
+    $pdo =  connectPdoBdd(); //connection a la bdd
+    $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE  email = '$email' LIMIT 1"; //requete de selection dans table user en fonction de l email
+    $reqEmail = $pdo->prepare("SELECT * FROM `users` WHERE email='$email'"); //préparation de la requete
+    $reqEmail->execute([$email]);  //EXECUTION DE LA REQUETE
+    $doublonEmail = $reqEmail->fetch();  //RECUPERATION RESULTAT DE LA REQUETE AUTREMENT DIT SI UN DOUBLON EST TROUVER EN FONCTION DE L EMAIL FOURNI
+
+    // SI DOUBLON EXISTANT
+    if ($doublonEmail) {
+        if ($doublonEmail['email'] === $email) {
+            array_push($errors, "Attention ! Cette addresse email existe déjà !");
+            return $errors;
         }
-        if ($user['email'] === $email) {
-            array_push($errors, "Cet adresse mail existe déjà");
-        }
+        //SI AUCUN DOUBLON ECHO TEST ET ON CONTINUE
+    } else {
+        echo 'AUCUN DOUBLON EMAIL TROUVER <br/>';
     }
-  // 888888888888888888888888888888888888888888888888888888888888888888
+    /**********************************************
+     * VERIFICATION BOUBLON PSEUDONYME METHODE PDO *
+     **********************************************/
 
-
- /******************************************************
-         * VERIFICATION BOUBLON EMAIL METHODE PDO *
-         *************************************************/
-
-        //UN UTILISATEUR NE DOIT PAS POUVOIR S INSCRIRE DEUX FOIS AVEC LES MEME IDENTIFIANT
-        // l'e-mail et les noms d'utilisateur doivent être uniques
-
-        echo 'start recherche doublons <br/>';
-        $pdo =  connectPdoBdd(); //connection a la bdd
-        $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE  email = '$email' LIMIT 1"; //requete de selection dans table user en fonction de l email
-        $reqEmail = $pdo->prepare("SELECT * FROM `users` WHERE email='$email'"); //préparation de la requete
-        $reqEmail->execute([$email]);  //EXECUTION DE LA REQUETE
-        $doublonEmail = $reqEmail->fetch();  //RECUPERATION RESULTAT DE LA REQUETE AUTREMENT DIT SI UN DOUBLON EST TROUVER EN FONCTION DE L EMAIL FOURNI
-
-        // SI DOUBLON EXISTANT
-        if ($doublonEmail) {
-            if ($doublonEmail['email'] === $email) {
-                array_push($errors, "Attention ! Cette addresse email existe déjà !");
-            }
-            //SI AUCUN DOUBLON ECHO TEST ET ON CONTINUE
-        } else {
-            echo 'AUCUN DOUBLON EMAIL TROUVER <br/>';
+    //  IDEM QUE POUR L EMAIL. C EST UN CHOIX DE SEPARER LES DEUX REQUETE AU LIEU D EN FAIRE UNE POUR DEUX. LE BUT ETANT DE BIEN AVANCER ETAPE PAR ETAPE
+    $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE pseudo = '$username' LIMIT 1";
+    $reqPseudo = $pdo->prepare("SELECT * FROM `users` WHERE pseudo='$username'");
+    $reqPseudo->execute([$pseudo]);
+    $doublonPseudo = $reqPseudo->fetch();
+    if ($doublonPseudo) { // email existant
+        if ($doublonPseudo['pseudo'] === $username) {
+            array_push($errors, "Attention ! Ce Pseudonyme existe déjà !");
+            return $errors;
         }
+        // SI AUCUN DOUBLON ECHO TEST ET ON CONTINUE
+    } else { // email n'existe pas
+        echo 'AUCUN DOUBLON PSEUDO TROUVER <br/>';
+    }
+    echo 'Fin de recherche de doublons <br/>';
 
 
 
-
-
+    // 888888888888888888888888888888888888888888888888888888888888888888
 
 
 
@@ -179,10 +196,10 @@ function createAdmin($request_values)
         var_dump($resultReqInsert1);
         array_push($success, "Compte  créé avec succès ");
         // verification par message erreur
-     
-       return $success;
-       return $errors;
-   
+
+        return $success;
+        return $errors;
+
 
 
         // $requete = "SELECT * from `users` where id = '$id' ";
