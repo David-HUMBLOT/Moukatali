@@ -7,12 +7,13 @@ $topic_id = 0;
 $published = 0;
 $update_topic = false;
 
+
+global $db, $success, $errors;
 // récupére tous les topics de la BDD
 function getAllTopics()
 {
 
     global $db;
-
     // L'administrateur peut afficher tous les topics
     // L'auteur ne peut voir que ses topics
     if ($_SESSION['user']['role'] == "admin") {
@@ -26,9 +27,10 @@ function getAllTopics()
         $sql = "SELECT * FROM topics WHERE id = $user_id";
         // 88888888888888888888888888888888888888888888888888888
     }
+
+
     $result = mysqli_query($db, $sql);
     $topics = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
     $final_topics = array();
     foreach ($topics as $topic) {
         $topic['author'] = getTopicAuthorById($topic['user_id']);
@@ -36,6 +38,7 @@ function getAllTopics()
     }
     return $final_topics;
 }
+
 
 // récupére l'auteur d'un topic
 function getTopicAuthorById($user_id)
@@ -76,70 +79,149 @@ if (isset($_GET['delete-topic'])) {
     deleteTopic($topic_id);
 }
 
-
 global $db, $errors, $user_id;
 
 // 88888888888888888888888888888888888888
 // $user_id est définit a ce stade
 var_dump($user_id);
 
+// global $db, $errors, $success;
 function createTopic($request_values)
 {
-    global $db, $errors;
-
-
-
+    global $db, $errors, $success;
 
     // global $user_id;
 
     $user_id = $_SESSION['user']['user_id'];
     var_dump($user_id);
-    $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
-    $title = htmlentities(trim($request_values['title']));
-    $topic_description = htmlentities(trim($request_values['topic-description']));
 
+
+
+    // 88888888888888888888888888888888888888888888888888888888888888
+    $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
+    $title = htmlentities(trim($_POST['title']));
+    $topic_description = htmlentities(trim($_POST['topic-description']));
+    // 88888888888888888888888888888888888888888888888888888888888888
+    // $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
+    // $title = htmlentities(trim($request_values['title']));
+    // $topic_description = htmlentities(trim($request_values['topic-description']));
+    //88888888888888888888888888888888888888888888888888888888888888
     // validation formulaire
     if (empty($title)) {
         array_push($errors, "Entrer un titre");
+       
     }
     if (empty($topic_description)) {
         array_push($errors, "Entrer une description");
+        
     }
-
-    // validation image
     if (empty($picture)) {
-        array_push($errors, "Veuillez uploader une image");
+        array_push($errors, "Entrer une photo de profil");
+        $uploadOk = 0;
     }
-    // valider la taille de l'image, la taille est calculée en octet
-    if ($_FILES['picture']['size'] > 200000) {
-        array_push($errors, "La taille de l'image ne doit pas dépasser 200 ko");
-    }
-    // On vérifie l'extension et la taille de l'image
-    $picture_ext = pathinfo($picture, PATHINFO_EXTENSION); // ou $picture_ext = pathinfo($picture)['extension'];
-    if (!in_array($picture_ext, ['jpg', 'jpeg', 'png'])) {
-        array_push($errors, "Votre image doit être .jpg, .jpeg ou .png");
-    }
-    // image file directory
-    // $target_dir = ROOT_PATH . '/public/images/upload/' . basename($picture);
+//88888888888888888888888888888888888888888888888888888888888888888888888888888888888
+ // PARAMETRAGE DES VARIBLES D ACCES, EXTENSION, UPLOAD, ET DU DOSSIER DE DESTINATION DES IMAGES UPLOADER
+ $target_dir = "../images/uploads-topics/";  //chemin du sossier ou les fichiers seront uploader
+ $target_file = $target_dir . basename($_FILES["picture"]["name"]); //parametrage du nom de l image
+ $uploadOk = 1; //condition si uplooad aboutie
+ $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //définition de l extension de l image
+// _______________________________________________________________________________________________
 
-    // if (!move_uploaded_file($_FILES['picture']['tmp_name'], $target_dir)) {
-    array_push($errors, "Échec du téléchargement de l'image.");
+  //VERIFICATION SI L IMAGE EST UNE VRAI OU UNE FAUSSE
+  if (isset($_POST["create-topic"])) {
+    $check = getimagesize($_FILES["picture"]["tmp_name"]);
+    if ($check !== false) {
+        // echo "File is an image - " . $check["mime"] . ".";
+
+
+        $uploadOk = 1;
+    } else {
+        // echo "File is not an image.";
+        array_push($errors, "Ce fichier n'est pas une image !");
+        $uploadOk = 0; //CONDITION = 0 CAR N EST PAS UNE IMAGE
+    }
 }
+// _____________________________________________________________________________________________
+    // VERIFICATION DE LA TAILLE DE L IMAGE
+    if ($_FILES["picture"]["size"] > 600000) {
+        // echo "Sorry, your file is too large.";
+        array_push($errors, "Image volumineuse ! Elle ne doit pas  dépasser 600ko .");
+        $uploadOk = 0;  //CONDITION = 0 CAR N EST TROP VOLUMINEUSE
+    }
+// __________________________________________________________________________________________
+     // VERIFICATION DES EXTENSIONS
+     if (
+        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 
+    ) {
+        // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        array_push($errors, "Format d'image non accepté ! Requis : png, pjeg ou png");
+        $uploadOk = 0;
+    }
+// ____________________________________________________________________________________________
+   // VERIFICATION SI UNE ERREUR IMAGE EST SURVENUE
+   if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+    array_push($errors, "Désoler, votre image n'as pas été transférées.");
+    // SI AUCUNE ERREUR ALORS ON PRECEDE AU TELECHARGEMENT DANS LE DOSSIER UPLOAD PREALABLEMENT CREER.
+    // LA FONCTION MOVE UPLOAD FILE PREND DEUX PARAMETRE (VARIABLE DE NOTRE IMAGE TRAITER  , SON CHEMIN DE DESTINATION)
+} else {
+    // CONDITION QUAND TRANSFERT REUSSI
+    if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
+        $avatar = $_FILES["picture"]["name"];
+        // echo "The file " . htmlspecialchars(basename($_FILES["picture"]["name"])) . " has been uploaded. ";
+    }
+    // CONDITION QUAND LE TRANSFERT ECHOUE
+    else {
+        echo "Sorry, there was an error uploading your file.";
+        array_push($errors, "Désolé, une erreur est survenue lors du transfert ... Veuillez recommençer.");
+    }
+}
+// FIN DES VERIFICATIONS SUR IMAGES
+//_______________________________________________________________________________________
+// 8888888888888888888888888888888888888888888888888888888888888888888888888888888888
+    // validation image
+    // if (empty($picture)) {
+    //     array_push($errors, "Veuillez uploader une image");
+    // }
+    // // valider la taille de l'image, la taille est calculée en octet
+    // if ($_FILES['picture']['size'] > 200000) {
+    //     array_push($errors, "La taille de l'image ne doit pas dépasser 200 ko");
+    // }
+    // // On vérifie l'extension et la taille de l'image
+    // $picture_ext = pathinfo($picture, PATHINFO_EXTENSION); // ou $picture_ext = pathinfo($picture)['extension'];
+    // if (!in_array($picture_ext, ['jpg', 'jpeg', 'png'])) {
+    //     array_push($errors, "Votre image doit être .jpg, .jpeg ou .png");
+    // }
+    // // image file directory
+    // // $target_dir = ROOT_PATH . '/public/images/upload/' . basename($picture);
+
+    // // if (!move_uploaded_file($_FILES['picture']['tmp_name'], $target_dir)) {
+    // array_push($errors, "Échec du téléchargement de l'image.");
+    return $errors;
+    // 888888888888888888888888888888888888888888888888888888888888888888888888888888888
+}
+return $errors;
 // créer si aucune erreur
 if (count($errors) == 0) {
-
-    $query = "INSERT INTO topics (id, titre, image, topic_description, quota_vote, date_creation) VALUES($user_id, '$picture', '$title', '$topic_description', 0, 0, 0, 0, now(), now())";
+    // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+    // GOOD
+    array_push($success, "Inscription réussie !<br/> Veuillez patienter.. ");
+    $sql = "INSERT INTO topics ( titre, image, topic_description, quota_vote, date_creation) VALUES( '$title', '$picture', '$topic_description', 0, now())";
+    $reqInsert = $db->prepare($sql); //preparation de la requete
+    $reqInsert->execute(); //execution de la requete
     // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     // $query = "INSERT INTO topics (id, titre, image, topic_description, nb_comment, vote_for, vote_against, published, creation_date, update_date) VALUES($user_id, '$picture', '$title', '$topic_description', 0, 0, 0, 0, now(), now())";
     // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-    if (mysqli_query($db, $query)) { // si le sujet a été insérer avec succès
+    // if (mysqli_query($db, $query)) { // si le sujet a été insérer avec succès
 
-        $_SESSION['message'] = "Sujet créé avec succés";
-        echo "Sujet créé avec succés";
-        header('location: subject.php');
-        exit(0);
-    }
+    //     $_SESSION['message'] = "Sujet créé avec succés";
+    //     echo "Sujet créé avec succés";
+    //     header('location: subject.php');
+    //     exit(0);
+    // }
+    return $errors;
+    return $success;
 }
 // }
 

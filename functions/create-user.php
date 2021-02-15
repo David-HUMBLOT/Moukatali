@@ -127,7 +127,7 @@ function create_user()
             $uploadOk = 0;  //CONDITION = 0 CAR N EST TROP VOLUMINEUSE
         }
 
-        // V2RIFICATION DES EXTENSIONS
+        // VERIFICATION DES EXTENSIONS
         if (
             $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 
@@ -155,7 +155,6 @@ function create_user()
                 array_push($errors, "Désolé, une erreur est survenue lors du transfert ... Veuillez recommençer.");
             }
         }
-
         // FIN DES VERIFICATIONS SUR IMAGES
 
 
