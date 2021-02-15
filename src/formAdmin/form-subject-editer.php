@@ -25,11 +25,14 @@
 
 
 <div class="text-light">
+    <!-- 88888888888888888888888888888888888888888888888888888 -->
+    <!-- Récupération valeur de id ou du role en fonction donnée de session ok sur le formulaire, a voir sur les function des topivs a present -->
     <?php var_dump($_SESSION['user']['id']);
     // On recupere la valeur de l id en fonction de qui est connecter , on peut également vérifier son role en fonction de ses données de session avec un var_dump de session id
     $user_id = $_SESSION['user']['id'];
     var_dump($user_id);
     var_dump($_SESSION['user']['role']);
+    // 88888888888888888888888888888888888888888888888888888 
 
 
     ?>
@@ -102,7 +105,8 @@
                 <form method="post" action="form-subject.php" enctype="multipart/form-data">
 
                     <!-- erreurs de validation du formulaire -->
-                    <?php '/includes/errors.php' ?>
+                    <?php //'/includes/errors.php' ?>
+
 
                     <!-- si vous modifiez un message, l'identifiant est requis pour identifier ce message -->
                     <?php if ($update_topic === true) : ?>
@@ -138,6 +142,20 @@
 
 
                 </form>
+                <?php 
+                // a modifier car déclaration temporaire
+                $success = array();
+                global $errors, $success; ?>
+
+<div class="">
+ 
+    <?php if (count($success > 0)) : ?>
+  <div class="alert alert-success" role="alert">
+    <?php foreach ($success as $successs) : ?>
+      <p><?php echo ($successs); ?></p>
+    <?php endforeach; ?>
+  </div>
+<?php endif; ?>
             </div>
         </section>
 

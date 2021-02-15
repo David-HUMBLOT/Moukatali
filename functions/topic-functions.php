@@ -79,17 +79,21 @@ if (isset($_GET['delete-topic'])) {
 
 global $db, $errors, $user_id;
 
+// 88888888888888888888888888888888888888
+// $user_id est définit a ce stade
 var_dump($user_id);
 
 function createTopic($request_values)
 {
-    var_dump($user_id);
-
     global $db, $errors;
-    
+
+
+
+
     // global $user_id;
 
     $user_id = $_SESSION['user']['user_id'];
+    var_dump($user_id);
     $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
     $title = htmlentities(trim($request_values['title']));
     $topic_description = htmlentities(trim($request_values['topic-description']));
@@ -125,8 +129,10 @@ function createTopic($request_values)
 // créer si aucune erreur
 if (count($errors) == 0) {
 
-    $query = "INSERT INTO topics (id, picture, title, topic_description, nb_comment, vote_for, vote_against, published, creation_date, update_date) VALUES($user_id, '$picture', '$title', '$topic_description', 0, 0, 0, 0, now(), now())";
-
+    $query = "INSERT INTO topics (id, titre, image, topic_description, quota_vote, date_creation) VALUES($user_id, '$picture', '$title', '$topic_description', 0, 0, 0, 0, now(), now())";
+    // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+    // $query = "INSERT INTO topics (id, titre, image, topic_description, nb_comment, vote_for, vote_against, published, creation_date, update_date) VALUES($user_id, '$picture', '$title', '$topic_description', 0, 0, 0, 0, now(), now())";
+    // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     if (mysqli_query($db, $query)) { // si le sujet a été insérer avec succès
 
         $_SESSION['message'] = "Sujet créé avec succés";
