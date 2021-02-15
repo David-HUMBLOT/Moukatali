@@ -105,7 +105,8 @@
                 <form method="post" action="form-subject-editer.php" enctype="multipart/form-data">
 
                     <!-- erreurs de validation du formulaire -->
-                    <?php //'/includes/errors.php' ?>
+                    <?php //'/includes/errors.php' 
+                    ?>
 
 
                     <!-- si vous modifiez un message, l'identifiant est requis pour identifier ce message -->
@@ -116,7 +117,7 @@
                     <div class="form-group" id="preview">
                         <!--<span class="img-div">-->
                         <!--<div class="img-placeholder"  onClick="triggerClick()"></div>-->
-                        <img src="../../images/upload-topics/<?= $topic_picture ?>" onClick="triggerClick()" id="profileDisplay" alt="Preview" style="height: 310px; width: 360px;">
+                        <img src="../../images/uploads/<?= $topic_picture ?>" onClick="triggerClick()" id="profileDisplay" alt="Preview" style="height: 310px; width: 360px;">
                         <!--</span>-->
                         <label for="preview" class="form-label text-center"></label>
                         <input type="file" onChange="displayImage(this)" id="picture" class="form-control form-control-lg" name="picture" placeholder="Uploader une image">
@@ -133,30 +134,42 @@
                     </div>
                     <!-- BOUTON -->
                     <div class="d-grid gap-2">
-                        <?php if ($update_topic == false) : ?>
+                       
                             <button type="submit" class="btn btn-dark fw-bold text-uppercase mt-4 mb-5" name="create-topic">créer</button>
-                        <?php else : ?>
-                            <button type="submit" class="btn btn-secondary fw-bold text-uppercase mt-4 mb-5" name="update-topic">mettre à jour</button>
-                        <?php endif ?>
+                   
+                            <!-- <button type="submit" class="btn btn-secondary fw-bold text-uppercase mt-4 mb-5" name="update-topic">mettre à jour</button> -->
+                    
                     </div>
 
 
                 </form>
-                <?php 
+                <?php
                 // a modifier car déclaration temporaire
-                $success = array();
+                // $success = array();
                 global $errors, $success; ?>
 
-<div class="">
- 
-    <?php if (count($success > 0)) : ?>
-  <div class="alert alert-success" role="alert">
-    <?php foreach ($success as $successs) : ?>
-      <p><?php echo ($successs); ?></p>
-    <?php endforeach; ?>
-  </div>
-<?php endif; ?>
-            </div>
+                <?php global $errors, $success; ?>
+
+                <div class="">
+
+                    <?php if (count($success > 0)) : ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php foreach ($success as $successs) : ?>
+                                <p><?php echo ($successs); ?></p>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+
+                    <?php if (count($errors > 0)) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php foreach ($errors as $error) : ?>
+                                <p><?php echo ($error); ?></p>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
         </section>
 
         <!-- FOOTER -->

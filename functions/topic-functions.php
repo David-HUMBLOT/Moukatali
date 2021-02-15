@@ -290,18 +290,18 @@ function updateTopic($request_values)
     }
 }
 
-// enregistrer le sujet s'il n'y a pas d'erreurs dans le formulaire
-if (count($errors) == 0) {
-    $query = "UPDATE topics SET title = '$title', topic_description = '$topic_description', update_date = now()  WHERE id = $topic_id";
+// // enregistrer le sujet s'il n'y a pas d'erreurs dans le formulaire
+// if (count($errors) == 0) {
+//     $query = "UPDATE topics SET title = '$title', topic_description = '$topic_description', update_date = now()  WHERE id = $topic_id";
 
-    if (mysqli_query($db, $query)) {
-        $_SESSION['message'] = "le sujet a été mis à jour.";
-        header('location: subject.php');
-        exit(0);
-    } else {
-        echo 'ERREUR BDD';
-    }
-}
+//     if (mysqli_query($db, $query)) {
+//         $_SESSION['message'] = "le sujet a été mis à jour.";
+//         header('location: subject.php');
+//         exit(0);
+//     } else {
+//         echo 'ERREUR BDD';
+//     }
+// }
 // }
 
 // supprimer topic

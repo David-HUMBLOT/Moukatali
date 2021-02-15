@@ -120,8 +120,8 @@
         <?php global $errors, $success; ?>
 
         <form method="POST" action="form-admin-create.php" class="m-auto">
-    <!-- MESSAGE D'ERREUR-->
-    
+          <!-- MESSAGE D'ERREUR-->
+
 
           <?php if ($update === true) : ?>
             <input type="hidden" name="admin_id" value="<?php echo $admin_id; ?>">
@@ -193,26 +193,26 @@
         </form>
         <?php global $errors, $success; ?>
 
-<div class="">
- 
-    <?php if (count($success > 0)) : ?>
-  <div class="alert alert-success" role="alert">
-    <?php foreach ($success as $successs) : ?>
-      <p><?php echo ($successs); ?></p>
-    <?php endforeach; ?>
-  </div>
-<?php endif; ?>
+        <div class="">
+
+          <?php if (count($success > 0)) : ?>
+            <div class="alert alert-success" role="alert">
+              <?php foreach ($success as $successs) : ?>
+                <p><?php echo ($successs); ?></p>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
 
 
-  <?php if (count($errors > 0)) : ?>
-<div class="alert alert-danger" role="alert">
-  <?php foreach ($errors as $error) : ?>
-    <p><?php echo ($error); ?></p>
-  <?php endforeach; ?>
-</div>
-<?php endif; ?>
+          <?php if (count($errors > 0)) : ?>
+            <div class="alert alert-danger" role="alert">
+              <?php foreach ($errors as $error) : ?>
+                <p><?php echo ($error); ?></p>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
 
-</div>
+        </div>
       </div>
     </section>
 
