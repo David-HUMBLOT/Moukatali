@@ -6,13 +6,10 @@ $picture = "";
 $topic_id = 0;
 $published = 0;
 $update_topic = false;
-
-
 global $db, $success, $errors;
 // récupére tous les topics de la BDD
 function getAllTopics()
 {
-
     global $db;
     // L'administrateur peut afficher tous les topics
     // L'auteur ne peut voir que ses topics

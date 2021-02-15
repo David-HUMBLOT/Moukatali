@@ -57,7 +57,7 @@ $sql = "SELECT * FROM users WHERE role = 'admin' OR role = 'author' OR role = 'm
 $pdoStat = $db->prepare($sql);
 $executeIsOk= $pdoStat->execute();
 $listes_AdminAuthorModerator = $pdoStat->fetchAll();
-var_dump($users['pseudo']);
+// var_dump($users['pseudo']);
 global $users;
 // 88888888888888888888888888888888888888888888888888888
 //*******************************************************************************************************************************//
