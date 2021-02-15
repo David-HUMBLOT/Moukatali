@@ -54,18 +54,11 @@ if (isset($_GET['delete-admin'])) {
 function createAdmin($request_values)
 {
 
-
     global $db, $errors, $role, $username, $email, $first_name, $last_name, $success;
 
     require_once('bdd-connect.php');
     connectPdoBdd();
     echo 'Connection à la base de donnée OK <br/>';
-
-
-
-
-
-
 
     $username = trim($request_values['username']);
     $first_name = htmlentities(trim(ucwords(strtolower($request_values['first-name']))));
@@ -101,7 +94,6 @@ function createAdmin($request_values)
         array_push($errors, "les deux mots de passe ne correspondent pas");
     }
 
-
     // 888888888888888888888888888888888888888888888888888888888888888888
     // Assurez-vous qu'aucun utilisateur n'est enregistré deux fois
     // l'e-mail et les noms d'utilisateur doivent être uniques
@@ -120,7 +112,6 @@ function createAdmin($request_values)
     /******************************************************
      * VERIFICATION BOUBLON EMAIL METHODE PDO *
      *************************************************/
-
     //UN UTILISATEUR NE DOIT PAS POUVOIR S INSCRIRE DEUX FOIS AVEC LES MEME IDENTIFIANT
     // l'e-mail et les noms d'utilisateur doivent être uniques
 
@@ -130,7 +121,6 @@ function createAdmin($request_values)
     $reqEmail = $pdo->prepare("SELECT * FROM `users` WHERE email='$email'"); //préparation de la requete
     $reqEmail->execute([$email]);  //EXECUTION DE LA REQUETE
     $doublonEmail = $reqEmail->fetch();  //RECUPERATION RESULTAT DE LA REQUETE AUTREMENT DIT SI UN DOUBLON EST TROUVER EN FONCTION DE L EMAIL FOURNI
-
     // SI DOUBLON EXISTANT
     if ($doublonEmail) {
         if ($doublonEmail['email'] === $email) {
@@ -144,11 +134,10 @@ function createAdmin($request_values)
     /**********************************************
      * VERIFICATION BOUBLON PSEUDONYME METHODE PDO *
      **********************************************/
-
     //  IDEM QUE POUR L EMAIL. C EST UN CHOIX DE SEPARER LES DEUX REQUETE AU LIEU D EN FAIRE UNE POUR DEUX. LE BUT ETANT DE BIEN AVANCER ETAPE PAR ETAPE
     $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE pseudo = '$username' LIMIT 1";
     $reqPseudo = $pdo->prepare("SELECT * FROM `users` WHERE pseudo='$username'");
-    $reqPseudo->execute([$pseudo]);
+    $reqPseudo->execute([$username]);
     $doublonPseudo = $reqPseudo->fetch();
     if ($doublonPseudo) { // email existant
         if ($doublonPseudo['pseudo'] === $username) {
@@ -160,30 +149,12 @@ function createAdmin($request_values)
         echo 'AUCUN DOUBLON PSEUDO TROUVER <br/>';
     }
     echo 'Fin de recherche de doublons <br/>';
-
-
-
-    // 888888888888888888888888888888888888888888888888888888888888888888
-
-
-
-
-
-
-
-
+    // 88888888888888888888888888888888888888888888888888888888888888888
     // enregistrer l'utilisateur s'il n'y a pas d'erreurs dans le formulaire
     if (count($errors) == 0) {
         // crypter le mot de passe avant de l'enregistrer dans la base de données
         $password = password_hash($password_1, PASSWORD_DEFAULT);
-
-
-
         // 888888888888888888888888888888888888888888888888888888888888888888888888888
-
-
-
-
         // $query = "INSERT INTO users (pseudo, password) VALUES ('$username', '$password')";
         // mysqli_query($db, $query);
         // 888888888888888888888888888888888888888888888888888888888888888888888888888
@@ -196,12 +167,9 @@ function createAdmin($request_values)
         var_dump($resultReqInsert1);
         array_push($success, "Compte  créé avec succès ");
         // verification par message erreur
-
         return $success;
         return $errors;
-
-
-
+        exit(0);
         // $requete = "SELECT * from `users` where id = '$id' ";
         // $stmt = $con->query($requete);
         // $user = $stmt->fetch();
@@ -214,29 +182,22 @@ function createAdmin($request_values)
         //888888888888888888888888888888888888888888888888888888
         // $_SESSION['message'] = "Administrateur créé avec succès";
         // header('Location: form-admin-create.php');
-        exit(0);
+        // exit(0);
         //888888888888888888888888888888888888888888888888888888888888888
-
         // 888888888888888888888888888888888888888888888888888888888888888888888888888
         // $reqt = "INSERT INTO `users` ( pseudo, prenom, nom, age, avatar, ville, telephone, email, password, genre, role, date_inscription) VALUES ( '$pseudo','$prenom','$nom', '$age', '$avatar', '$ville', '$telephone', '$email', '$password_hash', '$genre', '$role', now())";
         // 888888888888888888888888888888888888888888888888888888888888888888888888888
-
-
     }
     array_push($success, "Compte  créé avec succès ");
 }
 
-
-
-
-
+// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 // Prend l'ID d'administrateur comme paramètre
 // Récupère l'administrateur de la base de données
 // définit les champs d'administration du formulaire pour l'édition
 function editAdmin($admin_id)
 {
     global $db, $username, $role, $update, $admin_id, $email, $first_name, $last_name;
-
     $sql = "SELECT * FROM `users` WHERE id = $admin_id LIMIT 1";
     $result = mysqli_query($db, $sql);
     $admin = mysqli_fetch_assoc($result);
@@ -247,7 +208,24 @@ function editAdmin($admin_id)
     $email = $admin['email'];
     $role = $admin['role'];
 }
+//// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    A FAAIRE
+// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 // récupére les entrées du formulaire et met à jour la base de données
 function updateAdmin($request_values)
 {
@@ -303,6 +281,17 @@ function updateAdmin($request_values)
     }
 }
 
+
+
+
+
+
+
+
+
+
+// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+//A FAIRE DELETE
 // supprimer l'utilisateur administrateur
 function deleteAdmin($admin_id)
 {
@@ -314,6 +303,22 @@ function deleteAdmin($admin_id)
         exit(0);
     }
 }
+// 88888888888888888888888888888888888888888888888888888
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 88888888888888888888888888888888888888888888888888888
 // FONCTIONNE AU VAR DUMP RECUPERE LES COMPTES SI LE ROLE C EST Admin
 function getAdminUsers()
@@ -334,6 +339,16 @@ function getAdminUsers()
     return $users;
 }
 // 88888888888888888888888888888888888888888888888888888
+
+
+
+
+
+
+
+
+// 88888888888888888888888888888888888888888888888888888
+// A FAIRE
 function getAllUsers()
 {
     global $db, $roles;
