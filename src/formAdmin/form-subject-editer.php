@@ -102,7 +102,7 @@
 
                 ?>
 
-                <form method="post" action="form-subject.php" enctype="multipart/form-data">
+                <form method="post" action="form-subject-editer.php" enctype="multipart/form-data">
 
                     <!-- erreurs de validation du formulaire -->
                     <?php //'/includes/errors.php' ?>

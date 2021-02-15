@@ -92,7 +92,7 @@ function createTopic($request_values)
 
     // global $user_id;
 
-    $user_id = $_SESSION['user']['user_id'];
+    $user_id = $_SESSION['user']['id'];
     var_dump($user_id);
 
 
@@ -109,99 +109,91 @@ function createTopic($request_values)
     // validation formulaire
     if (empty($title)) {
         array_push($errors, "Entrer un titre");
-       
+        return $errors;
+        die;
     }
     if (empty($topic_description)) {
         array_push($errors, "Entrer une description");
-        
+        return $errors;
+        die;
     }
     if (empty($picture)) {
         array_push($errors, "Entrer une photo de profil");
+        return $errors;
         $uploadOk = 0;
+        die;
     }
-//88888888888888888888888888888888888888888888888888888888888888888888888888888888888
- // PARAMETRAGE DES VARIBLES D ACCES, EXTENSION, UPLOAD, ET DU DOSSIER DE DESTINATION DES IMAGES UPLOADER
- $target_dir = "../images/uploads-topics/";  //chemin du sossier ou les fichiers seront uploader
- $target_file = $target_dir . basename($_FILES["picture"]["name"]); //parametrage du nom de l image
- $uploadOk = 1; //condition si uplooad aboutie
- $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //définition de l extension de l image
-// _______________________________________________________________________________________________
+    //88888888888888888888888888888888888888888888888888888888888888888888888888888888888
+    // PARAMETRAGE DES VARIBLES D ACCES, EXTENSION, UPLOAD, ET DU DOSSIER DE DESTINATION DES IMAGES UPLOADER
+    $target_dir = "../../images/uploads-topics/";  //chemin du sossier ou les fichiers seront uploader
+    $target_file = $target_dir . basename($_FILES["picture"]["name"]); //parametrage du nom de l image
+    $uploadOk = 1; //condition si uplooad aboutie
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //définition de l extension de l image
+    // _______________________________________________________________________________________________
 
-  //VERIFICATION SI L IMAGE EST UNE VRAI OU UNE FAUSSE
-  if (isset($_POST["create-topic"])) {
-    $check = getimagesize($_FILES["picture"]["tmp_name"]);
-    if ($check !== false) {
-        // echo "File is an image - " . $check["mime"] . ".";
+    //VERIFICATION SI L IMAGE EST UNE VRAI OU UNE FAUSSE
+    if (isset($_POST["create-topic"])) {
+        $check = getimagesize($_FILES["picture"]["tmp_name"]);
+        if ($check !== false) {
+            // echo "File is an image - " . $check["mime"] . ".";
 
 
-        $uploadOk = 1;
-    } else {
-        // echo "File is not an image.";
-        array_push($errors, "Ce fichier n'est pas une image !");
-        $uploadOk = 0; //CONDITION = 0 CAR N EST PAS UNE IMAGE
+            $uploadOk = 1;
+        } else {
+            // echo "File is not an image.";
+            array_push($errors, "Ce fichier n'est pas une image !");
+            return $errors;
+            $uploadOk = 0; //CONDITION = 0 CAR N EST PAS UNE IMAGE
+            die;
+        }
     }
-}
-// _____________________________________________________________________________________________
+    // _____________________________________________________________________________________________
     // VERIFICATION DE LA TAILLE DE L IMAGE
     if ($_FILES["picture"]["size"] > 600000) {
         // echo "Sorry, your file is too large.";
         array_push($errors, "Image volumineuse ! Elle ne doit pas  dépasser 600ko .");
+        return $errors;
         $uploadOk = 0;  //CONDITION = 0 CAR N EST TROP VOLUMINEUSE
+        die;
     }
-// __________________________________________________________________________________________
-     // VERIFICATION DES EXTENSIONS
-     if (
+    // __________________________________________________________________________________________
+    // VERIFICATION DES EXTENSIONS
+    if (
         $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 
     ) {
         // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         array_push($errors, "Format d'image non accepté ! Requis : png, pjeg ou png");
+        return $errors;
         $uploadOk = 0;
+        die;
     }
-// ____________________________________________________________________________________________
-   // VERIFICATION SI UNE ERREUR IMAGE EST SURVENUE
-   if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-    array_push($errors, "Désoler, votre image n'as pas été transférées.");
-    // SI AUCUNE ERREUR ALORS ON PRECEDE AU TELECHARGEMENT DANS LE DOSSIER UPLOAD PREALABLEMENT CREER.
-    // LA FONCTION MOVE UPLOAD FILE PREND DEUX PARAMETRE (VARIABLE DE NOTRE IMAGE TRAITER  , SON CHEMIN DE DESTINATION)
-} else {
-    // CONDITION QUAND TRANSFERT REUSSI
-    if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
-        $avatar = $_FILES["picture"]["name"];
-        // echo "The file " . htmlspecialchars(basename($_FILES["picture"]["name"])) . " has been uploaded. ";
+    // ____________________________________________________________________________________________
+    // VERIFICATION SI UNE ERREUR IMAGE EST SURVENUE
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+        array_push($errors, "Désoler, votre image n'as pas été transférées.");
+        // SI AUCUNE ERREUR ALORS ON PRECEDE AU TELECHARGEMENT DANS LE DOSSIER UPLOAD PREALABLEMENT CREER.
+        // LA FONCTION MOVE UPLOAD FILE PREND DEUX PARAMETRE (VARIABLE DE NOTRE IMAGE TRAITER  , SON CHEMIN DE DESTINATION)
+    } else {
+        // CONDITION QUAND TRANSFERT REUSSI
+        if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
+            $picture = $_FILES["picture"]["name"];
+            // echo "The file " . htmlspecialchars(basename($_FILES["picture"]["name"])) . " has been uploaded. ";
+        }
+        // CONDITION QUAND LE TRANSFERT ECHOUE
+        else {
+            echo "Sorry, there was an error uploading your file.";
+            array_push($errors, "Désolé, une erreur est survenue lors du transfert ... Veuillez recommençer.");
+            return $errors;
+        }
     }
-    // CONDITION QUAND LE TRANSFERT ECHOUE
-    else {
-        echo "Sorry, there was an error uploading your file.";
-        array_push($errors, "Désolé, une erreur est survenue lors du transfert ... Veuillez recommençer.");
-    }
+    
 }
-// FIN DES VERIFICATIONS SUR IMAGES
-//_______________________________________________________________________________________
-// 8888888888888888888888888888888888888888888888888888888888888888888888888888888888
-    // validation image
-    // if (empty($picture)) {
-    //     array_push($errors, "Veuillez uploader une image");
-    // }
-    // // valider la taille de l'image, la taille est calculée en octet
-    // if ($_FILES['picture']['size'] > 200000) {
-    //     array_push($errors, "La taille de l'image ne doit pas dépasser 200 ko");
-    // }
-    // // On vérifie l'extension et la taille de l'image
-    // $picture_ext = pathinfo($picture, PATHINFO_EXTENSION); // ou $picture_ext = pathinfo($picture)['extension'];
-    // if (!in_array($picture_ext, ['jpg', 'jpeg', 'png'])) {
-    //     array_push($errors, "Votre image doit être .jpg, .jpeg ou .png");
-    // }
-    // // image file directory
-    // // $target_dir = ROOT_PATH . '/public/images/upload/' . basename($picture);
 
-    // // if (!move_uploaded_file($_FILES['picture']['tmp_name'], $target_dir)) {
-    // array_push($errors, "Échec du téléchargement de l'image.");
-    return $errors;
-    // 888888888888888888888888888888888888888888888888888888888888888888888888888888888
-}
-return $errors;
+
+
+// return $errors;
 // créer si aucune erreur
 if (count($errors) == 0) {
     // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
