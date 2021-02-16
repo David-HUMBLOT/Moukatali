@@ -236,7 +236,7 @@
         <?php if (empty($listes_AdminAuthorModerator)) : ?>
           <h6>AUCUN ADMIN</h6>
         <?php else : ?>
-          <table class="table table-bordered text-light">
+          <table class="table table table-bordered bg-secondary  text-center text-light">
 
             <thead>
               <tr>
@@ -252,9 +252,9 @@
                 <div class="user">
                   <tr>
                     <th scope="row"><?php echo $key + 1; ?></th>
-                    <td class="align-middle"><a href="#"><?php echo $ligne_AdminAuthorModerator['pseudo']; ?></a></td>
-                    <td class="align-middle"><?php echo $ligne_AdminAuthorModerator['email']; ?></td>
-                    <td class="align-middle"><?php echo $ligne_AdminAuthorModerator['role']; ?></td>
+                    <td class="align-middle"><a style="color:black;font-size:2vh;" href="#"><?php echo $ligne_AdminAuthorModerator['pseudo']; ?></a></td>
+                    <td class="align-middle" style="color:black;font-size:2vh;"><?php echo $ligne_AdminAuthorModerator['email']; ?></td>
+                    <td class="align-middle" style="color:black;font-size:2vh;" ><?php echo $ligne_AdminAuthorModerator['role']; ?></td>
                     <td class="align-middle">
                       <a class="text-dark" href="form-admin-create.php?edit-admin=<?php echo $ligne_AdminAuthorModerator['id']; ?>" role="button">
                         <svg width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

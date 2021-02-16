@@ -90,89 +90,93 @@
     </div>
   </header>
 
-  <div class="text-light">
+  <div class=" ">
 
 
     <section>
-      <div class="container mt-5">
-        <h1 class="text-uppercase text-center py-3 mt-5 pt-5">topics</h1>
+      <div class="container-fluid col-11  justify-content-center mt-5 mb-5">
+        <h1 class="text-uppercase text-center py-3 mt-5 mb-5 pt-5">topics</h1>
         <!-- message -->
-        <?php// include( '/includes/messages.php'); ?>
+        <!-- include( '/includes/messages.php'); -->
 
         <?php if (empty($topics)) : ?>
           <h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>
         <?php else : ?>
-          <table class="table table-bordered text-center text-light">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Intitulé</th>
-                <th scope="col">Quota de vote</th>
-                <th scope="col">Date de création</th>
-                <th scope="col">Contenu</th>
-                <th scope="col">Image</th>
-              
-              
-                <!-- Seul l'administrateur peut publier / annuler la publication du message -->
-                <?php if ($_SESSION['user']['role'] == "admin") : ?>
-                  <th scope="col">publier</th>
-                <?php endif; ?>
-                <th scope="col">mettre à jour</th>
-                <th scope="col">supprimer</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 8888888888888888888888888888888888888888888888888 -->
-              <?php foreach ($topics as $key => $topic) : ?>
-                <div class="user">
-                  <tr>
-                    <th scope="row" class="align-middle"><?php echo $key + 1; ?></th>
-                    <td class="align-middle"><?php echo $topic['titre']; ?></td>
-                    <td class="align-middle"><?php echo $topic['quota_vote']; ?></td>
-                    <td class="align-middle"><?php echo $topic['date_creation']; ?></td>
-                    <td class="align-middle"><?php echo $topic['topic_description']; ?></td>
-                    <td class="align-middle"><?php echo $topic['image']; ?></td>
-                   
-                    <!-- Seul l'administrateur peut publier / annuler la publication du message -->
-                    <?php if ($_SESSION['user']['role'] == "admin") : ?>
+
+          <div class=" d-flex justify-content-center">
+
+            <table class="col-11 table table-bordered bg-secondary  text-center text-light">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Intitulé</th>
+                  <th scope="col">Quota de vote</th>
+                  <th scope="col">Date de création</th>
+                  <th scope="col-3">Contenu</th>
+                  <th scope="col">Image</th>
+
+
+                  <!-- Seul l'administrateur peut publier / annuler la publication du message -->
+                  <?php if ($_SESSION['user']['role'] == "admin") : ?>
+                    <th scope="col">publier</th>
+                  <?php endif; ?>
+                  <th scope="col">mettre à jour</th>
+                  <th scope="col">supprimer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- 8888888888888888888888888888888888888888888888888 -->
+                <?php foreach ($topics as $key => $topic) : ?>
+                  <div class="user">
+                    <tr>
+                      <th scope="row" class="align-middle"><?php echo $key + 1; ?></th>
+                      <td class="align-middle"><?php echo $topic['titre']; ?></td>
+                      <td class="align-middle"><?php echo $topic['quota_vote']; ?></td>
+                      <td class="align-middle"><?php echo $topic['date_creation']; ?></td>
+                      <td class="align-middle"><?php echo $topic['topic_description']; ?></td>
+                      <td class="align-middle"><?php echo $topic['image']; ?></td>
+
+                      <!-- Seul l'administrateur peut publier / annuler la publication du message -->
+                      <?php if ($_SESSION['user']['role'] == "admin") : ?>
+                        <td class="align-middle">
+                          <?php if ($topic['published'] == 1) : ?>
+                            <a href="topics.php?unpublish=<?= $topic['id'] ?>" role="button">
+                              <svg width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill text-danger" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                              </svg>
+                            </a>
+                          <?php else : ?>
+                            <a href="topics.php?publish=<?= $topic['id'] ?>" role="button">
+                              <svg width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                              </svg>
+                            </a>
+                          <?php endif; ?>
+                        </td>
+                      <?php endif; ?>
                       <td class="align-middle">
-                        <?php if ($topic['published'] == 1) : ?>
-                          <a href="topics.php?unpublish=<?= $topic['id'] ?>" role="button">
-                            <svg width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill text-danger" viewBox="0 0 16 16">
-                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-                            </svg>
-                          </a>
-                        <?php else : ?>
-                          <a href="topics.php?publish=<?= $topic['id'] ?>" role="button">
-                            <svg width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
-                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                            </svg>
-                          </a>
-                        <?php endif; ?>
+                        <a class="text-dark" href="form-subject.php?edit-topic=<?= $topic['id'] ?>" role="button">
+                          <svg width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                          </svg>
+                        </a>
                       </td>
-                    <?php endif; ?>
-                    <td class="align-middle">
-                      <a class="text-dark" href="form-subject.php?edit-topic=<?= $topic['id'] ?>" role="button">
-                        <svg width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                          <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                        </svg>
-                      </a>
-                    </td>
-                    <td class="align-middle">
-                      <a class="text-dark" href="topics.php?delete-topic=<?= $topic['id'] ?>" role="button">
-                        <svg width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                        </svg>
-                        </svg>
-                      </a>
-                    </td>
-                  </tr>
-                </div>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
+                      <td class="align-middle">
+                        <a class="text-dark" href="topics.php?delete-topic=<?= $topic['id'] ?>" role="button">
+                          <svg width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                          </svg>
+                          </svg>
+                        </a>
+                      </td>
+                    </tr>
+                  </div>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
         <?php endif; ?>
         <!-- 8888888888888888888888888888888888888888888888888888888888888 -->
       </div>
