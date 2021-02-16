@@ -7,10 +7,13 @@ $topic_id = 0;
 $published = 0;
 $update_topic = false;
 global $db, $success, $errors;
+$db = connectPdoBdd();
+// $dbs=connectSqliBdd();
 // récupére tous les topics de la BDD
+
 function getAllTopics()
 {
-    global $db;
+    global $db, $final_topics;
     // L'administrateur peut afficher tous les topics
     // L'auteur ne peut voir que ses topics
     if ($_SESSION['user']['role'] == "admin") {
@@ -25,29 +28,30 @@ function getAllTopics()
         // 88888888888888888888888888888888888888888888888888888
     }
 
-
-    $result = mysqli_query($db, $sql);
-    $topics = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $pdoStat = $db->prepare($sql);
+    $result = $pdoStat->execute();
+    $topics = $db->query($sql);
     $final_topics = array();
+
     foreach ($topics as $topic) {
-        $topic['author'] = getTopicAuthorById($topic['user_id']);
+        $topic['author'] = getTopicAuthorById($topic['id']);
         array_push($final_topics, $topic);
     }
     return $final_topics;
+    var_dump($final_topics);
 }
 
 
 // récupére l'auteur d'un topic
 function getTopicAuthorById($user_id)
 {
-
     global $db;
 
-    $sql = "SELECT username FROM users WHERE id = $user_id";
-    $result = mysqli_query($db, $sql);
+    $sql = "SELECT nom FROM users WHERE id = $user_id";
+    $result = $db->query($sql);
     if ($result) {
         // retourner le nom d'utilisateur
-        return mysqli_fetch_assoc($result)['username'];
+        return ($result);
     } else {
         return null;
     }

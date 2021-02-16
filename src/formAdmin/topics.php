@@ -18,11 +18,12 @@
   // $results = mysqli_query($db, "SELECT * FROM topic ORDER BY publication_date DESC");
   // $topics = mysqli_fetch_all($results, MYSQLI_ASSOC);
   // 88888888888888888888888888888888888888888888888888888888888888888888
-  $sql = "SELECT * FROM topics ORDER BY publication_date DESC";
+  $sql = "SELECT * FROM topics ORDER BY date_creation DESC";
   $pdoStat = $db->prepare($sql);
   $executeIsOk = $pdoStat->execute();
-  $listes_AllTpics = $pdoStat->fetchAll();
-  var_dump($listes_AllTpics);
+  // $listes_AllTpics = $pdoStat->fetchAll();
+  $topics = $pdoStat->fetchAll();
+  var_dump($topics);
   // 88888888888888888888888888888888888888888888888888888888888888888888
   ?>
 </div>
@@ -101,15 +102,17 @@
         <?php if (empty($topics)) : ?>
           <h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>
         <?php else : ?>
-          <table class="table table-bordered text-center">
+          <table class="table table-bordered text-center text-light">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">auteur</th>
-                <th scope="col">titre</th>
-                <th scope="col">nb de commentaires</th>
-                <th scope="col">likes</th>
-                <th scope="col">unlikes</th>
+                <th scope="col">Intitulé</th>
+                <th scope="col">Quota de vote</th>
+                <th scope="col">Date de création</th>
+                <th scope="col">Contenu</th>
+                <th scope="col">Image</th>
+              
+              
                 <!-- Seul l'administrateur peut publier / annuler la publication du message -->
                 <?php if ($_SESSION['user']['role'] == "admin") : ?>
                   <th scope="col">publier</th>
@@ -124,11 +127,12 @@
                 <div class="user">
                   <tr>
                     <th scope="row" class="align-middle"><?php echo $key + 1; ?></th>
-                    <td class="align-middle"><?php echo $topic['author']; ?></td>
-                    <td class="align-middle"><?php echo $topic['title']; ?></td>
-                    <td class="align-middle"><?php echo $topic['nb_comment']; ?></td>
-                    <td class="align-middle"><?php echo $topic['vote_for']; ?></td>
-                    <td class="align-middle"><?php echo $topic['vote_against']; ?></td>
+                    <td class="align-middle"><?php echo $topic['titre']; ?></td>
+                    <td class="align-middle"><?php echo $topic['quota_vote']; ?></td>
+                    <td class="align-middle"><?php echo $topic['date_creation']; ?></td>
+                    <td class="align-middle"><?php echo $topic['topic_description']; ?></td>
+                    <td class="align-middle"><?php echo $topic['image']; ?></td>
+                   
                     <!-- Seul l'administrateur peut publier / annuler la publication du message -->
                     <?php if ($_SESSION['user']['role'] == "admin") : ?>
                       <td class="align-middle">

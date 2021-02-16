@@ -204,9 +204,6 @@ function update_user()
          * DOUBLE SECURITE , ICI AU NIVEAU DE PHP (NOM MODIFIABLE DEPUIS L INSPECTEUR DES ELEMENTS HTMPL) *
          ****************************************/
 
-        // RESTE A FAIRE 
-
-        // 8888888888888888888888888888888888888888888888888888888888888888888888888888888
 
         /******************************************************
          * VERIFICATION BOUBLON EMAIL METHODE PDO *
@@ -214,41 +211,10 @@ function update_user()
 
         // CELA N EST PLUS NECCESSAIRE A CE STADE CAR ON VAS UPDATE SON COMPTE
 
-        // echo 'start recherche doublons <br/>';
-     //connection a la bdd
-        // $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE  email = '$email' LIMIT 1"; //requete de selection dans table user en fonction de l email
-        // $reqEmail = $pdo->prepare("SELECT * FROM `users` WHERE email='$email'"); //préparation de la requete
-        // $reqEmail->execute([$email]);  //EXECUTION DE LA REQUETE
-        // $doublonEmail = $reqEmail->fetch();  //RECUPERATION RESULTAT DE LA REQUETE AUTREMENT DIT SI UN DOUBLON EST TROUVER EN FONCTION DE L EMAIL FOURNI
 
-        // // SI DOUBLON EXISTANT
-        // if ($doublonEmail) {
-        //     if ($doublonEmail['email'] === $email) {
-        //         array_push($errors, "Attention ! Cette addresse email existe déjà !");
-        //     }
-        //     //SI AUCUN DOUBLON ECHO TEST ET ON CONTINUE
-        // } else {
-        //     echo 'AUCUN DOUBLON EMAIL TROUVER <br/>';
-        // }
+    
 
-        /**********************************************
-         * VERIFICATION BOUBLON PSEUDONYME METHODE PDO *
-         **********************************************/
-
-        //  IDEM QUE POUR L EMAIL. C EST UN CHOIX DE SEPARER LES DEUX REQUETE AU LIEU D EN FAIRE UNE POUR DEUX. LE BUT ETANT DE BIEN AVANCER ETAPE PAR ETAPE
-        // $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE pseudo = '$pseudo' LIMIT 1";
-        // $reqPseudo = $pdo->prepare("SELECT * FROM `users` WHERE pseudo='$pseudo'");
-        // $reqPseudo->execute([$pseudo]);
-        // $doublonPseudo = $reqPseudo->fetch();
-        // if ($doublonPseudo) { // email existant
-        //     if ($doublonPseudo['pseudo'] === $pseudo) {
-        //         array_push($errors, "Attention ! Ce Pseudonyme existe déjà !");
-        //     }
-        //     // SI AUCUN DOUBLON ECHO TEST ET ON CONTINUE
-        // } else { // email n'existe pas
-        //     echo 'AUCUN DOUBLON PSEUDO TROUVER <br/>';
-        // }
-        // echo 'Fin de recherche de doublons <br/>';
+    
 
         // FIN DES VERIFICATIONS A CE STADE TOUT EST BON. ON PEUT PASSER A LA REQUETE D INSERTION QUI CREER LE COMPTE UTILISATEUR 
         // ENSUITE ON REDIRIGE LE CLIENT SUR UNE PAGE STATICS DE CONFIRMATION DE LA MODIFICATIO AVANT DE SORTIR DE NOTRE FONCTION
