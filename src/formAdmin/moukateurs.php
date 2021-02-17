@@ -1,7 +1,8 @@
 <?php
 
-include('../config.php');
-include( '/admin/includes/admin-functions.php');
+session_start();
+include('../../functions/bdd-connect.php');
+include('../../functions/create-admin.php');
 // récupére tous les administrateurs de la BDD ayant un rôle
 $all_users = getAllUsers();
 

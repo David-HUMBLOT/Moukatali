@@ -274,3 +274,13 @@ function deleteAdmin($admin_id)
 }
 
 
+// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+// POUR LA PAGE AVEC LA LISTE DE TOUT LES MOUKATEUR AU ROLE DE USER
+function getAllUsers() {
+    global $db, $roles;
+    $sql = "SELECT * FROM user_info WHERE role IS NULL";
+    $result = mysqli_query($db, $sql);
+    $all_users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    return $all_users;
+}
