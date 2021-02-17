@@ -8,7 +8,7 @@
   include('../../functions/create-admin.php');
   $roles = ['Admin', 'Author', 'Moderator', 'User'];
   $role = ['Admin'];
-  
+
 
 
 
@@ -57,19 +57,25 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav ">
             <li class="nav-item ">
-              <a class="nav-link text-center  font-weight-bold text-nav-head" href="admin.php">CREER</a>
+              <a class="nav-link text-center  font-weight-bold text-nav-head" href="admin.php">CREER PROFIL</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-center  font-weight-bold text-nav-head" href="form-subject-editer.php">EDITER</a>
+              <a class="nav-link text-center  font-weight-bold text-nav-head" href="form-subject-editer.php">EDITER TOPICS</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-center  font-weight-bold text-nav-head" href="form-subject-modifier.php">MODIFIER</a>
+              <a class="nav-link text-center  font-weight-bold text-nav-head" href="form-offre-create.php">CREER OFFRE</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-center  font-weight-bold text-nav-head" href="topics.php">TOPICS</a>
+              <a class="nav-link text-center  font-weight-bold text-nav-head" href="form-subject-modifier.php">MODIFIER PROFIL-OFFRE </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-center  font-weight-bold text-nav-head" href="moukateurs.php">MOUKATEURS</a>
+              <a class="nav-link text-center  font-weight-bold text-nav-head" href="topics.php">LISTE TOPICS</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-center  font-weight-bold text-nav-head" href="topics.php">LISTE OFFRES</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-center  font-weight-bold text-nav-head" href="moukateurs.php">LISTE MOUKATEURS</a>
             </li>
             <li class="nav-item ">
               <a class="nav-link text-center  font-weight-bold text-nav-head disabled" href="profile.php">SIGNALER</a>
@@ -231,7 +237,7 @@
 
 
         // echo ($admins['pseudo']);
-                        ?>
+        ?>
 
         <?php if (empty($listes_AdminAuthorModerator)) : ?>
           <h6>AUCUN ADMIN</h6>
@@ -254,7 +260,7 @@
                     <th scope="row"><?php echo $key + 1; ?></th>
                     <td class="align-middle"><a style="color:black;font-size:2vh;" href="#"><?php echo $ligne_AdminAuthorModerator['pseudo']; ?></a></td>
                     <td class="align-middle" style="color:black;font-size:2vh;"><?php echo $ligne_AdminAuthorModerator['email']; ?></td>
-                    <td class="align-middle" style="color:black;font-size:2vh;" ><?php echo $ligne_AdminAuthorModerator['role']; ?></td>
+                    <td class="align-middle" style="color:black;font-size:2vh;"><?php echo $ligne_AdminAuthorModerator['role']; ?></td>
                     <td class="align-middle">
                       <a class="text-dark" href="form-admin-create.php?edit-admin=<?php echo $ligne_AdminAuthorModerator['id']; ?>" role="button">
                         <svg width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

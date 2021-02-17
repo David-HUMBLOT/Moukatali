@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../../css/styleGreg.css">
     <link rel="stylesheet" href="../../css/mon-style.css">
     <link rel="stylesheet" href="../../css/styleDav.css">
-    <title>Créer un sujet - Moukat A Li</title>
+    <title>Créer une offre - Moukat A Li</title>
 </head>
 
 
@@ -36,12 +36,11 @@
 
 
     ?>
-
-
+    
     <body>
 
-    
-      <!-- HEADER -->
+
+     <!-- HEADER -->
   <header class="header-liste" id="id-navbar">
     <div class="container ">
       <!-- NAVBAR -->
