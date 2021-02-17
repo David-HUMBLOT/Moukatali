@@ -1,10 +1,16 @@
+
+<div class="text-light">
 <?php
 
 session_start();
 include('../../functions/bdd-connect.php');
 include('../../functions/create-admin.php');
 // récupére tous les administrateurs de la BDD ayant un rôle
-$all_users = getAllUsers();
+
+global $all_users;
+
+$all_users= getAllUsers();
+var_dump($all_users);
 
 if (isset($_GET['logout'])) {
   session_destroy();
@@ -32,7 +38,7 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body>
-<div class="text-light">
+
   <!-- HEADER -->
   <header class="header-liste" id="id-navbar">
     <div class="container ">
@@ -96,11 +102,13 @@ if (isset($_GET['logout'])) {
           </tr>
         </thead>
         <tbody>
+
+        <!-- 8888888888888888888888888888888888888888888888888888 -->
           <?php foreach ($all_users as $key => $all_user): ?>
             <div class="user">
               <tr>
                 <th scope="row"><?php echo $key + 1; ?></th>
-                <td><?php echo $all_user['username']; ?></td>
+                <td><?php echo $all_user['pseudo']; ?></td>
                 <td><?php echo $all_user['email']; ?></td>
                 <td><?php echo $all_user['my_points']; ?></td>
                 <td><?php echo $all_user['registration_date']; ?></td>

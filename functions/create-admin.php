@@ -55,7 +55,7 @@ $role = "Admin";
 $db = connectPdoBdd();
 $sql = "SELECT * FROM users WHERE role = 'admin' OR role = 'author' OR role = 'moderator' ";
 $pdoStat = $db->prepare($sql);
-$executeIsOk= $pdoStat->execute();
+$executeIsOk = $pdoStat->execute();
 $listes_AdminAuthorModerator = $pdoStat->fetchAll();
 // var_dump($users['pseudo']);
 global $users;
@@ -276,11 +276,47 @@ function deleteAdmin($admin_id)
 
 // 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 // POUR LA PAGE AVEC LA LISTE DE TOUT LES MOUKATEUR AU ROLE DE USER
-function getAllUsers() {
-    global $db, $roles;
-    $sql = "SELECT * FROM user_info WHERE role IS NULL";
-    $result = mysqli_query($db, $sql);
-    $all_users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+
+global $all_users;
+
+
+function getAllUsers()
+{
+
+    global $all_users;
+    global $db, $roles;
+    $admin = "role";
+    $sql = "SELECT * FROM users WHERE 'role'= $admin";
+
+    // 88888888888888888888888888888888
+    // $result = mysqli_query($db, $sql);
+    // $all_users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    // 88888888888888888888888888888888
+    $db = connectPdoBdd();
+    $requet = "SELECT * FROM users WHERE 'admin'= $admin";
+    $stmt = $db->query($requet);
+    $all_users = $stmt->fetchAll();
     return $all_users;
+
+    print_r($all_users);
+    var_dump($all_users);
 }
+
+
+
+
+// foreach ($result_users as $key => $result_user) {
+//     // $all_users['user'] = getTopicAuthorById($topic['id']);
+//     array_push($all_users, $result_users);
+// }
+
+// return $all_users;
+
+print_r($all_users);
+var_dump($all_users);
+
+
+
+
+var_dump($all_users);
