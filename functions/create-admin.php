@@ -280,27 +280,22 @@ function deleteAdmin($admin_id)
 
 global $all_users;
 
-
+// 8888888888888888888888888
+// ok fonctionelle
 function getAllUsers()
 {
 
     global $all_users;
     global $db, $roles;
     $admin = "role";
-    $sql = "SELECT * FROM users WHERE 'role'= $admin";
-
-    // 88888888888888888888888888888888
-    // $result = mysqli_query($db, $sql);
-    // $all_users = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    // 88888888888888888888888888888888
     $db = connectPdoBdd();
-    $requet = "SELECT * FROM users WHERE 'admin'= $admin";
+    $requet = "SELECT * FROM users WHERE 'role'= 'admin'";
     $stmt = $db->query($requet);
     $all_users = $stmt->fetchAll();
     return $all_users;
 
-    print_r($all_users);
-    var_dump($all_users);
+    // print_r($all_users);
+    // var_dump($all_users);
 }
 
 
@@ -313,10 +308,10 @@ function getAllUsers()
 
 // return $all_users;
 
-print_r($all_users);
-var_dump($all_users);
+// print_r($all_users);
+// var_dump($all_users);
 
 
 
 
-var_dump($all_users);
+// var_dump($all_users);
