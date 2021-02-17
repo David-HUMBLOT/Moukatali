@@ -289,23 +289,23 @@ function getAllUsers()
     global $db, $roles;
     $admin = "role";
     $db = connectPdoBdd();
-    $requet = "SELECT * FROM users WHERE 'role'= 'admin'";
+    $requet = "SELECT * FROM users WHERE role= 'user'";
     $stmt = $db->query($requet);
     $all_users = $stmt->fetchAll();
     return $all_users;
 
     // print_r($all_users);
     // var_dump($all_users);
+
+
+
+// $listes_all_user
+
+//     foreach ($listes_users as $key => $ligne_user) {
+//         // $all_users['user'] = getTopicAuthorById($topic['id']);
+//         array_push($all_users, $result_users);
+//     }
 }
-
-
-
-
-// foreach ($result_users as $key => $result_user) {
-//     // $all_users['user'] = getTopicAuthorById($topic['id']);
-//     array_push($all_users, $result_users);
-// }
-
 // return $all_users;
 
 // print_r($all_users);
