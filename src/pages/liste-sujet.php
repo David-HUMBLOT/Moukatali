@@ -249,11 +249,11 @@
 
 
                 <div class="sujet bg-light p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center">
-                    <div class="image mb-2 mb-md-0 mr-md-2 d-lg-none">
+                    <div class="image mb-2 mb-md-0 mr-md-2 ">
 
 
                     </div>
-                    <div class="image mr-lg-2 d-none d-lg-block"><?php echo ('<img src="../../images/uploads/' . $topic['image'] .  '" alt="Image du sujet">');  ?></div>
+                    <div class="image mr-lg-2  d-lg-block col-sm-6"><?php echo ('<img class="img-fluid" src="../../images/uploads/' . $topic['image'] .  '" alt="Image du sujet">');  ?></div>
                     <p class="text-dark"><?php echo ($topic['topic_description'])    ?></p>
                 </div>
 
