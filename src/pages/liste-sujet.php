@@ -1,12 +1,15 @@
 <!-- DERARAGE D UNE SESSION suite a une connexion on a besoin des infos de sessions pour afficher au bon endroit -->
 
-
+<div class="text-light">
 <?php
 session_start();
 global $user;
+
+include('../../functions/bdd-connect.php');
 include('../../functions/read-user.php');
 include('../../functions/delete-user.php');
 include('../../functions/deconnect-user.php');
+include('../../functions/topic-functions.php');
 //  echo  ($user);
 //  echo  ($user);
 
@@ -37,9 +40,15 @@ include('../../functions/deconnect-user.php');
 
 
 
-
-
 <body>
+
+
+
+
+
+
+
+
 
     <!-- 888888888888888888888888888888888888888888888888888888 -->
     <!-- HEADER -->
@@ -184,6 +193,19 @@ include('../../functions/deconnect-user.php');
 
     <section>
         <div class="container pt-4">
+
+
+<?php  if (isset($topic_id )){
+    var_dump($topics_id);
+
+}
+
+
+
+
+
+?>
+
             <!-- SUJET -->
             <div class="sujet bg-light p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center">
                 <div class="image mb-2 mb-md-0 mr-md-2 d-lg-none"><img src="../../images/image-mobile.jpg" alt="Image du sujet"></div>
@@ -191,6 +213,18 @@ include('../../functions/deconnect-user.php');
                 <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in lobortis nisl.
                     Vestibulum mauris metus, luctus quis volutpat vitae, laoreet.</p>
             </div>
+
+
+
+            <!-- SUJET -->
+            <div class="sujet bg-light p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center">
+                <div class="image mb-2 mb-md-0 mr-md-2 d-lg-none"><img src="../../images/image-mobile.jpg" alt="Image du sujet"></div>
+                <div class="image mr-lg-2 d-none d-lg-block"><img src="../../images/image.jpg" alt="Image du sujet"></div>
+                <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in lobortis nisl.
+                    Vestibulum mauris metus, luctus quis volutpat vitae, laoreet.</p>
+            </div>
+
+            
             <!-- PROGRESS BAR -->
             <div class="info p-3 mb-3 bg-light">
                 <div class="progress">
@@ -201,6 +235,8 @@ include('../../functions/deconnect-user.php');
             <div class="info px-4 py-3 mb-3 bg-light d-flex align-items-center justify-content-md-center">
                 <div class="nombre black text-light d-flex align-items-center justify-content-center font-weight-bolder mr-2 p-1">
                     1333</div>
+
+                    
                 <p class="mb-0 font-weight-light text-dark">Moukatages à faire avant la clôture</p>
             </div>
             <!-- PUBLIER -->
@@ -364,7 +400,7 @@ include('../../functions/deconnect-user.php');
     </footer>
 
 
-
+    </div>
 
     <!-- jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

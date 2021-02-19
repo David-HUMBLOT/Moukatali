@@ -316,7 +316,9 @@ function deleteTopic($topic_id)
         exit(0);
     }
 }
-/*
+
+
+// 8888888888888888888888888888888888888888888888888888888888
 // si l'utilisateur clique sur le bouton de publication de l'article
 if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
 	$message = "";
@@ -329,6 +331,7 @@ if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
 	}
 	togglePublishTopic($topic_id, $message);
 }
+
 // activer - desactiver
 function togglePublishTopic($topic_id, $message)
 {
@@ -337,11 +340,13 @@ function togglePublishTopic($topic_id, $message)
 
 	if (mysqli_query($db, $sql)) {
 		$_SESSION['message'] = $message;
-		header("location: topics.php");
+		// header("location: topics.php");
 		exit(0);
 	}
 }
-*/
+// 8888888888888888888888888888888888888888888888888888888888
+
+
 if (isset($_GET)) {
     if (isset($_GET['publish'])) {
         $topic_id = $_GET['publish'];
