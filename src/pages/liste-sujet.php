@@ -161,25 +161,12 @@
             foreach ($topics as $topic) {
                 // $topic['author'] = getTopicAuthorById($topic['id']);
                 array_push($final_topics, $topic);
-                var_dump($topic['image']);
+                // var_dump($topic['image']);
             }
 
-          
+
             //  var_dump($final_topics['id'])
             // 888888888888888888888888888888888888888888888888888888888888888888888888888888
-
-            
-
-
-
-
-
-
-
-
-
-
-
 
 
             ?>
@@ -248,59 +235,44 @@
         ?>
 
 
-<?php if (empty($topics)) : ?>
-          <h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>
-        <?php else : 
+        <?php if (empty($topics)) : ?>
+            <h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>
+            <?php else :
             // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
-            if($topics['published'] === "1"){
-                echo 'test';
+
+            echo 'test';
+
+            foreach ($topics as $topic) { ?>
+
+                <!-- AFFICHAGE DU TOPICS CREER ET PUBLIER PAR L ADMIN -->
+                <!-- SUJET -->
+
+
+                <div class="sujet bg-light p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center">
+                    <div class="image mb-2 mb-md-0 mr-md-2 d-lg-none">
+
+
+                    </div>
+                    <div class="image mr-lg-2 d-none d-lg-block"><?php echo ('<img src="../../images/uploads/' . $topic['image'] .  '" alt="Image du sujet">');  ?></div>
+                    <p class="text-dark"><?php echo ($topic['topic_description'])    ?></p>
+                </div>
 
 
 
-            }
-            
-            
-            
+
+        <?php      }
         endif; ?>
 
 
 
 
-
-
-
-
-        <!-- AFFICHAGE DU TOPICS CREER ET PUBLIER PAR L ADMIN -->
-
-           <!-- SUJET -->
-           <div class="sujet bg-light p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center">
+        <!-- SUJET BRUT-->
+        <!-- <div class="sujet bg-light p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center">
             <div class="image mb-2 mb-md-0 mr-md-2 d-lg-none"><img src="../../images/image-mobile.jpg" alt="Image du sujet"></div>
             <div class="image mr-lg-2 d-none d-lg-block"><img src="../../images/image.jpg" alt="Image du sujet"></div>
             <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in lobortis nisl.
                 Vestibulum mauris metus, luctus quis volutpat vitae, laoreet.</p>
-        </div>
-
-
-
-        <?php
-     
-
-
-
-
-        ?>
-
-
-
-
-
-        <!-- SUJET -->
-        <div class="sujet bg-light p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center">
-            <div class="image mb-2 mb-md-0 mr-md-2 d-lg-none"><img src="../../images/image-mobile.jpg" alt="Image du sujet"></div>
-            <div class="image mr-lg-2 d-none d-lg-block"><img src="../../images/image.jpg" alt="Image du sujet"></div>
-            <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in lobortis nisl.
-                Vestibulum mauris metus, luctus quis volutpat vitae, laoreet.</p>
-        </div>
+        </div> -->
 
 
         <!-- PROGRESS BAR -->
@@ -351,7 +323,7 @@
         <!-- 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 -->
 
         <?php
-    if (isset($_SESSION['user']['id'])) {  ?>
+        if (isset($_SESSION['user']['id'])) {  ?>
             <!-- MOUKATAGE -->
             <div class="moukatage p-3 bg-light text-dark mb-3">
                 <!-- PROFIL -->
@@ -430,65 +402,106 @@
     </div>
 </section>
 <!-- SECTION -->
-<section class="mb-5">
-    <div class="container d-md-flex">
+
+
+<?php if (empty($topics)) : ?>
+    <section class="container mb-5">
+        <div class=" row col-12 mx-1 d-flex justify-content-around">
+
+            <h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>
+        </div>
+    </section>
+        <?php else :
+        // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
+
+
+        ?> 
+
+<h4 class="mb-5" style="text-align: center;">Autre sujet en cours</h4>
+            <section class="container mb-5">
+        <div class=" row col-12 mx-1 d-flex justify-content-around">
+        
+     <?php
+
+                                                                        foreach ($topics as $topic) { ?>
+
+                <!-- AFFICHAGE DU TOPICS CREER ET PUBLIER PAR L ADMIN -->
+                <!-- SUJET -->
+
+                <!-- AUTRE SUJET -->
+                <div class="autre bg-light m-2 p-2 text-dark  col-md-5 col-sm-12 d-flex  align-items-center mb-3 mb-md-0 ">
+                    <?php echo ('<img src="../../images/uploads/' . $topic['image'] .  '" class="mr-2 alt="Image sujet">');  ?>
+                    <p class="mb-0  "><?php echo ($topic['topic_description'])    ?></p>
+                </div>
+
+        <?php      }
+                                                                    endif; ?>
+
+
+
+
+
 
         <!-- AUTRE SUJET -->
-        <div class="autre bg-light p-4 text-dark d-flex align-items-center mb-3 mb-md-0 mr-md-3">
+        <!-- <div class="autre bg-light p-4 text-dark d-flex align-items-center mb-3 mb-md-0 mr-md-3">
             <img src="../../images/autre-sujet.jpg" class="mr-2" alt="Image sujet">
             <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac.</p>
-        </div>
+        </div> -->
+
+
+
+
         <!-- AUTRE SUJET -->
-        <div class="autre bg-light p-4 text-dark d-flex align-items-center">
+        <!-- <div class="autre bg-light p-4 text-dark d-flex align-items-center">
             <img src="../../images/autre-sujet.jpg" class="mr-2" alt="Image sujet">
             <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac.</p>
+        </div> -->
+
         </div>
+    </section>
+
+    <div class="text-light">
+
+        <?php
+        // echo 'Donnée de session en cours : <br/>';
+        // echo ('<img src="../../images/uploads/' . $user['avatar'] . '" style="height:4em; width:4em; border-radius:em; "/>' . "<br/>");
+        // echo ($user['avatar'] . "<br/>");
+        // echo ($user['pseudo'] . "<br/>");
+        // echo ($user['id'] . "<br/>"); // ID QU ON A BESOIN POUR LA FONCTION READ USER BY ID AFIN D AFFICHER LES INFOS DEPUIS LA BDD ET NON DEPUIS LES VARIABLE DE SESSION. AVEC SESSION C EST MOIN SECURISEE
+        // echo ($user['nom'] . "<br/>");
+        // echo ($user['age'] . "<br/>");
+        // echo ($user['genre'] . "<br/>");
+        // echo ($user['telephone'] . "<br/>");
+        // echo ($user['email'] . "<br/>");
+        // echo ($user['password'] . "<br/>");
+        // echo ($user['ville'] . "<br/>");   
+        ?>
 
     </div>
-</section>
-
-<div class="text-light">
-
-    <?php
-    // echo 'Donnée de session en cours : <br/>';
-    // echo ('<img src="../../images/uploads/' . $user['avatar'] . '" style="height:4em; width:4em; border-radius:em; "/>' . "<br/>");
-    // echo ($user['avatar'] . "<br/>");
-    // echo ($user['pseudo'] . "<br/>");
-    // echo ($user['id'] . "<br/>"); // ID QU ON A BESOIN POUR LA FONCTION READ USER BY ID AFIN D AFFICHER LES INFOS DEPUIS LA BDD ET NON DEPUIS LES VARIABLE DE SESSION. AVEC SESSION C EST MOIN SECURISEE
-    // echo ($user['nom'] . "<br/>");
-    // echo ($user['age'] . "<br/>");
-    // echo ($user['genre'] . "<br/>");
-    // echo ($user['telephone'] . "<br/>");
-    // echo ($user['email'] . "<br/>");
-    // echo ($user['password'] . "<br/>");
-    // echo ($user['ville'] . "<br/>");   
-    ?>
-
-</div>
 
 
 
 
-<!-- FOOTER -->
-<footer class="text-center py-5 d-flex flex-column">
-    <a href="#" class="mb-1">Contact</a>
-    <a href="#" class="mb-1">C.G.V.</a>
-    <a href="#" class="mb-1">C.G.U.</a>
-    <a href="#">Mentions légales</a>
-</footer>
+    <!-- FOOTER -->
+    <footer class="text-center py-5 d-flex flex-column">
+        <a href="#" class="mb-1">Contact</a>
+        <a href="#" class="mb-1">C.G.V.</a>
+        <a href="#" class="mb-1">C.G.U.</a>
+        <a href="#">Mentions légales</a>
+    </footer>
 
 
-</div>
+    </div>
 
-<!-- jQuery and Bootstrap Bundle (includes Popper) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-<!-- VUE JS -->
-<script src="https://unpkg.com/vue@next"></script>
-<!-- MON SCRIPT -->
-<script src="../../script/script.js"></script>
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <!-- VUE JS -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- MON SCRIPT -->
+    <script src="../../script/script.js"></script>
 
 
-</body>
+    </body>
 
-</html>
+    </html>

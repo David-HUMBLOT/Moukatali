@@ -214,7 +214,7 @@ footer a {
 @media (min-width: 768px) {
     #form-publier textarea::placeholder {
         text-align: center;
-        line-height: 70px;
+        /* line-height: 40px; */
     }
     .moukatage p {
         font-size: 1.125em;
