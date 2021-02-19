@@ -151,7 +151,9 @@
             // 888888888888888888888888888888888888888888888888888888888888888888888888888888
             //recuperation des topics a publier
             $etatPublish = 1;
+            $etatUnpublish = 0;
             $final_topics = array();
+            $final_topics_autres = array();
             $sql = "SELECT * FROM topics  WHERE published = $etatPublish";
             $pdoStat = $db->prepare($sql);
             $executeIsOk = $pdoStat->execute();
@@ -161,6 +163,20 @@
             foreach ($topics as $topic) {
                 // $topic['author'] = getTopicAuthorById($topic['id']);
                 array_push($final_topics, $topic);
+                // var_dump($topic['image']);
+            }
+
+
+
+            $sql2 = "SELECT * FROM topics  WHERE published = $etatUnpublish";
+            $pdoStat2 = $db->prepare($sql2);
+            $executeIsOk = $pdoStat2->execute();
+            // $listes_AllTpics = $pdoStat->fetchAll();
+            $topics_autres = $pdoStat2->fetchAll();
+
+            foreach ($topics_autres as $topic_autre) {
+                // $topic['author'] = getTopicAuthorById($topic['id']);
+                array_push($final_topics_autres, $topic_autre);
                 // var_dump($topic['image']);
             }
 
@@ -404,38 +420,38 @@
 <!-- SECTION -->
 
 
-<?php if (empty($topics)) : ?>
+<?php if (empty($topics_autres) && empty($topics) ) : ?>
     <section class="container mb-5">
         <div class=" row col-12 mx-1 d-flex justify-content-around">
 
             <h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>
         </div>
     </section>
-        <?php else :
-        // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
+<?php else :
+    // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
 
 
-        ?> 
+?>
 
-<h4 class="mb-5" style="text-align: center;">Autre sujet en cours</h4>
-            <section class="container mb-5">
+    <h4 class="mb-5" style="text-align: center;">Sujet à venir</h4>
+    <section class="container mb-5">
         <div class=" row col-12 mx-1 d-flex justify-content-around">
-        
-     <?php
 
-                                                                        foreach ($topics as $topic) { ?>
+            <?php
+
+            foreach ($topics_autres as $topic_autre) { ?>
 
                 <!-- AFFICHAGE DU TOPICS CREER ET PUBLIER PAR L ADMIN -->
                 <!-- SUJET -->
 
                 <!-- AUTRE SUJET -->
                 <div class="autre bg-light m-2 p-2 text-dark  col-md-5 col-sm-12 d-flex  align-items-center mb-3 mb-md-0 ">
-                    <?php echo ('<img src="../../images/uploads/' . $topic['image'] .  '" class="mr-2 alt="Image sujet">');  ?>
-                    <p class="mb-0  "><?php echo ($topic['topic_description'])    ?></p>
+                    <?php echo ('<img src="../../images/uploads/' . $topic_autre['image'] .  '" class="mr-2 alt="Image sujet">');  ?>
+                    <p class="mb-0  "><?php echo ($topic_autre['topic_description'])    ?></p>
                 </div>
 
         <?php      }
-                                                                    endif; ?>
+        endif; ?>
 
 
 

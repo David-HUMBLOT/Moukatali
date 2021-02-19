@@ -38,7 +38,7 @@ function getAllTopics()
         array_push($final_topics, $topic);
     }
     return $final_topics;
-    // var_dump($final_topics);
+    var_dump($final_topics);
 }
 
 
@@ -84,7 +84,7 @@ global $db, $errors, $user_id;
 
 // 88888888888888888888888888888888888888
 // $user_id est définit a ce stade
-// var_dump($user_id);
+var_dump($user_id);
 
 global $db, $errors, $success;
 
@@ -94,12 +94,13 @@ function createTopic($request_values)
         $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
         $title = htmlentities(trim($_POST['title']));
         $topic_description = htmlentities(trim($_POST['topic-description']));
+        $published = 0; //par defaut le sujet n est pas actif
         global $db, $errors, $success;
 
         // global $user_id;
 
         $user_id = $_SESSION['user']['id'];
-        // var_dump($user_id);
+        var_dump($user_id);
 
 
 
@@ -203,7 +204,7 @@ function createTopic($request_values)
         // GOOD
 
         array_push($success, "Edition du sujet réussie !<br/>  ");
-        $sql = "INSERT INTO topics ( user_id, titre, image, topic_description, quota_vote, date_creation) VALUES( '$user_id', '$title', '$picture', '$topic_description', 0, now())";
+        $sql = "INSERT INTO topics ( user_id, titre, image, topic_description, quota_vote, published, date_creation) VALUES( '$user_id', '$title', '$picture', '$topic_description', 0, '$published', now())";
         $reqInsert = $db->prepare($sql); //preparation de la requete
         $reqInsert->execute(); //execution de la requete
         // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
@@ -371,26 +372,24 @@ if (isset($_GET)) {
         $pdoStat1 = $db->prepare($query);
         $execut1 = $pdoStat1->execute();
         // CHANGE L ETAT DES AUTRE PUBLICATION 5CAR LIMITER A 2 sur 3 par admin
-        // $sql = "UPDATE topics SET published = 1 WHERE id = $topic_id";
-        // $pdoStat2 = $db->prepare($sql);
-        // $execut2 = $pdoStat2->execute();
-        $_SESSION['topic']=$topic_id;
-        return $topic_id;
-    }
-    return $topic_id;
+        $sql = "UPDATE topics SET published = 1 WHERE id != $topic_id";
+        $pdoStat2 = $db->prepare($sql);
+        $execut2 = $pdoStat2->execute();
 
-    if (isset($_GET['unpublish'])) {
-        $topic_id = $_GET['unpublish'];
-        $query = "UPDATE topics SET published = 1 WHERE published = 0 AND id = $topic_id  LIMIT 1";
-        $pdoStat1 = $db->prepare($query);
-        $execut1 = $pdoStat1->execute();
-        // CHANGE L ETAT DES AUTRE PUBLICATION 5CAR LIMITER A 2 sur 3 par admin
-        // $sql = "UPDATE topics SET published = 0 WHERE id = $topic_id";
-        // $pdoStat2 = $db->prepare($sql);
-        // $execut2 = $pdoStat2->execute();
-        $_SESSION['topic']=$topic_id;
-        return $topic_id;
+    
+    } else {
+
+        if (isset($_GET['unpublish'])) {
+            $topic_id = $_GET['unpublish'];
+            $query = "UPDATE topics SET published = 1 WHERE published = 0 AND id = $topic_id LIMIT 1";
+            $pdoStat1 = $db->prepare($query);
+            $execut1 = $pdoStat1->execute();
+            // CHANGE L ETAT DES AUTRE PUBLICATION 5CAR LIMITER A 2 sur 3 par admin
+            $sql = "UPDATE topics SET published = 0 WHERE id != $topic_id";
+            $pdoStat2 = $db->prepare($sql);
+            $execut2 = $pdoStat2->execute();
+  
+        }
     }
-    return $topic_id;
+              return $topic_id;
 }
-
