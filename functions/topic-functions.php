@@ -38,7 +38,7 @@ function getAllTopics()
         array_push($final_topics, $topic);
     }
     return $final_topics;
-    var_dump($final_topics);
+    // var_dump($final_topics);
 }
 
 
@@ -84,7 +84,7 @@ global $db, $errors, $user_id;
 
 // 88888888888888888888888888888888888888
 // $user_id est définit a ce stade
-var_dump($user_id);
+// var_dump($user_id);
 
 global $db, $errors, $success;
 
@@ -99,7 +99,7 @@ function createTopic($request_values)
         // global $user_id;
 
         $user_id = $_SESSION['user']['id'];
-        var_dump($user_id);
+        // var_dump($user_id);
 
 
 

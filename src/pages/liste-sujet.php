@@ -148,17 +148,25 @@
             }
 
 
-
-            // 88888888888888888888888888888888888888888888888888888888888888888888
-            //recuperation des topics
-            $sql = "SELECT * FROM topics ORDER BY date_creation DESC";
+            // 888888888888888888888888888888888888888888888888888888888888888888888888888888
+            //recuperation des topics a publier
+            $etatPublish = 1;
+            $sql = "SELECT * FROM topics  WHERE published = $etatPublish";
             $pdoStat = $db->prepare($sql);
             $executeIsOk = $pdoStat->execute();
             // $listes_AllTpics = $pdoStat->fetchAll();
             $topics = $pdoStat->fetchAll();
-            var_dump($topics);
-            // 88888888888888888888888888888888888888888888888888888888888888888888
 
+            // foreach ($topics as $topic) {
+            //     $topic['author'] = getTopicAuthorById($topic['id']);
+            //     array_push($final_topics, $topic);
+            // }
+
+            var_dump($topics);
+            //  var_dump($final_topics)
+            // 888888888888888888888888888888888888888888888888888888888888888888888888888888
+
+            
 
 
 
@@ -224,23 +232,56 @@
 
         <?php
 
+
         global $topic, $topic_id;
-        var_dump($topic_id);
-        var_dump($_SESSION['topic']);
+        // var_dump($topic_id);
+        // var_dump($_SESSION['topic']);
 
         if (isset($topic_id)) {
-            var_dump($topic_id);
-            var_dump($_SESSION['topic']);
+            // var_dump($topic_id);
+            // var_dump($_SESSION['topic']);
         }
 
 
         ?>
 
 
+<?php if (empty($topics)) : ?>
+          <h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>
+        <?php else : 
+            // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
+            if($topics['published'] === "1"){
+                echo 'test';
+
+
+
+            }
+            
+            
+            
+        endif; ?>
+
+
+
+
+
+
+
+
         <!-- AFFICHAGE DU TOPICS CREER ET PUBLIER PAR L ADMIN -->
+
+           <!-- SUJET -->
+           <div class="sujet bg-light p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center">
+            <div class="image mb-2 mb-md-0 mr-md-2 d-lg-none"><img src="../../images/image-mobile.jpg" alt="Image du sujet"></div>
+            <div class="image mr-lg-2 d-none d-lg-block"><img src="../../images/image.jpg" alt="Image du sujet"></div>
+            <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in lobortis nisl.
+                Vestibulum mauris metus, luctus quis volutpat vitae, laoreet.</p>
+        </div>
+
+
+
         <?php
-        // Condition d affichage du sujet topics
-        if (isset($topic_id))
+     
 
 
 
@@ -248,13 +289,6 @@
         ?>
 
 
-        <!-- SUJET -->
-        <div class="sujet bg-light p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center">
-            <div class="image mb-2 mb-md-0 mr-md-2 d-lg-none"><img src="../../images/image-mobile.jpg" alt="Image du sujet"></div>
-            <div class="image mr-lg-2 d-none d-lg-block"><img src="../../images/image.jpg" alt="Image du sujet"></div>
-            <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in lobortis nisl.
-                Vestibulum mauris metus, luctus quis volutpat vitae, laoreet.</p>
-        </div>
 
 
 
