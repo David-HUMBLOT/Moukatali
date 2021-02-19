@@ -91,7 +91,7 @@ if (isset($_GET['logout'])) {
   <section>
     <div class="container">
     <h1 class="text-uppercase text-center py-3">liste des moukateurs</h1>
-      <table class="table table-bordered">
+      <table class="col-11 table table-bordered bg-secondary  text-center text-light">
         <thead>
           <tr>
             <th scope="col">#</th>
