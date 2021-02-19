@@ -96,8 +96,9 @@ if (isset($_GET['logout'])) {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nom d'utilisateur</th>
+            <th scope="col">N ID user</th>
             <th scope="col">Email</th>
-            <th scope="col">Mes points</th>
+            <th scope="col">Points</th>
             <th scope="col">Date d'inscription</th>
           </tr>
         </thead>
@@ -109,9 +110,10 @@ if (isset($_GET['logout'])) {
               <tr>
                 <th scope="row"><?php echo $key + 1; ?></th>
                 <td><?php echo $all_user['pseudo']; ?></td>
+                <td><?php echo $all_user['id']; ?></td>
                 <td><?php echo $all_user['email']; ?></td>
-                <td><?php echo $all_user['my_points']; ?></td>
-                <td><?php echo $all_user['registration_date']; ?></td>
+                <td><?php echo $all_user['genre']; ?></td>
+                <td><?php echo $all_user['date_inscription']; ?></td>
               </tr>
             </div>
             <?php endforeach; ?>
