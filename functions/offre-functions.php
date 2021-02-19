@@ -1,19 +1,20 @@
 <?php
 
 $title = "";
-$topic_description = "";
+$offre_description = "";
 $picture = "";
-$topic_id = 0;
+$prix=0;
+$offre_id = 0;
 $published = 0;
-$update_topic = false;
+$update_offre = false;
 global $db, $success, $errors;
 $db = connectPdoBdd();
 // $dbs=connectSqliBdd();
-// récupére tous les topics de la BDD
+// récupére tous les offres de la BDD
 
-function getAllTopics()
+function getAllOffres()
 {
-    global $db, $final_topics;
+    global $db, $final_offres;
     // L'administrateur peut afficher tous les topics
     // L'auteur ne peut voir que ses topics
     if ($_SESSION['user']['role'] == "admin") {
@@ -30,20 +31,20 @@ function getAllTopics()
 
     $pdoStat = $db->prepare($sql);
     $result = $pdoStat->execute();
-    $topics = $db->query($sql);
-    $final_topics = array();
+    $offres = $db->query($sql);
+    $final_offres = array();
 
-    foreach ($topics as $topic) {
-        $topic['author'] = getTopicAuthorById($topic['id']);
-        array_push($final_topics, $topic);
+    foreach ($offres as $offre) {
+        $offre['author'] = getOffreAuthorById($offre['id']);
+        array_push($final_offres, $offre);
     }
-    return $final_topics;
-    var_dump($final_topics);
+    return $final_offres;
+    // var_dump($final_offres);
 }
 
 
-// récupére l'auteur d'un topic
-function getTopicAuthorById($user_id)
+// récupére l'auteur d'une offre
+function getOffreAuthorById($user_id)
 {
     global $db;
 
@@ -58,26 +59,26 @@ function getTopicAuthorById($user_id)
 }
 
 // si l'utilisateur clique sur le bouton créer une publication
-if (isset($_POST['create-topic'])) {
-    createTopic($_POST);
+if (isset($_POST['create-offre'])) {
+    createOffre($_POST);
 }
 
 // si l'utilisateur clique sur l'icône modifier
-if (isset($_GET['edit-topic'])) {
-    $update_topic = true;
-    $topic_id = $_GET['edit-topic'];
-    editTopic($topic_id);
+if (isset($_GET['edit-offre'])) {
+    $update_offre = true;
+    $offre_id = $_GET['edit-offre'];
+    editOffre($offre_id);
 }
 
 // si l'utilisateur clique sur le bouton de mise à jour
-if (isset($_POST['update-topic'])) {
-    updateTopic($_POST);
+if (isset($_POST['update-offre'])) {
+    updateOffre($_POST);
 }
 
 // si l'utilisateur clique sur le bouton Supprimer la publication
-if (isset($_GET['delete-topic'])) {
-    $topic_id = $_GET['delete-topic'];
-    deleteTopic($topic_id);
+if (isset($_GET['delete-offre'])) {
+    $offre_id = $_GET['delete-offre'];
+    deleteOffre($offre_id);
 }
 
 global $db, $errors, $user_id;
@@ -88,12 +89,13 @@ var_dump($user_id);
 
 global $db, $errors, $success;
 
-function createTopic($request_values)
+function createOffre($request_values)
 {
-    if (isset($_POST["create-topic"])) {
+    if (isset($_POST["create-offre"])) {
         $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
         $title = htmlentities(trim($_POST['title']));
-        $topic_description = htmlentities(trim($_POST['topic-description']));
+        $offre_description = htmlentities(trim($_POST['offre-description']));
+        $prix = trim($_POST['prix']);
         global $db, $errors, $success;
 
         // global $user_id;
@@ -112,11 +114,11 @@ function createTopic($request_values)
         //88888888888888888888888888888888888888888888888888888888888888
         // validation formulaire
         if (empty($title)) {
-            array_push($errors, "Entrer un titre");
+            array_push($errors, "Entrer un titre d'articles");
             return $errors;
             die;
         }
-        if (empty($topic_description)) {
+        if (empty($offre_description)) {
             array_push($errors, "Entrer une description");
             return $errors;
             die;
@@ -127,6 +129,15 @@ function createTopic($request_values)
             $uploadOk = 0;
             die;
         }
+
+        if (empty($prix)) {
+            array_push($errors, "Entrer un prix pour cette article");
+            return $errors;
+            $uploadOk = 0;
+            die;
+        }
+
+
         //88888888888888888888888888888888888888888888888888888888888888888888888888888888888
         // PARAMETRAGE DES VARIBLES D ACCES, EXTENSION, UPLOAD, ET DU DOSSIER DE DESTINATION DES IMAGES UPLOADER
         $target_dir = "../../images/uploads/";  //chemin du sossier ou les fichiers seront uploader
@@ -202,8 +213,8 @@ function createTopic($request_values)
         // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
         // GOOD
 
-        array_push($success, "Edition du sujet réussie !<br/>  ");
-        $sql = "INSERT INTO topics ( user_id, titre, image, topic_description, quota_vote, date_creation) VALUES( '$user_id', '$title', '$picture', '$topic_description', 0, now())";
+        array_push($success, "Article crée !<br/>  ");
+        $sql = "INSERT INTO abonnement (user_id, titre_article, image, offre_description, prix, date_creation) VALUES( '$user_id', '$title', '$picture', '$offre_description', '$prix', now())";
         $reqInsert = $db->prepare($sql); //preparation de la requete
         $reqInsert->execute(); //execution de la requete
         // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
@@ -227,32 +238,36 @@ function createTopic($request_values)
 * - Récupère le message de la base de données
 * - définit les champs de publication sur le formulaire pour modification
 * * * * * * * * * * * * * * * * * * * * * */
-function editTopic($topic_id)
+global $db, $title, $picture, $prix, $offre_description, $update_offre, $offre_id;
+function editOffre($offre_id)
 {
-    global $db, $title, $topic_description, $update_topic, $topic_id;
-    $sql = "SELECT * FROM topics WHERE id = $topic_id LIMIT 1";
-    $result = mysqli_query($db, $sql);
-    $topic = mysqli_fetch_assoc($result);
-    // définir les valeurs du formulaire sur le formulaire à mettre à jour
-    $title = $topic['title'];
-    $topic_description = $topic['topic_description'];
+//     global $db, $title, $picture, $prix, $offre_description, $update_offre, $offre_id;
+//     $sql = "SELECT * FROM abonnement WHERE id = $offre_id LIMIT 1";
+//     $result = mysqli_query($db, $sql);
+//     $topic = mysqli_fetch_assoc($result);
+//     // définir les valeurs du formulaire sur le formulaire à mettre à jour
+//     $title = $offre['title'];
+//     $offre_description = $offre['offre_description'];
+//     $picture=$offre['picture'];
+//     $prix = $offre['prix'];
 }
 
-function updateTopic($request_values)
+function updateOffre($request_values)
 {
-    global $db, $errors, $title, $picture, $topic_id, $topic_description;
+    global $db, $errors, $title, $picture, $prix, $offre_id, $toffre_description;
 
-    $topic_id = $_POST['topic-id'];
+    $offre_id = $_POST['offre-id'];
     $title = trim($request_values['title']);
-    $topic_description = htmlentities(trim($request_values['topic-description']));
+    $offre_description = htmlentities(trim($request_values['offre-description']));
+    $prix = trim($request_values['prix']);
 
 
     // validation formulaire
     if (empty($title)) {
         array_push($errors, "Entrer un titre");
     }
-    if (empty($topic_description)) {
-        array_push($errors, "Entrer une description");
+    if (empty($offre_description)) {
+        array_push($errors, "Entrer une description de l'offre");
     }
 
     // si une nouvelle image vedette a été fournie
@@ -272,7 +287,7 @@ function updateTopic($request_values)
         }
         if (empty($errors)) {
             //   if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_dir)) {
-            $results = mysqli_query($db, "SELECT * FROM topics WHERE id = $topic_id");
+            $results = mysqli_query($db, "SELECT * FROM abonnement WHERE id = $offre_id");
             $topics = mysqli_fetch_all($results, MYSQLI_ASSOC);
             /*
             $file = ROOT_PATH . '/public/images/upload/' . $topics[0]['picture'];
@@ -283,7 +298,7 @@ function updateTopic($request_values)
               unlink($file);
             }*/
 
-            $query = "UPDATE topics SET picture = '$picture' WHERE id = $topic_id";
+            $query = "UPDATE abonnement SET picture = '$picture' WHERE id = $offre_id";
             mysqli_query($db, $query);
         } else {
             array_push($errors, "Une erreur s'est produite lors du téléchargement du fichier");
@@ -306,10 +321,10 @@ function updateTopic($request_values)
 // }
 
 // supprimer topic
-function deleteTopic($topic_id)
+function deleteOffre($offre_id)
 {
     global $db;
-    $sql = "DELETE FROM topics WHERE id = $topic_id";
+    $sql = "DELETE FROM abonnement WHERE id = $offre_id";
     if (mysqli_query($db, $sql)) {
         $_SESSION['message'] = "Le sujet a bien été supprimé";
         header("location: subject.php");

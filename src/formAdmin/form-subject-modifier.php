@@ -21,8 +21,8 @@
 
 <body>
 
-  <!-- HEADER -->
-  <header class="header-liste" id="id-navbar">
+ <!-- HEADER -->
+ <header class="header-liste" id="id-navbar">
     <div class="container ">
       <!-- NAVBAR -->
       <nav class="navbar navbar-expand-lg navbar-light ">
@@ -38,19 +38,13 @@
               <a class="nav-link text-center  font-weight-bold text-nav-head" href="admin.php">CREER PROFIL</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-center  font-weight-bold text-nav-head" href="form-subject-editer.php">EDITER TOPICS</a>
+              <a class="nav-link text-center  font-weight-bold text-nav-head" href="form-subject-editer.php">CREER TOPICS</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-center  font-weight-bold text-nav-head" href="form-offre-create.php">CREER OFFRE</a>
+              <a class="nav-link text-center  font-weight-bold text-nav-head" href="form-offre-create.php">CREER OFFRES</a>
             </li>
             <li class="nav-item ">
               <a class="nav-link text-center  font-weight-bold text-nav-head" href="form-subject-modifier.php">MODIFIER PROFIL-OFFRE </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link text-center  font-weight-bold text-nav-head" href="topics.php">LISTE TOPICS</a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link text-center  font-weight-bold text-nav-head" href="topics.php">LISTE OFFRES</a>
             </li>
             <li class="nav-item ">
               <a class="nav-link text-center  font-weight-bold text-nav-head" href="moukateurs.php">LISTE MOUKATEURS</a>
