@@ -151,19 +151,21 @@
             // 888888888888888888888888888888888888888888888888888888888888888888888888888888
             //recuperation des topics a publier
             $etatPublish = 1;
+            $final_topics = array();
             $sql = "SELECT * FROM topics  WHERE published = $etatPublish";
             $pdoStat = $db->prepare($sql);
             $executeIsOk = $pdoStat->execute();
             // $listes_AllTpics = $pdoStat->fetchAll();
             $topics = $pdoStat->fetchAll();
 
-            // foreach ($topics as $topic) {
-            //     $topic['author'] = getTopicAuthorById($topic['id']);
-            //     array_push($final_topics, $topic);
-            // }
+            foreach ($topics as $topic) {
+                // $topic['author'] = getTopicAuthorById($topic['id']);
+                array_push($final_topics, $topic);
+                var_dump($topic['image']);
+            }
 
-            var_dump($topics);
-            //  var_dump($final_topics)
+          
+            //  var_dump($final_topics['id'])
             // 888888888888888888888888888888888888888888888888888888888888888888888888888888
 
             
