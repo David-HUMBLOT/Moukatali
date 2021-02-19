@@ -361,7 +361,10 @@ function togglePublishTopic($topic_id, $message)
 
 // changement d etat de la publication
 
+
+global $topic_id;
 if (isset($_GET)) {
+    global $topic_id;
     if (isset($_GET['publish'])) {
         $topic_id = $_GET['publish'];
         $query = "UPDATE topics SET published = 0 WHERE published = 1 AND id = $topic_id LIMIT 1";
@@ -371,8 +374,10 @@ if (isset($_GET)) {
         // $sql = "UPDATE topics SET published = 1 WHERE id = $topic_id";
         // $pdoStat2 = $db->prepare($sql);
         // $execut2 = $pdoStat2->execute();
+        $_SESSION['topic']=$topic_id;
+        return $topic_id;
     }
-
+    return $topic_id;
 
     if (isset($_GET['unpublish'])) {
         $topic_id = $_GET['unpublish'];
@@ -383,6 +388,9 @@ if (isset($_GET)) {
         // $sql = "UPDATE topics SET published = 0 WHERE id = $topic_id";
         // $pdoStat2 = $db->prepare($sql);
         // $execut2 = $pdoStat2->execute();
-
+        $_SESSION['topic']=$topic_id;
+        return $topic_id;
     }
+    return $topic_id;
 }
+
