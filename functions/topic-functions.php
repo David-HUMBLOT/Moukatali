@@ -321,45 +321,68 @@ function deleteTopic($topic_id)
 // 8888888888888888888888888888888888888888888888888888888888
 // si l'utilisateur clique sur le bouton de publication de l'article
 if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
-	$message = "";
-	if (isset($_GET['publish'])) {
-		$message = "Sujet publié";
-		$topic_id = $_GET['publish'];
-	} else if (isset($_GET['unpublish'])) {
-		$message = "Le sujet n'est pas publié";
-		$topic_id = $_GET['unpublish'];
-	}
-	togglePublishTopic($topic_id, $message);
+    $message = "";
+    if (isset($_GET['publish'])) {
+        $message = "Sujet publié";
+        $topic_id = $_GET['publish'];
+    } else if (isset($_GET['unpublish'])) {
+        $message = "Le sujet n'est pas publié";
+        $topic_id = $_GET['unpublish'];
+    }
+    togglePublishTopic($topic_id, $message);
 }
 
+
+// 8888888888888888888888888888888888888888888888888888
 // activer - desactiver
 function togglePublishTopic($topic_id, $message)
 {
-	global $db;
-	$sql = "UPDATE topics SET published = !published WHERE id = $topic_id";
+    global $db;
+    $db = connectPdoBdd();
+    $sql = "UPDATE topics SET published = !published WHERE id = $topic_id";
 
-	if (mysqli_query($db, $sql)) {
-		$_SESSION['message'] = $message;
-		// header("location: topics.php");
-		exit(0);
-	}
+    $pdoStat = $db->prepare($sql);
+    $result = $pdoStat->execute();
+    $offres = $db->query($sql);
+    // $final_topics = array();
+    if ($offres) {
+        $_SESSION['message'] = $message;
+        // header("location: topics.php");
+        // exit(0);
+    }
+
+    // if (mysqli_query($db, $sql)) {
+    // 	$_SESSION['message'] = $message;
+    // 	// header("location: topics.php");
+    // 	exit(0);
+    // }
 }
 // 8888888888888888888888888888888888888888888888888888888888
 
+// changement d etat de la publication
 
 if (isset($_GET)) {
     if (isset($_GET['publish'])) {
         $topic_id = $_GET['publish'];
-        $query = "UPDATE topics SET published = 0 WHERE published = 1";
-        mysqli_query($db, $query);
-        $sql = "UPDATE topics SET published = 1 WHERE id = $topic_id";
-        mysqli_query($db, $sql);
+        $query = "UPDATE topics SET published = 0 WHERE published = 1 AND id = $topic_id LIMIT 1";
+        $pdoStat1 = $db->prepare($query);
+        $execut1 = $pdoStat1->execute();
+        // CHANGE L ETAT DES AUTRE PUBLICATION 5CAR LIMITER A 2 sur 3 par admin
+        // $sql = "UPDATE topics SET published = 1 WHERE id = $topic_id";
+        // $pdoStat2 = $db->prepare($sql);
+        // $execut2 = $pdoStat2->execute();
     }
+
+
     if (isset($_GET['unpublish'])) {
         $topic_id = $_GET['unpublish'];
-        $query = "UPDATE topics SET published = 1 WHERE published = 0";
-        mysqli_query($db, $query);
-        $sql = "UPDATE topics SET published = 0 WHERE id = $topic_id";
-        mysqli_query($db, $sql);
+        $query = "UPDATE topics SET published = 1 WHERE published = 0 AND id = $topic_id  LIMIT 1";
+        $pdoStat1 = $db->prepare($query);
+        $execut1 = $pdoStat1->execute();
+        // CHANGE L ETAT DES AUTRE PUBLICATION 5CAR LIMITER A 2 sur 3 par admin
+        // $sql = "UPDATE topics SET published = 0 WHERE id = $topic_id";
+        // $pdoStat2 = $db->prepare($sql);
+        // $execut2 = $pdoStat2->execute();
+
     }
 }
