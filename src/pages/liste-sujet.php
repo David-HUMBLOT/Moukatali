@@ -232,7 +232,7 @@
             <?php else :
             // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
 
-            echo 'test';
+     
 
             foreach ($topics as $topic) { ?>
 

@@ -6,10 +6,8 @@
     include('../../functions/deconnect-user.php');
     include('../../functions/offre-functions.php');
     ?>
-
     <!DOCTYPE html>
     <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,8 +21,6 @@
         <link rel="stylesheet" href="../../css/offre.css">
         <title>offre</title>
     </head>
-
-
     <body>
         <!-- 888888888888888888888888888888888888888888888888888888 -->
         <!-- HEADER -->
@@ -94,13 +90,8 @@
 
             </div>
         </header>
-
         <!-- BODDY -->
-
-
-
         <?php
-
         // 888888888888888888888888888888888888888888888
         // SI ID EXISTANT
         if (isset($_SESSION['user']['id'])) {
@@ -120,7 +111,7 @@
         }
         // 888888888888888888888888888888888888888888888888888888888888888888888888888888
         //recuperation des offres en bdd pour intéraction direct avec le client (btn ajouter au panier)
-        $etatPublish = 1; //pour récupérer les articles publier
+        $etatPublish = 1; //pour récupérer les articles publié en bdd depuis espace admin
         // $etatUnpublish = 0; //pour récuperer les articles non publier ou a venir (teasing)
         $final_offres = array();
         // $final_offres_autres = array();
@@ -130,11 +121,9 @@
         $offres = $pdoStat->fetchAll();
         // on parcours le resultat de la requete ligne par ligne pour afficher chaque ligne (offre ou articles) dans une card.
         foreach ($offres as $offre) {
-
             array_push($final_offres, $offre); //stock des resultat par ligne 
             // var_dump($offre['image']);
         }
-
         // $sql2 = "SELECT * FROM abonnement  WHERE published = $etatUnpublish";
         // $pdoStat2 = $db->prepare($sql2);
         // $executeIsOk = $pdoStat2->execute();
@@ -148,28 +137,21 @@
         // 888888888888888888888888888888888888888888888888888888888888888888888888888888
         ?>
 
-
-
         <section class="container">
             <div class="row d-flex justify-content-center">
                 <div class="mt-5 mx-3 box-titre col-lg-6 col-md-6 col-sm-4 d-flex justify-content-around">
                     <h2 class="mt-2">MI VEU EN PLIS !!&#x1F609;</h2>
                 </div>
-
             </div>
         </section>
 
         <section class="container ">
-
             <div class="row  d-flex justify-content-center">
-
                 <h5 class="text-offre-h2 d-flex justify-content-center ">
                     <?php echo ($user['pseudo']);    ?> !! <br /> N'hésite pas à acheter les packs de booster !! Conseil
                     d'un amie
                 </h5>
             </div>
-
-
         </section>
 
         <section class="container">
@@ -181,13 +163,9 @@
                         <?php echo ($user['pseudo']);    ?> mon Ti dalon ! A ter la ou gagne renseigne à dsu le band
                         abonnement ou bien dsu les packs booster. Choisit saK y convient à ou le mieux.
                     </p>
-
                     <p>Ou néna les abonnements dsu 12 mois. <br> Sinon ou peu aussi trap juste un pack de temps en temps
                     </p>
-
                     <p>Ou sa voir, sa meme lé correct</p>
-
-
                     <div class="card-body text-center">
                         <img src="../../images/kisspng-court-piece-gift-game-smartphone-gift-box-open-fly-out-of-the-phone-vector-5a697a82ca38e5.4876160315168620828283.png" class="img-fluid " alt="..." style="width: 50%;">
                         <h5 class="card-title mt-3 text-danger">Regarde
@@ -197,14 +175,9 @@
                             1 vote = X2 !
                         </p>
                     </div>
-
                 </div>
             </div>
         </section>
-
-
-
-
 
 
         <!-- SECTION POUR LA SELECTION D UNE OFFRE OU UN ARTICHE AVANT UN PAIEMENT -->
@@ -212,8 +185,19 @@
         <section>
             <div class="container">
                 <div classs="row">
+                <!-- 888888888888888888888888888888888888888888888 -->
+                <?php if (empty($offres)) : ?>
+            <h1 style="text-align: center; margin-top: 20px;">Aucun article/offre en ce moment</h1>
+            <?php else :
+            // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
+            foreach ($offres as $offre) { ?>
+         
 
 
+
+        <?php      }
+        endif; ?>
+                <!-- 888888888888888888888888888888888888888888888 -->
 
                     <!-- 888888888888888888888888888888888888888888888888 -->
                     <div class="row row-cols-1 row-cols-md-3">
@@ -221,9 +205,8 @@
                             <div class="card h-100">
                                 <img src="../../images/974dodo.jpg" class="card-img-top" style="height: 30vh;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <h5 class="card-title">EXEMPLE EN BRUT</h5>
+                                    <p class="card-text">CECI EST UN EXEMPLE EN  CODE BRUT D'UN ARTICLE OU D'UNE OFFRE POUR LE CLIENT . LE BOUTON AJOUTER AU PANIER DOIVENT INTEARGIR AVEC LE CLIENT QUI DEVRA POUVOIR CONSULTER SON PANIER AVANT SON ACHAT</p>
                                 </div>
                                 <div class="card-footer d-flex justify-content-center">
                                     <a href="#" class="btn btn-primary">Ajouter au panier</a>
