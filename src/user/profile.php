@@ -168,40 +168,33 @@
                     </div>
                     -->
                     <div class="d-flex flex-column flex-md-row text-center align-items-center justify-content-md-around mt-4">
-
-                        <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href="succes.html" role="button">Mes succès</a>
-
-                        <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href="#" role="button">Modifier
-                            compte</a>
+                        <!-- 
+                        <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href="succes.html" role="button">Mes succès</a> -->
 
                         <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href="#" role="button">Modifier
                             compte</a>
 
-                    </div>
 
-                    <div class="btn1 ">
-                        <div class="btn1-back">
-                            <p>Est tu certain de vouloir supprimer ton compte?</p>
+                        <!-- JAVASCRIPT ANIMATION BTN DELETE AND FONCTIONALITY -->
+                        <div class="btn1 ">
+                            <div class="btn1-back ">
+                                <p>Est tu certain de vouloir supprimer ton compte?</p>
 
-                        
-                            <form action="" method="POST" class="yes">
-                                <button type="submit" name="supprimer" class="yes">Oui</button>
-                                <button  class="no">Non</button>
-                            </form>
-                           
-                            
-                            
-                       
+                                <form action="" method="POST" class="yes ">
+                                    <button type="submit" name="supprimer" class="yes ">Oui</button>
+                                    <button class="no">Non</button>
+                                </form>
 
+                            </div>
+                            <div class="btn1-front text-uppercase font-weight-bold">Supprimer compte</div>
 
-
-
+                            <!-- SCRIPT DELETE DAV -->
+                            <script src="../../script/btn1-delete.js"></script>
 
                         </div>
-                        <div class="btn1-front">Supprimer compte</div>
 
-                        <!-- SCRIPT DELETE DAV -->
-                        <script src="../../script/btn1-delete.js"></script>
+
+
 
                     </div>
 

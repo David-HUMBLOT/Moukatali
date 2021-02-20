@@ -18,8 +18,12 @@
 .btn1 {
   display: block;
   position: relative;
-  width: 200px;
-  height: 80px;
+  border-radius: 15px;
+    width: 200px;
+    height: 50px;
+
+ 
+ 
   transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1), height 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform-style: preserve-3d;
   transform-origin: 50% 50%;
@@ -30,8 +34,12 @@
   display: block;
   width: 100%;
   height: 100%;
-  line-height: 80px;
-  background-color: #F44336;
+  line-height: 50px;
+  
+  /* adapatation couleur et forme du bouton supprimer compte en fonction de la charte graphique (basé sur le style du btn-profil du css de greg */
+  background-color: #26252A;
+  border-radius: 15px;
+  /* ********************* */
   color: #fff;
   cursor: pointer;
   backface-visibility: hidden;
