@@ -1,20 +1,32 @@
-<!DOCTYPE html>
-<html lang="fr">
+<div class="text-light">
+    <?php
+    session_start();
+    global $user;
+    // global $topic;
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil</title>
+    include('../../functions/bdd-connect.php');
+    include('../../functions/read-user.php');
+    include('../../functions/delete-user.php');
+    include('../../functions/deconnect-user.php');
+    include('../../functions/topic-functions.php');
+    readUserById($_SESSION['user']['id']);
+    // echo  ($_SESSION['user']['id']);
+    //  echo  ($user['pseudo']);
 
-    <!-- BOOSTRAP 4 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
+    // header ("content-type: image/jpeg");
+    ?>
+    <!DOCTYPE html>
+    <html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profil</title>
+
+        <!-- BOOSTRAP 4 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
         <!-- FONT AWESOME ICONS -->
 
@@ -23,10 +35,10 @@
         <link rel="stylesheet" href="../../css/mon-style.css">
         <link rel="stylesheet" href="../../css/styleDav.css">
 
-</head>
+    </head>
 
-<body>
-       <!-- 888888888888888888888888888888888888888888888888888888 -->
+    <body>
+        <!-- 888888888888888888888888888888888888888888888888888888 -->
         <!-- HEADER -->
         <header class="header-liste ">
             <div class="container">
@@ -48,9 +60,6 @@
 
                             <?php
                             if (isset($_SESSION['user']['id'])) {  ?>
-
-
-
                                 <a href="liste-sujet.php">
                                     <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> MouKatAli !!</li>
                                 </a>
@@ -66,7 +75,6 @@
                                 <a href="#">
                                     <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Contact</li>
                                 </a>
-
                                 <li class="header-liste-p d-flex justify-content-around mr-5">
 
                                     <form method="POST">
@@ -75,9 +83,7 @@
                                         </button>
                                     </form>
                                 </li>
-
                             <?php  } else {  ?>
-
                                 <a href="../formUser/connection.php">
                                     <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Se connecter</li>
                                 </a>
@@ -91,74 +97,80 @@
                         </ul>
                     </div>
                 </nav>
-
             </div>
         </header>
 
-
-
-    <!------------------------------------------------------------------------------------------------->
-
-    <!-- CONTAINER  -->
-
-
-
-    <!-- <h3 class="pt-3 mb-5 text-white text-center">DASHBOARD</h3> -->
-
-    <!-- user_info -->
-    <section>
-        <div class="container py-5 d-flex justify-content-center">
-            <div id="user_info">
-
-  <!-- Score Rang Statut -->
-  <div class="d-flex justify-content-around fw-bolder mb-3 ">
-    <p>SCORE</p>
-    <p>RANG</p>
-    <p>STATUT</p>
-</div>
-
-
-
-                <!-- photo_de_profile -->
-                <div class="row">
-                    <div class="col-12 text-center mb-3">
-                        
-                        <img id="img_avatar" src="images/avatar-3.jpg" alt="" class="img-fluid">
+        <div class="text-light">
+            <?php
+            // 888888888888888888888888888888888888888888888
+            // SI ID EXISTANT
+            if (isset($_SESSION['user']['id'])) {
+                //READ USER Lancement de la fonction de lecture avec id de session en parametre
+                readUserById($_SESSION['user']['id']);
+                // Lancement de la fonction de suppression avec id de session en parametre et SI le bouton est cliqué
+                if (isset($_POST['supprimer'])) {
+                    delete_user($_SESSION['user']['id']);
+                }
+                // DECONNECTION SESSION
+                if (isset($_POST['deconnection'])) {
+                    deconnect_user();
+                }
+            } else {
+                echo 'Aucune saission en cours ! Veuillez vous connectez !<br/>';
+            }
+            // 888888888888888888888888888888888888888888888888888888888888888888888888888888
+            ?>
+        </div>
+        <!------------------------------------------------------------------------------------------------->
+        <!-- CONTAINER  -->
+        <!-- <h3 class="pt-3 mb-5 text-white text-center">DASHBOARD</h3> -->
+        <!-- user_info -->
+        <section>
+            <div class="container col-lg-8 col-md-8 d-flex justify-content-center">
+                <div id="user_info">
+                    <!-- Score Rang Statut -->
+                    <div class="d-flex justify-content-around fw-bolder mb-3 text-dark">
+                        <p>SCORE</p>
+                        <p>RANG</p>
+                        <p>STATUT</p>
                     </div>
-                </div>
-
-              
-                <!---Information user (NOM, Prénom, Addresse, Tel Sexe...)-->
-                <div class="col  d-flex justify-content-center">
-                    <div >
-                        <p><img src="../../icons/user-fill.png"  class="icon-size" /> Nom / Prénom</p>
-                        <p><img src="../../icons/cake-2-fill.png" class="icon-size" /> Age</p>
-                        <p><img src="../../icons/mail-open-fill.png" class="icon-size" /> Email</p>
-                        <p><img src="../../icons/phone-fill.png" class="icon-size" /> Telephone</p>
-                        <p><img src="../../icons/map-pin-fill.png" class="icon-size" /> Ville</p>
+                    <!-- photo_de_profile -->
+                    <div class="row">
+                        <div class="col-12 text-center mb-5">
+                            <?php echo ('<img id="img_avatar"  src="../../images/uploads/' . $user['avatar'] . '" alt="avatar user"  class="img-fluid" />'); ?>
+                            <!-- <img id="img_avatar" src="images/avatar-3.jpg" alt="" class="img-fluid"> -->
+                        </div>
                     </div>
-                </div>
-              
+                    <!---Information user (NOM, Prénom, Addresse, Tel Sexe...)-->
+                    <div class="col  d-flex justify-content-around  text-dark">
+                        <div class="justify-content-around">
+                            <h3><img src="../../icons/user-fill.png" class="icon-size mr-4" /><?php echo ($user['nom']) ?>&nbsp;<?php echo ($user['prenom']) ?></h3>
+                            <h3><img src="../../icons/cake-2-fill.png" class="icon-size mr-4" /> Age</h3>
+                            <h3><img src="../../icons/mail-open-fill.png" class="icon-size mr-4" /> Email</h3>
+                            <h3><img src="../../icons/phone-fill.png" class="icon-size mr-4" /> Telephone</h3>
+                            <h3><img src="../../icons/map-pin-fill.png" class="icon-size mr-4" /> Ville</h3>
+                        </div>
+                    </div>
 
 
-                <!-- mes  succès et modifier profile -->
-                <!--
+
+                    <!-- mes  succès et modifier profile -->
+                    <!--
                     <div class="container-fluid d-flex justify-content-around mb-3  " style="height: 40px;">
                         <a href="succes.html"><button id="btn_succes" class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder" type="submit">Mes succès</button></a>
                         <button id="btn_editer" class="btn btn-dark text-light  rounded-pill btn-sm fw-bolder" type="submit">Editer</button>
                         <button id="btn_modif" class="btn btn-dark text-light rounded-pill btn-sm fw-bolder" type="submit">Modifer profile</button>
                     </div>
                     -->
-                <div class="d-flex flex-column flex-md-row text-center align-items-center justify-content-md-around">
-                    <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href="succes.html"
-                        role="button">Mes succès</a>
-                    <a class="btn btn-profil text-uppercase font-weight-bold" href="#" role="button">Modifier
-                        info</a>
+                    <div class="d-flex flex-column flex-md-row text-center align-items-center justify-content-md-around mt-4">
+                        <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href="succes.html" role="button">Mes succès</a>
+                        <a class="btn btn-profil text-uppercase font-weight-bold" href="#" role="button">Modifier
+                            info</a>
+                    </div>
                 </div>
-            </div>
 
-        </div>
-    </section>
+            </div>
+        </section>
 
         <!-- FOOTER -->
         <footer class="text-center py-5 d-flex flex-column">
@@ -168,6 +180,6 @@
             <a href="#">Mentions légales</a>
         </footer>
 
-</body>
+    </body>
 
-</html>
+    </html>

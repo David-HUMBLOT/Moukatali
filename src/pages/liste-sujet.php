@@ -12,11 +12,8 @@
     include('../../functions/deconnect-user.php');
     include('../../functions/topic-functions.php');
     //  echo  ($user);
-    //  echo  ($user);
-
     // header ("content-type: image/jpeg");
     ?>
-
 
     <!doctype html>
     <html lang="fr">
@@ -210,24 +207,10 @@
 <section>
     <div class="container pt-4">
 
-
-        <?php
-
-
+        <?php 
+        
         global $topic, $topic_id;
-        // var_dump($topic_id);
-        // var_dump($_SESSION['topic']);
-
-        if (isset($topic_id)) {
-            // var_dump($topic_id);
-            // var_dump($_SESSION['topic']);
-        }
-
-
-        ?>
-
-
-        <?php if (empty($topics)) : ?>
+        if (empty($topics)) : ?>
             <h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>
             <?php else :
             // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
