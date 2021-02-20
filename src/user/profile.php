@@ -6,6 +6,7 @@
 
     include('../../functions/bdd-connect.php');
     include('../../functions/read-user.php');
+    include('../../functions/update-user.php');
     include('../../functions/delete-user.php');
     include('../../functions/deconnect-user.php');
     include('../../functions/topic-functions.php');
@@ -171,14 +172,15 @@
                         <!-- 
                         <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href="succes.html" role="button">Mes succès</a> -->
 
-                        <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href="#" role="button">Modifier
-                            compte</a>
+                        <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href="../formUser/modification.php" type="submit" name="mofidier" role="button">Modifier</a>
+
+                        
 
 
                         <!-- JAVASCRIPT ANIMATION BTN DELETE AND FONCTIONALITY -->
                         <div class="btn1 ">
                             <div class="btn1-back ">
-                                <p>Est tu certain de vouloir supprimer ton compte?</p>
+                                <p>Est tu certain de vouloir supprimer ton compte? Cette action est irreversible !</p>
 
                                 <form action="" method="POST" class="yes ">
                                     <button type="submit" name="supprimer" class="yes ">Oui</button>
@@ -186,7 +188,7 @@
                                 </form>
 
                             </div>
-                            <div class="btn1-front text-uppercase font-weight-bold">Supprimer compte</div>
+                            <div class="btn1-front text-uppercase font-weight-bold">Supprimer </div>
 
                             <!-- SCRIPT DELETE DAV -->
                             <script src="../../script/btn1-delete.js"></script>

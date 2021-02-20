@@ -182,22 +182,6 @@
                         <h4>Compte de: <?php echo ($user['pseudo']) ?> </h4>
                     </div>
                 </div>
-
-                <div class="d-flex justify-content-center">
-
-                    <!-- FONCTIONNELLE -->
-                    <a href="../formUser/modification.php"><button type="submit" name="mofidier">
-                            modifier (fonctionne)
-                        </button></a>
-                </div>
-                <div>
-                    <!-- FONCTIONELLE -->
-                    <form action="" method="POST">
-                        <button type="submit" name="supprimer">
-                            supprimer compte (fonctionne)
-                        </button>
-                    </form>
-                </div>
 </div>
 </section> <?php  }  ?>
 
