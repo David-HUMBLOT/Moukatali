@@ -7,12 +7,13 @@
     include('functions/bdd-connect.php');
     include('functions/read-user.php');
     include('functions/deconnect-user.php');
-    readUserById($_SESSION['user']['id']);
-    // echo ($_SESSION['user']['id']);
-    // echo ($user['pseudo']);
-
-
+    if (isset($user)) {
+        readUserById($_SESSION['user']['id']);
+        // echo ($_SESSION['user']['id']);
+        // echo ($user['pseudo']);
+    }
     ?>
+
     <!doctype html>
     <html lang="fr">
 
@@ -81,7 +82,7 @@
             </div>
 
         </div>
-     
+
 
         <!-- ON AFFICHE LE BOUTTON VISITER SI AUCUN UTILISATEUR N'EST CONNECTER? SI ON EST PAS CONNECTER ALORS ON EST SIMPLE VISITEUR ET CE BOUTTON DEVIENT VISIBLE -->
 
@@ -89,42 +90,39 @@
 
         if (empty($_SESSION['user']['id'])) {
         ?>
-            
-               <!-- BOUTONS -->
-        <div class="bouton d-flex flex-column align-items-center flex-md-row justify-content-md-center">
-            <a class="btn-connexion btn mb-3 mb-md-0 mr-md-3 text-uppercase font-weight-bold" href="src/formUser/connection.php" role="button">CONNECTION</a>
-            <a class="btn-connexion btn mb-3 mb-md-0 mr-md-3 text-uppercase font-weight-bold" href="src/formUser/inscription.php" role="button">INSCRIPTION</a>
 
-        </div>
-            
+            <!-- BOUTONS -->
+            <div class="bouton d-flex flex-column align-items-center flex-md-row justify-content-md-center">
+                <a class="btn-connexion btn mb-3 mb-md-0 mr-md-3 text-uppercase font-weight-bold" href="src/formUser/connection.php" role="button">CONNECTION</a>
+                <a class="btn-connexion btn mb-3 mb-md-0 mr-md-3 text-uppercase font-weight-bold" href="src/formUser/inscription.php" role="button">INSCRIPTION</a>
+
+            </div>
 
             <div class="d-flex justify-content-center mt-5">
                 <a class="btn-visiter btn text-uppercase font-weight-bold text-light" href="src/pages/liste-sujet.php" role="submit" name="visiter">visiter</a>
             </div>
         <?php
-        }
-        
-        else {
-
-            ?>  
-            <h4 class="ml-2">Vous êtes connecté en tant que : <?php  echo ($user['nom']);  ?> </h'>
-            <div class="d-flex justify-content-center mt-5">
-                <a class="btn-visiter btn text-uppercase font-weight-bold text-light" href="src/pages/liste-sujet.php" role="submit" name="moukatali">MOUKATALI !!</a>
-            </div>
-            
+        } else {
+        ?>
+            <h4 class="ml-2">Vous êtes connecté en tant que : <?php echo ($_SESSION['user']['prenom']);  ?> </h'>
+                <div class="d-flex justify-content-center mt-5">
+                    <a class="btn-visiter btn text-uppercase font-weight-bold text-light" href="src/pages/liste-sujet.php" role="submit" name="moukatali">MOUKATALI !!</a>
+                </div>
             <?php
-
-
-
         }    ?>
 
-     
+            <!-- Affichage du bouton (lien) ADMINISTRATEUR si connection user existante et si et seulement si le role vaut === admin. Le but étant que les utilisateurs lambda n'ont pas acces au ce lien qui gere tout -->
+
+            <?php
+
+            if (isset($_SESSION['user']['id']) && $user['role'] = 'admin') {  ?>
+                <div class="d-flex justify-content-center mt-5">
+                    <a class=" btn text-uppercase font-weight-bold text-light" href="src/formAdmin/form-admin-create.php" role="button">administrateur</a>
+                </div>
+            <?php  }  ?>
 
 
 
-        <div class="d-flex justify-content-center mt-5">
-            <a class=" btn text-uppercase font-weight-bold text-light" href="src/formAdmin/form-admin-create.php" role="button">administrateur</a>
-        </div>
 
     </div>
 </section>
