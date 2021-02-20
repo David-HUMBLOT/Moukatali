@@ -81,16 +81,46 @@
             </div>
 
         </div>
-        <!-- BOUTONS -->
+     
+
+        <!-- ON AFFICHE LE BOUTTON VISITER SI AUCUN UTILISATEUR N'EST CONNECTER? SI ON EST PAS CONNECTER ALORS ON EST SIMPLE VISITEUR ET CE BOUTTON DEVIENT VISIBLE -->
+
+        <?php
+
+        if (empty($_SESSION['user']['id'])) {
+        ?>
+            
+               <!-- BOUTONS -->
         <div class="bouton d-flex flex-column align-items-center flex-md-row justify-content-md-center">
             <a class="btn-connexion btn mb-3 mb-md-0 mr-md-3 text-uppercase font-weight-bold" href="src/formUser/connection.php" role="button">CONNECTION</a>
             <a class="btn-connexion btn mb-3 mb-md-0 mr-md-3 text-uppercase font-weight-bold" href="src/formUser/inscription.php" role="button">INSCRIPTION</a>
 
         </div>
+            
 
-        <div class="d-flex justify-content-center mt-5">
-            <a class="btn-visiter btn text-uppercase font-weight-bold text-light" href="src/pages/liste-sujet.php" role="submit" name="visiter">visiter</a>
-        </div>
+            <div class="d-flex justify-content-center mt-5">
+                <a class="btn-visiter btn text-uppercase font-weight-bold text-light" href="src/pages/liste-sujet.php" role="submit" name="visiter">visiter</a>
+            </div>
+        <?php
+        }
+        
+        else {
+
+            ?>  
+            <h4 class="ml-2">Vous êtes connecté en tant que : <?php  echo ($user['nom']);  ?> </h'>
+            <div class="d-flex justify-content-center mt-5">
+                <a class="btn-visiter btn text-uppercase font-weight-bold text-light" href="src/pages/liste-sujet.php" role="submit" name="moukatali">MOUKATALI !!</a>
+            </div>
+            
+            <?php
+
+
+
+        }    ?>
+
+     
+
+
 
         <div class="d-flex justify-content-center mt-5">
             <a class=" btn text-uppercase font-weight-bold text-light" href="src/formAdmin/form-admin-create.php" role="button">administrateur</a>
