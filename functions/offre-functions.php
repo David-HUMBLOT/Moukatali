@@ -255,7 +255,7 @@ function editOffre($offre_id)
 
 function updateOffre($request_values)
 {
-    global $db, $errors, $title, $picture, $prix, $offre_id, $toffre_description;
+    global $db, $errors, $title, $picture, $prix, $offre_id, $offre_description;
 
     $offre_id = $_POST['offre-id'];
     $title = trim($request_values['title']);
@@ -269,6 +269,9 @@ function updateOffre($request_values)
     }
     if (empty($offre_description)) {
         array_push($errors, "Entrer une description de l'offre");
+    }
+    if (empty($prix)) {
+        array_push($errors, "Entrer un prix pour cette offre");
     }
 
     // si une nouvelle image vedette a été fournie
@@ -289,7 +292,7 @@ function updateOffre($request_values)
         if (empty($errors)) {
             //   if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_dir)) {
             $results = mysqli_query($db, "SELECT * FROM abonnement WHERE id = $offre_id");
-            $topics = mysqli_fetch_all($results, MYSQLI_ASSOC);
+            $offres = mysqli_fetch_all($results, MYSQLI_ASSOC);
             /*
             $file = ROOT_PATH . '/public/images/upload/' . $topics[0]['picture'];
             $del_file = fopen($file);
@@ -321,7 +324,7 @@ function updateOffre($request_values)
 // }
 // }
 
-// supprimer topic
+// supprimer offre
 function deleteOffre($offre_id)
 {
     global $db;
@@ -332,19 +335,21 @@ function deleteOffre($offre_id)
         exit(0);
     }
 }
-/*
+
 // si l'utilisateur clique sur le bouton de publication de l'article
+
 if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
 	$message = "";
 	if (isset($_GET['publish'])) {
-		$message = "Sujet publié";
-		$topic_id = $_GET['publish'];
+		$message = "Article publié";
+		$offre_id = $_GET['publish'];
 	} else if (isset($_GET['unpublish'])) {
-		$message = "Le sujet n'est pas publié";
-		$topic_id = $_GET['unpublish'];
+		$message = "L'article n'est pas publié";
+		$offre_id = $_GET['unpublish'];
 	}
-	togglePublishTopic($topic_id, $message);
+	togglePublishTopic($offre_id, $message);
 }
+
 // activer - desactiver
 function togglePublishTopic($topic_id, $message)
 {
@@ -357,7 +362,8 @@ function togglePublishTopic($topic_id, $message)
 		exit(0);
 	}
 }
-*/
+
+
 if (isset($_GET)) {
     if (isset($_GET['publish'])) {
         $topic_id = $_GET['publish'];
