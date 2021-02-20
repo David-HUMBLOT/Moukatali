@@ -179,11 +179,24 @@
 
                     </div>
 
-                    <div class="btn1">
+                    <div class="btn1 ">
                         <div class="btn1-back">
-                            <p>Est tu certain pour supprimer ton compte?</p>
-                            <button class="yes">Oui</button>
-                            <button class="no">Non</button>
+                            <p>Est tu certain de vouloir supprimer ton compte?</p>
+
+                        
+                            <form action="" method="POST" class="yes">
+                                <button type="submit" name="supprimer" class="yes">Oui</button>
+                                <button  class="no">Non</button>
+                            </form>
+                           
+                            
+                            
+                       
+
+
+
+
+
                         </div>
                         <div class="btn1-front">Supprimer compte</div>
 
@@ -194,6 +207,15 @@
 
 
                 </div>
+
+                <!-- FONCTIONELLE -->
+                <!-- <form action="" method="POST">
+                    <button type="submit" name="supprimer">
+                        supprimer compte (fonctionne)
+                    </button>
+                </form> -->
+
+
 
             </div>
         </section>

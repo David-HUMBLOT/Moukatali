@@ -98,7 +98,7 @@ if (isset($_GET['logout'])) {
             <th scope="col">Nom d'utilisateur</th>
             <th scope="col">N ID user</th>
             <th scope="col">Email</th>
-            <th scope="col">Points</th>
+            <th scope="col">Genre</th>
             <th scope="col">Date d'inscription</th>
           </tr>
         </thead>
