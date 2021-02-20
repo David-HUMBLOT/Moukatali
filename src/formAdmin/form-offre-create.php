@@ -124,14 +124,14 @@
 
 
           <!-- si vous modifiez un message, l'identifiant est requis pour identifier ce message -->
-          <?php if ($update_topic === true) : ?>
+          <?php if ($update_offre === true) : ?>
             <input type="hidden" name="offre-id" value="<?php echo $offre_id; ?>">
           <?php endif ?>
           <!-- Image -->
           <div class="form-group" id="preview">
             <!--<span class="img-div">-->
             <!--<div class="img-placeholder"  onClick="triggerClick()"></div>-->
-            <img src="../../images/uploads/<?= $topic_picture ?>" onClick="triggerClick()" id="profileDisplay" alt="Preview" style="height: 310px; width: 360px;">
+            <img src="../../images/uploads/<?= $offre_picture ?>" onClick="triggerClick()" id="profileDisplay" alt="Preview" style="height: 310px; width: 360px;">
             <!--</span>-->
             <label for="preview" class="form-label text-center"></label>
             <input type="file" onChange="displayImage(this)" id="picture" class="form-control form-control-lg" name="picture" placeholder="Uploader une image">
@@ -240,6 +240,8 @@
                   <td class="align-middle"><?php echo $offre['date_creation']; ?></td>
                   <td class="align-middle"><?php echo $offre['offre_description']; ?></td>
                   <td class="align-middle"><?php echo $offre['image']; ?></td>
+
+
 
                   <!-- Seul l'administrateur peut publier / annuler la publication du message -->
                   <?php if ($_SESSION['user']['role'] == "admin") : ?>

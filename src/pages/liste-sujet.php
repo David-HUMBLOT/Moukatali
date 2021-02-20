@@ -39,18 +39,7 @@
         <title>Liste des sujets - Moukat A Li</title>
     </head>
 
-
-
     <body>
-
-
-
-
-
-
-
-
-
         <!-- 888888888888888888888888888888888888888888888888888888 -->
         <!-- HEADER -->
         <header class="header-liste ">
@@ -120,14 +109,10 @@
             </div>
         </header>
         <!-- FIN DE LA NAV -->
-
-
         <!-- VERIFICATION DES MESSAGE ERREUR -->
         <div class="text-light">
 
             <?php
-
-
             // 888888888888888888888888888888888888888888888
             // SI ID EXISTANT
             if (isset($_SESSION['user']['id'])) {
@@ -147,7 +132,6 @@
                 echo 'Aucune saission en cours ! Veuillez vous connectez !<br/>';
             }
 
-
             // 888888888888888888888888888888888888888888888888888888888888888888888888888888
             //recuperation des topics a publier
             $etatPublish = 1;
@@ -165,9 +149,6 @@
                 array_push($final_topics, $topic);
                 // var_dump($topic['image']);
             }
-
-
-
             $sql2 = "SELECT * FROM topics  WHERE published = $etatUnpublish";
             $pdoStat2 = $db->prepare($sql2);
             $executeIsOk = $pdoStat2->execute();
@@ -179,14 +160,9 @@
                 array_push($final_topics_autres, $topic_autre);
                 // var_dump($topic['image']);
             }
-
-
             //  var_dump($final_topics['id'])
             // 888888888888888888888888888888888888888888888888888888888888888888888888888888
-
-
             ?>
-
         </div>
 
         <!-- DEBUT DU BODY -->

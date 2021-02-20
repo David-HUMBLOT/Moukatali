@@ -1,40 +1,30 @@
 <!-- VERIFICATION DES MESSAGE ERREUR -->
 <div class="text-light">
     <?php session_start();
-include('../../functions/bdd-connect.php');
+    include('../../functions/bdd-connect.php');
     include('../../functions/read-user.php');
     include('../../functions/deconnect-user.php');
     include('../../functions/offre-functions.php');
-
-
-
     ?>
-
 
     <!DOCTYPE html>
     <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <!-- BOOSTRAP 4 -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-
-
         <link rel="stylesheet" href="../../css/styleGreg.css">
         <link rel="stylesheet" href="../../css/mon-style.css">
         <link rel="stylesheet" href="../../css/styleDav.css">
         <link rel="stylesheet" href="../../css/offre.css">
-
         <title>offre</title>
     </head>
 
 
     <body>
-
         <!-- 888888888888888888888888888888888888888888888888888888 -->
         <!-- HEADER -->
         <header class="header-liste ">
@@ -127,6 +117,33 @@ include('../../functions/bdd-connect.php');
         } else {
             echo 'Aucune saission en cours ! Veuillez vous connectez !<br/>';
         }
+           // 888888888888888888888888888888888888888888888888888888888888888888888888888888
+            //recuperation des offres en bdd pour intéraction direct avec le client (btn ajouter au panier)
+            // $etatPublish = 1;
+            // $etatUnpublish = 0;
+            // $final_topics = array();
+            // $final_topics_autres = array();
+            // $sql = "SELECT * FROM topics  WHERE published = $etatPublish";
+            // $pdoStat = $db->prepare($sql);
+            // $executeIsOk = $pdoStat->execute();
+            // $topics = $pdoStat->fetchAll();
+
+            // foreach ($topics as $topic) {
+      
+            //     array_push($final_topics, $topic);
+            //     // var_dump($topic['image']);
+            // }
+            // $sql2 = "SELECT * FROM topics  WHERE published = $etatUnpublish";
+            // $pdoStat2 = $db->prepare($sql2);
+            // $executeIsOk = $pdoStat2->execute();
+         
+            // $topics_autres = $pdoStat2->fetchAll();
+            // foreach ($topics_autres as $topic_autre) {
+            //     array_push($final_topics_autres, $topic_autre);
+            //     // var_dump($topic['image']);
+            // }
+            //  var_dump($final_topics['id'])
+            // 888888888888888888888888888888888888888888888888888888888888888888888888888888
         ?>
 
 

@@ -96,6 +96,7 @@ function createOffre($request_values)
         $title = htmlentities(trim($_POST['title']));
         $offre_description = htmlentities(trim($_POST['offre-description']));
         $prix = trim($_POST['prix']);
+        $published = 0; //par defaut le sujet n est pas actif
         global $db, $errors, $success;
 
         // global $user_id;
