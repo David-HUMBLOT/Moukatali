@@ -136,7 +136,7 @@
                     </div>
                     <!-- photo_de_profile -->
                     <div class="row">
-                        <div class="col-12 text-center mb-5">
+                        <div class="col-12 text-center mb-4">
                             <?php echo ('<img id="img_avatar"  src="../../images/uploads/' . $user['avatar'] . '" alt="avatar user"  class="img-fluid" />'); ?>
                             <!-- <img id="img_avatar" src="images/avatar-3.jpg" alt="" class="img-fluid"> -->
                         </div>
@@ -144,11 +144,11 @@
                     <!---Information user (NOM, Prénom, Addresse, Tel Sexe...)-->
                     <div class="col  d-flex justify-content-around  text-dark">
                         <div class="justify-content-around">
-                            <h3><img src="../../icons/user-fill.png" class="icon-size mr-4" /><?php echo ($user['nom']) ?>&nbsp;<?php echo ($user['prenom']) ?></h3>
-                            <h3><img src="../../icons/cake-2-fill.png" class="icon-size mr-4" /> Age</h3>
-                            <h3><img src="../../icons/mail-open-fill.png" class="icon-size mr-4" /> Email</h3>
-                            <h3><img src="../../icons/phone-fill.png" class="icon-size mr-4" /> Telephone</h3>
-                            <h3><img src="../../icons/map-pin-fill.png" class="icon-size mr-4" /> Ville</h3>
+                            <h5><img src="../../icons/user-fill.png" class="icon-size mr-4" /><?php echo ($user['nom']) ?>&nbsp;<?php echo ($user['prenom']) ?></h5>
+                            <h5><img src="../../icons/cake-2-fill.png" class="icon-size mr-4" /><?php echo ($user['age']) ?> ans</h5>
+                            <h5><img src="../../icons/mail-open-fill.png" class="icon-size mr-4" /><?php echo ($user['email']) ?></h5>
+                            <h5><img src="../../icons/phone-fill.png" class="icon-size mr-4" /><?php echo ($user['telephone']) ?></h5>
+                            <h5><img src="../../icons/map-pin-fill.png" class="icon-size mr-4" />Ville de <?php echo ($user['ville']) ?></h5>
                         </div>
                     </div>
 
