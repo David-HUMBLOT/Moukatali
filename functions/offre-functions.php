@@ -148,12 +148,9 @@ function createOffre($request_values)
         // _______________________________________________________________________________________________
 
         //VERIFICATION SI L IMAGE EST UNE VRAI OU UNE FAUSSE
-
         $check = getimagesize($_FILES["picture"]["tmp_name"]);
         if ($check !== false) {
             // echo "File is an image - " . $check["mime"] . ".";
-
-
             $uploadOk = 1;
         } else {
             // echo "File is not an image.";
@@ -162,7 +159,6 @@ function createOffre($request_values)
             $uploadOk = 0; //CONDITION = 0 CAR N EST PAS UNE IMAGE
             die;
         }
-
         // _____________________________________________________________________________________________
         // VERIFICATION DE LA TAILLE DE L IMAGE
         if ($_FILES["picture"]["size"] > 600000) {
@@ -176,7 +172,6 @@ function createOffre($request_values)
         // VERIFICATION DES EXTENSIONS
         if (
             $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-
         ) {
             // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             array_push($errors, "Format d'image non accepté ! Requis : png, pjeg ou png");
@@ -205,15 +200,11 @@ function createOffre($request_values)
             }
         }
     }
-
-
-
     // return $errors;
     // créer si aucune erreur
     if (count($errors) == 0) {
         // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
         // GOOD
-
         array_push($success, "Article crée !<br/>  ");
         $sql = "INSERT INTO abonnement (user_id, titre_article, image, offre_description, prix,published, date_creation) VALUES( '$user_id', '$title', '$picture', '$offre_description', '$prix','$published', now())";
         $reqInsert = $db->prepare($sql); //preparation de la requete
@@ -232,8 +223,6 @@ function createOffre($request_values)
         return $success;
     }
 }
-
-
 /* * * * * * * * * * * * * * * * * * * * *
 * - Prend l'identifiant de publication comme paramètre
 * - Récupère le message de la base de données
@@ -252,7 +241,6 @@ function editOffre($offre_id)
 //     $picture=$offre['picture'];
 //     $prix = $offre['prix'];
 }
-
 function updateOffre($request_values)
 {
     global $db, $errors, $title, $picture, $prix, $offre_id, $offre_description;
@@ -261,8 +249,6 @@ function updateOffre($request_values)
     $title = trim($request_values['title']);
     $offre_description = htmlentities(trim($request_values['offre-description']));
     $prix = trim($request_values['prix']);
-
-
     // validation formulaire
     if (empty($title)) {
         array_push($errors, "Entrer un titre");
@@ -273,7 +259,6 @@ function updateOffre($request_values)
     if (empty($prix)) {
         array_push($errors, "Entrer un prix pour cette offre");
     }
-
     // si une nouvelle image vedette a été fournie
     if (isset($_POST['picture'])) {
         $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
@@ -301,7 +286,6 @@ function updateOffre($request_values)
             if (file_exists($file)) {
               unlink($file);
             }*/
-
             $query = "UPDATE abonnement SET picture = '$picture' WHERE id = $offre_id";
             mysqli_query($db, $query);
         } else {
@@ -309,11 +293,9 @@ function updateOffre($request_values)
         }
     }
 }
-
 // // enregistrer le sujet s'il n'y a pas d'erreurs dans le formulaire
 // if (count($errors) == 0) {
 //     $query = "UPDATE topics SET title = '$title', topic_description = '$topic_description', update_date = now()  WHERE id = $topic_id";
-
 //     if (mysqli_query($db, $query)) {
 //         $_SESSION['message'] = "le sujet a été mis à jour.";
 //         header('location: subject.php');
@@ -323,7 +305,6 @@ function updateOffre($request_values)
 //     }
 // }
 // }
-
 // supprimer offre
 function deleteOffre($offre_id)
 {
@@ -335,9 +316,7 @@ function deleteOffre($offre_id)
         exit(0);
     }
 }
-
 // si l'utilisateur clique sur le bouton de publication de l'article
-
 if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
 	$message = "";
 	if (isset($_GET['publish'])) {
@@ -349,7 +328,6 @@ if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
 	}
 	togglePublishTopic($offre_id, $message);
 }
-
 // activer - desactiver
 function togglePublishTopic($topic_id, $message)
 {
@@ -364,19 +342,32 @@ function togglePublishTopic($topic_id, $message)
 }
 
 
+global $offre_id;
 if (isset($_GET)) {
+    global $offre_id;
     if (isset($_GET['publish'])) {
-        $topic_id = $_GET['publish'];
-        $query = "UPDATE topics SET published = 0 WHERE published = 1";
-        mysqli_query($db, $query);
-        $sql = "UPDATE topics SET published = 1 WHERE id = $topic_id";
-        mysqli_query($db, $sql);
+        $offre_id = $_GET['publish'];
+        $query = "UPDATE abonnement SET published = 0 WHERE published = 1 AND id = $offre_id LIMIT 1";
+        $pdoStat1 = $db->prepare($query);
+        $execut1 = $pdoStat1->execute();
+        // CHANGE L ETAT DES AUTRE PUBLICATION 5CAR LIMITER A 2 sur 3 par admin
+        $sql = "UPDATE abonnement SET published = 1 WHERE id != $offre_id";
+        $pdoStat2 = $db->prepare($sql);
+        $execut2 = $pdoStat2->execute();
+    } else {
+
+        if (isset($_GET['unpublish'])) {
+            $offre_id = $_GET['unpublish'];
+            $query = "UPDATE abonnement SET published = 1 WHERE published = 0 AND id = $offre_id LIMIT 1";
+            $pdoStat1 = $db->prepare($query);
+            $execut1 = $pdoStat1->execute();
+            // CHANGE L ETAT DES AUTRE PUBLICATION 5CAR LIMITER A 2 sur 3 par admin
+            $sql = "UPDATE abonnement SET published = 0 WHERE id != $offre_id";
+            $pdoStat2 = $db->prepare($sql);
+            $execut2 = $pdoStat2->execute();
+  
+        }
     }
-    if (isset($_GET['unpublish'])) {
-        $topic_id = $_GET['unpublish'];
-        $query = "UPDATE topics SET published = 1 WHERE published = 0";
-        mysqli_query($db, $query);
-        $sql = "UPDATE topics SET published = 0 WHERE id = $topic_id";
-        mysqli_query($db, $sql);
-    }
+              return $offre_id;
 }
+

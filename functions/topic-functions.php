@@ -375,8 +375,6 @@ if (isset($_GET)) {
         $sql = "UPDATE topics SET published = 1 WHERE id != $topic_id";
         $pdoStat2 = $db->prepare($sql);
         $execut2 = $pdoStat2->execute();
-
-    
     } else {
 
         if (isset($_GET['unpublish'])) {
