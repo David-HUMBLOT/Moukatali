@@ -215,7 +215,7 @@ function createOffre($request_values)
         // GOOD
 
         array_push($success, "Article crée !<br/>  ");
-        $sql = "INSERT INTO abonnement (user_id, titre_article, image, offre_description, prix, date_creation) VALUES( '$user_id', '$title', '$picture', '$offre_description', '$prix', now())";
+        $sql = "INSERT INTO abonnement (user_id, titre_article, image, offre_description, prix,published, date_creation) VALUES( '$user_id', '$title', '$picture', '$offre_description', '$prix','$published', now())";
         $reqInsert = $db->prepare($sql); //preparation de la requete
         $reqInsert->execute(); //execution de la requete
         // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
