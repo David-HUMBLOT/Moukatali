@@ -231,32 +231,18 @@
             <h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>
             <?php else :
             // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
-
-     
-
             foreach ($topics as $topic) { ?>
-
                 <!-- AFFICHAGE DU TOPICS CREER ET PUBLIER PAR L ADMIN -->
                 <!-- SUJET -->
-
-
                 <div class="sujet bg-light p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center">
                     <div class="image mb-2 mb-md-0 mr-md-2 ">
-
-
                     </div>
                     <div class="image mr-lg-2  d-lg-block col-sm-6"><?php echo ('<img class="img-fluid" src="../../images/uploads/' . $topic['image'] .  '" alt="Image du sujet">');  ?></div>
+                    <h6 class="text-dark"><?php echo ($topic['titre'])    ?></h6>
                     <p class="text-dark"><?php echo ($topic['topic_description'])    ?></p>
                 </div>
-
-
-
-
         <?php      }
         endif; ?>
-
-
-
 
         <!-- SUJET BRUT-->
         <!-- <div class="sujet bg-light p-3 mb-3 d-flex flex-column flex-md-row align-items-md-center">
@@ -265,7 +251,6 @@
             <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in lobortis nisl.
                 Vestibulum mauris metus, luctus quis volutpat vitae, laoreet.</p>
         </div> -->
-
 
         <!-- PROGRESS BAR -->
         <div class="info p-3 mb-3 bg-light">
@@ -396,7 +381,7 @@
 <!-- SECTION -->
 
 
-<?php if (empty($topics_autres) && empty($topics) ) : ?>
+<?php if (empty($topics_autres) && empty($topics)) : ?>
     <section class="container mb-5">
         <div class=" row col-12 mx-1 d-flex justify-content-around">
 

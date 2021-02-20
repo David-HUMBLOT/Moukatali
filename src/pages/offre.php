@@ -8,6 +8,7 @@
     ?>
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +22,7 @@
         <link rel="stylesheet" href="../../css/offre.css">
         <title>offre</title>
     </head>
+
     <body>
         <!-- 888888888888888888888888888888888888888888888888888888 -->
         <!-- HEADER -->
@@ -185,41 +187,50 @@
         <section>
             <div class="container">
                 <div classs="row">
-                <!-- 888888888888888888888888888888888888888888888 -->
-                <?php if (empty($offres)) : ?>
-            <h1 style="text-align: center; margin-top: 20px;">Aucun article/offre en ce moment</h1>
-            <?php else :
-            // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
-            foreach ($offres as $offre) { ?>
-         
+                    <!-- 888888888888888888888888888888888888888888888 -->
+                    <?php if (empty($offres)) : ?>
+                        <h1 style="text-align: center; margin-top: 20px;">Aucun article/offre en ce moment</h1>
+                        <?php else :
+                        // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
+                        foreach ($offres as $offre) { ?>
+                            <!-- 888888888888888888888888888888888888888888888888 -->
 
-
-
-        <?php      }
-        endif; ?>
-                <!-- 888888888888888888888888888888888888888888888 -->
-
-                    <!-- 888888888888888888888888888888888888888888888888 -->
-                    <div class="row row-cols-1 row-cols-md-3">
-                        <div class="col mb-4">
-                            <div class="card h-100">
-                                <img src="../../images/974dodo.jpg" class="card-img-top" style="height: 30vh;">
-                                <div class="card-body">
-                                    <h5 class="card-title">EXEMPLE EN BRUT</h5>
-                                    <p class="card-text">CECI EST UN EXEMPLE EN  CODE BRUT D'UN ARTICLE OU D'UNE OFFRE POUR LE CLIENT . LE BOUTON AJOUTER AU PANIER DOIVENT INTEARGIR AVEC LE CLIENT QUI DEVRA POUVOIR CONSULTER SON PANIER AVANT SON ACHAT</p>
+                            <div class="row row-cols-1 row-cols-md-3">
+                                <div class="col mb-4">
+                                    <div class="card h-100">
+                                        <?php echo ('<img src="../../images/uploads/' . $offre['image'] .  '" class="card-img-top" alt="Image article/offre" style="height: 30vh;" >');  ?>
+                                        <!-- <img src="../../images/974dodo.jpg" class="card-img-top" style="height: 30vh;"> -->
+                                        <div class="card-body">
+                                            <h6 class="card-title"><?php echo ($offre['titre_article'])    ?></h6>
+                                            <p class="card-text"><?php echo ($offre['offre_description'])    ?></p>
+                                        </div>
+                                        <div class="card-footer d-flex justify-content-center">
+                                            <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-footer d-flex justify-content-center">
-                                    <a href="#" class="btn btn-primary">Ajouter au panier</a>
+
+
+
+                        <?php      }
+                    endif; ?>
+                        <!-- 888888888888888888888888888888888888888888888 -->
+
+                        <div class="row row-cols-1 row-cols-md-3">
+                            <div class="col mb-4">
+                                <div class="card h-100">
+                                    <img src="../../images/974dodo.jpg" class="card-img-top" style="height: 30vh;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">EXEMPLE EN BRUT</h5>
+                                        <p class="card-text">CECI EST UN EXEMPLE EN CODE BRUT D'UN ARTICLE OU D'UNE OFFRE POUR LE CLIENT . LE BOUTON AJOUTER AU PANIER DOIVENT INTEARGIR AVEC LE CLIENT QUI DEVRA POUVOIR CONSULTER SON PANIER AVANT SON ACHAT</p>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-center">
+                                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- 888888888888888888888888888888888888888888888888 -->
-
-
-
-
-
-                        <!-- <div class="col mb-4">
+                            <!-- 888888888888888888888888888888888888888888888888 -->
+                            <!-- <div class="col mb-4">
                         <div class="card h-100">
                             <img src="../../images/logo_moukatali_noir.png" class="card-img-top" style="height: 30vh;"
                                 alt="...">
@@ -232,7 +243,7 @@
                             </div>
                         </div>
                     </div> -->
-                        <!-- <div class="col mb-4">
+                            <!-- <div class="col mb-4">
                         <div class="card h-100">
                             <img src="../../images/974-west-coast-1.jpg" class="card-img-top" style="height: 30vh;"
                                 alt="...">
@@ -246,7 +257,7 @@
                             </div>
                         </div>
                     </div> -->
-                        <!-- <div class="col mb-4">
+                            <!-- <div class="col mb-4">
                         <div class="card h-100">
                             <img src="../../images/974images.jpg" class="card-img-top" style="height: 30vh;" alt="...">
                             <div class="card-body">
@@ -260,7 +271,7 @@
                         </div>
                     </div>
                     <div class="col mb-4"> -->
-                        <!-- <div class="card h-100">
+                            <!-- <div class="card h-100">
                             <img src="../../images/974images.jpg" class="card-img-top" style="height: 30vh;" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
@@ -268,26 +279,19 @@
                                     lead-in to additional content. This content is a little bit longer.</p>
                             </div>
                             <div class="card-footer d-flex justify-content-center">
-
-
-
                                 <a href="#" class="btn btn-primary">Ajouter au panier</a>
-
-
-                   
-
-
                             </div>
                         </div>
                     </div> -->
-                    </div>
-
-
-
-
+                            <!-- 88888888888888888888888888888888888888888888888888888 -->
+                        </div>
+                            </div>
                 </div>
-            </div>
+        </section>
 
+
+        <!-- test javascript btn interactif modal confirmation oui ou non  -->
+        <section>
             <!-- LE BOUTIN DELETE COMPTE avec JAVASCRIPT-->
             <div class="btn">
                 <div class="btn-back">
@@ -298,8 +302,6 @@
                 <div class="btn-front btn btn-primary">Ajouter au panier</div>
 
             </div>
-
-
         </section>
 
 
