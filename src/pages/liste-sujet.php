@@ -134,8 +134,8 @@
 
             // 888888888888888888888888888888888888888888888888888888888888888888888888888888
             //recuperation des topics a publier
-            $etatPublish = 1;
-            $etatUnpublish = 0;
+            $etatPublish = 1; //Pour recuperer tout sont qui sont publier
+            $etatUnpublish = 0; //reccuperer tout ceux qui sont non publier ou en attente de publication
             $final_topics = array();
             $final_topics_autres = array();
             $sql = "SELECT * FROM topics  WHERE published = $etatPublish";

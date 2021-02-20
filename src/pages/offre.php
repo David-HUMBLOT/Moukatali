@@ -9,6 +9,7 @@
 
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -117,33 +118,34 @@
         } else {
             echo 'Aucune saission en cours ! Veuillez vous connectez !<br/>';
         }
-           // 888888888888888888888888888888888888888888888888888888888888888888888888888888
-            //recuperation des offres en bdd pour intéraction direct avec le client (btn ajouter au panier)
-            // $etatPublish = 1;
-            // $etatUnpublish = 0;
-            // $final_topics = array();
-            // $final_topics_autres = array();
-            // $sql = "SELECT * FROM topics  WHERE published = $etatPublish";
-            // $pdoStat = $db->prepare($sql);
-            // $executeIsOk = $pdoStat->execute();
-            // $topics = $pdoStat->fetchAll();
+        // 888888888888888888888888888888888888888888888888888888888888888888888888888888
+        //recuperation des offres en bdd pour intéraction direct avec le client (btn ajouter au panier)
+        $etatPublish = 1; //pour récupérer les articles publier
+        // $etatUnpublish = 0; //pour récuperer les articles non publier ou a venir (teasing)
+        $final_offres = array();
+        // $final_offres_autres = array();
+        $sql = "SELECT * FROM abonnement  WHERE published = $etatPublish";
+        $pdoStat = $db->prepare($sql);
+        $executeIsOk = $pdoStat->execute();
+        $offres = $pdoStat->fetchAll();
+        // on parcours le resultat de la requete ligne par ligne pour afficher chaque ligne (offre ou articles) dans une card.
+        foreach ($offres as $offre) {
 
-            // foreach ($topics as $topic) {
-      
-            //     array_push($final_topics, $topic);
-            //     // var_dump($topic['image']);
-            // }
-            // $sql2 = "SELECT * FROM topics  WHERE published = $etatUnpublish";
-            // $pdoStat2 = $db->prepare($sql2);
-            // $executeIsOk = $pdoStat2->execute();
-         
-            // $topics_autres = $pdoStat2->fetchAll();
-            // foreach ($topics_autres as $topic_autre) {
-            //     array_push($final_topics_autres, $topic_autre);
-            //     // var_dump($topic['image']);
-            // }
-            //  var_dump($final_topics['id'])
-            // 888888888888888888888888888888888888888888888888888888888888888888888888888888
+            array_push($final_offres, $offre); //stock des resultat par ligne 
+            // var_dump($offre['image']);
+        }
+
+        // $sql2 = "SELECT * FROM abonnement  WHERE published = $etatUnpublish";
+        // $pdoStat2 = $db->prepare($sql2);
+        // $executeIsOk = $pdoStat2->execute();
+
+        // $offres_autres = $pdoStat2->fetchAll();
+        // foreach ($offres_autres as $offre_autre) {
+        //     array_push($final_offres_autres, $offre_autre);
+        //     // var_dump($topic['image']);
+        // }
+        //  var_dump($final_topics['id'])
+        // 888888888888888888888888888888888888888888888888888888888888888888888888888888
         ?>
 
 
