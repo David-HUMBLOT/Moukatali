@@ -19,63 +19,81 @@
         <!-- FONT AWESOME ICONS -->
 
 
-        <link rel="stylesheet" href="css/styleGreg.css">
-        <link rel="stylesheet" href="css/mon-style.css">
-        <link rel="stylesheet" href="css/styleDav.css">
+        <link rel="stylesheet" href="../../css/styleGreg.css">
+        <link rel="stylesheet" href="../../css/mon-style.css">
+        <link rel="stylesheet" href="../../css/styleDav.css">
 
 </head>
 
 <body>
+       <!-- 888888888888888888888888888888888888888888888888888888 -->
+        <!-- HEADER -->
+        <header class="header-liste ">
+            <div class="container">
 
-    <!-- HEADER -->
+                <!-- NAVBAR -->
+                <nav class="navigation d-flex align-items-center ">
+                    <a class="navbar-brand ml-4 mb-1" href="index.html">
+                        <img src="../../images/logo.png" alt="Logo Moukat A Li" style="width: 24vh;">
+                    </a>
+                    <div class="menu-toggle mt-1">
+                        <input class="position" type="checkbox" />
+                        <span class="position"></span>
+                        <span class="position"></span>
+                        <span class="position"></span>
+                        <ul class="menu">
+                            <a href="../../index.php">
+                                <li class="header-liste-p"> <img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Accueil</li>
+                            </a>
 
-    <header class="header-liste ">
-        <div class="container">
+                            <?php
+                            if (isset($_SESSION['user']['id'])) {  ?>
 
-            <!-- NAVBAR -->
-            <nav class="navigation d-flex align-items-center ">
-                <a class="navbar-brand ml-4 mb-1" href="index.html">
-                    <img src="images/logo.png" alt="Logo Moukat A Li" style="width: 24vh;">
-                </a>
-                <div class="menu-toggle mt-1">
 
-                    <input class="position" type="checkbox" />
-                    <span class="position"></span>
-                    <span class="position"></span>
-                    <span class="position"></span>
 
-                    <ul class="menu">
-                        <a href="index.html">
-                            <li  class="header-liste-p"> <img src="icons/chevron-right-solid-24.png"  class="icon-size " />  Accueil</li>
-                        </a>
-                        <a href="liste-sujet.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Moukatages</li>
-                        </a>
-                        <a href="connection.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Se connecter</li>
-                        </a>
-                        <a href="profile.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Mon espace</li>
-                        </a>
-                        <a href="abonnement.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> S'abonner</li>
-                        </a>
-                        <a href="succes.html">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Mes succès</li>
-                        </a>
-                        <a href="#">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Contact</li>
-                        </a>
-                        <a href="#">
-                            <li class="header-liste-p"><img src="icons/chevron-right-solid-24.png"  class="icon-size " /> Se déconnecter</li>
-                        </a>
-                    </ul>
-                </div>
-            </nav>
+                                <a href="liste-sujet.php">
+                                    <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> MouKatAli !!</li>
+                                </a>
+                                <a href="../user/profile.php">
+                                    <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Mon profil</li>
+                                </a>
+                                <a href="succes.html">
+                                    <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Mes succès</li>
+                                </a>
+                                <a href="../pages/offre.php">
+                                    <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " />Offre et abonnemnt</li>
+                                </a>
+                                <a href="#">
+                                    <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Contact</li>
+                                </a>
 
-        </div>
-    </header>
+                                <li class="header-liste-p d-flex justify-content-around mr-5">
 
+                                    <form method="POST">
+                                        <button href="../../index.php" type="submit" class="btn btn-warning" name="deconnection">
+                                            Se déconnecter
+                                        </button>
+                                    </form>
+                                </li>
+
+                            <?php  } else {  ?>
+
+                                <a href="../formUser/connection.php">
+                                    <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Se connecter</li>
+                                </a>
+                                <a href="../formUser/inscription.php">
+                                    <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> S'inscrire</li>
+                                </a>
+                                <a href="#">
+                                    <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> Contact</li>
+                                </a>
+                            <?php    }  ?>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+        </header>
 
 
 
@@ -112,18 +130,13 @@
               
                 <!---Information user (NOM, Prénom, Addresse, Tel Sexe...)-->
                 <div class="col  d-flex justify-content-center">
-               
                     <div >
-               
-                        <p>  <img src="icons/user-fill.png"  class="icon-size" /> Nom / Prénom</p>
-                        <p><img src="icons/cake-2-fill.png" class="icon-size" /> Age</p>
-                        <p><img src="icons/mail-open-fill.png" class="icon-size" /> Email</p>
-                        <p><img src="icons/phone-fill.png" class="icon-size" /> Telephone</p>
-                        <p><img src="icons/map-pin-fill.png" class="icon-size" /> Ville</p>
-                
-
+                        <p><img src="../../icons/user-fill.png"  class="icon-size" /> Nom / Prénom</p>
+                        <p><img src="../../icons/cake-2-fill.png" class="icon-size" /> Age</p>
+                        <p><img src="../../icons/mail-open-fill.png" class="icon-size" /> Email</p>
+                        <p><img src="../../icons/phone-fill.png" class="icon-size" /> Telephone</p>
+                        <p><img src="../../icons/map-pin-fill.png" class="icon-size" /> Ville</p>
                     </div>
-
                 </div>
               
 
@@ -147,8 +160,13 @@
         </div>
     </section>
 
-
-
+        <!-- FOOTER -->
+        <footer class="text-center py-5 d-flex flex-column">
+            <a href="#" class="mb-1">Contact</a>
+            <a href="#" class="mb-1">C.G.V.</a>
+            <a href="#" class="mb-1">C.G.U.</a>
+            <a href="#">Mentions légales</a>
+        </footer>
 
 </body>
 
