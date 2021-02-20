@@ -35,6 +35,11 @@
         <link rel="stylesheet" href="../../css/mon-style.css">
         <link rel="stylesheet" href="../../css/styleDav.css">
 
+        <!-- bouton delete JS STYLE DAV -->
+        <link href="../../css/btn1-delete.css" rel="stylesheet" type="text/css" />
+        <!-- <link href="../../btn-delete.css" rel="stylesheet" type="text/css" /> -->
+
+
     </head>
 
     <body>
@@ -163,10 +168,31 @@
                     </div>
                     -->
                     <div class="d-flex flex-column flex-md-row text-center align-items-center justify-content-md-around mt-4">
+
                         <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href="succes.html" role="button">Mes succès</a>
-                        <a class="btn btn-profil text-uppercase font-weight-bold" href="#" role="button">Modifier
-                            info</a>
+
+                        <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href="#" role="button">Modifier
+                            compte</a>
+
+                        <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href="#" role="button">Modifier
+                            compte</a>
+
                     </div>
+
+                    <div class="btn1">
+                        <div class="btn1-back">
+                            <p>Est tu certain pour supprimer ton compte?</p>
+                            <button class="yes">Oui</button>
+                            <button class="no">Non</button>
+                        </div>
+                        <div class="btn1-front">Supprimer compte</div>
+
+                        <!-- SCRIPT DELETE DAV -->
+                        <script src="../../script/btn1-delete.js"></script>
+
+                    </div>
+
+
                 </div>
 
             </div>
