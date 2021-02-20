@@ -23,7 +23,7 @@ function update_user()
 
     echo ' Inititialisation varibles GLOBAL  <br/>Initialisation  du tableaux des erreurs (IN FONCTIONS)  <br/>';
     // NOUS SERT PAR EXEMPLE A SORTIR LES INFORMATIOSN DU TABLEAUX DES ERREURS DE LA FONCTION
-    global $errors, $success_modification, $role, $pseudo, $email, $nom, $prenom, $pdo,  $password_hash, $modif_id_user;
+    global $errors, $success_modification, $pseudo, $email, $nom, $prenom, $pdo,  $password_hash, $modif_id_user;
 
     // INITIALISATION DES VARIBLES DONT CEUX PAR DEFAUT AFIN DE LES TRAITER AVANT REQUETE D INSERTION EN BASE DE DONNEE 
     $modif_id_user = $_SESSION['user']['id'];
@@ -35,7 +35,7 @@ function update_user()
     // $telephone ="";
     $errors = array(); // VAR TABLEAUX QUI RECOIT LES MESSAGES D ERREUR POUR LE FORMULAIRE MODIFICATION
     $success_modification = array();
-    $role = "user";
+    // $role = "user"; //le role est deja defini a l inscription,Ne faut pas le mettre ici car si on modifie étant un admin le role sera affecter , hors on souhaite garder son role de admin ou autre
     echo ' suite... fin initilisation ... suite <br/>';
 
     echo ' Entrer de fonction update-user <br/>';
