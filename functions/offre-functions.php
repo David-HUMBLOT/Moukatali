@@ -312,8 +312,8 @@ function deleteOffre($offre_id)
     $sql = "DELETE FROM abonnement WHERE id = $offre_id";
     if (mysqli_query($db, $sql)) {
         $_SESSION['message'] = "Le sujet a bien été supprimé";
-        header("location: subject.php");
-        exit(0);
+        // header("location: subject.php");
+        // exit(0);
     }
 }
 // si l'utilisateur clique sur le bouton de publication de l'article
@@ -326,19 +326,30 @@ if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
 		$message = "L'article n'est pas publié";
 		$offre_id = $_GET['unpublish'];
 	}
-	togglePublishTopic($offre_id, $message);
+	togglePublishOffre($offre_id, $message);
 }
 // activer - desactiver
-function togglePublishTopic($topic_id, $message)
+function togglePublishOffre($offre_id, $message)
 {
-	global $db;
-	$sql = "UPDATE topics SET published = !published WHERE id = $topic_id";
+    global $db;
+    $db = connectPdoBdd();
+    $sql = "UPDATE abonnement SET published = !published WHERE id = $offre_id";
 
-	if (mysqli_query($db, $sql)) {
-		$_SESSION['message'] = $message;
-		header("location: topics.php");
-		exit(0);
-	}
+    $pdoStat = $db->prepare($sql);
+    $result = $pdoStat->execute();
+    $offres = $db->query($sql);
+    // $final_topics = array();
+    if ($offres) {
+        $_SESSION['message'] = $message;
+        // header("location: topics.php");
+        // exit(0);
+    }
+
+    // if (mysqli_query($db, $sql)) {
+    // 	$_SESSION['message'] = $message;
+    // 	// header("location: topics.php");
+    // 	exit(0);
+    // }
 }
 
 
@@ -347,22 +358,22 @@ if (isset($_GET)) {
     global $offre_id;
     if (isset($_GET['publish'])) {
         $offre_id = $_GET['publish'];
-        $query = "UPDATE abonnement SET published = 0 WHERE published = 1 AND id = $offre_id LIMIT 1";
+        $query = "UPDATE abonnement SET published = 1 WHERE published = 0 AND id = $offre_id LIMIT 1";
         $pdoStat1 = $db->prepare($query);
         $execut1 = $pdoStat1->execute();
         // CHANGE L ETAT DES AUTRE PUBLICATION 5CAR LIMITER A 2 sur 3 par admin
-        $sql = "UPDATE abonnement SET published = 1 WHERE id != $offre_id";
+        $sql = "UPDATE abonnement SET published = 0 WHERE id = $offre_id LIMIT 1";
         $pdoStat2 = $db->prepare($sql);
         $execut2 = $pdoStat2->execute();
     } else {
 
         if (isset($_GET['unpublish'])) {
             $offre_id = $_GET['unpublish'];
-            $query = "UPDATE abonnement SET published = 1 WHERE published = 0 AND id = $offre_id LIMIT 1";
+            $query = "UPDATE abonnement SET published = 0 WHERE published = 1 AND id = $offre_id LIMIT 1";
             $pdoStat1 = $db->prepare($query);
             $execut1 = $pdoStat1->execute();
             // CHANGE L ETAT DES AUTRE PUBLICATION 5CAR LIMITER A 2 sur 3 par admin
-            $sql = "UPDATE abonnement SET published = 0 WHERE id != $offre_id";
+            $sql = "UPDATE abonnement SET published = 1 WHERE id = $offre_id LIMIT 1";
             $pdoStat2 = $db->prepare($sql);
             $execut2 = $pdoStat2->execute();
   

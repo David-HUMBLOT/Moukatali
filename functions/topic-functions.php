@@ -344,9 +344,9 @@ function togglePublishTopic($topic_id, $message)
 
     $pdoStat = $db->prepare($sql);
     $result = $pdoStat->execute();
-    $offres = $db->query($sql);
+    $topics = $db->query($sql);
     // $final_topics = array();
-    if ($offres) {
+    if ($topics) {
         $_SESSION['message'] = $message;
         // header("location: topics.php");
         // exit(0);
