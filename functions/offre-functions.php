@@ -7,6 +7,8 @@ $prix=0;
 $offre_id = 0;
 $published = 0;
 $update_offre = false;
+$success = array();
+$errors = array();
 global $db, $success, $errors;
 $db = connectPdoBdd();
 // $dbs=connectSqliBdd();
@@ -69,12 +71,10 @@ if (isset($_GET['edit-offre'])) {
     $offre_id = $_GET['edit-offre'];
     editOffre($offre_id);
 }
-
 // si l'utilisateur clique sur le bouton de mise à jour
 if (isset($_POST['update-offre'])) {
     updateOffre($_POST);
 }
-
 // si l'utilisateur clique sur le bouton Supprimer la publication
 if (isset($_GET['delete-offre'])) {
     $offre_id = $_GET['delete-offre'];
@@ -86,9 +86,7 @@ global $db, $errors, $user_id;
 // 88888888888888888888888888888888888888
 // $user_id est définit a ce stade
 var_dump($user_id);
-
 global $db, $errors, $success;
-
 function createOffre($request_values)
 {
     if (isset($_POST["create-offre"])) {
@@ -103,16 +101,7 @@ function createOffre($request_values)
 
         $user_id = $_SESSION['user']['id'];
         var_dump($user_id);
-
-
-
         // 88888888888888888888888888888888888888888888888888888888888888
-
-        // 88888888888888888888888888888888888888888888888888888888888888
-        // $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
-        // $title = htmlentities(trim($request_values['title']));
-        // $topic_description = htmlentities(trim($request_values['topic-description']));
-        //88888888888888888888888888888888888888888888888888888888888888
         // validation formulaire
         if (empty($title)) {
             array_push($errors, "Entrer un titre d'articles");
@@ -130,15 +119,12 @@ function createOffre($request_values)
             $uploadOk = 0;
             die;
         }
-
         if (empty($prix)) {
             array_push($errors, "Entrer un prix pour cette article");
             return $errors;
             $uploadOk = 0;
             die;
         }
-
-
         //88888888888888888888888888888888888888888888888888888888888888888888888888888888888
         // PARAMETRAGE DES VARIBLES D ACCES, EXTENSION, UPLOAD, ET DU DOSSIER DE DESTINATION DES IMAGES UPLOADER
         $target_dir = "../../images/uploads/";  //chemin du sossier ou les fichiers seront uploader

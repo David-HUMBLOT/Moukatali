@@ -77,9 +77,7 @@ global $db, $errors, $user_id;
 // 88888888888888888888888888888888888888
 // $user_id est définit a ce stade
 var_dump($user_id);
-
 global $db, $errors, $success;
-
 function createTopic($request_values)
 {
     if (isset($_POST["create-topic"])) {
@@ -93,12 +91,6 @@ function createTopic($request_values)
         var_dump($user_id);
 
         // 88888888888888888888888888888888888888888888888888888888888888
-
-        // 88888888888888888888888888888888888888888888888888888888888888
-        // $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
-        // $title = htmlentities(trim($request_values['title']));
-        // $topic_description = htmlentities(trim($request_values['topic-description']));
-        //88888888888888888888888888888888888888888888888888888888888888
         // validation formulaire
         if (empty($title)) {
             array_push($errors, "Entrer un titre");
