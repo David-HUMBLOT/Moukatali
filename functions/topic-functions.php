@@ -1,5 +1,4 @@
 <?php
-
 $title = "";
 $topic_description = "";
 $picture = "";

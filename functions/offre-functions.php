@@ -1,5 +1,4 @@
 <?php
-
 $title = "";
 $offre_description = "";
 $picture = "";
@@ -13,7 +12,6 @@ global $db, $success, $errors;
 $db = connectPdoBdd();
 // $dbs=connectSqliBdd();
 // récupére tous les offres de la BDD
-
 function getAllOffres()
 {
     global $db, $final_offres;
@@ -30,12 +28,10 @@ function getAllOffres()
         $sql = "SELECT * FROM topics WHERE id = $user_id";
         // 88888888888888888888888888888888888888888888888888888
     }
-
     $pdoStat = $db->prepare($sql);
     $result = $pdoStat->execute();
     $offres = $db->query($sql);
     $final_offres = array();
-
     foreach ($offres as $offre) {
         $offre['author'] = getOffreAuthorById($offre['id']);
         array_push($final_offres, $offre);
@@ -43,13 +39,10 @@ function getAllOffres()
     return $final_offres;
     // var_dump($final_offres);
 }
-
-
 // récupére l'auteur d'une offre
 function getOffreAuthorById($user_id)
 {
     global $db;
-
     $sql = "SELECT nom FROM users WHERE id = $user_id";
     $result = $db->query($sql);
     if ($result) {
@@ -59,12 +52,10 @@ function getOffreAuthorById($user_id)
         return null;
     }
 }
-
 // si l'utilisateur clique sur le bouton créer une publication
 if (isset($_POST['create-offre'])) {
     createOffre($_POST);
 }
-
 // si l'utilisateur clique sur l'icône modifier
 if (isset($_GET['edit-offre'])) {
     $update_offre = true;
@@ -80,9 +71,7 @@ if (isset($_GET['delete-offre'])) {
     $offre_id = $_GET['delete-offre'];
     deleteOffre($offre_id);
 }
-
 global $db, $errors, $user_id;
-
 // 88888888888888888888888888888888888888
 // $user_id est définit a ce stade
 var_dump($user_id);
@@ -318,7 +307,7 @@ function updateOffre($request_values)
     // // enregistrer le sujet s'il n'y a pas d'erreurs dans le formulaire
     if (count($errors) == 0) {
         array_push($success, "Modification de l'offre/article réussie ! ");
-        $query = "UPDATE abonnemen SET titre_article = '$title',image='$picture', offre_description = '$offre_description', prix = '$prix'   WHERE id = $offre_id";
+        $query = "UPDATE abonnement SET titre_article = '$title',image='$picture', offre_description = '$offre_description', prix = '$prix'   WHERE id = $offre_id";
         $reqInsert = $db->prepare($query); //preparation de la requete
         $reqInsert->execute(); //execution de la requete
         return $errors;

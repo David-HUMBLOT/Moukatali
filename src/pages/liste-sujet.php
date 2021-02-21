@@ -352,7 +352,7 @@
     <section class="container mb-5">
         <div class=" row col-12 mx-1 d-flex justify-content-around">
 
-            <h1 style="text-align: center; margin-top: 20px;">Aucun en attente.</h1>
+            <h1 style="text-align: center; margin-top: 20px;">Aucun sujet en attente.</h1>
         </div>
     </section>
 <?php else :

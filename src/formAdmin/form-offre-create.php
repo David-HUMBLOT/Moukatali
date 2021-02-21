@@ -149,9 +149,9 @@
           <!-- BOUTON -->
           <div class="d-grid gap-2">
           <?php if ($update_offre === true) : ?>
-            <button type="submit" class="btn btn-dark fw-bold text-uppercase mt-4 mb-5" name="create-offre">créer</button>
+            <button type="submit" class="btn btn-dark fw-bold text-uppercase mt-4 mb-5" name="update-offre">mettre à jour</button>
             <?php else : ?>
-            <button type="submit" class="btn btn-secondary fw-bold text-uppercase mt-4 mb-5" name="update-offre">mettre à jour</button>
+            <button type="submit" class="btn btn-dark fw-bold text-uppercase mt-4 mb-5" name="create-offre">créer</button>
             <?php endif; ?>
 
 
