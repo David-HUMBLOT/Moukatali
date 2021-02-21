@@ -182,8 +182,11 @@ function createTopic($request_values)
         exit(0);
     }
 }
-
-
+/* * * * * * * * * * * * * * * * * * * * *
+* - Prend l'identifiant de publication comme paramètre
+* - Récupère le message de la base de données
+* - définit les champs de publication sur le formulaire pour modification
+* * * * * * * * * * * * * * * * * * * * * */
 function editTopic($topic_id)
 {
     global $db, $title, $topic_description, $update_topic, $topic_id;
@@ -199,19 +202,11 @@ function editTopic($topic_id)
     $topic_description = $topic['topic_description'];
 }
 // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-
 function updateTopic($request_values)
 {
-
-
     $published = 0; //par defaut le sujet n est pas actif
-    global $db, $errors, $success;
-    // global $user_id;
-    $user_id = $_SESSION['user']['id'];
-    var_dump($user_id);
-
-
-
+    // $user_id = $_SESSION['user']['id'];
+    // var_dump($user_id);
 
     global $db, $errors, $title, $picture, $topic_id, $topic_description, $success;
     
@@ -236,7 +231,7 @@ function updateTopic($request_values)
         $uploadOk = 0;
         die;
     }
-    // si une nouvelle image vedette a été fournie
+    // si une nouvelle image a été fournie
     //88888888888888888888888888888888888888888888888888888888888888888888888888888888888
     // PARAMETRAGE DES VARIBLES D ACCES, EXTENSION, UPLOAD, ET DU DOSSIER DE DESTINATION DES IMAGES UPLOADER
     $target_dir = "../../images/uploads/";  //chemin du sossier ou les fichiers seront uploader

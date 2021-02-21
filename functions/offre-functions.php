@@ -3,7 +3,7 @@
 $title = "";
 $offre_description = "";
 $picture = "";
-$prix=0;
+$prix = 0;
 $offre_id = 0;
 $published = 0;
 $update_offre = false;
@@ -188,49 +188,52 @@ function createOffre($request_values)
     }
     // return $errors;
     // créer si aucune erreur
+    // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+    // GOOD
     if (count($errors) == 0) {
-        // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-        // GOOD
         array_push($success, "Article crée !<br/>  ");
         $sql = "INSERT INTO abonnement (user_id, titre_article, image, offre_description, prix,published, date_creation) VALUES( '$user_id', '$title', '$picture', '$offre_description', '$prix','$published', now())";
         $reqInsert = $db->prepare($sql); //preparation de la requete
         $reqInsert->execute(); //execution de la requete
-        // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-        // $query = "INSERT INTO topics (id, titre, image, topic_description, nb_comment, vote_for, vote_against, published, creation_date, update_date) VALUES($user_id, '$picture', '$title', '$topic_description', 0, 0, 0, 0, now(), now())";
-        // 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-        // if (mysqli_query($db, $query)) { // si le sujet a été insérer avec succès
-
-        //     $_SESSION['message'] = "Sujet créé avec succés";
-        //     echo "Sujet créé avec succés";
-        //     header('location: subject.php');
-        //     exit(0);
-        // }
         return $errors;
         return $success;
+        exit(0);
     }
 }
+// 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+
 /* * * * * * * * * * * * * * * * * * * * *
 * - Prend l'identifiant de publication comme paramètre
 * - Récupère le message de la base de données
 * - définit les champs de publication sur le formulaire pour modification
 * * * * * * * * * * * * * * * * * * * * * */
-global $db, $title, $picture, $prix, $offre_description, $update_offre, $offre_id;
+// global $db, $title, $picture, $prix, $offre_description, $update_offre, $offre_id;
+// 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 function editOffre($offre_id)
 {
-//     global $db, $title, $picture, $prix, $offre_description, $update_offre, $offre_id;
-//     $sql = "SELECT * FROM abonnement WHERE id = $offre_id LIMIT 1";
-//     $result = mysqli_query($db, $sql);
-//     $topic = mysqli_fetch_assoc($result);
-//     // définir les valeurs du formulaire sur le formulaire à mettre à jour
-//     $title = $offre['title'];
-//     $offre_description = $offre['offre_description'];
-//     $picture=$offre['picture'];
-//     $prix = $offre['prix'];
+    global $db, $title, $picture, $prix, $offre_description, $update_offre, $offre_id;
+    $sql = "SELECT * FROM abonnement WHERE id = $offre_id LIMIT 1";
+    $pdoStat = $db->prepare($sql);
+    $executeIsOk = $pdoStat->execute();
+    $offre = $pdoStat->fetch();
+    // $result = mysqli_query($db, $sql);
+    // $topic = mysqli_fetch_assoc($result);
+
+    // définir les valeurs du formulaire sur le formulaire à mettre à jour
+    $title = $offre['titre_article'];
+    $offre_description = $offre['offre_description'];
+    $picture = $offre['image'];
+    $prix = $offre['prix'];
 }
+// 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 function updateOffre($request_values)
 {
-    global $db, $errors, $title, $picture, $prix, $offre_id, $offre_description;
+    $published = 0; //par defaut le sujet n est pas actif
+    // $user_id = $_SESSION['user']['id'];
+    // var_dump($user_id);
 
+    global $db, $errors, $title, $picture, $prix, $offre_id, $offre_description, $success;
+    $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
     $offre_id = $_POST['offre-id'];
     $title = trim($request_values['title']);
     $offre_description = htmlentities(trim($request_values['offre-description']));
@@ -238,60 +241,100 @@ function updateOffre($request_values)
     // validation formulaire
     if (empty($title)) {
         array_push($errors, "Entrer un titre");
+        die;
     }
     if (empty($offre_description)) {
         array_push($errors, "Entrer une description de l'offre");
+        die;
     }
     if (empty($prix)) {
         array_push($errors, "Entrer un prix pour cette offre");
+        die;
     }
-    // si une nouvelle image vedette a été fournie
-    if (isset($_POST['picture'])) {
-        $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
-        // pour le téléchargement de l'images
-        // $target_dir = ROOT_PATH . '/public/images/upload/' . basename($picture);
-        // VALIDATION
-        // valider la taille de l'image, la taille est calculée en octet
-        if ($_FILES['picture']['size'] > 200000) {
-            array_push($errors, "La taille de l'image ne doit pas dépasser 200 ko");
+    if (empty($picture)) {
+        array_push($errors, "Entrer une photo d'article'");
+        return $errors;
+        $uploadOk = 0;
+        die;
+    }
+    // si une nouvelle image  a été fournie
+    // PARAMETRAGE DES VARIBLES D ACCES, EXTENSION, UPLOAD, ET DU DOSSIER DE DESTINATION DES IMAGES UPLOADER
+    $target_dir = "../../images/uploads/";  //chemin du sossier ou les fichiers seront uploader
+    $target_file = $target_dir . basename($_FILES["picture"]["name"]); //parametrage du nom de l image
+    $uploadOk = 1; //condition si uplooad aboutie
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); //définition de l extension de l image
+    // _______________________________________________________________________________________________
+    //VERIFICATION SI L IMAGE EST UNE VRAI OU UNE FAUSSE
+    $check = getimagesize($_FILES["picture"]["tmp_name"]);
+    if ($check !== false) {
+        // echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        // echo "File is not an image.";
+        array_push($errors, "Ce fichier n'est pas une image !");
+        return $errors;
+        $uploadOk = 0; //CONDITION = 0 CAR N EST PAS UNE IMAGE
+        die;
+    }
+    // _____________________________________________________________________________________________
+    // VERIFICATION DE LA TAILLE DE L IMAGE
+    if ($_FILES["picture"]["size"] > 600000) {
+        // echo "Sorry, your file is too large.";
+        array_push($errors, "Image volumineuse ! Elle ne doit pas  dépasser 600ko .");
+        return $errors;
+        $uploadOk = 0;  //CONDITION = 0 CAR N EST TROP VOLUMINEUSE
+        die;
+    }
+    // __________________________________________________________________________________________
+    // VERIFICATION DES EXTENSIONS
+    if (
+        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    ) {
+        // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        array_push($errors, "Format d'image non accepté ! Requis : png, pjeg ou png");
+        return $errors;
+        $uploadOk = 0;
+        die;
+    }
+    // ____________________________________________________________________________________________
+    // VERIFICATION SI UNE ERREUR IMAGE EST SURVENUE
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+        array_push($errors, "Désoler, votre image n'as pas été transférées.");
+        // SI AUCUNE ERREUR ALORS ON PRECEDE AU TELECHARGEMENT DANS LE DOSSIER UPLOAD PREALABLEMENT CREER.
+        // LA FONCTION MOVE UPLOAD FILE PREND DEUX PARAMETRE (VARIABLE DE NOTRE IMAGE TRAITER  , SON CHEMIN DE DESTINATION)
+    } else {
+        // CONDITION QUAND TRANSFERT REUSSI
+        if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
+            $picture = $_FILES["picture"]["name"];
+            // echo "The file " . htmlspecialchars(basename($_FILES["picture"]["name"])) . " has been uploaded. ";
         }
-        // On vérifie l'extension et la taille de l'image
-        $picture_ext = pathinfo($picture, PATHINFO_EXTENSION); // ou $picture_ext = pathinfo($picture)['extension'];
-        if (!in_array($picture_ext, ['jpg', 'jpeg', 'png'])) {
-            array_push($errors, "Votre image doit être .jpg, .jpeg ou .png");
+        // CONDITION QUAND LE TRANSFERT ECHOUE
+        else {
+            echo "Sorry, there was an error uploading your file.";
+            array_push($errors, "Désolé, une erreur est survenue lors du transfert ... Veuillez recommençer.");
+            return $errors;
         }
-        if (empty($errors)) {
-            //   if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_dir)) {
-            $results = mysqli_query($db, "SELECT * FROM abonnement WHERE id = $offre_id");
-            $offres = mysqli_fetch_all($results, MYSQLI_ASSOC);
-            /*
-            $file = ROOT_PATH . '/public/images/upload/' . $topics[0]['picture'];
-            $del_file = fopen($file);
-            fclose($del_file);
-            *//*
-            if (file_exists($file)) {
-              unlink($file);
-            }*/
-            $query = "UPDATE abonnement SET picture = '$picture' WHERE id = $offre_id";
-            mysqli_query($db, $query);
-        } else {
-            array_push($errors, "Une erreur s'est produite lors du téléchargement du fichier");
-        }
+    }
+    // // enregistrer le sujet s'il n'y a pas d'erreurs dans le formulaire
+    if (count($errors) == 0) {
+        $query = "UPDATE abonnemen SET titre_article = '$title',image='$picture', offre_description = '$offre_description',prix = '$prix',   WHERE id = $offre_id";
+
+
+
+        
+        // if (mysqli_query($db, $query)) {
+        //     $_SESSION['message'] = "le sujet a été mis à jour.";
+        //     header('location: subject.php');
+        //     exit(0);
+        // } else {
+        //     echo 'ERREUR BDD';
+        // }
     }
 }
-// // enregistrer le sujet s'il n'y a pas d'erreurs dans le formulaire
-// if (count($errors) == 0) {
-//     $query = "UPDATE topics SET title = '$title', topic_description = '$topic_description', update_date = now()  WHERE id = $topic_id";
-//     if (mysqli_query($db, $query)) {
-//         $_SESSION['message'] = "le sujet a été mis à jour.";
-//         header('location: subject.php');
-//         exit(0);
-//     } else {
-//         echo 'ERREUR BDD';
-//     }
-// }
-// }
 // supprimer offre
+
+
 function deleteOffre($offre_id)
 {
     global $db, $success;
@@ -299,19 +342,18 @@ function deleteOffre($offre_id)
     $reqDeleteAdmin = $db->prepare($sql); //preparation de la requete
     $reqDeleteAdmin->execute(); //execution de la requete
     array_push($success, "Topic supprimé avec succès ");
-    
 }
 // si l'utilisateur clique sur le bouton de publication de l'article
 if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
-	$message = "";
-	if (isset($_GET['publish'])) {
-		$message = "Article publié";
-		$offre_id = $_GET['publish'];
-	} else if (isset($_GET['unpublish'])) {
-		$message = "L'article n'est pas publié";
-		$offre_id = $_GET['unpublish'];
-	}
-	togglePublishOffre($offre_id, $message);
+    $message = "";
+    if (isset($_GET['publish'])) {
+        $message = "Article publié";
+        $offre_id = $_GET['publish'];
+    } else if (isset($_GET['unpublish'])) {
+        $message = "L'article n'est pas publié";
+        $offre_id = $_GET['unpublish'];
+    }
+    togglePublishOffre($offre_id, $message);
 }
 // activer - desactiver
 function togglePublishOffre($offre_id, $message)
@@ -361,9 +403,7 @@ if (isset($_GET)) {
             $sql = "UPDATE abonnement SET published = 1 WHERE id = $offre_id LIMIT 1";
             $pdoStat2 = $db->prepare($sql);
             $execut2 = $pdoStat2->execute();
-  
         }
     }
-              return $offre_id;
+    return $offre_id;
 }
-
