@@ -37,13 +37,9 @@
   var_dump($user_id);
   var_dump($_SESSION['user']['role']);
   // 88888888888888888888888888888888888888888888888888888 
-
-
   ?>
 
   <body>
-
-
  <!-- HEADER -->
  <header class="header-liste" id="id-navbar">
     <div class="container ">
@@ -103,9 +99,7 @@
         }
 
 
-          // 88888888888888888888888888888888888888888888888888888888888888888888
-  // $results = mysqli_query($db, "SELECT * FROM topic ORDER BY publication_date DESC");
-  // $topics = mysqli_fetch_all($results, MYSQLI_ASSOC);
+ 
   // 88888888888888888888888888888888888888888888888888888888888888888888
   $sql = "SELECT * FROM abonnement ORDER BY date_creation DESC";
   $pdoStat = $db->prepare($sql);
@@ -139,25 +133,33 @@
           <!-- Titre article -->
           <div class="form-floating">
 
-            <input type="text" class="form-control text-dark" placeholder="Title" name="title" value="">
+            <input type="text" class="form-control text-dark" placeholder="Title" name="title" value="<?php echo $title; ?>">
             <label for="title">Articles</label>
           </div>
           <!-- Description article ou offre-->
           <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="offre-description"></textarea>
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="offre-description" value="<?php echo $offre_description; ?>"></textarea>
             <label for="floatingTextarea2">Détail de l'article ou de l'abonnement</label>
           </div>
           <!-- Prix de l'article ou offre-->
           <div class="form-floating">
-            <input type="number" class="form-control text-dark" placeholder="Prix de l'article" name="prix" min="0" value="">
+            <input type="number" class="form-control text-dark" placeholder="Prix de l'article" name="prix" min="0" value="<?php echo $prix; ?>">
             <label for="prix">Prix de l'article</label>
           </div>
           <!-- BOUTON -->
           <div class="d-grid gap-2">
-
+          <?php if ($update_offre === true) : ?>
             <button type="submit" class="btn btn-dark fw-bold text-uppercase mt-4 mb-5" name="create-offre">créer</button>
+            <?php else : ?>
+            <button type="submit" class="btn btn-secondary fw-bold text-uppercase mt-4 mb-5" name="update-offre">mettre à jour</button>
+            <?php endif; ?>
 
-            <!-- <button type="submit" class="btn btn-secondary fw-bold text-uppercase mt-4 mb-5" name="update-topic">mettre à jour</button> -->
+
+            <!-- <button type="submit" class="btn btn-secondary fw-bold text-uppercase mt-4 mb-5" name="update-offre">mettre à jour</button> -->
+
+
+
+
 
           </div>
 
