@@ -46,8 +46,16 @@ if (isset($_GET['delete-admin'])) {
     deleteAdmin($admin_id);
 }
 
+// si l'utilisateur clique sur le bouton mettre à jour
+if (isset($_POST['update-admin'])) {
+    updateAdmin($_POST);
+}
 
-
+//supprime un user
+if (isset($_GET['delete-user'])) {
+    $delete_id_user = $_GET['delete-user'];
+    deleteAdmin($delete_id_user);
+}
 
 
 //*******************************************************************************************************************************//
@@ -181,39 +189,35 @@ function createAdmin($request_values)
 // 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 // 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 // 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// si l'utilisateur clique sur le bouton mettre à jour
-// if (isset($_POST['update-admin'])) {
-//     updateAdmin($_POST);
-// }
-// si l'utilisateur clique sur l'icône supprimer
 
-// Reçoit les nouvelles données d'administration du formulaire
-// Créer un nouvel utilisateur administrateur
-// Renvoie tous les utilisateurs administrateurs avec leurs rôles
+
 
 
 // 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+// GOOD
 // Prend l'ID d'administrateur comme paramètre
 // Récupère l'administrateur de la base de données
 // définit les champs d'administration du formulaire pour l'édition
+// récupére les entrées du formulaire et met à jour la base de données
 function editAdmin($admin_id)
 {
-    // global $db, $username, $role, $update, $admin_id, $email, $first_name, $last_name;
-    // $sql = "SELECT * FROM `users` WHERE id = $admin_id LIMIT 1";
-    // $result = mysqli_query($db, $sql);
-    // $admin = mysqli_fetch_assoc($result);
-    // // définir les valeurs du formulaire ($ username et $ email) sur le formulaire à mettre à jour
-    // $username = $admin['pseudo'];
-    // $first_name = $admin['nom'];
-    // $last_name = $admin['prenom'];
-    // $email = $admin['email'];
-    // $role = $admin['role'];
+    global $db, $username, $role, $update, $admin_id, $email, $first_name, $last_name;
+    $sql = "SELECT * FROM `users` WHERE id = $admin_id LIMIT 1";
+    $pdoStat = $db->prepare($sql);
+    $executeIsOk = $pdoStat->execute();
+    $admin = $pdoStat->fetch();
+    // définir les valeurs du formulaire ($ username et $ email) sur le formulaire à mettre à jour
+    $username = $admin['pseudo'];
+    $first_name = $admin['nom'];
+    $last_name = $admin['prenom'];
+    $email = $admin['email'];
+    $role = $admin['role'];
 }
-//// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 
-//    A FAAIRE
 // 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// récupére les entrées du formulaire et met à jour la base de données
+
+
+
 function updateAdmin($request_values)
 {
     global $db, $errors, $role, $username, $update, $admin_id, $email, $first_name, $last_name;
@@ -234,14 +238,24 @@ function updateAdmin($request_values)
     if (count($errors) == 0) {
         // crypter le mot de passe avant de l'enregistrer dans la base de données
         $password = password_hash($password_1, PASSWORD_DEFAULT);
-        $query = "UPDATE users SET username = '$username', password = '$password' WHERE id = $admin_id";
+        $query = "UPDATE users SET pseudo = '$username', password = '$password' WHERE id = $admin_id";
+
+        $reqInsert1 = $db->prepare($query); //preparation de la requete
+        $reqInsert1->execute(); //execution de la requete
+
         /*mysqli_query($db, $query);*/
-        if (mysqli_query($db, $query)) {
-            echo '1 OK';
-        } else {
-            exit('ERREUR 1');
-        }
-        $sql = "UPDATE user_info SET username='$username', first_name = '$first_name', last_name = '$last_name', email = '$email', role = '$role', password = '$password' WHERE user_id = $admin_id";
+        // if (mysqli_query($db, $query)) {
+        //     echo '1 OK';
+        // } else {
+        //     exit('ERREUR 1');
+        // }
+        $sql = "UPDATE users SET pseudo='$username', prenom = '$first_name', nom = '$last_name', email = '$email', role = '$role', password = '$password' WHERE id = $admin_id";
+
+        $reqInsert1 = $db->prepare($sql); //preparation de la requete
+        $reqInsert1->execute(); //execution de la requete
+
+ 
+
 
         //88888888888888888888888888888888888888888
         // $reqInsert = $db->prepare($sql); //preparation de la requete
@@ -249,16 +263,16 @@ function updateAdmin($request_values)
         //88888888888888888888888888888888888888888
 
         //88888888888888888888888888888888888888888
-        mysqli_query($db, $sql);
-        if (mysqli_query($db, $sql)) {
-            echo '2 OK';
-        } else {
-            exit('ERREUR 2');
-        }
+        // mysqli_query($db, $sql);
+        // if (mysqli_query($db, $sql)) {
+        //     echo '2 OK';
+        // } else {
+        //     exit('ERREUR 2');
+        // }
 
-        $_SESSION['message'] = "L'administrateur a bien été mis à jour";
-        header('form-admin-create.php');
-        exit(0);
+        // $_SESSION['message'] = "L'administrateur a bien été mis à jour";
+        // header('form-admin-create.php');
+        // exit(0);
         //88888888888888888888888888888888888888888
     }
 }
@@ -303,10 +317,6 @@ function getAllUsers()
 
 }
 
-if (isset($_GET['delete-user'])) {
-    $delete_id_user = $_GET['delete-user'];
-    deleteAdmin($delete_id_user);
-}
 
 
 //GOOD
