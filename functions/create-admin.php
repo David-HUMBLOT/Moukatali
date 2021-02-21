@@ -1,14 +1,6 @@
 <?php
 
-
-
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+// 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 require_once('bdd-connect.php');
 connectPdoBdd();
 echo 'Connection à la base de donnée OK <br/>';
@@ -40,25 +32,19 @@ if (isset($_GET['edit-admin'])) {
     $admin_id = $_GET['edit-admin'];
     editAdmin($admin_id);
 }
-
 if (isset($_GET['delete-admin'])) {
     $admin_id = $_GET['delete-admin'];
     deleteAdmin($admin_id);
 }
-
 // si l'utilisateur clique sur le bouton mettre à jour
 if (isset($_POST['update-admin'])) {
     updateAdmin($_POST);
 }
-
 //supprime un user
 if (isset($_GET['delete-user'])) {
     $delete_id_user = $_GET['delete-user'];
     deleteAdmin($delete_id_user);
 }
-
-
-//*******************************************************************************************************************************//
 // 88888888888888888888888888888888888888888888888888888
 // POUR LE TABLEAU LISTE DE TOUT LES ADMINS AUTHOR ET MODERATOR
 global $db, $roles;
@@ -71,9 +57,6 @@ $executeIsOk = $pdoStat->execute();
 $listes_AdminAuthorModerator = $pdoStat->fetchAll();
 // var_dump($users['pseudo']);
 global $users;
-// 88888888888888888888888888888888888888888888888888888
-//*******************************************************************************************************************************//
-//*******************************************************************************************************************************//
 // 88888888888888888888888888888888888888888888888888888
 function createAdmin($request_values)
 {
@@ -112,7 +95,6 @@ function createAdmin($request_values)
     if ($password_1 != $password_2) {
         array_push($errors, "les deux mots de passe ne correspondent pas");
     }
-
     // 888888888888888888888888888888888888888888888888888888888888888888
     /******************************************************
      * VERIFICATION BOUBLON EMAIL METHODE PDO *
@@ -158,10 +140,6 @@ function createAdmin($request_values)
     if (count($errors) == 0) {
         // crypter le mot de passe avant de l'enregistrer dans la base de données
         $password = password_hash($password_1, PASSWORD_DEFAULT);
-        // 888888888888888888888888888888888888888888888888888888888888888888888888888
-        // $query = "INSERT INTO users (pseudo, password) VALUES ('$username', '$password')";
-        // mysqli_query($db, $query);
-        // 888888888888888888888888888888888888888888888888888888888888888888888888888
         //   FONCTIONNE AVEC CHOIS DU ROLE A L INSCRITION ADMIN
         $db = connectPdoBdd();
         $sql = "INSERT INTO users (  pseudo, prenom, nom, email, password,  role, date_inscription) VALUES ( '$username','$first_name','$last_name', '$email', '$password',  '$role', now())";
@@ -180,19 +158,6 @@ function createAdmin($request_values)
 }
 // 88888888888888888888888888888888888888888888888888888
 //*******************************************************************************************************************************//
-
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-// 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-
-
-
-
 // 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 // GOOD
 // Prend l'ID d'administrateur comme paramètre
@@ -213,11 +178,7 @@ function editAdmin($admin_id)
     $email = $admin['email'];
     $role = $admin['role'];
 }
-
 // 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-
-
-
 function updateAdmin($request_values)
 {
     global $db, $errors, $role, $username, $update, $admin_id, $email, $first_name, $last_name;
@@ -243,69 +204,31 @@ function updateAdmin($request_values)
         $reqInsert1 = $db->prepare($query); //preparation de la requete
         $reqInsert1->execute(); //execution de la requete
 
-        /*mysqli_query($db, $query);*/
-        // if (mysqli_query($db, $query)) {
-        //     echo '1 OK';
-        // } else {
-        //     exit('ERREUR 1');
-        // }
+     
         $sql = "UPDATE users SET pseudo='$username', prenom = '$first_name', nom = '$last_name', email = '$email', role = '$role', password = '$password' WHERE id = $admin_id";
 
         $reqInsert1 = $db->prepare($sql); //preparation de la requete
         $reqInsert1->execute(); //execution de la requete
-
- 
-
-
-        //88888888888888888888888888888888888888888
-        // $reqInsert = $db->prepare($sql); //preparation de la requete
-        // $reqInsert->execute(); //execution de la requete
-        //88888888888888888888888888888888888888888
-
-        //88888888888888888888888888888888888888888
-        // mysqli_query($db, $sql);
-        // if (mysqli_query($db, $sql)) {
-        //     echo '2 OK';
-        // } else {
-        //     exit('ERREUR 2');
-        // }
-
-        // $_SESSION['message'] = "L'administrateur a bien été mis à jour";
-        // header('form-admin-create.php');
-        // exit(0);
-        //88888888888888888888888888888888888888888
     }
 }
-
 // 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 //GOOD
 // supprimer l'utilisateur administrateur
 function deleteAdmin($admin_id)
-
 {
-
     global $db, $success;
-
     $sql1 = "DELETE FROM users WHERE id = $admin_id";
     $reqDeleteAdmin = $db->prepare($sql1); //preparation de la requete
     $reqDeleteAdmin->execute(); //execution de la requete
     array_push($success, "Compte administrateur supprimé avec succès ");
 }
-
-
-
-
 // 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 // POUR LA PAGE AVEC LA LISTE DE TOUT LES MOUKATEUR AU ROLE DE USER
-
-
 global $all_users;
-
 // 8888888888888888888888888
 // ok fonctionelle
 function getAllUsers()
 {
-
     global $all_users;
     global $db, $roles;
     $admin = "role";
@@ -314,21 +237,15 @@ function getAllUsers()
     $stmt = $db->query($requet);
     $all_users = $stmt->fetchAll();
     return $all_users;
-
 }
-
-
 
 //GOOD
 // supprimer l'utilisateur administrateur
 function deleteUser($delete_id_user)
-
 {
-
     global $db,  $delete_id_user;
     $delete_id_user = $_GET['delete-user'];
     $sql1 = "DELETE FROM users WHERE id = $delete_id_user LIMIT 1";
     $reqDeleteAdmin = $db->prepare($sql1); //preparation de la requete
     $reqDeleteAdmin->execute(); //execution de la requete
-
 }
