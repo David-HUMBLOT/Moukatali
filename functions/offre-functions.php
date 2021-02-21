@@ -231,7 +231,6 @@ function updateOffre($request_values)
     $published = 0; //par defaut le sujet n est pas actif
     // $user_id = $_SESSION['user']['id'];
     // var_dump($user_id);
-
     global $db, $errors, $title, $picture, $prix, $offre_id, $offre_description, $success;
     $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
     $offre_id = $_POST['offre-id'];
@@ -318,31 +317,26 @@ function updateOffre($request_values)
     }
     // // enregistrer le sujet s'il n'y a pas d'erreurs dans le formulaire
     if (count($errors) == 0) {
-        $query = "UPDATE abonnemen SET titre_article = '$title',image='$picture', offre_description = '$offre_description',prix = '$prix',   WHERE id = $offre_id";
-
-
-
-        
-        // if (mysqli_query($db, $query)) {
-        //     $_SESSION['message'] = "le sujet a été mis à jour.";
-        //     header('location: subject.php');
-        //     exit(0);
-        // } else {
-        //     echo 'ERREUR BDD';
-        // }
+        array_push($success, "Modification de l'offre/article réussie ! ");
+        $query = "UPDATE abonnemen SET titre_article = '$title',image='$picture', offre_description = '$offre_description', prix = '$prix'   WHERE id = $offre_id";
+        $reqInsert = $db->prepare($query); //preparation de la requete
+        $reqInsert->execute(); //execution de la requete
+        return $errors;
+        return $success;
+        exit(0);
     }
 }
-// supprimer offre
-
-
+// 8888888888888888888888888888888888888888888888888888888888
+// supprimer offre ou l article
 function deleteOffre($offre_id)
 {
     global $db, $success;
     $sql = "DELETE FROM abonnement WHERE id = $offre_id";
     $reqDeleteAdmin = $db->prepare($sql); //preparation de la requete
     $reqDeleteAdmin->execute(); //execution de la requete
-    array_push($success, "Topic supprimé avec succès ");
+    array_push($success, "Article/Offre supprimé avec succès");
 }
+// 8888888888888888888888888888888888888888888888888888888888
 // si l'utilisateur clique sur le bouton de publication de l'article
 if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
     $message = "";
@@ -355,31 +349,22 @@ if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
     }
     togglePublishOffre($offre_id, $message);
 }
+// 8888888888888888888888888888888888888888888888888888888888
 // activer - desactiver
 function togglePublishOffre($offre_id, $message)
 {
     global $db;
     $db = connectPdoBdd();
     $sql = "UPDATE abonnement SET published = !published WHERE id = $offre_id";
-
     $pdoStat = $db->prepare($sql);
     $result = $pdoStat->execute();
     $offres = $db->query($sql);
     // $final_topics = array();
     if ($offres) {
         $_SESSION['message'] = $message;
-        // header("location: topics.php");
-        // exit(0);
     }
-
-    // if (mysqli_query($db, $sql)) {
-    // 	$_SESSION['message'] = $message;
-    // 	// header("location: topics.php");
-    // 	exit(0);
-    // }
 }
-
-
+// 8888888888888888888888888888888888888888888888888888888888
 global $offre_id;
 if (isset($_GET)) {
     global $offre_id;
@@ -393,7 +378,6 @@ if (isset($_GET)) {
         $pdoStat2 = $db->prepare($sql);
         $execut2 = $pdoStat2->execute();
     } else {
-
         if (isset($_GET['unpublish'])) {
             $offre_id = $_GET['unpublish'];
             $query = "UPDATE abonnement SET published = 0 WHERE published = 1 AND id = $offre_id LIMIT 1";
@@ -407,3 +391,4 @@ if (isset($_GET)) {
     }
     return $offre_id;
 }
+// 8888888888888888888888888888888888888888888888888888888888

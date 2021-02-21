@@ -207,9 +207,7 @@ function updateTopic($request_values)
     $published = 0; //par defaut le sujet n est pas actif
     // $user_id = $_SESSION['user']['id'];
     // var_dump($user_id);
-
     global $db, $errors, $title, $picture, $topic_id, $topic_description, $success;
-    
     $picture = strtolower(time() . '-' . $_FILES['picture']['name']);
     $topic_id = $_POST['topic-id'];
     $title = trim($request_values['title']);
@@ -295,27 +293,13 @@ function updateTopic($request_values)
     if (count($errors) == 0) {
         array_push($success, "Modification du topics réussie ! ");
         $query = "UPDATE topics SET titre = '$title',image='$picture', topic_description = '$topic_description'  WHERE id = $topic_id";
-
         $reqInsert = $db->prepare($query); //preparation de la requete
         $reqInsert->execute(); //execution de la requete
-
-
         return $errors;
         return $success;
-        // $sql = "INSERT INTO topics ( user_id, titre, image, topic_description, quota_vote, published, date_creation) VALUES( '$user_id', '$title', '$picture', '$topic_description', 0, '$published', now())";
-        // if (mysqli_query($db, $query)) {
-        //     $_SESSION['message'] = "le sujet a été mis à jour.";
-        //     header('location: subject.php');
-        //     exit(0);
-        // } else {
-        //     echo 'ERREUR BDD';
-        // }
+        exit(0);
     }       
 }
-
-
-
-
 // 88888888888888888888888888
 // supprimer topic GOOD
 function deleteTopic($topic_id)
@@ -324,10 +308,8 @@ function deleteTopic($topic_id)
     $sql1 = "DELETE FROM topics WHERE id = $topic_id";
     $reqDeleteAdmin = $db->prepare($sql1); //preparation de la requete
     $reqDeleteAdmin->execute(); //execution de la requete
-    array_push($success, "Topic supprimé avec succès ");
+    array_push($success, "Topic supprimé avec succès");
 }
-
-
 // 8888888888888888888888888888888888888888888888888888888888
 // si l'utilisateur clique sur le bouton de publication de l'article
 if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
@@ -341,8 +323,6 @@ if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
     }
     togglePublishTopic($topic_id, $message);
 }
-
-
 // 8888888888888888888888888888888888888888888888888888
 // activer - desactiver
 function togglePublishTopic($topic_id, $message)
@@ -350,28 +330,13 @@ function togglePublishTopic($topic_id, $message)
     global $db;
     $db = connectPdoBdd();
     $sql = "UPDATE topics SET published = !published WHERE id = $topic_id";
-
     $pdoStat = $db->prepare($sql);
     $result = $pdoStat->execute();
     $topics = $db->query($sql);
     // $final_topics = array();
-    if ($topics) {
-        $_SESSION['message'] = $message;
-        // header("location: topics.php");
-        // exit(0);
-    }
-
-    // if (mysqli_query($db, $sql)) {
-    // 	$_SESSION['message'] = $message;
-    // 	// header("location: topics.php");
-    // 	exit(0);
-    // }
 }
 // 8888888888888888888888888888888888888888888888888888888888
-
 // changement d etat de la publication
-
-
 global $topic_id;
 if (isset($_GET)) {
     global $topic_id;
@@ -385,7 +350,6 @@ if (isset($_GET)) {
         $pdoStat2 = $db->prepare($sql);
         $execut2 = $pdoStat2->execute();
     } else {
-
         if (isset($_GET['unpublish'])) {
             $topic_id = $_GET['unpublish'];
             $query = "UPDATE topics SET published = 1 WHERE published = 0 AND id = $topic_id LIMIT 1";
@@ -399,3 +363,4 @@ if (isset($_GET)) {
     }
     return $topic_id;
 }
+// 8888888888888888888888888888888888888888888888888888888888
