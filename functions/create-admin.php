@@ -260,7 +260,7 @@ function updateAdmin($request_values)
 }
 
 // 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
-//A FAIRE DELETE
+//GOOD
 // supprimer l'utilisateur administrateur
 function deleteAdmin($admin_id)
 
@@ -268,23 +268,9 @@ function deleteAdmin($admin_id)
 
     global $db, $success;
 
-    // gestion de la contrainte de la clé etrangere
-    // $sql = " ALTER TABLE users
-    // ADD CONSTRAINT `success_user`, `like_dislike`, `abonnement`, `moukatages` FOREIGN KEY 'user_id'
-    //     REFERENCES users (id)
-    //     ON DELETE CASCADE";
-    // $reqDeleteAdmin = $db->prepare($sql); //preparation de la requete
-    // $reqDeleteAdmin->execute(); //execution de la requete
-
-
-
-
-
-    $sql1 = "DELETE FROM users WHERE id = $admin_id ON DELETE CASCADE";
+    $sql1 = "DELETE FROM users WHERE id = $admin_id";
     $reqDeleteAdmin = $db->prepare($sql1); //preparation de la requete
     $reqDeleteAdmin->execute(); //execution de la requete
-
-
     array_push($success, "Compte administrateur supprimé avec succès ");
 }
 

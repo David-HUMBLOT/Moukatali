@@ -124,7 +124,6 @@
 
             $pattern = '/^admin/';
             $subject = $_SESSION['user']['role'];
-
             if (preg_match($pattern, $subject)) {
 
             ?>
@@ -133,12 +132,6 @@
                 </div>
             <?php
             } ?>
-
-
-
-
-
-
 
 
     </div>

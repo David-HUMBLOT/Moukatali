@@ -195,7 +195,7 @@
         
         global $topic, $topic_id;
         if (empty($topics)) : ?>
-            <h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>
+            <h1 style="text-align: center; margin-top: 20px;">Aucun sujet publié.</h1>
             <?php else :
             // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
             foreach ($topics as $topic) { ?>
@@ -352,7 +352,7 @@
     <section class="container mb-5">
         <div class=" row col-12 mx-1 d-flex justify-content-around">
 
-            <h1 style="text-align: center; margin-top: 20px;">Aucun sujet dans la base.</h1>
+            <h1 style="text-align: center; margin-top: 20px;">Aucun en attente.</h1>
         </div>
     </section>
 <?php else :
