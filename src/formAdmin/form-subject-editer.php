@@ -96,7 +96,7 @@
 
         <?php
         include('../../functions/bdd-connect.php');
-        include('../../functions/create-admin.php');
+        // include('../../functions/create-admin.php');
         include('../../functions/topic-functions.php');
 
         if (isset($_GET['logout'])) {
@@ -150,9 +150,15 @@
           </div>
           <!-- BOUTON -->
           <div class="d-grid gap-2">
+<!-- 
+            <button type="submit" class="btn btn-dark fw-bold text-uppercase mt-4 mb-5" name="create-topic">créer</button> -->
 
+
+            <?php if ($update_topic === true) : ?>
+            <button type="submit" id="btn-update" class="btn btn-dark fw-bold text-uppercase mt-4 mb-5" name="update-topic">mettre à jour</button>
+          <?php else : ?>
             <button type="submit" class="btn btn-dark fw-bold text-uppercase mt-4 mb-5" name="create-topic">créer</button>
-
+          <?php endif; ?>
             <!-- <button type="submit" class="btn btn-secondary fw-bold text-uppercase mt-4 mb-5" name="update-topic">mettre à jour</button> -->
 
           </div>
