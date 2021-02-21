@@ -107,6 +107,7 @@ function connect_user()
                     return $_SESSION['user']['id'];
                     return $user['avatar'];
                     return $user['id'];
+                    return $user['role'];
 
                     $id=$_SESSION['user']['id'];
                     return $id;

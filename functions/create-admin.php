@@ -263,14 +263,29 @@ function updateAdmin($request_values)
 //A FAIRE DELETE
 // supprimer l'utilisateur administrateur
 function deleteAdmin($admin_id)
+
 {
-    global $db;
-    $sql = "DELETE FROM users WHERE id = $admin_id";
-    if (mysqli_query($db, $sql)) {
-        $_SESSION['message'] = "L'utilisateur a bien été supprimé";
-        header("Location:form-admin-create.php");
-        exit(0);
-    }
+
+    global $db, $success;
+
+    // gestion de la contrainte de la clé etrangere
+    // $sql = " ALTER TABLE users
+    // ADD CONSTRAINT `success_user`, `like_dislike`, `abonnement`, `moukatages` FOREIGN KEY 'user_id'
+    //     REFERENCES users (id)
+    //     ON DELETE CASCADE";
+    // $reqDeleteAdmin = $db->prepare($sql); //preparation de la requete
+    // $reqDeleteAdmin->execute(); //execution de la requete
+
+
+
+
+
+    $sql1 = "DELETE FROM users WHERE id = $admin_id ON DELETE CASCADE";
+    $reqDeleteAdmin = $db->prepare($sql1); //preparation de la requete
+    $reqDeleteAdmin->execute(); //execution de la requete
+
+
+    array_push($success, "Compte administrateur supprimé avec succès ");
 }
 
 
@@ -299,19 +314,10 @@ function getAllUsers()
 
 
 
-// $listes_all_user
+    // $listes_all_user
 
-//     foreach ($listes_users as $key => $ligne_user) {
-//         // $all_users['user'] = getTopicAuthorById($topic['id']);
-//         array_push($all_users, $result_users);
-//     }
+    //     foreach ($listes_users as $key => $ligne_user) {
+    //         // $all_users['user'] = getTopicAuthorById($topic['id']);
+    //         array_push($all_users, $result_users);
+    //     }
 }
-// return $all_users;
-
-// print_r($all_users);
-// var_dump($all_users);
-
-
-
-
-// var_dump($all_users);

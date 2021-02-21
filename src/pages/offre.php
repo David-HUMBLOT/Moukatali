@@ -187,13 +187,17 @@
         <section>
             <div class="container">
                 <div classs="row">
+                <?php 
+                if (empty($offres)){
+                    ?>   <h1 style="text-align: center; margin-top: 20px;">Aucun article et aucune offre ce moment</h1>  <?php
+                }
+                ?>
+              
+                <div class="row row-cols-1 row-cols-md-3"> 
                     <!-- 888888888888888888888888888888888888888888888 -->
-                    <?php if (empty($offres)) : ?>
-                        <h1 style="text-align: center; margin-top: 20px;">Aucun article/offre en ce moment</h1>
-                        <!-- 888888888888888888888888888888888888888888888888 -->
-                    <?php else :
+                    <?php if (isset($offres)) :
                         // si l etat de la publication est egal a publihed = 1 en bdd alors on l affiche
-                    ?> <div class="row row-cols-1 row-cols-md-3"> <?php
+                   
                                                                         foreach ($offres as $offre) { ?>
                                 <!-- 888888888888888888888888888888888888888888888888 -->
 

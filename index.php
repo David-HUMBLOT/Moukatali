@@ -6,11 +6,13 @@
 
     include('functions/bdd-connect.php');
     include('functions/read-user.php');
+    include('functions/connect-user.php');
     include('functions/deconnect-user.php');
     if (isset($user)) {
         readUserById($_SESSION['user']['id']);
         // echo ($_SESSION['user']['id']);
         // echo ($user['pseudo']);
+
     }
     ?>
 
@@ -104,7 +106,10 @@
         <?php
         } else {
         ?>
-            <h4 class="ml-2">Vous êtes connecté en tant que : <?php echo ($_SESSION['user']['prenom']);  ?> </h'>
+
+            <h4 class="ml-2">Vous êtes connecté en tant que : <?php echo ($_SESSION['user']['nom']); ?>
+                &nbsp;
+                <?php echo ($_SESSION['user']['prenom']); ?> </h'>
                 <div class="d-flex justify-content-center mt-5">
                     <a class="btn-visiter btn text-uppercase font-weight-bold text-light" href="src/pages/liste-sujet.php" role="submit" name="moukatali">MOUKATALI !!</a>
                 </div>
@@ -115,11 +120,23 @@
 
             <?php
 
-            if (isset($_SESSION['user']['id']) && $user['role'] = 'admin') {  ?>
+            // verification du role de l utilisateur si il est un administrateur ou non et on affiche son btn en fonction du relustat de la fonction pregmatch
+
+            $pattern = '/^admin/';
+            $subject = $_SESSION['user']['role'];
+
+            if (preg_match($pattern, $subject)) {
+
+            ?>
                 <div class="d-flex justify-content-center mt-5">
                     <a class=" btn text-uppercase font-weight-bold text-light" href="src/formAdmin/form-admin-create.php" role="button">administrateur</a>
                 </div>
-            <?php  }  ?>
+            <?php
+            } ?>
+
+
+
+
 
 
 
