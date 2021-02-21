@@ -307,15 +307,14 @@ function updateTopic($request_values)
 // }
 
 // supprimer topic
+// 88888888888888888888888888
 function deleteTopic($topic_id)
 {
-    global $db;
-    $sql = "DELETE FROM topics WHERE id = $topic_id";
-    if (mysqli_query($db, $sql)) {
-        $_SESSION['message'] = "Le sujet a bien été supprimé";
-        header("location: subject.php");
-        exit(0);
-    }
+    global $db, $success;
+    $sql1 = "DELETE FROM topics WHERE id = $topic_id";
+    $reqDeleteAdmin = $db->prepare($sql1); //preparation de la requete
+    $reqDeleteAdmin->execute(); //execution de la requete
+    array_push($success, "Topic supprimé avec succès ");
 }
 
 
