@@ -15,6 +15,7 @@ echo 'Connection à la base de donnée OK <br/>';
 $db = connectPdoBdd();
 // variables utilisateur Admin
 $admin_id = 0;
+$delete_id_user= 0;
 $username = "";
 $first_name = "";
 $last_name = "";
@@ -44,6 +45,9 @@ if (isset($_GET['delete-admin'])) {
     $admin_id = $_GET['delete-admin'];
     deleteAdmin($admin_id);
 }
+
+
+
 
 
 //*******************************************************************************************************************************//
@@ -275,6 +279,8 @@ function deleteAdmin($admin_id)
 }
 
 
+
+
 // 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 // POUR LA PAGE AVEC LA LISTE DE TOUT LES MOUKATEUR AU ROLE DE USER
 
@@ -295,15 +301,24 @@ function getAllUsers()
     $all_users = $stmt->fetchAll();
     return $all_users;
 
-    // print_r($all_users);
-    // var_dump($all_users);
+}
+
+if (isset($_GET['delete-user'])) {
+    $delete_id_user = $_GET['delete-user'];
+    deleteAdmin($delete_id_user);
+}
 
 
+//GOOD
+// supprimer l'utilisateur administrateur
+function deleteUser($delete_id_user)
 
-    // $listes_all_user
+{
 
-    //     foreach ($listes_users as $key => $ligne_user) {
-    //         // $all_users['user'] = getTopicAuthorById($topic['id']);
-    //         array_push($all_users, $result_users);
-    //     }
+    global $db,  $delete_id_user;
+    $delete_id_user = $_GET['delete-user'];
+    $sql1 = "DELETE FROM users WHERE id = $delete_id_user LIMIT 1";
+    $reqDeleteAdmin = $db->prepare($sql1); //preparation de la requete
+    $reqDeleteAdmin->execute(); //execution de la requete
+
 }

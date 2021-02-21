@@ -306,8 +306,9 @@ function updateTopic($request_values)
 // }
 // }
 
-// supprimer topic
+
 // 88888888888888888888888888
+// supprimer topic GOOD
 function deleteTopic($topic_id)
 {
     global $db, $success;

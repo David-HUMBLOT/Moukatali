@@ -308,13 +308,12 @@ function updateOffre($request_values)
 // supprimer offre
 function deleteOffre($offre_id)
 {
-    global $db;
+    global $db, $success;
     $sql = "DELETE FROM abonnement WHERE id = $offre_id";
-    if (mysqli_query($db, $sql)) {
-        $_SESSION['message'] = "Le sujet a bien été supprimé";
-        // header("location: subject.php");
-        // exit(0);
-    }
+    $reqDeleteAdmin = $db->prepare($sql); //preparation de la requete
+    $reqDeleteAdmin->execute(); //execution de la requete
+    array_push($success, "Topic supprimé avec succès ");
+    
 }
 // si l'utilisateur clique sur le bouton de publication de l'article
 if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
