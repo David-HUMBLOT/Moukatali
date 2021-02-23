@@ -131,18 +131,7 @@ require_once('../../functions/connect-user.php');
         </div>
     </section>
 
-    <section id="form-connexion">
-        <div class="container d-flex flex-column justify-content-center align-items-center">
-
-
-
-
-
-
-
-            <!-- FORMULAIRE D'INSCRIPTION -->
-            <div class="mb-5 box-formulaire col-lg-8 col-md-8 ">
-                <!-- MESSAGE D'ERREUR-->
+       <!-- MESSAGE D'ERREUR-->
        
        
                 <!-- MESSAGE ERREUR DE CONNECTION-->
@@ -162,6 +151,20 @@ require_once('../../functions/connect-user.php');
                         <?php endforeach; ?>
                     </div>
                 <?php endif ?>
+
+
+    <section id="form-connexion">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+
+
+
+
+
+
+
+            <!-- FORMULAIRE D'INSCRIPTION -->
+            <div class="mb-5 box-formulaire col-lg-8 col-md-8 ">
+         
 
 
                 <form class="col px-3 py-4" method="post">
@@ -214,18 +217,20 @@ require_once('../../functions/connect-user.php');
                     </div>
 
                 </form>
-                <!--  BOUTON SUIVANT-->
-                <?php if (isset($_SESSION['user'])) { ?>
-
-
-                    <div class="mt-3 d-flex justify-content-center">
-                        <a href="../pages/liste-sujet.php"><button type="button" name="suivant" class="btn btn-dark">SUIVANT</button></a>
-                    </div>
-                <?php  }  ?>
+     
             </div>
         </div>
     </section>
 
+
+           <!--  BOUTON SUIVANT-->
+           <?php if (isset($_SESSION['user'])) { ?>
+
+
+<div class="mt-3 d-flex justify-content-center">
+    <a href="../pages/liste-sujet.php"><button type="button" name="suivant" class="btn btn-dark">SUIVANT</button></a>
+</div>
+<?php  }  ?>
 </body>
 
 
