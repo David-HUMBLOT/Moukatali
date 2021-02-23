@@ -122,7 +122,7 @@ require_once('../../functions/connect-user.php');
     <!--88888888888888888888888888888888888888888 -->
 
 
-    <section id="form-connexion">
+    <section >
         <div class="container d-flex flex-column justify-content-center align-items-center">
             <!-- TITRE -->
             <div class="my-5 m-md-5 box-titre col-lg-6 col-md-6 col-sm-4 col-12 d-flex justify-content-center">
