@@ -144,7 +144,7 @@ require_once('../../functions/connect-user.php');
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 ">
        <!-- MESSAGE D'ERREUR-->
             <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
-            <?php global $errors, $success_connect; ?>
+      
 
 
                 <form class="col px-3 py-4" method="post">
