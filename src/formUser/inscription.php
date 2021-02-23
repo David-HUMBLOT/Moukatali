@@ -135,11 +135,11 @@
 
             <!-- MESSAGE D'ERREUR-->
             <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
-            <?php global $errors, $success_inscription; ?>
+            <?php ?>
 
             <!-- FORMULAIRE -->
             <!-- FORMULAIRE D'INSCRIPTION -->
-            <div class="mb-5  col-lg-8 col-md-8 col-12">
+            <div class="mb-5 box-formulaire col-lg-8 col-md-8 col-12">
 
                 <form class="col px-3 py-4" method="POST" enctype="multipart/form-data">
 
