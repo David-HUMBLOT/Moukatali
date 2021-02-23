@@ -122,7 +122,7 @@ require_once('../../functions/connect-user.php');
     <!--88888888888888888888888888888888888888888 -->
 
 
-    <section>
+    <section >
         <div class="container d-flex flex-column justify-content-center align-items-center">
             <!-- TITRE -->
             <div class="my-5 m-md-5 box-titre col-lg-6 col-md-6 col-sm-4 col-12 d-flex justify-content-center">
@@ -131,24 +131,20 @@ require_once('../../functions/connect-user.php');
         </div>
     </section>
 
-       <!-- MESSAGE D'ERREUR-->
-       
-       
-
-
-
     <section id="form-connexion">
         <div class="container d-flex flex-column justify-content-center align-items-center">
 
 
-
+     
 
 
 
 
             <!-- FORMULAIRE D'INSCRIPTION -->
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 ">
-         
+       <!-- MESSAGE D'ERREUR-->
+            <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
+            <?php global $errors, $success_connect; ?>
 
 
                 <form class="col px-3 py-4" method="post">
@@ -156,7 +152,7 @@ require_once('../../functions/connect-user.php');
 
 
 
-
+       
 
 
 
@@ -183,13 +179,20 @@ require_once('../../functions/connect-user.php');
 
 
 
+                    <!--  BOUTON SUIVANT-->
+                    <?php if (isset($_SESSION['user'])) { ?>
+
+
+                        <div class="mt-3 d-flex justify-content-center">
+                            <a href="../pages/liste-sujet.php"><button type="button" name="suivant" class="btn btn-dark">SUIVANT</button></a>
+                        </div>
 
 
 
-                    <div class="mt-3 d-flex justify-content-center">
-                        <button type="submit" name="connection" class="btn btn-dark">CONNEXION</button>
-                    </div>
-
+                    <?php  } else { ?> <div class="mt-3 d-flex justify-content-center">
+                            <button type="submit" name="connection" class="btn btn-dark">CONNEXION</button>
+                        </div>
+                    <?php   }   ?>
 
 
 
@@ -201,25 +204,9 @@ require_once('../../functions/connect-user.php');
                     </div>
 
                 </form>
-     
             </div>
         </div>
     </section>
-
-
-           <!--  BOUTON SUIVANT-->
-           <?php if (isset($_SESSION['user'])) { ?>
-
-
-<div class="mt-3 d-flex justify-content-center">
-    <a href="../pages/liste-sujet.php"><button type="button" name="suivant" class="btn btn-dark">SUIVANT</button></a>
-</div>
-<?php  }  ?>
-
-
-           
-
-
 
 </body>
 
