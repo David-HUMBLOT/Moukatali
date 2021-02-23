@@ -134,23 +134,7 @@ require_once('../../functions/connect-user.php');
        <!-- MESSAGE D'ERREUR-->
        
        
-                <!-- MESSAGE ERREUR DE CONNECTION-->
-                <?php if (count($errors) > 0) : ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?php foreach ($errors as $error) : ?>
-                            <p><?php echo $error ?></p>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif ?>
 
-                <!-- MESSAGE CONFIRMATION CONNECTION AVANT REDIRECTION -->
-                <?php if (count($success_connect) > 0) : ?>
-                    <div class="alert alert-success" role="alert">
-                        <?php foreach ($success_connect as $success_connects) : ?>
-                            <p><?php echo $success_connects ?></p>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif ?>
 
 
     <section id="form-connexion">
@@ -231,6 +215,28 @@ require_once('../../functions/connect-user.php');
     <a href="../pages/liste-sujet.php"><button type="button" name="suivant" class="btn btn-dark">SUIVANT</button></a>
 </div>
 <?php  }  ?>
+
+
+                <!-- MESSAGE ERREUR DE CONNECTION-->
+                <?php if (count($errors) > 0) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php foreach ($errors as $error) : ?>
+                            <p><?php echo $error ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif ?>
+
+                <!-- MESSAGE CONFIRMATION CONNECTION AVANT REDIRECTION -->
+                <?php if (count($success_connect) > 0) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php foreach ($success_connect as $success_connects) : ?>
+                            <p><?php echo $success_connects ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif ?>
+
+
+
 </body>
 
 
