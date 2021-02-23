@@ -58,6 +58,7 @@ function connect_user()
             $reqt  = "SELECT COUNT(*) AS nbr FROM  `users` WHERE  email = '$email' LIMIT 1";
             $reqEmail = $pdo->prepare("SELECT * FROM `users` WHERE email='$email'");
             $reqEmail->execute([$email]);
+            
             $user = $reqEmail->fetch();
 
             // test

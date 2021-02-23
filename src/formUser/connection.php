@@ -34,7 +34,7 @@ require_once('../../functions/connect-user.php');
 </head>
 
 <body>
-  
+
     <!-- 888888888888888888888888888888888888888888888888888888 -->
     <!-- HEADER -->
     <header class="header-liste ">
@@ -57,9 +57,9 @@ require_once('../../functions/connect-user.php');
 
                         <?php
                         if (isset($_SESSION['user']['id'])) {  ?>
-                            
-                            
-                            
+
+
+
                             <a href="liste-sujet.php">
                                 <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> MouKatAli !!</li>
                             </a>
@@ -146,79 +146,77 @@ require_once('../../functions/connect-user.php');
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 ">
                 <form class="col px-3 py-4" method="post">
 
-                    <form class="col px-3 py-4" method="post" action="">
-
-
-                        <!-- MESSAGE ERREUR DE CONNECTION-->
-                        <?php if (count($errors) > 0) : ?>
-                            <div class="alert alert-danger" role="alert">
-                                <?php foreach ($errors as $error) : ?>
-                                    <p><?php echo $error ?></p>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif ?>
-
-                        <!-- MESSAGE CONFIRMATION CONNECTION AVANT REDIRECTION -->
-                        <?php if (count($success_connect) > 0) : ?>
-                            <div class="alert alert-success" role="alert">
-                                <?php foreach ($success_connect as $success_connects) : ?>
-                                    <p><?php echo $success_connects ?></p>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif ?>
 
 
 
+                    <!-- MESSAGE ERREUR DE CONNECTION-->
+                    <?php if (count($errors) > 0) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php foreach ($errors as $error) : ?>
+                                <p><?php echo $error ?></p>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif ?>
+
+                    <!-- MESSAGE CONFIRMATION CONNECTION AVANT REDIRECTION -->
+                    <?php if (count($success_connect) > 0) : ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php foreach ($success_connect as $success_connects) : ?>
+                                <p><?php echo $success_connects ?></p>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif ?>
 
 
-                        <!-- EMAIL -->
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Email* </label>
 
-                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" title="Veuillez inscrire votre email" size="60" minlength="3" maxlength="60" required value="">
-                            </input>
 
+
+                    <!-- EMAIL -->
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label text-dark mb-0">Email* </label>
+
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" title="Veuillez inscrire votre email" size="60" minlength="3" maxlength="60" required value="">
+                        </input>
+
+                    </div>
+
+                    <!-- MOT DE PASSE -->
+                    <div class="mb-3 ">
+                        <label class="mb-0 text-dark" for="mot de passe1">Mot de passe* </label>
+
+                        <input type="password" class="form-control" id="password-connect" name="password-connect" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="">
+                        </input>
+
+                    </div>
+
+
+
+
+                    <!--  BOUTON SUIVANT-->
+                    <?php if (isset($_SESSION['user'])) { ?>
+
+
+                        <div class="mt-3 d-flex justify-content-center">
+                            <a href="../pages/liste-sujet.php"><button type="button" name="suivant" class="btn btn-dark">SUIVANT</button></a>
                         </div>
 
-                        <!-- MOT DE PASSE -->
-                        <div class="mb-3 ">
-                            <label class="mb-0 text-dark" for="mot de passe1">Mot de passe* </label>
 
-                            <input type="password" class="form-control" id="password-connect" name="password-connect" required pattern="?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Saisir un mot de passe" minlength="1" maxlength="20" size="20" value="">
-                            </input>
 
+                    <?php  } else { ?> <div class="mt-3 d-flex justify-content-center">
+                            <button type="submit" name="connection" class="btn btn-dark">CONNEXION</button>
                         </div>
+                    <?php   }   ?>
 
 
 
 
-                        <!--  BOUTON SUIVANT-->
-                        <?php if (isset($_SESSION)) { ?>
+                    <div class="mt-1 d-flex justify-content-center text-dark"> <i>(* Champs obligatoires)</i></div>
 
+                    <div class="mt-3 d-flex justify-content-center"><a href="inscription.php" class="text-nav-foot pb-2">Pas
+                            encore de compte !? Inscrit toi ici !! </a><br>
+                    </div>
 
-
-
-
-
-                        
-                            <div class="mt-3 d-flex justify-content-center">
-                                <a href="../pages/liste-sujet.php"><button type="button" name="suivant" class="btn btn-dark">SUIVANT</button></a>
-                            </div>
-                        <?php  } else { ?> <div class="mt-3 d-flex justify-content-center">
-                                <button type="submit" name="connection" class="btn btn-dark">CONNEXION</button>
-                            </div>
-                        <?php   }   ?>
-
-
-
-
-                        <div class="mt-1 d-flex justify-content-center text-dark"> <i>(* Champs obligatoires)</i></div>
-
-                        <div class="mt-3 d-flex justify-content-center"><a href="inscription.php" class="text-nav-foot pb-2">Pas
-                                encore de compte !? Inscrit toi ici !! </a><br>
-                        </div>
-
-                    </form>
+                </form>
             </div>
         </div>
     </section>
