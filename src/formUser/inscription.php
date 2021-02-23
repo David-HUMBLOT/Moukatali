@@ -43,9 +43,9 @@
 
                         <?php
                         if (isset($_SESSION['user']['id'])) {  ?>
-
-
-
+                            
+                            
+                            
                             <a href="liste-sujet.php">
                                 <li class="header-liste-p"><img src="../../icons/chevron-right-solid-24.png" class="icon-size " class="icon-size " /> MouKatAli !!</li>
                             </a>
@@ -90,7 +90,7 @@
         </div>
     </header>
 
-
+  
     <!--88888888888888888888888888888888888888888 -->
     <!-- VERIFICATION DES MESSAGE ERREUR ET ETAT DE CONNECTION TEXT EN BLC SUR FOND NOIR -->
     <div class="text-light"><?php
@@ -135,13 +135,13 @@
 
             <!-- MESSAGE D'ERREUR-->
             <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
-            <?php ?>
+            <?php global $errors, $success_inscription; ?>
 
             <!-- FORMULAIRE -->
             <!-- FORMULAIRE D'INSCRIPTION -->
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 col-12">
 
-                <form class="col px-3 py-4" method="POST" >
+                <form class="col px-3 py-4" method="POST" enctype="multipart/form-data">
 
                     <!-- MESSAGE D ERREUR -->
                     <?php if (count($errors) > 0) : ?>
@@ -216,8 +216,8 @@
                             <select class="custom-select" id="inputGroupSelect01" name="genre">
                                 <option selected>Choisir son genre</option>
                                 <option>Homme</option>
-                                <option>Femme</option>
-                                <option>3ième type</option>
+                                <option >Femme</option>
+                                <option >3ième type</option>
                             </select>
                         </div>
 
@@ -299,10 +299,10 @@
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
+            
+            </form>
 
-                </form>
-
-            </div>
+        </div>
 
 
     </section>
