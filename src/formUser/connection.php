@@ -131,18 +131,13 @@ require_once('../../functions/connect-user.php');
         </div>
     </section>
 
-
-         <!-- MESSAGE D'ERREUR-->
-            <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
- 
-
-
-
     <section id="form-connexion">
         <div class="container d-flex flex-column justify-content-center align-items-center">
 
 
-   
+            <!-- MESSAGE D'ERREUR-->
+            <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
+            <?php global $errors, $success_connect; ?>
 
 
 
@@ -153,6 +148,24 @@ require_once('../../functions/connect-user.php');
 
 
 
+
+                    <!-- MESSAGE ERREUR DE CONNECTION-->
+                    <?php if (count($errors) > 0) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php foreach ($errors as $error) : ?>
+                                <p><?php echo $error ?></p>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif ?>
+
+                    <!-- MESSAGE CONFIRMATION CONNECTION AVANT REDIRECTION -->
+                    <?php if (count($success_connect) > 0) : ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php foreach ($success_connect as $success_connects) : ?>
+                                <p><?php echo $success_connects ?></p>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif ?>
 
 
 
