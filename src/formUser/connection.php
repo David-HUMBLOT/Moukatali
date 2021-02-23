@@ -143,8 +143,8 @@ require_once('../../functions/connect-user.php');
             <!-- FORMULAIRE D'INSCRIPTION -->
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 ">
                 <!-- MESSAGE D'ERREUR-->
-                <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
-                <?php global $errors, $success_connect; ?>
+       
+       
                 <!-- MESSAGE ERREUR DE CONNECTION-->
                 <?php if (count($errors) > 0) : ?>
                     <div class="alert alert-danger" role="alert">
