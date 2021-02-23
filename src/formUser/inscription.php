@@ -142,22 +142,6 @@
       
 
 
-            <?php if (count($errors) > 0) : ?>
-                        <div class="alert alert-danger" role="alert">
-                            <?php foreach ($errors as $error) : ?>
-                                <p><?php echo $error ?></p>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif ?>
-
-                    <!-- MESSAGE CONFIRMATION CONNECTION AVANT REDIRECTION -->
-                    <?php if (count($success_inscription) > 0) : ?>
-                        <div class="alert alert-success" role="alert">
-                            <?php foreach ($success_inscription as $success_inscriptions) : ?>
-                                <p><?php echo $success_inscriptions ?></p>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif ?>
 
                 <form class="col px-3 py-4" method="POST" enctype="multipart/form-data">
 

@@ -131,28 +131,28 @@ require_once('../../functions/connect-user.php');
         </div>
     </section>
 
+
+         <!-- MESSAGE D'ERREUR-->
+            <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
+ 
+
+
+
     <section id="form-connexion">
         <div class="container d-flex flex-column justify-content-center align-items-center">
 
 
-     
+   
 
 
 
 
             <!-- FORMULAIRE D'INSCRIPTION -->
             <div class="mb-5 box-formulaire col-lg-8 col-md-8 ">
-       <!-- MESSAGE D'ERREUR-->
-            <!-- en global pour l injecter dans le formulaire de type <form> et de method posT -->
-      
-
-
                 <form class="col px-3 py-4" method="post">
 
 
 
-
-       
 
 
 
