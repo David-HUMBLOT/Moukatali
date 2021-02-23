@@ -6,9 +6,9 @@
 function connectPdoBdd(){
    
     try {
-        $conn = "root"; $pass = ""; $pdo = new PDO('mysql:host=localhost;dbname=moukatali', $conn, $pass);
+        $conn = "sql11394745"; $pass = "Wdc7w3VDnF"; $pdo = new PDO('mysql:host=sql11.freemysqlhosting.net;dbname=sql11394745', $conn, $pass);
          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-         $db='moukatali';
+         $db='sql11394745';
          echo 'METHOD PDO CONNECTION REUSSI AVEC FONCTION connectPdoBdd<br/>'; return $pdo;} 
 catch (PDOException $e) {print "Erreur !: " . $e->getMessage() . "<br/>";die();}}
 //   ATTENTION NE PAS EFFACER 
@@ -16,6 +16,12 @@ catch (PDOException $e) {print "Erreur !: " . $e->getMessage() . "<br/>";die();}
 // connectPdoBdd();
 
 ?>
+
+
+
+
+
+
 
 
 
