@@ -8,26 +8,14 @@
 function create_user()
 {
 
-    /******************************************
-     * CONNECTION A LA BDD (attention : on a l include qui apel la fonction de connection depuis connect-bdd.php) *
-     ******************************************/
-
     require_once('bdd-connect.php');
     connectPdoBdd();
     echo 'Connection à la base de donnée OK <br/>';
 
-
-    /******************************************
-     * INITIALISATION des variables *
-     ******************************************/
-    echo ' Entrer de fonction creat-user <br/>';
-
-    echo ' Inititialisation varibles GLOBAL  <br/>Initialisation  du tableaux des erreurs (IN FONCTIONS)  <br/>';
-    // NOUS SERT PAR EXEMPLE A SORTIR LES INFORMATIOSN DU TABLEAUX DES ERREURS DE LA FONCTION
     global $errors, $success_inscription, $role, $pseudo, $email, $nom, $prenom, $pdo,  $password_hash;
 
     // INITIALISATION DES VARIBLES DONT CEUX PAR DEFAUT AFIN DE LES TRAITER AVANT REQUETE D INSERTION EN BASE DE DONNEE 
-    $pseudo = ""; //initialisation
+    $pseudo = "";
     $avatar = "";
     $email = "";
     $ville = "";
@@ -40,16 +28,11 @@ function create_user()
 
     if (isset($_POST["inscription"])) {
         echo ' Debut de la fonction create user ok <br/>';
-        /************************************************************************************
-         * TRAITEMENT DES VARIABLES POST RECUPERER DEPUIS PAGE INSCRIPTION APRES LE CLIQUE *
-         *********************************************************************************/
-        // ON RECUPERE LES VALEURS SAISIES DES POSTS ET ON LES TRAITE
+
         $pseudo = trim($_POST['pseudo']);
         // $avatar = $_POST['avatar']; 
 
-        //POUR LA PHOTO DE PROFIL
-        $avatar = strtolower(time() . '-' . $_FILES['avatar']['name']); //input de type file et securisation strtolower time (a etudier)
-        // $avatar = strtolower(time() . '-' . $_FILES[$_POST['avatar']]);
+
 
 
         $nom = htmlentities(trim(ucwords(strtolower($_POST['nom']))));
@@ -62,6 +45,10 @@ function create_user()
         $password_2 = trim($_POST['password_2']);
         $ville = htmlentities(trim(ucwords(strtolower($_POST['ville']))));
 
+
+        //POUR LA PHOTO DE PROFIL
+        $avatar = strtolower(time() . '-' . $_FILES['avatar']['name']); //input de type file et securisation strtolower time (a etudier)
+        // $avatar = strtolower(time() . '-' . $_FILES[$_POST['avatar']]);
         // TEST SI UNE DES VARIABLE QUI RECCUPERE UN POST FONCTIONNE ICI AVEC LE POST PASSWORD
         // var_dump($password_1);
         echo ' suite... fin traitement des variables POST. <br/> Password pas encore haché ...suite <br/>';
@@ -115,14 +102,14 @@ function create_user()
         }
 
         // // Check if file already exists
-        // if (file_exists($target_file)) {
+        // if (file_exists($target_file)) {mo
         //   echo "Sorry, file already exists.";
         //   $uploadOk = 0;
         // }
 
         // VERIFICATION DE LA TAILLE DE L IMAGE
         if ($_FILES["avatar"]["size"] > 600000) {
-            echo "Sorry, your file is too large.";
+       
             array_push($errors, "Image volumineux ! Elle ne peut dépasser 600ko .");
             $uploadOk = 0;  //CONDITION = 0 CAR N EST TROP VOLUMINEUSE
         }
@@ -132,7 +119,7 @@ function create_user()
             $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 
         ) {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+
             array_push($errors, "Format d'image non accepté ! Requis : png, pjeg ou png");
             $uploadOk = 0;
         }
@@ -193,31 +180,6 @@ function create_user()
         }
 
         echo ' suite .. Fin des vérifications des champs vide .. suite <br/>';
-
-
-
-
-
-
-
-
-
-        // 88888888888888888888888888888888888888888888888888888888888888888888888888888888
-
-
-        /************************************
-         * DOUBLE SECURITE , ICI AU NIVEAU DE PHP (NOM MODIFIABLE DEPUIS L INSPECTEUR DES ELEMENTS HTMPL) *
-         ****************************************/
-
-        // RESTE A FAIRE 
-
-        // 8888888888888888888888888888888888888888888888888888888888888888888888888888888
-
-
-
-
-
-
 
 
 
