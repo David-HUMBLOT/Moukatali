@@ -1,7 +1,5 @@
 <?php
-
 //initialisation des variables que l-on appellera dans les fonctions avec (globals)
-
 $pseudo = "";
 $email = "";
 $last_name = "";
@@ -9,12 +7,9 @@ $first_name = "";
 $role = "";
 $update = "false";
 $errors = array(); // VAR TABLEAUX QUI RECOIT LES MESSAGES D ERREUR POUR LE FORMULAIRE INSCRIPTION
-$success = array ();
-
-
+$success = array();
 $roles = ['admin', 'author', 'user']; //pour l'attribution des roles dans l'input des roles
 // $role = ['Admin'];
-
 // si l'utilisateur clique sur le bouton créer un administrateur
 if (isset($_POST['create-admin'])) {
     createAdmin($_POST);
@@ -39,107 +34,59 @@ if (isset($_GET['delete-user'])) {
     deleteAdmin($delete_id_user);
 }
 // si je clique sur le bouton se déconnecter
-if ( isset($_POST['deconnexion']) ) {
+if (isset($_POST['deconnexion'])) {
     deconnexion();
 }
-
 // global $last_name;
 
 
 function createAdmin($request_values)
 {
     global $db_connect, $errors, $success, $role, $last_name, $first_name;
-
     $pseudo = trim($request_values['pseudo']);
-
-
     $last_name = htmlentities(trim(ucwords(strtolower($request_values['last_name']))));
-
     $first_name = htmlentities(trim(ucwords(strtolower($request_values['first_name']))));
-
     $email = trim($request_values['email']);
-
     $password_1 = trim($request_values['password_1']);
-
     $password_2 = trim($request_values['password_2']);
-
     $role = trim($request_values['role']);
-    // if (isset($request_values['role'])) {
-    //     $role = trim($request_values['role']);
-    // }
-
-    
     // validation du formulaire: assurez-vous que le formulaire est correctement rempli
     if (empty($pseudo)) {
-        array_push($errors, "Entrer un pseudonyme");
-    }
-
+        array_push($errors, "Entrer un pseudonyme");}
     if (empty($last_name)) {
-        array_push($errors, "Entrer votre nom");
-    }
-
+        array_push($errors, "Entrer votre nom");}
     if (empty($first_name)) {
-        array_push($errors, "Entrer votre prenom");
-    }
-
+        array_push($errors, "Entrer votre prenom");}
+    if (empty($role)) {
+        array_push($errors, "Choisir un rôle");}
     if (empty($email)) {
-        array_push($errors, "Entrer une adresse mail");
-    }
-
+        array_push($errors, "Entrer une adresse mail");}
     if (empty($password_1)) {
-        array_push($errors, "Vous avez oublié le mot de passe");
-    }
+        array_push($errors, "Vous avez oublié le mot de passe");}
     // ON VERIFIE SI LES DEUX MOTS DE PASSE SAISIE SONT IDENTIQUES
     if ($password_1 != $password_2) {
-        array_push($errors, "les deux mots de passe ne correspondent pas");
-    }
+        array_push($errors, "les deux mots de passe ne correspondent pas");}
 
-
-        /******************************************************
-     * VERIFICATION DOUBLON EMAIL METHODE PDO *
-     *************************************************/
-    //UN UTILISATEUR NE DOIT PAS POUVOIR S INSCRIRE DEUX FOIS AVEC LES MEME IDENTIFIANT
-    // l'e-mail et les noms d'utilisateur doivent être uniques
-
-    $reqt  = "SELECT * FROM moukatali.users WHERE email = '$email' OR pseudo = '$pseudo' LIMIT 1"; //requete de selection dans table user en fonction de l email
+    $reqt  = "SELECT * FROM moukatali.users WHERE email = '$email' OR pseudo = '$pseudo' LIMIT 1"; 
+    //requete de selection dans table user en fonction de l email
     $reqEmail = $db_connect->prepare($reqt); //préparation de la requete
     $reqEmail->execute([$email]);  //EXECUTION DE LA REQUETE
-    $doublonEmail = $reqEmail->fetch();  //RECUPERATION RESULTAT DE LA REQUETE AUTREMENT DIT SI UN DOUBLON EST TROUVER EN FONCTION DE L EMAIL FOURNI
-    // SI DOUBLON EXISTANT
-    if ($doublonEmail) {
-        array_push($errors, "Pseudo ou Email déjà existant");
-    }
-   
-     
+    $doublonEmail = $reqEmail->fetch();  
+    if ($doublonEmail) {array_push($errors, "Pseudo ou Email déjà existant");}
     // enregistrer l'utilisateur s'il n'y a pas d'erreurs dans le formulaire
-
     if (count($errors) == 0) {
-
         // crypter le mot de passe avant de l'enregistrer dans la base de données
         $password = password_hash($password_1, PASSWORD_DEFAULT);
         //   FONCTIONNE AVEC CHOIS DU ROLE A L INSCRITION ADMIN
-
-
-
         $reqt = "INSERT INTO moukatali.users ( pseudo, first_name, last_name, email, password, role, created_at ) VALUES ( '$pseudo','$first_name','$last_name', '$email', '$password', '$role', now() )";
-
         $reqInsert = $db_connect->prepare($reqt); //preparation de la requete
         $reqInsert->execute(); //execution de la requete
-
-        // var_dump($resultReqInsert1);
         array_push($success, "Compte  créé avec succès ");
-
         // verification par message erreur
         return $success;
         return $errors;
-        exit(0);
-        
     }
-    // array_push($success, "Compte  créé avec succès ");
 }
-
-
-
 
 // GOOD
 // Prend l'ID d'administrateur comme paramètre
@@ -170,7 +117,7 @@ function editAdmin($admin_id)
 //METTRE A JOUR UN PROFIL
 function updateAdmin($request_values)
 {
-    global $db_connect, $errors,$success, $role, $pseudo, $update, $admin_id, $email, $first_name, $last_name;
+    global $db_connect, $errors, $success, $role, $pseudo, $update, $admin_id, $email, $first_name, $last_name;
     // obtenir l'identifiant de l'administrateur à mettre à jour
     $admin_id = $request_values['admin_id'];
     // définir l'état d'édition sur faux
@@ -182,7 +129,7 @@ function updateAdmin($request_values)
     $password_1 = trim($request_values['password_1']);
     $password_2 = trim($request_values['password_2']);
 
-  // validation du formulaire: assurez-vous que le formulaire est correctement rempli
+    // validation du formulaire: assurez-vous que le formulaire est correctement rempli
     if (empty($pseudo)) {
         array_push($errors, "Entrer un pseudonyme");
     }
@@ -212,7 +159,7 @@ function updateAdmin($request_values)
     }
 
 
-        /******************************************************
+    /******************************************************
      * VERIFICATION DOUBLON EMAIL METHODE PDO *
      * on ne vérifie plus le doublon d email car si on update alors que l on ne souhaote pas changer cette vaaleur ce la bloquera les modif. a defaut, le champs sera vide pour le pseudo ou l email car elle sont definit en unique dans la bdd
      *************************************************/
@@ -234,7 +181,6 @@ function updateAdmin($request_values)
         $reqInsert1 = $db_connect->prepare($sql); //preparation de la requete
         $reqInsert1->execute(); //execution de la requete
         array_push($success, "Mise à jour du profil réussie ! ");
-
     }
 }
 
@@ -278,16 +224,18 @@ function deleteUser($delete_id_user)
 }
 
 // FONCTION SE DECONNECTER
-function deconnexion() {
+function deconnexion()
+{
     session_destroy();
-    unset( $_SESSION['user'] );
+    unset($_SESSION['user']);
     $redirect = BASE_URL . '/src/index.php';
-    header('location: '.$redirect);
+    header('location: ' . $redirect);
 }
 
 
 // ON RECU¨PERE TOUT CE QUI SE TROUVE DANS LA TABLE moukatali.users
-function readAllAdmin() {
+function readAllAdmin()
+{
 
     global $db_connect;
     $admin = "admin";
@@ -296,8 +244,7 @@ function readAllAdmin() {
     $query = $db_connect->query($reqt);
     $admins = $query->fetchAll();
     return $admins;
-
-} 
+}
 
 
 

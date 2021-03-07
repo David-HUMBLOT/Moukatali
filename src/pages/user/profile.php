@@ -98,28 +98,19 @@ include ('../../layout/head.php');
                         </div>
                     </div>
 
-
-
                     <!-- modifier profile -->
                     <div class="d-flex flex-column flex-md-row text-center align-items-center justify-content-md-around mt-4">
 
                         <a class="btn btn-profil text-uppercase font-weight-bold mb-3 mb-md-0" href=<?php echo BASE_URL . '/src/pages/user/update-user.php' ?> type="submit" role="button">Modifier</a>
 
-                        
-
-
-                        <!-- JAVASCRIPT ANIMATION BTN DELETE AND FONCTIONALITY -->
+                        <!-- JAVASCRIPT ANIMATION BTN DELETE -->
                         <div class="btn1 ">
                             <div class="btn1-back ">
                                 <p>Est tu certain de vouloir supprimer ton compte? Cette action est irreversible !</p>
-
                                 <form method="POST" class="yes">
-
                                 <button id="confirm" data-toggle="modal" data-target="#popup" type="submit" name="supprimer" class="yes ">Oui</button>
                                 <button class="no">Non</button>
-
                                 </form>
-
                             </div>
                             <div class="btn1-front text-uppercase font-weight-bold">Supprimer </div>
                         </div>
@@ -134,15 +125,8 @@ include ('../../layout/head.php');
                                 </div>
                             </div>
                         </div>
-
-
-
-
                     </div>
-
-
                 </div>
-
             </div>
         </section>
 
